@@ -3,7 +3,7 @@ export default function Home() {
     <div className="min-h-screen bg-white text-gray-900">
       <header className="bg-gradient-to-r from-brandBlue to-brandTeal p-6 text-white shadow-md flex justify-between items-center">
         <div className="flex items-center gap-3">
-          <img src="/logo-globalglide360.png" alt="GlobalGlide360 Logo" className="h-12"/>
+          <img src="/logo-globalglide360.png" alt="GlobalGlide360 Logo" className="h-8"/>
           <h1 className="text-3xl font-bold">GlobalGlide360</h1>
         </div>
         <button className="bg-white text-brandBlue hover:text-brandTeal font-semibold px-4 py-2 rounded-md">Scopri di più</button>
