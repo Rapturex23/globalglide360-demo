@@ -1,132 +1,141 @@
 <!DOCTYPE html>
-<html lang="it"> 
+<html lang="it">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GlobalGlide360</title>
   <style>
-    /* Reset base */
-    * {margin:0; padding:0; box-sizing:border-box;}
-    body {font-family:Arial, sans-serif; color:#222; background:#fff;}
-    a, button {cursor:pointer;}
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:Arial,sans-serif;color:#222;background:#fff;line-height:1.4;}
 
-    /* Header */
-    header {
-      position:fixed; top:0; left:0; width:100%;
-      background:rgba(255,255,255,0.9); backdrop-filter:blur(6px);
-      display:flex; justify-content:space-between; align-items:center;
-      padding:10px 20px; box-shadow:0 2px 6px rgba(0,0,0,0.1); z-index:1000;
+    header{
+      position:fixed;top:0;left:0;width:100%;
+      background:rgba(255,255,255,0.9);backdrop-filter:blur(6px);
+      display:flex;justify-content:space-between;align-items:center;
+      padding:10px 20px;box-shadow:0 2px 6px rgba(0,0,0,0.1);z-index:1000;
     }
-    header img {height:40px;}
-    header h1 {color:#0077b6; font-size:20px; margin-left:8px;}
-    header button {
-      background:#0077b6; color:white; border:none; padding:8px 14px;
-      border-radius:8px; font-weight:bold;
+    header img{height:36px;}
+    header h1{color:#0077b6;font-size:18px;margin-left:6px;}
+    header button{
+      background:#0077b6;color:white;border:none;padding:8px 14px;
+      border-radius:8px;font-weight:bold;
     }
 
-    /* Hero */
-    .hero {
-      position:relative; height:100vh; overflow:hidden;
-      display:flex; align-items:center; justify-content:center;
+    .hero{
+      position:relative;height:100vh;overflow:hidden;
+      display:flex;align-items:center;justify-content:center;
     }
-    .hero img {position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;}
-    .hero-content {
-      position:relative; z-index:1; text-align:center; max-width:800px;
-      color:white; padding:20px;
+    .hero img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;}
+    .hero::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.5);}
+    .hero-content{
+      position:relative;z-index:1;text-align:center;color:white;padding:20px;
+      max-width:800px;
     }
-    .hero-content h2 {font-size:42px; margin-bottom:20px;}
-    .hero-content p {font-size:20px; margin-bottom:20px;}
-    .hero-content button {
-      background:#00b4d8; color:white; border:none; padding:12px 20px;
-      font-size:18px; border-radius:8px;
-    }
-    .hero::after {
-      content:''; position:absolute; inset:0; background:rgba(0,0,0,0.5);
+    .hero-content h2{font-size:32px;margin-bottom:20px;}
+    .hero-content p{font-size:18px;margin-bottom:20px;}
+    .hero-content button{
+      background:#00b4d8;color:white;border:none;padding:12px 20px;
+      font-size:18px;border-radius:8px;width:80%;max-width:300px;
     }
 
-    /* Sezioni */
-    section {padding:80px 20px;}
-    h3 {text-align:center; font-size:28px; color:#0077b6; margin-bottom:40px;}
+    section{padding:80px 20px;}
+    h3{text-align:center;font-size:26px;color:#0077b6;margin-bottom:40px;}
 
-    .grid {display:grid; gap:20px; grid-template-columns:1fr;}
-    .box {
-      background:white; padding:20px; border-radius:10px;
-      box-shadow:0 4px 8px rgba(0,0,0,0.1); text-align:center;
+    .grid{display:grid;gap:20px;}
+    .box{
+      background:white;padding:20px;border-radius:10px;text-align:center;
+      box-shadow:0 4px 8px rgba(0,0,0,0.1);
     }
-    .box span {font-size:40px; display:block; margin-bottom:10px;}
-    @media(min-width:768px) {
-      .grid {grid-template-columns:repeat(3,1fr);}
+    .box span{font-size:40px;display:block;margin-bottom:10px;}
+    @media(min-width:768px){
+      .grid{grid-template-columns:repeat(3,1fr);}
+      .hero-content h2{font-size:42px;}
     }
 
-    /* CTA */
-    .cta {background:#00b4d8; text-align:center; color:white;}
-    .cta input {
-      padding:10px; width:250px; border:none; border-radius:6px; margin-right:10px;
+    .cta{background:#00b4d8;text-align:center;color:white;}
+    .cta input{
+      padding:10px;width:80%;max-width:280px;border:none;border-radius:6px;margin-bottom:10px;
     }
-    .cta button {padding:10px 16px; border:none; border-radius:6px; background:#0077b6; color:white;}
+    .cta button{
+      padding:10px 16px;border:none;border-radius:6px;background:#0077b6;color:white;
+      width:80%;max-width:280px;
+    }
 
-    /* Footer */
-    footer {
-      background:#222; color:#ccc; text-align:center; font-size:14px;
-      padding:20px;
-    }
+    .about{background:#f8f8f8;text-align:center;}
+    .about p{max-width:700px;margin:0 auto;}
+
+    footer{background:#222;color:#ccc;text-align:center;font-size:14px;padding:20px;}
+    .social a{margin:0 8px;color:white;text-decoration:none;font-size:20px;}
   </style>
 </head>
 <body>
-  <!-- Header -->
+  <!-- HEADER -->
   <header>
-    <div style="display:flex; align-items:center;">
+    <div style="display:flex;align-items:center;">
       <img src="logo-globalglide360.png" alt="GlobalGlide360">
       <h1>GlobalGlide360</h1>
     </div>
-    <button>Scopri di più</button>
+    <button>Scopri</button>
   </header>
 
-  <!-- Hero -->
+  <!-- HERO -->
   <section class="hero">
     <img src="hero-travel.png" alt="Hero Travel">
     <div class="hero-content">
       <h2>Il tuo viaggio perfetto, creato da un'AI</h2>
-      <p>Lascia che GlobalGlide360 trovi per te voli, hotel e attività ai migliori prezzi.</p>
+      <p>Voli, hotel e attività ai migliori prezzi in pochi click.</p>
       <button>Inizia ora</button>
     </div>
   </section>
 
-  <!-- Come funziona -->
+  <!-- COME FUNZIONA -->
   <section>
     <h3>Come funziona</h3>
     <div class="grid">
-      <div class="box">
-        <span>🛫</span>
-        <h4>1. Inserisci la tua meta</h4>
-        <p>Digita la destinazione, le date e il tuo budget ideale.</p>
-      </div>
-      <div class="box">
-        <span>🤖</span>
-        <h4>2. L'AI cerca per te</h4>
-        <p>Scansiona voli, hotel ed esperienze in tempo reale.</p>
-      </div>
-      <div class="box">
-        <span>📍</span>
-        <h4>3. Ricevi l'itinerario</h4>
-        <p>Ottieni un piano completo con link prenotabili e foto.</p>
-      </div>
+      <div class="box"><span>🛫</span><h4>1. Inserisci la meta</h4><p>Destinazione, date e budget.</p></div>
+      <div class="box"><span>🤖</span><h4>2. L'AI cerca per te</h4><p>Voli, hotel e esperienze in tempo reale.</p></div>
+      <div class="box"><span>📍</span><h4>3. Ricevi l'itinerario</h4><p>Piano completo con link prenotabili.</p></div>
     </div>
   </section>
 
-  <!-- CTA -->
+  <!-- CHI SIAMO -->
+  <section class="about">
+    <h3>Chi siamo</h3>
+    <p>Siamo un team appassionato di viaggi e tecnologia. GlobalGlide360 aiuta famiglie e viaggiatori a creare itinerari personalizzati senza intermediazioni.</p>
+  </section>
+
+  <!-- CTA FORM (Mailchimp) -->
   <section class="cta">
     <h3>Vuoi ricevere itinerari come questo?</h3>
-    <div style="margin-top:20px;">
-      <input type="email" placeholder="Inserisci la tua email">
-      <button>Iscriviti</button>
+    <form 
+      action="https://XXXXXX.list-manage.com/subscribe/post?u=YOUR_ID&amp;id=LIST_ID" 
+      method="post" 
+      target="_blank" 
+      novalidate>
+      <input type="email" name="EMAIL" placeholder="Inserisci la tua email" required><br>
+      <button type="submit">Iscriviti</button>
+    </form>
+  </section>
+
+  <!-- CONTATTI -->
+  <section>
+    <h3>Contatti</h3>
+    <p style="text-align:center;">
+      Scrivici a <strong>info@globalglide360.com</strong><br>
+      oppure seguici sui social
+    </p>
+    <div class="social" style="text-align:center;margin-top:20px;">
+      <a href="#">📸 Instagram</a>
+      <a href="#">📘 Facebook</a>
+      <a href="mailto:info@globalglide360.com">✉️ Email</a>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer>
     <p>© 2025 GlobalGlide360 – Tutti i diritti riservati</p>
     <p>GlobalGlide360 non vende pacchetti turistici. I contenuti sono informativi con link affiliati.</p>
   </footer>
 </body>
 </html>
+
