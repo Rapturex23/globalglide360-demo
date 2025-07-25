@@ -10,7 +10,7 @@ export default function Home() {
       </header>
 
       <section className="text-center py-20 bg-gray-50">
-        <img src="/hero-travel.jpg" alt="Hero Travel" className="rounded-xl mx-auto shadow-md mb-8 max-w-3xl"/>
+        <img src="/hero-travel.png" alt="Hero Travel" className="rounded-xl mx-auto shadow-md mb-8 max-w-3xl"/>
         <h2 className="text-4xl font-extrabold mb-4">Il tuo viaggio perfetto, creato da un'AI</h2>
         <p className="text-lg mb-8 max-w-2xl mx-auto">
           GlobalGlide360 trova per te voli, hotel e esperienze aggiornate con i migliori prezzi. Pianifica e sogna senza stress.
