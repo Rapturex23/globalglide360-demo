@@ -51,7 +51,7 @@
       max-width:600px;
       margin:0 auto;
     }
-    .search-section input, .search-section select{
+    .search-section input{
       padding:12px;
       border:1px solid #ccc;
       border-radius:6px;
@@ -79,20 +79,52 @@
     section{padding:80px 20px;}
     h3{text-align:center;font-size:26px;color:#0077b6;margin-bottom:40px;}
 
-    .grid{display:grid;gap:20px;}
-    .box{
-      background:white;padding:20px;border-radius:10px;text-align:center;
+    .card{
+      background:white;
+      padding:20px;
+      border-radius:10px;
       box-shadow:0 4px 8px rgba(0,0,0,0.1);
+      margin-bottom:20px;
     }
-    .box span{font-size:40px;display:block;margin-bottom:10px;}
-    @media(min-width:768px){
-      .grid{grid-template-columns:repeat(3,1fr);}
-      .hero-content h2{font-size:42px;}
+    .card h3{margin-bottom:10px;}
+    .card img{width:100%;border-radius:10px;margin-bottom:10px;}
+    .card a{
+      display:inline-block;
+      padding:10px;
+      background:#0077b6;
+      color:#fff;
+      border-radius:6px;
+      text-decoration:none;
+      margin-top:10px;
     }
 
-    /* Risultati */
+    /* Timeline Giorno per giorno */
+    .timeline{
+      position:relative;
+      margin:20px 0;
+      padding-left:30px;
+      border-left:2px solid #0077b6;
+    }
+    .timeline-item{
+      margin-bottom:20px;
+      position:relative;
+    }
+    .timeline-item::before{
+      content:'';
+      position:absolute;
+      left:-9px;
+      top:5px;
+      width:15px;
+      height:15px;
+      background:#0077b6;
+      border-radius:50%;
+    }
+    .timeline-item h4{
+      color:#0077b6;
+      margin-bottom:5px;
+    }
+
     #results{max-width:800px;margin:20px auto;padding:10px;}
-    .card{background:#f8f8f8;padding:10px;border-radius:6px;margin-bottom:10px;}
 
     .cta{background:#00b4d8;text-align:center;color:white;}
     .cta input{
@@ -143,22 +175,6 @@
     </form>
   </section>
 
-  <!-- COME FUNZIONA -->
-  <section>
-    <h3>Come funziona</h3>
-    <div class="grid">
-      <div class="box"><span>🛫</span><h4>1. Inserisci la meta</h4><p>Destinazione, date, budget e persone.</p></div>
-      <div class="box"><span>🤖</span><h4>2. L'AI cerca per te</h4><p>Voli, hotel e esperienze in tempo reale.</p></div>
-      <div class="box"><span>📍</span><h4>3. Ricevi l'itinerario</h4><p>Piano completo con link prenotabili.</p></div>
-    </div>
-  </section>
-
-  <!-- CHI SIAMO -->
-  <section class="about">
-    <h3>Chi siamo</h3>
-    <p>Siamo un team appassionato di viaggi e tecnologia. GlobalGlide360 aiuta famiglie e viaggiatori a creare itinerari personalizzati senza intermediazioni.</p>
-  </section>
-
   <!-- RISULTATI -->
   <div id="results"></div>
 
@@ -167,26 +183,10 @@
     <h3>Vuoi ricevere itinerari come questo?</h3>
     <form action="https://globalglide360.us22.list-manage.com/subscribe/post?u=b9c083780b3620b61c9db125f&amp;id=9a97dacd51&amp;f_id=00efc2e1f0"
           method="post"
-          target="_blank"
-          onsubmit="document.getElementById('success-message').style.display='block';">
+          target="_blank">
       <input type="email" name="EMAIL" placeholder="Inserisci la tua email" required>
       <input type="submit" value="Iscriviti">
-      <div id="success-message" class="success-message" style="display:none; color:white;">✅ Grazie per esserti iscritto!</div>
     </form>
-  </section>
-
-  <!-- CONTATTI -->
-  <section>
-    <h3>Contatti</h3>
-    <p style="text-align:center;">
-      Scrivici a <strong>info@globalglide360.com</strong><br>
-      oppure seguici sui social
-    </p>
-    <div class="social" style="text-align:center;margin-top:20px;">
-      <a href="#">📸 Instagram</a>
-      <a href="#">📘 Facebook</a>
-      <a href="mailto:info@globalglide360.com">✉️ Email</a>
-    </div>
   </section>
 
   <!-- FOOTER -->
@@ -212,9 +212,13 @@ form.addEventListener("submit", async e => {
   results.innerHTML = "⏳ Ricerca in corso...";
 
   let destinazione = form.elements["destinazione"].value.trim().toLowerCase();
-  const dataPartenza = form.elements["data-partenza"].value;
+  const dataPartenza = new Date(form.elements["data-partenza"].value);
+  const dataRitorno = new Date(form.elements["data-ritorno"].value);
   const persone = form.elements["persone"].value;
   const budget = form.elements["budget"].value;
+
+  // Calcolo giorni viaggio
+  const giorniViaggio = Math.max(1, Math.round((dataRitorno - dataPartenza) / (1000 * 60 * 60 * 24)) + 1);
 
   const cityInfo = cityData[destinazione];
   if (!cityInfo) {
@@ -224,7 +228,7 @@ form.addEventListener("submit", async e => {
 
   try {
     // Chiamate API tramite backend Vercel
-    const voliRes = await fetch(`/api/amadeus?type=voli&cityCode=${cityInfo.iata}&date=${dataPartenza}&adults=${persone}`);
+    const voliRes = await fetch(`/api/amadeus?type=voli&cityCode=${cityInfo.iata}&date=${form.elements["data-partenza"].value}&adults=${persone}`);
     const dataVoli = await voliRes.json();
 
     const hotelRes = await fetch(`/api/amadeus?type=hotel&cityCode=${cityInfo.iata}`);
@@ -233,31 +237,38 @@ form.addEventListener("submit", async e => {
     const attivitaRes = await fetch(`/api/amadeus?type=attivita&lat=${cityInfo.lat}&lon=${cityInfo.lon}`);
     const dataAttivita = await attivitaRes.json();
 
-    // RISULTATI
-    results.innerHTML = `<h3>Itinerario trovato per ${persone} persone (budget €${budget}/persona):</h3>`;
+    // RISULTATI: schede voli + hotel
+    results.innerHTML = `
+      <div class="card">
+        <h3>✈️ Volo</h3>
+        ${dataVoli.data && dataVoli.data.length > 0 ? `
+          <p><strong>Prezzo totale:</strong> €${dataVoli.data[0].price.total}</p>
+          <a href="https://www.skyscanner.it" target="_blank">Prenota volo</a>
+        ` : `<p>Nessun volo trovato</p>`}
+      </div>
+      <div class="card">
+        <h3>🏨 Hotel</h3>
+        ${dataHotel.data && dataHotel.data.length > 0 ? `
+          <p><strong>${dataHotel.data[0].hotel.name}</strong></p>
+          <a href="https://www.booking.com" target="_blank">Prenota hotel</a>
+        ` : `<p>Nessun hotel trovato</p>`}
+      </div>
+      <h3 style="margin-top:20px;text-align:center;">🗓️ Itinerario giorno per giorno</h3>
+      <div class="timeline" id="timeline"></div>
+    `;
 
-    // Voli
-    if (dataVoli.data && dataVoli.data.length > 0) {
-      const prezzoVolo = parseFloat(dataVoli.data[0].price.total);
-      const prezzoTot = prezzoVolo / persone;
-      const entroBudget = prezzoTot <= budget;
-      results.innerHTML += `<div class="card">✈️ Volo più economico: €${dataVoli.data[0].price.total} (${entroBudget ? "✅ entro budget" : "⚠️ fuori budget"})</div>`;
-    } else {
-      results.innerHTML += `<div class="card">✈️ Nessun volo trovato</div>`;
-    }
-
-    // Hotel
-    if (dataHotel.data && dataHotel.data.length > 0) {
-      results.innerHTML += `<div class="card">🏨 Hotel suggerito: ${dataHotel.data[0].hotel.name}</div>`;
-    } else {
-      results.innerHTML += `<div class="card">🏨 Nessun hotel trovato</div>`;
-    }
-
-    // Attività
-    if (dataAttivita.data && dataAttivita.data.length > 0) {
-      results.innerHTML += `<div class="card">🎟️ Attività consigliata: ${dataAttivita.data[0].name}</div>`;
-    } else {
-      results.innerHTML += `<div class="card">🎟️ Nessuna attività trovata</div>`;
+    // Itinerario giorno per giorno
+    const timelineDiv = document.getElementById("timeline");
+    for (let giorno = 1; giorno <= giorniViaggio; giorno++) {
+      timelineDiv.innerHTML += `
+        <div class="timeline-item">
+          <h4>Giorno ${giorno}</h4>
+          ${dataAttivita.data && dataAttivita.data[giorno-1] ? `
+            <p>Attività: <strong>${dataAttivita.data[giorno-1].name}</strong></p>
+            <a href="https://www.getyourguide.com" target="_blank">Prenota attività</a>
+          ` : `<p>Nessuna attività consigliata</p>`}
+        </div>
+      `;
     }
 
   } catch (error) {
