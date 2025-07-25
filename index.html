@@ -137,6 +137,8 @@
       <input type="text" name="destinazione" placeholder="Destinazione (es. Parigi)" required>
       <input type="date" name="data-partenza" required>
       <input type="date" name="data-ritorno" required>
+      <input type="number" name="persone" placeholder="Numero di persone" min="1" value="1" required>
+      <input type="number" name="budget" placeholder="Budget €/persona" min="50" step="50" required>
       <button type="submit">Cerca itinerario</button>
     </form>
   </section>
@@ -145,7 +147,7 @@
   <section>
     <h3>Come funziona</h3>
     <div class="grid">
-      <div class="box"><span>🛫</span><h4>1. Inserisci la meta</h4><p>Destinazione, date e budget.</p></div>
+      <div class="box"><span>🛫</span><h4>1. Inserisci la meta</h4><p>Destinazione, date, budget e persone.</p></div>
       <div class="box"><span>🤖</span><h4>2. L'AI cerca per te</h4><p>Voli, hotel e esperienze in tempo reale.</p></div>
       <div class="box"><span>📍</span><h4>3. Ricevi l'itinerario</h4><p>Piano completo con link prenotabili.</p></div>
     </div>
@@ -167,7 +169,6 @@
           method="post"
           target="_blank"
           onsubmit="document.getElementById('success-message').style.display='block';">
-      
       <input type="email" name="EMAIL" placeholder="Inserisci la tua email" required>
       <input type="submit" value="Iscriviti">
       <div id="success-message" class="success-message" style="display:none; color:white;">✅ Grazie per esserti iscritto!</div>
@@ -194,94 +195,104 @@
     <p>GlobalGlide360 non vende pacchetti turistici. I contenuti sono informativi con link affiliati.</p>
   </footer>
 
-  <script>
-  const form = document.getElementById("travel-form");
-  const results = document.getElementById("results");
+<script>
+const form = document.getElementById("travel-form");
+const results = document.getElementById("results");
 
-  // Mappa codici IATA (semplificata, possiamo espanderla dopo)
-  const cityToIATA = {
-    "roma": "ROM",
-    "milano": "MIL",
-    "parigi": "PAR",
-    "londra": "LON",
-    "lisbona": "LIS",
-    "new york": "NYC",
-    "barcellona": "BCN"
-  };
+// Mappa codici IATA e coordinate (ampliabile)
+const cityData = {
+  "roma": { iata: "ROM", lat: 41.9028, lon: 12.4964 },
+  "milano": { iata: "MIL", lat: 45.4642, lon: 9.19 },
+  "parigi": { iata: "PAR", lat: 48.8566, lon: 2.3522 },
+  "londra": { iata: "LON", lat: 51.5074, lon: -0.1278 },
+  "lisbona": { iata: "LIS", lat: 38.7169, lon: -9.139 },
+  "new york": { iata: "NYC", lat: 40.7128, lon: -74.006 },
+  "barcellona": { iata: "BCN", lat: 41.3851, lon: 2.1734 }
+};
 
-  const clientId = "kDR8582BVq2qikHZUQAaUBLlZNzTVp50";
-  const clientSecret = "6e8Wjj1R9axfFAIx";
-  let token = null;
+const clientId = "kDR8582BVq2qikHZUQAaUBLlZNzTVp50";
+const clientSecret = "6e8Wjj1R9axfFAIx";
+let token = null;
 
-  async function getToken() {
-    const res = await fetch("https://test.api.amadeus.com/v1/security/oauth2/token", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `grant_type=client_credentials&client_id=${clientId}&client_secret=${clientSecret}`
-    });
-    const data = await res.json();
-    return data.access_token;
+async function getToken() {
+  const res = await fetch("https://test.api.amadeus.com/v1/security/oauth2/token", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: `grant_type=client_credentials&client_id=${clientId}&client_secret=${clientSecret}`
+  });
+  const data = await res.json();
+  return data.access_token;
+}
+
+form.addEventListener("submit", async e => {
+  e.preventDefault();
+  results.innerHTML = "⏳ Ricerca in corso...";
+
+  let destinazione = form.elements["destinazione"].value.trim().toLowerCase();
+  const dataPartenza = form.elements["data-partenza"].value;
+  const persone = form.elements["persone"].value;
+  const budget = form.elements["budget"].value;
+
+  // Recupera i dati città (iata + coordinate)
+  const cityInfo = cityData[destinazione];
+  if (!cityInfo) {
+    results.innerHTML = "⚠️ Destinazione non trovata. Inserisci una città valida.";
+    return;
   }
 
-  form.addEventListener("submit", async e => {
-    e.preventDefault();
-    results.innerHTML = "⏳ Ricerca in corso...";
+  try {
+    if (!token) token = await getToken();
 
-    let destinazione = form.elements["destinazione"].value.trim().toLowerCase();
-    const dataPartenza = form.elements["data-partenza"].value;
+    // VOLI
+    const voliRes = await fetch(`https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=MIL&destinationLocationCode=${cityInfo.iata}&departureDate=${dataPartenza}&adults=${persone}&currencyCode=EUR`, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    const dataVoli = await voliRes.json();
 
-    // Conversione nome città in codice IATA
-    if (cityToIATA[destinazione]) {
-      destinazione = cityToIATA[destinazione];
+    // HOTEL
+    const hotelRes = await fetch(`https://test.api.amadeus.com/v2/shopping/hotel-offers?cityCode=${cityInfo.iata}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    const dataHotel = await hotelRes.json();
+
+    // ATTIVITÀ dinamiche (basate su coordinate città)
+    const attivitaRes = await fetch(`https://test.api.amadeus.com/v1/shopping/activities?latitude=${cityInfo.lat}&longitude=${cityInfo.lon}&radius=10`, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    const dataAttivita = await attivitaRes.json();
+
+    // RISULTATI
+    results.innerHTML = `<h3>Itinerario trovato per ${persone} persone (budget €${budget}/persona):</h3>`;
+
+    // Voli
+    if (dataVoli.data && dataVoli.data.length > 0) {
+      const prezzoVolo = parseFloat(dataVoli.data[0].price.total);
+      const prezzoTot = prezzoVolo / persone;
+      const entroBudget = prezzoTot <= budget;
+      results.innerHTML += `<div class="card">✈️ Volo più economico: €${dataVoli.data[0].price.total} (${entroBudget ? "✅ entro budget" : "⚠️ fuori budget"})</div>`;
+    } else {
+      results.innerHTML += `<div class="card">✈️ Nessun volo trovato</div>`;
     }
 
-    try {
-      if (!token) token = await getToken();
-
-      // Chiamata voli
-      const voliRes = await fetch(`https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=MIL&destinationLocationCode=${destinazione}&departureDate=${dataPartenza}&adults=1&currencyCode=EUR`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      const dataVoli = await voliRes.json();
-
-      // Chiamata hotel
-      const hotelRes = await fetch(`https://test.api.amadeus.com/v2/shopping/hotel-offers?cityCode=${destinazione}`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      const dataHotel = await hotelRes.json();
-
-      // Chiamata attività (per ora coordinate fisse Parigi, da adattare)
-      const attivitaRes = await fetch(`https://test.api.amadeus.com/v1/shopping/activities?latitude=48.8566&longitude=2.3522&radius=10`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      const dataAttivita = await attivitaRes.json();
-
-      // Mostra risultati
-      results.innerHTML = "<h3>Itinerario trovato:</h3>";
-
-      if (dataVoli.data && dataVoli.data.length > 0) {
-        results.innerHTML += `<div class="card">✈️ Volo più economico: ${dataVoli.data[0].price.total}€</div>`;
-      } else {
-        results.innerHTML += `<div class="card">✈️ Nessun volo trovato</div>`;
-      }
-
-      if (dataHotel.data && dataHotel.data.length > 0) {
-        results.innerHTML += `<div class="card">🏨 Hotel suggerito: ${dataHotel.data[0].hotel.name}</div>`;
-      } else {
-        results.innerHTML += `<div class="card">🏨 Nessun hotel trovato</div>`;
-      }
-
-      if (dataAttivita.data && dataAttivita.data.length > 0) {
-        results.innerHTML += `<div class="card">🎟️ Attività: ${dataAttivita.data[0].name}</div>`;
-      } else {
-        results.innerHTML += `<div class="card">🎟️ Nessuna attività trovata</div>`;
-      }
-
-    } catch (error) {
-      console.error(error);
-      results.innerHTML = "❌ Errore durante la ricerca. Controlla le credenziali API o la destinazione.";
+    // Hotel
+    if (dataHotel.data && dataHotel.data.length > 0) {
+      results.innerHTML += `<div class="card">🏨 Hotel suggerito: ${dataHotel.data[0].hotel.name}</div>`;
+    } else {
+      results.innerHTML += `<div class="card">🏨 Nessun hotel trovato</div>`;
     }
-  });
-  </script>
+
+    // Attività
+    if (dataAttivita.data && dataAttivita.data.length > 0) {
+      results.innerHTML += `<div class="card">🎟️ Attività consigliata: ${dataAttivita.data[0].name}</div>`;
+    } else {
+      results.innerHTML += `<div class="card">🎟️ Nessuna attività trovata</div>`;
+    }
+
+  } catch (error) {
+    console.error(error);
+    results.innerHTML = "❌ Errore durante la ricerca. Controlla le credenziali API o la destinazione.";
+  }
+});
+</script>
 </body>
 </html>
