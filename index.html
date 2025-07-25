@@ -54,12 +54,36 @@
     }
 
     .cta{background:#00b4d8;text-align:center;color:white;}
-    .cta input{
-      padding:10px;width:80%;max-width:280px;border:none;border-radius:6px;margin-bottom:10px;
+    .cta form{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:10px;
+      max-width:400px;
+      margin:0 auto;
     }
-    .cta button{
-      padding:10px 16px;border:none;border-radius:6px;background:#0077b6;color:white;
-      width:80%;max-width:280px;
+    .cta input[type="email"]{
+      padding:12px;
+      width:100%;
+      border:none;
+      border-radius:6px;
+      font-size:16px;
+    }
+    .cta input[type="submit"]{
+      background:#0077b6;
+      color:white;
+      padding:12px;
+      width:100%;
+      border:none;
+      border-radius:6px;
+      font-size:16px;
+      cursor:pointer;
+    }
+    .cta .success-message{
+      margin-top:10px;
+      font-size:16px;
+      display:none;
+      color:#fff;
     }
 
     .about{background:#f8f8f8;text-align:center;}
@@ -108,59 +132,15 @@
   <!-- CTA FORM (Mailchimp) -->
   <section class="cta">
     <h3>Vuoi ricevere itinerari come questo?</h3>
-
-    <div id="mc_embed_shell">
-      <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
-      <style type="text/css">
-        #mc_embed_signup{
-          background:#fff;
-          clear:left;
-          font:14px Helvetica,Arial,sans-serif;
-          width: 100%;
-          max-width: 600px;
-          margin: 0 auto;
-        }
-      </style>
+    <form action="https://globalglide360.us22.list-manage.com/subscribe/post?u=b9c083780b3620b61c9db125f&amp;id=9a97dacd51&amp;f_id=00efc2e1f0"
+          method="post"
+          target="_blank"
+          onsubmit="document.getElementById('success-message').style.display='block';">
       
-      <div id="mc_embed_signup">
-        <form action="https://globalglide360.us22.list-manage.com/subscribe/post?u=b9c083780b3620b61c9db125f&amp;id=9a97dacd51&amp;f_id=00efc2e1f0"
-              method="post"
-              id="mc-embedded-subscribe-form"
-              name="mc-embedded-subscribe-form"
-              class="validate"
-              target="_blank">
-          
-          <div id="mc_embed_signup_scroll">
-            <div class="mc-field-group">
-              <label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label>
-              <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="">
-            </div>
-            
-            <div id="mce-responses" class="clear foot">
-              <div class="response" id="mce-error-response" style="display: none;"></div>
-              <div class="response" id="mce-success-response" style="display: none;"></div>
-            </div>
-            
-            <div class="optionalParent">
-              <div class="clear foot">
-                <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Iscriviti">
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
-      
-      <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
-      <script type="text/javascript">
-        (function($) {
-          window.fnames = new Array();
-          window.ftypes = new Array();
-          fnames[0]='EMAIL';
-          ftypes[0]='email';
-        }(jQuery));
-        var $mcj = jQuery.noConflict(true);
-      </script>
-    </div>
+      <input type="email" name="EMAIL" placeholder="Inserisci la tua email" required>
+      <input type="submit" value="Iscriviti">
+      <div id="success-message" class="success-message">✅ Grazie per esserti iscritto!</div>
+    </form>
   </section>
 
   <!-- CONTATTI -->
