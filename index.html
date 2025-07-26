@@ -7,7 +7,6 @@
   <style>
     *{margin:0;padding:0;box-sizing:border-box;}
     body{font-family:Arial,sans-serif;color:#222;background:#fff;line-height:1.4;}
-
     header{
       position:fixed;top:0;left:0;width:100%;
       background:rgba(255,255,255,0.9);backdrop-filter:blur(6px);
@@ -16,138 +15,43 @@
     }
     header img{height:36px;}
     header h1{color:#0077b6;font-size:18px;margin-left:6px;}
-    header button{
-      background:#0077b6;color:white;border:none;padding:8px 14px;
-      border-radius:8px;font-weight:bold;
-    }
-
-    .hero{
-      position:relative;height:100vh;overflow:hidden;
-      display:flex;align-items:center;justify-content:center;
-    }
+    .hero{position:relative;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;}
     .hero img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;}
     .hero::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.5);}
-    .hero-content{
-      position:relative;z-index:1;text-align:center;color:white;padding:20px;
-      max-width:800px;
-    }
-    .hero-content h2{font-size:32px;margin-bottom:20px;}
-    .hero-content p{font-size:18px;margin-bottom:20px;}
-    .hero-content button{
-      background:#00b4d8;color:white;border:none;padding:12px 20px;
-      font-size:18px;border-radius:8px;width:80%;max-width:300px;
-    }
-
-    .search-section{
-      background:#f8f8f8;
-      padding:30px 20px;
-      text-align:center;
-    }
-    .search-section form{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:10px;
-      max-width:600px;
-      margin:0 auto;
-    }
-    .search-section input{
-      padding:12px;
-      border:1px solid #ccc;
-      border-radius:6px;
-      font-size:16px;
-      width:100%;
-    }
-    .search-section button{
-      background:#0077b6;
-      color:white;
-      padding:12px;
-      border:none;
-      border-radius:6px;
-      font-size:16px;
-      cursor:pointer;
-    }
-    @media(min-width:768px){
-      .search-section form{
-        grid-template-columns:repeat(2,1fr);
-      }
-      .search-section button{
-        grid-column:span 2;
-      }
-    }
-
-    section{padding:80px 20px;}
-    h3{text-align:center;font-size:26px;color:#0077b6;margin-bottom:40px;}
-
-    .card{
-      background:white;
-      padding:20px;
-      border-radius:10px;
-      box-shadow:0 4px 8px rgba(0,0,0,0.1);
-      margin-bottom:20px;
-    }
-    .card h3{margin-bottom:10px;}
-    .card img{width:100%;border-radius:10px;margin-bottom:10px;}
-    .card a{
-      display:inline-block;
-      padding:10px;
-      background:#0077b6;
-      color:#fff;
-      border-radius:6px;
-      text-decoration:none;
-      margin-top:10px;
-    }
-
-    .timeline{
-      position:relative;
-      margin:20px 0;
-      padding-left:30px;
-      border-left:2px solid #0077b6;
-    }
-    .timeline-item{
-      margin-bottom:20px;
-      position:relative;
-    }
-    .timeline-item::before{
-      content:'';
-      position:absolute;
-      left:-9px;
-      top:5px;
-      width:15px;
-      height:15px;
-      background:#0077b6;
-      border-radius:50%;
-    }
-    .timeline-item h4{
-      color:#0077b6;
-      margin-bottom:5px;
-    }
-
-    #results{max-width:800px;margin:20px auto;padding:10px;}
-
+    .hero-content{position:relative;z-index:1;text-align:center;color:white;padding:20px;max-width:800px;}
+    .search-section{background:#f8f8f8;padding:30px 20px;text-align:center;}
+    .search-section form{display:grid;gap:10px;max-width:700px;margin:0 auto;}
+    .search-section input,.search-section select{padding:12px;border:1px solid #ccc;border-radius:6px;font-size:16px;width:100%;}
+    .search-section .preferences{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}
+    .preferences label{background:#0077b6;color:white;padding:6px 10px;border-radius:6px;font-size:14px;cursor:pointer;}
+    .preferences input{display:none;}
+    .preferences input:checked + span{background:#00b4d8;}
+    .search-section button{background:#0077b6;color:white;padding:12px;border:none;border-radius:6px;font-size:16px;cursor:pointer;}
+    .card{background:white;padding:20px;border-radius:10px;box-shadow:0 4px 8px rgba(0,0,0,0.1);margin-bottom:20px;}
+    .timeline{position:relative;margin:20px 0;padding-left:30px;border-left:2px solid #0077b6;}
+    .timeline-item{margin-bottom:20px;position:relative;}
+    .timeline-item::before{content:'';position:absolute;left:-9px;top:5px;width:15px;height:15px;background:#0077b6;border-radius:50%;}
+    .timeline-item h4{color:#0077b6;margin-bottom:5px;}
     footer{background:#222;color:#ccc;text-align:center;font-size:14px;padding:20px;}
+    #results{max-width:800px;margin:20px auto;padding:10px;}
   </style>
 </head>
 <body>
-  <!-- HEADER -->
   <header>
     <div style="display:flex;align-items:center;">
       <img src="logo-globalglide360.png" alt="GlobalGlide360">
       <h1>GlobalGlide360</h1>
     </div>
-    <button>Scopri</button>
   </header>
 
-  <!-- HERO -->
   <section class="hero">
     <img src="hero-travel.png" alt="Hero Travel">
     <div class="hero-content">
       <h2>Il tuo viaggio perfetto, creato da un'AI</h2>
-      <p>Voli, hotel e attività ai migliori prezzi in pochi click.</p>
-      <button>Inizia ora</button>
+      <p>Voli, hotel e attività su misura per te.</p>
     </div>
   </section>
 
-  <!-- SEZIONE RICERCA -->
   <section class="search-section">
     <h3>Crea il tuo itinerario personalizzato</h3>
     <form id="travel-form">
@@ -157,17 +61,23 @@
       <input type="date" name="data-ritorno" required>
       <input type="number" name="persone" placeholder="Numero di persone" min="1" value="1" required>
       <input type="number" name="budget" placeholder="Budget €/persona" min="50" step="50" required>
+
+      <div class="preferences">
+        <label><input type="checkbox" name="preferenze" value="cultura"><span>🌍 Cultura</span></label>
+        <label><input type="checkbox" name="preferenze" value="relax"><span>🌴 Relax</span></label>
+        <label><input type="checkbox" name="preferenze" value="natura"><span>🏞️ Natura</span></label>
+        <label><input type="checkbox" name="preferenze" value="famiglia"><span>🎢 Famiglia</span></label>
+        <label><input type="checkbox" name="preferenze" value="mare"><span>🏖️ Mare</span></label>
+        <label><input type="checkbox" name="preferenze" value="avventura"><span>⛰️ Avventura</span></label>
+      </div>
       <button type="submit">Cerca itinerario</button>
     </form>
   </section>
 
-  <!-- RISULTATI -->
   <div id="results"></div>
 
-  <!-- FOOTER -->
   <footer>
     <p>© 2025 GlobalGlide360 – Tutti i diritti riservati</p>
-    <p>GlobalGlide360 non vende pacchetti turistici. I contenuti sono informativi con link affiliati.</p>
   </footer>
 
 <script>
@@ -191,6 +101,7 @@ form.addEventListener("submit", async e => {
   const dataPartenza = form.elements["data-partenza"].value;
   const dataRitorno = form.elements["data-ritorno"].value;
   const persone = form.elements["persone"].value;
+  const preferenze = Array.from(form.querySelectorAll('input[name="preferenze"]:checked')).map(el => el.value);
 
   const cityInfo = cityData[destinazione];
   const originInfo = cityData[partenza];
@@ -199,72 +110,52 @@ form.addEventListener("submit", async e => {
     return;
   }
 
-  // Formatta le date per i link affiliati
-  const dataPartenzaSkyscanner = dataPartenza.replace(/-/g, "");
-  const bookingUrl = `https://www.booking.com/searchresults.html?ss=${cityInfo.nome}&checkin_year_month_monthday=${dataPartenza}&checkout_year_month_monthday=${dataRitorno}&group_adults=${persone}`;
-  const voliUrl = `https://www.skyscanner.it/trasporti/voli/${originInfo.iata}/${cityInfo.iata}/${dataPartenzaSkyscanner}`;
-  const attivitaUrl = `https://www.getyourguide.it/s/?q=${cityInfo.nome}`;
+  const giorni = Math.max(1, Math.round((new Date(dataRitorno) - new Date(dataPartenza)) / (1000*60*60*24)) + 1);
 
   try {
-    // 1️⃣ Voli
     const voliRes = await fetch(`/api/amadeus?type=voli&origin=${originInfo.iata}&cityCode=${cityInfo.iata}&date=${dataPartenza}&adults=${persone}`);
-    const dataVoli = await voliRes.json();
+    const voli = await voliRes.json();
 
-    // 2️⃣ Hotel
     const hotelRes = await fetch(`/api/amadeus?type=hotel&cityCode=${cityInfo.iata}`);
-    const dataHotel = await hotelRes.json();
+    const hotel = await hotelRes.json();
 
-    // 3️⃣ Attività
     const attivitaRes = await fetch(`/api/amadeus?type=attivita&lat=${cityInfo.lat}&lon=${cityInfo.lon}`);
-    const dataAttivita = await attivitaRes.json();
+    const attivita = await attivitaRes.json();
 
-    // Output
+    // Filtra attività in base alle preferenze (mock per ora)
+    const attivitaFiltrate = attivita.data ? attivita.data.filter(a => {
+      if(preferenze.length === 0) return true;
+      return preferenze.some(p => a.name.toLowerCase().includes(p));
+    }) : [];
+
     results.innerHTML = "";
 
-    // Card voli
-    results.innerHTML += `
-      <div class="card">
-        <h3>✈️ Voli</h3>
-        ${dataVoli.data && dataVoli.data.length > 0 ? `
-          <p>Volo più economico: <strong>€${dataVoli.data[0].price.total}</strong></p>
-        ` : `<p>Nessun volo trovato nella sandbox Amadeus.</p>`}
-        <a href="${voliUrl}" target="_blank">🔗 Cerca voli su Skyscanner</a>
-      </div>`;
+    // Mostra volo e hotel
+    results.innerHTML += `<div class="card"><h3>✈️ Voli</h3>
+      ${voli.data && voli.data.length ? `<p>Volo più economico: <strong>€${voli.data[0].price.total}</strong></p>` : `<p>Nessun volo trovato.</p>`}
+    </div>`;
 
-    // Card hotel
-    results.innerHTML += `
-      <div class="card">
-        <h3>🏨 Hotel</h3>
-        ${dataHotel.data && dataHotel.data.length > 0 ? `
-          <p>Hotel esempio: <strong>${dataHotel.data[0].hotel.name}</strong></p>
-        ` : `<p>Nessun hotel trovato.</p>`}
-        <a href="${bookingUrl}" target="_blank">🔗 Cerca hotel su Booking.com</a>
-      </div>`;
+    results.innerHTML += `<div class="card"><h3>🏨 Hotel</h3>
+      ${hotel.data && hotel.data.length ? `<p>Hotel consigliato: <strong>${hotel.data[0].hotel.name}</strong></p>` : `<p>Nessun hotel trovato.</p>`}
+    </div>`;
 
-    // Timeline attività
-    results.innerHTML += `<h3 style="text-align:center;">🗓️ Itinerario giorno per giorno</h3><div class="timeline" id="timeline"></div>`;
-    const timelineDiv = document.getElementById("timeline");
+    // Itinerario
+    results.innerHTML += `<h3 style="text-align:center;">🗓️ Itinerario</h3><div class="timeline" id="timeline"></div>`;
+    const timeline = document.getElementById("timeline");
 
-    for (let giorno = 1; giorno <= 3; giorno++) {
-      if (dataAttivita.data && dataAttivita.data[giorno-1]) {
-        timelineDiv.innerHTML += `
-          <div class="timeline-item">
-            <h4>Giorno ${giorno}</h4>
-            <p><strong>${dataAttivita.data[giorno-1].name}</strong></p>
-            <a href="${attivitaUrl}" target="_blank">🔗 Prenota attività su GetYourGuide</a>
-          </div>`;
-      } else {
-        timelineDiv.innerHTML += `
-          <div class="timeline-item">
-            <h4>Giorno ${giorno}</h4>
-            <p>Nessuna attività disponibile</p>
-            <a href="${attivitaUrl}" target="_blank">🔗 Vedi attività su GetYourGuide</a>
-          </div>`;
-      }
+    for(let g = 1; g <= giorni; g++) {
+      const attivitaGiorno = attivitaFiltrate[g-1] ? attivitaFiltrate[g-1].name : "Tempo libero o escursione consigliata";
+      timeline.innerHTML += `
+        <div class="timeline-item">
+          <h4>Giorno ${g}</h4>
+          <p>Mattina: ${attivitaGiorno}</p>
+          <p>Pomeriggio: Attività a scelta</p>
+          <p>Sera: Relax in hotel</p>
+        </div>`;
     }
 
-  } catch (error) {
-    console.error(error);
+  } catch (err) {
+    console.error(err);
     results.innerHTML = "❌ Errore durante la ricerca. Riprova più tardi.";
   }
 });
