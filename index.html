@@ -124,20 +124,7 @@
 
     #results{max-width:800px;margin:20px auto;padding:10px;}
 
-    .cta{background:#00b4d8;text-align:center;color:white;}
-    .cta input{
-      padding:10px;width:80%;max-width:280px;border:none;border-radius:6px;margin-bottom:10px;
-    }
-    .cta button{
-      padding:10px 16px;border:none;border-radius:6px;background:#0077b6;color:white;
-      width:80%;max-width:280px;
-    }
-
-    .about{background:#f8f8f8;text-align:center;}
-    .about p{max-width:700px;margin:0 auto;}
-
     footer{background:#222;color:#ccc;text-align:center;font-size:14px;padding:20px;}
-    .social a{margin:0 8px;color:white;text-decoration:none;font-size:20px;}
   </style>
 </head>
 <body>
@@ -177,17 +164,6 @@
   <!-- RISULTATI -->
   <div id="results"></div>
 
-  <!-- CTA FORM (Mailchimp) -->
-  <section class="cta">
-    <h3>Vuoi ricevere itinerari come questo?</h3>
-    <form action="https://globalglide360.us22.list-manage.com/subscribe/post?u=b9c083780b3620b61c9db125f&amp;id=9a97dacd51&amp;f_id=00efc2e1f0"
-          method="post"
-          target="_blank">
-      <input type="email" name="EMAIL" placeholder="Inserisci la tua email" required>
-      <input type="submit" value="Iscriviti">
-    </form>
-  </section>
-
   <!-- FOOTER -->
   <footer>
     <p>© 2025 GlobalGlide360 – Tutti i diritti riservati</p>
@@ -210,8 +186,8 @@ form.addEventListener("submit", async e => {
   e.preventDefault();
   results.innerHTML = "⏳ Ricerca in corso...";
 
-  let partenza = form.elements["partenza"].value.trim().toLowerCase();
-  let destinazione = form.elements["destinazione"].value.trim().toLowerCase();
+  const partenza = form.elements["partenza"].value.trim().toLowerCase();
+  const destinazione = form.elements["destinazione"].value.trim().toLowerCase();
   const dataPartenza = new Date(form.elements["data-partenza"].value);
   const dataRitorno = new Date(form.elements["data-ritorno"].value);
   const persone = form.elements["persone"].value;
@@ -226,49 +202,51 @@ form.addEventListener("submit", async e => {
   }
 
   try {
-    // API voli con partenza dinamica
-    const voliRes = await fetch(`/api/amadeus?type=voli&origin=${partenza.toUpperCase()}&cityCode=${cityInfo.iata}&date=${form.elements["data-partenza"].value}&adults=${persone}`);
+    // 1️⃣ Voli
+    const voliRes = await fetch(`/api/amadeus?type=voli&origin=${partenza}&cityCode=${cityInfo.iata}&date=${form.elements["data-partenza"].value}&adults=${persone}`);
     const dataVoli = await voliRes.json();
 
-    // Hotel da Booking.com (link)
-    // Attività da Amadeus
+    // 2️⃣ Hotel
+    const hotelRes = await fetch(`/api/amadeus?type=hotel&cityCode=${cityInfo.iata}`);
+    const dataHotel = await hotelRes.json();
+
+    // 3️⃣ Attività
     const attivitaRes = await fetch(`/api/amadeus?type=attivita&lat=${cityInfo.lat}&lon=${cityInfo.lon}`);
     const dataAttivita = await attivitaRes.json();
 
-    // Card voli con link Skyscanner
-    results.innerHTML = `
-      <div class="card">
-        <h3>✈️ Volo</h3>
-        ${dataVoli.data && dataVoli.data.length > 0 ? `
-          <p><strong>Prezzo totale:</strong> €${dataVoli.data[0].price.total}</p>
-          <a href="https://www.skyscanner.it/trasporti/voli/${partenza}/${cityInfo.iata.toLowerCase()}/${form.elements["data-partenza"].value.replace(/-/g,'')}/"
-             target="_blank">Prenota volo</a>
-        ` : `<p>Nessun volo trovato</p>`}
-      </div>
+    // Output risultati
+    results.innerHTML = "";
 
+    // Card voli
+    results.innerHTML += `
+      <div class="card">
+        <h3>✈️ Voli</h3>
+        ${dataVoli.data && dataVoli.data.length > 0 ? `
+          <p>Volo più economico: <strong>€${dataVoli.data[0].price.total}</strong></p>
+        ` : `<p>Nessun volo trovato.</p>`}
+      </div>`;
+
+    // Card hotel
+    results.innerHTML += `
       <div class="card">
         <h3>🏨 Hotel</h3>
-        <p>Trova l'hotel perfetto per le tue date su Booking.com</p>
-        <a href="https://www.booking.com/searchresults.it.html?ss=${destinazione}&checkin=${form.elements["data-partenza"].value}&checkout=${form.elements["data-ritorno"].value}&group_adults=${persone}" 
-           target="_blank">🔎 Vedi hotel su Booking</a>
-      </div>
+        ${dataHotel.data && dataHotel.data.length > 0 ? `
+          <p>Hotel esempio: <strong>${dataHotel.data[0].hotel.name}</strong></p>
+        ` : `<p>Nessun hotel trovato.</p>`}
+      </div>`;
 
-      <h3 style="margin-top:20px;text-align:center;">🗓️ Itinerario giorno per giorno</h3>
-      <div class="timeline" id="timeline"></div>
-    `;
-
-    // Timeline giorno per giorno con attività GetYourGuide
+    // Timeline attività
+    results.innerHTML += `<h3 style="text-align:center;">🗓️ Itinerario giorno per giorno</h3><div class="timeline" id="timeline"></div>`;
     const timelineDiv = document.getElementById("timeline");
+
     for (let giorno = 1; giorno <= giorniViaggio; giorno++) {
       timelineDiv.innerHTML += `
         <div class="timeline-item">
           <h4>Giorno ${giorno}</h4>
           ${dataAttivita.data && dataAttivita.data[giorno-1] ? `
             <p>Attività: <strong>${dataAttivita.data[giorno-1].name}</strong></p>
-            <a href="https://www.getyourguide.it/s/?q=${destinazione}" target="_blank">Prenota attività</a>
-          ` : `<p>Nessuna attività consigliata</p>`}
-        </div>
-      `;
+          ` : `<p>Nessuna attività disponibile</p>`}
+        </div>`;
     }
 
   } catch (error) {
