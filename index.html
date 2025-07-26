@@ -175,11 +175,11 @@ const form = document.getElementById("travel-form");
 const results = document.getElementById("results");
 
 const cityData = {
-  "roma": { iata: "ROM", lat: 41.9028, lon: 12.4964 },
-  "milano": { iata: "MIL", lat: 45.4642, lon: 9.19 },
-  "parigi": { iata: "PAR", lat: 48.8566, lon: 2.3522 },
-  "londra": { iata: "LON", lat: 51.5074, lon: -0.1278 },
-  "lisbona": { iata: "LIS", lat: 38.7169, lon: -9.139 }
+  "roma": { iata: "ROM", lat: 41.9028, lon: 12.4964, nome: "Roma" },
+  "milano": { iata: "MIL", lat: 45.4642, lon: 9.19, nome: "Milano" },
+  "parigi": { iata: "PAR", lat: 48.8566, lon: 2.3522, nome: "Parigi" },
+  "londra": { iata: "LON", lat: 51.5074, lon: -0.1278, nome: "Londra" },
+  "lisbona": { iata: "LIS", lat: 38.7169, lon: -9.139, nome: "Lisbona" }
 };
 
 form.addEventListener("submit", async e => {
@@ -188,22 +188,26 @@ form.addEventListener("submit", async e => {
 
   const partenza = form.elements["partenza"].value.trim().toLowerCase();
   const destinazione = form.elements["destinazione"].value.trim().toLowerCase();
-  const dataPartenza = new Date(form.elements["data-partenza"].value);
-  const dataRitorno = new Date(form.elements["data-ritorno"].value);
+  const dataPartenza = form.elements["data-partenza"].value;
+  const dataRitorno = form.elements["data-ritorno"].value;
   const persone = form.elements["persone"].value;
-  const budget = form.elements["budget"].value;
-
-  const giorniViaggio = Math.max(1, Math.round((dataRitorno - dataPartenza) / (1000 * 60 * 60 * 24)) + 1);
 
   const cityInfo = cityData[destinazione];
-  if (!cityInfo) {
-    results.innerHTML = "⚠️ Destinazione non trovata. Inserisci una città valida.";
+  const originInfo = cityData[partenza];
+  if (!cityInfo || !originInfo) {
+    results.innerHTML = "⚠️ Destinazione o partenza non trovata.";
     return;
   }
 
+  // Formatta le date per i link affiliati
+  const dataPartenzaSkyscanner = dataPartenza.replace(/-/g, "");
+  const bookingUrl = `https://www.booking.com/searchresults.html?ss=${cityInfo.nome}&checkin_year_month_monthday=${dataPartenza}&checkout_year_month_monthday=${dataRitorno}&group_adults=${persone}`;
+  const voliUrl = `https://www.skyscanner.it/trasporti/voli/${originInfo.iata}/${cityInfo.iata}/${dataPartenzaSkyscanner}`;
+  const attivitaUrl = `https://www.getyourguide.it/s/?q=${cityInfo.nome}`;
+
   try {
     // 1️⃣ Voli
-    const voliRes = await fetch(`/api/amadeus?type=voli&origin=${partenza}&cityCode=${cityInfo.iata}&date=${form.elements["data-partenza"].value}&adults=${persone}`);
+    const voliRes = await fetch(`/api/amadeus?type=voli&origin=${originInfo.iata}&cityCode=${cityInfo.iata}&date=${dataPartenza}&adults=${persone}`);
     const dataVoli = await voliRes.json();
 
     // 2️⃣ Hotel
@@ -214,7 +218,7 @@ form.addEventListener("submit", async e => {
     const attivitaRes = await fetch(`/api/amadeus?type=attivita&lat=${cityInfo.lat}&lon=${cityInfo.lon}`);
     const dataAttivita = await attivitaRes.json();
 
-    // Output risultati
+    // Output
     results.innerHTML = "";
 
     // Card voli
@@ -223,7 +227,8 @@ form.addEventListener("submit", async e => {
         <h3>✈️ Voli</h3>
         ${dataVoli.data && dataVoli.data.length > 0 ? `
           <p>Volo più economico: <strong>€${dataVoli.data[0].price.total}</strong></p>
-        ` : `<p>Nessun volo trovato.</p>`}
+        ` : `<p>Nessun volo trovato nella sandbox Amadeus.</p>`}
+        <a href="${voliUrl}" target="_blank">🔗 Cerca voli su Skyscanner</a>
       </div>`;
 
     // Card hotel
@@ -233,20 +238,29 @@ form.addEventListener("submit", async e => {
         ${dataHotel.data && dataHotel.data.length > 0 ? `
           <p>Hotel esempio: <strong>${dataHotel.data[0].hotel.name}</strong></p>
         ` : `<p>Nessun hotel trovato.</p>`}
+        <a href="${bookingUrl}" target="_blank">🔗 Cerca hotel su Booking.com</a>
       </div>`;
 
     // Timeline attività
     results.innerHTML += `<h3 style="text-align:center;">🗓️ Itinerario giorno per giorno</h3><div class="timeline" id="timeline"></div>`;
     const timelineDiv = document.getElementById("timeline");
 
-    for (let giorno = 1; giorno <= giorniViaggio; giorno++) {
-      timelineDiv.innerHTML += `
-        <div class="timeline-item">
-          <h4>Giorno ${giorno}</h4>
-          ${dataAttivita.data && dataAttivita.data[giorno-1] ? `
-            <p>Attività: <strong>${dataAttivita.data[giorno-1].name}</strong></p>
-          ` : `<p>Nessuna attività disponibile</p>`}
-        </div>`;
+    for (let giorno = 1; giorno <= 3; giorno++) {
+      if (dataAttivita.data && dataAttivita.data[giorno-1]) {
+        timelineDiv.innerHTML += `
+          <div class="timeline-item">
+            <h4>Giorno ${giorno}</h4>
+            <p><strong>${dataAttivita.data[giorno-1].name}</strong></p>
+            <a href="${attivitaUrl}" target="_blank">🔗 Prenota attività su GetYourGuide</a>
+          </div>`;
+      } else {
+        timelineDiv.innerHTML += `
+          <div class="timeline-item">
+            <h4>Giorno ${giorno}</h4>
+            <p>Nessuna attività disponibile</p>
+            <a href="${attivitaUrl}" target="_blank">🔗 Vedi attività su GetYourGuide</a>
+          </div>`;
+      }
     }
 
   } catch (error) {
