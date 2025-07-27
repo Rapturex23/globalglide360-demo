@@ -32,6 +32,8 @@
     .timeline-item::before{content:'';position:absolute;left:-9px;top:5px;width:15px;height:15px;background:#0077b6;border-radius:50%;}
     .timeline-item h4{color:#0077b6;margin-bottom:5px;}
     footer{background:#222;color:#ccc;text-align:center;font-size:14px;padding:20px;}
+    a{color:#0077b6;text-decoration:none;}
+    a:hover{text-decoration:underline;}
   </style>
 </head>
 <body>
@@ -88,7 +90,7 @@ form.addEventListener("submit", async e => {
     const [voliRes, hotelRes, attivitaRes, ristorantiRes] = await Promise.all([
       fetch(`/api/voli?origin=${origin}&destinazione=${destinazione}&dataPartenza=${dataPartenza}&dataRitorno=${dataRitorno}`),
       fetch(`/api/hotel?destinazione=${destinazione}&checkin=${dataPartenza}&checkout=${dataRitorno}&persone=${persone}`),
-      fetch(`/api/attivita?destinazione=${destinazione}`),
+      fetch(`/api/attivita?destinazione=${destinazione}&dataPartenza=${dataPartenza}&dataRitorno=${dataRitorno}`),
       fetch(`/api/ristoranti?destinazione=${destinazione}`)
     ]);
 
@@ -106,16 +108,26 @@ form.addEventListener("submit", async e => {
 
     // Hotel
     results.innerHTML += `<div class="card"><h3>🏨 Hotel</h3>${
-      hotel.data.map(h => `<p><a href="${h.link}" target="_blank">${h.provider} - ${h.nome}</a></p>`).join("")
+      hotel.data.map(h => `<p><a href="${h.link}" target="_blank">${h.provider}</a></p>`).join("")
     }</div>`;
 
-    // Itinerario
+    // Attività
+    results.innerHTML += `<div class="card"><h3>🎟️ Attività</h3>${
+      attivita.data.map(a => `<p><a href="${a.link}" target="_blank">${a.provider}</a></p>`).join("")
+    }</div>`;
+
+    // Ristoranti
+    results.innerHTML += `<div class="card"><h3>🍽️ Ristoranti</h3>${
+      ristoranti.data.map(r => `<p><a href="${r.link}" target="_blank">${r.provider}</a></p>`).join("")
+    }</div>`;
+
+    // Itinerario giorno per giorno
     results.innerHTML += `<h3 style="text-align:center;">🗓️ Itinerario suggerito</h3><div class="timeline" id="timeline"></div>`;
     const timeline = document.getElementById("timeline");
 
     for(let g = 1; g <= giorni; g++) {
-      const attivitaG = attivita.data[g-1] ? `<a href="${attivita.data[g-1].link}" target="_blank">${attivita.data[g-1].titolo}</a>` : "Attività libera";
-      const ristoranteG = ristoranti.data[0] ? `<a href="${ristoranti.data[0].link}" target="_blank">${ristoranti.data[0].nome}</a>` : "Cena libera";
+      const attivitaG = attivita.data[0] ? `<a href="${attivita.data[0].link}" target="_blank">Attività</a>` : "Attività libera";
+      const ristoranteG = ristoranti.data[0] ? `<a href="${ristoranti.data[0].link}" target="_blank">Ristorante</a>` : "Cena libera";
 
       timeline.innerHTML += `
         <div class="timeline-item">
