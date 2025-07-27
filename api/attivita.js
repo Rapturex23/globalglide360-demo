@@ -1,5 +1,5 @@
 export default async function handler(req, res) {
-  const { destinazione, preferenze } = req.query;
+  const { destinazione } = req.query;
 
   try {
     res.status(200).json({
@@ -7,14 +7,12 @@ export default async function handler(req, res) {
       provider: "attivita",
       data: [
         {
-          titolo: "Tour guidato della città",
-          prezzo: "35€",
+          titolo: "Scopri attività su GetYourGuide",
           link: `https://www.getyourguide.it/s/?q=${destinazione}`
         },
         {
-          titolo: "Crociera panoramica",
-          prezzo: "40€",
-          link: `https://www.getyourguide.it/s/?q=${destinazione}`
+          titolo: "Esperienze su Booking",
+          link: `https://www.booking.com/attractions/city/${destinazione.toLowerCase()}.html`
         }
       ]
     });
