@@ -1,22 +1,21 @@
 export default async function handler(req, res) {
-  const { destinazione } = req.query;
+  const { destinazione, dataPartenza, dataRitorno } = req.query;
 
   try {
     res.status(200).json({
       success: true,
-      provider: "attivita",
       data: [
         {
-          titolo: "Scopri attività su GetYourGuide",
-          link: `https://www.getyourguide.it/s/?q=${destinazione}`
+          provider: "GetYourGuide",
+          link: `https://www.getyourguide.it/s/?q=${destinazione}&date_from=${dataPartenza}&date_to=${dataRitorno}`
         },
         {
-          titolo: "Esperienze su Booking",
+          provider: "Booking Experiences",
           link: `https://www.booking.com/attractions/city/${destinazione.toLowerCase()}.html`
         }
       ]
     });
-  } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
   }
 }
