@@ -21,11 +21,7 @@
     .hero-content{position:relative;z-index:1;text-align:center;color:white;padding:20px;max-width:800px;}
     .search-section{background:#f8f8f8;padding:30px 20px;text-align:center;}
     .search-section form{display:grid;gap:10px;max-width:700px;margin:0 auto;}
-    .search-section input,.search-section select{padding:12px;border:1px solid #ccc;border-radius:6px;font-size:16px;width:100%;}
-    .search-section .preferences{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}
-    .preferences label{background:#0077b6;color:white;padding:6px 10px;border-radius:6px;font-size:14px;cursor:pointer;}
-    .preferences input{display:none;}
-    .preferences input:checked + span{background:#00b4d8;}
+    .search-section input{padding:12px;border:1px solid #ccc;border-radius:6px;font-size:16px;width:100%;}
     .search-section button{background:#0077b6;color:white;padding:12px;border:none;border-radius:6px;font-size:16px;cursor:pointer;}
     .card{background:white;padding:20px;border-radius:10px;box-shadow:0 4px 8px rgba(0,0,0,0.1);margin-bottom:20px;}
     .timeline{position:relative;margin:20px 0;padding-left:30px;border-left:2px solid #0077b6;}
@@ -47,29 +43,19 @@
   <section class="hero">
     <img src="hero-travel.png" alt="Hero Travel">
     <div class="hero-content">
-      <h2>Il tuo viaggio perfetto, creato da noi</h2>
-      <p>Voli, hotel e attività su misura per te.</p>
+      <h2>Il tuo viaggio perfetto, creato da un'AI</h2>
+      <p>Voli, hotel, attività e ristoranti organizzati in un itinerario completo.</p>
     </div>
   </section>
 
   <section class="search-section">
     <h3>Crea il tuo itinerario personalizzato</h3>
     <form id="travel-form">
-      <input type="text" name="partenza" placeholder="Città di partenza (es. Milano)" required>
+      <input type="text" name="origin" placeholder="Città di partenza (es. Milano)" required>
       <input type="text" name="destinazione" placeholder="Destinazione (es. Parigi)" required>
-      <input type="date" name="data-partenza" required>
-      <input type="date" name="data-ritorno" required>
+      <input type="date" name="dataPartenza" required>
+      <input type="date" name="dataRitorno" required>
       <input type="number" name="persone" placeholder="Numero di persone" min="1" value="1" required>
-      <input type="number" name="budget" placeholder="Budget €/persona" min="50" step="50" required>
-
-      <div class="preferences">
-        <label><input type="checkbox" name="preferenze" value="cultura"><span>🌍 Cultura</span></label>
-        <label><input type="checkbox" name="preferenze" value="relax"><span>🌴 Relax</span></label>
-        <label><input type="checkbox" name="preferenze" value="natura"><span>🏞️ Natura</span></label>
-        <label><input type="checkbox" name="preferenze" value="famiglia"><span>🎢 Famiglia</span></label>
-        <label><input type="checkbox" name="preferenze" value="mare"><span>🏖️ Mare</span></label>
-        <label><input type="checkbox" name="preferenze" value="avventura"><span>⛰️ Avventura</span></label>
-      </div>
       <button type="submit">Cerca itinerario</button>
     </form>
   </section>
@@ -84,73 +70,58 @@
 const form = document.getElementById("travel-form");
 const results = document.getElementById("results");
 
-const cityData = {
-  "roma": { iata: "ROM", lat: 41.9028, lon: 12.4964, nome: "Roma" },
-  "milano": { iata: "MIL", lat: 45.4642, lon: 9.19, nome: "Milano" },
-  "parigi": { iata: "PAR", lat: 48.8566, lon: 2.3522, nome: "Parigi" },
-  "londra": { iata: "LON", lat: 51.5074, lon: -0.1278, nome: "Londra" },
-  "lisbona": { iata: "LIS", lat: 38.7169, lon: -9.139, nome: "Lisbona" }
-};
-
 form.addEventListener("submit", async e => {
   e.preventDefault();
   results.innerHTML = "⏳ Ricerca in corso...";
 
-  const partenza = form.elements["partenza"].value.trim().toLowerCase();
-  const destinazione = form.elements["destinazione"].value.trim().toLowerCase();
-  const dataPartenza = form.elements["data-partenza"].value;
-  const dataRitorno = form.elements["data-ritorno"].value;
+  const origin = form.elements["origin"].value.trim();
+  const destinazione = form.elements["destinazione"].value.trim();
+  const dataPartenza = form.elements["dataPartenza"].value;
+  const dataRitorno = form.elements["dataRitorno"].value;
   const persone = form.elements["persone"].value;
-  const preferenze = Array.from(form.querySelectorAll('input[name="preferenze"]:checked')).map(el => el.value);
 
-  const cityInfo = cityData[destinazione];
-  const originInfo = cityData[partenza];
-  if (!cityInfo || !originInfo) {
-    results.innerHTML = "⚠️ Destinazione o partenza non trovata.";
-    return;
-  }
-
+  // Giorni di viaggio
   const giorni = Math.max(1, Math.round((new Date(dataRitorno) - new Date(dataPartenza)) / (1000*60*60*24)) + 1);
 
   try {
-    const voliRes = await fetch(`/api/amadeus?type=voli&origin=${originInfo.iata}&cityCode=${cityInfo.iata}&date=${dataPartenza}&adults=${persone}`);
+    const [voliRes, hotelRes, attivitaRes, ristorantiRes] = await Promise.all([
+      fetch(`/api/voli?origin=${origin}&destinazione=${destinazione}&dataPartenza=${dataPartenza}&dataRitorno=${dataRitorno}&persone=${persone}`),
+      fetch(`/api/hotel?destinazione=${destinazione}&checkin=${dataPartenza}&checkout=${dataRitorno}&persone=${persone}`),
+      fetch(`/api/attivita?destinazione=${destinazione}`),
+      fetch(`/api/ristoranti?destinazione=${destinazione}`)
+    ]);
+
     const voli = await voliRes.json();
-
-    const hotelRes = await fetch(`/api/amadeus?type=hotel&cityCode=${cityInfo.iata}`);
     const hotel = await hotelRes.json();
-
-    const attivitaRes = await fetch(`/api/amadeus?type=attivita&lat=${cityInfo.lat}&lon=${cityInfo.lon}`);
     const attivita = await attivitaRes.json();
-
-    // Filtra attività in base alle preferenze (mock per ora)
-    const attivitaFiltrate = attivita.data ? attivita.data.filter(a => {
-      if(preferenze.length === 0) return true;
-      return preferenze.some(p => a.name.toLowerCase().includes(p));
-    }) : [];
+    const ristoranti = await ristorantiRes.json();
 
     results.innerHTML = "";
 
-    // Mostra volo e hotel
-    results.innerHTML += `<div class="card"><h3>✈️ Voli</h3>
-      ${voli.data && voli.data.length ? `<p>Volo più economico: <strong>€${voli.data[0].price.total}</strong></p>` : `<p>Nessun volo trovato.</p>`}
-    </div>`;
+    // Voli
+    results.innerHTML += `<div class="card"><h3>✈️ Voli</h3>${
+      voli.data.map(v => `<p><a href="${v.link}" target="_blank">${v.provider}</a> - ${v.prezzo}</p>`).join("")
+    }</div>`;
 
-    results.innerHTML += `<div class="card"><h3>🏨 Hotel</h3>
-      ${hotel.data && hotel.data.length ? `<p>Hotel consigliato: <strong>${hotel.data[0].hotel.name}</strong></p>` : `<p>Nessun hotel trovato.</p>`}
-    </div>`;
+    // Hotel
+    results.innerHTML += `<div class="card"><h3>🏨 Hotel</h3>${
+      hotel.data.map(h => `<p><a href="${h.link}" target="_blank">${h.provider}</a> - ${h.nome} - ${h.prezzo}</p>`).join("")
+    }</div>`;
 
-    // Itinerario
+    // Itinerario Giorno per Giorno
     results.innerHTML += `<h3 style="text-align:center;">🗓️ Itinerario</h3><div class="timeline" id="timeline"></div>`;
     const timeline = document.getElementById("timeline");
 
     for(let g = 1; g <= giorni; g++) {
-      const attivitaGiorno = attivitaFiltrate[g-1] ? attivitaFiltrate[g-1].name : "Tempo libero o escursione consigliata";
+      const attivitaG = attivita.data[g-1] ? `<a href="${attivita.data[g-1].link}" target="_blank">${attivita.data[g-1].titolo}</a>` : "Attività libera";
+      const ristoranteG = ristoranti.data[g-1] ? `<a href="${ristoranti.data[g-1].link}" target="_blank">${ristoranti.data[g-1].nome}</a>` : "Cena libera";
+
       timeline.innerHTML += `
         <div class="timeline-item">
           <h4>Giorno ${g}</h4>
-          <p>Mattina: ${attivitaGiorno}</p>
-          <p>Pomeriggio: Attività a scelta</p>
-          <p>Sera: Relax in hotel</p>
+          <p>Mattina: ${attivitaG}</p>
+          <p>Pranzo: ${ristoranteG}</p>
+          <p>Pomeriggio: ${attivitaG}</p>
         </div>`;
     }
 
