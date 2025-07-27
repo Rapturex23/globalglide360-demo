@@ -4,21 +4,18 @@ export default async function handler(req, res) {
   try {
     res.status(200).json({
       success: true,
-      provider: "voli",
       data: [
         {
           provider: "Skyscanner",
-          prezzo: "Cerca voli",
-          link: `https://www.skyscanner.it/trasporti/voli/${origin}/${destinazione}/${dataPartenza}/${dataRitorno}`
+          link: `https://www.skyscanner.it/trasporti/voli/${origin}/${destinazione}/${dataPartenza.replaceAll("-","")}/${dataRitorno.replaceAll("-","")}`
         },
         {
           provider: "Kayak",
-          prezzo: "Cerca voli",
           link: `https://www.kayak.it/flights/${origin}-${destinazione}/${dataPartenza}/${dataRitorno}`
         }
       ]
     });
-  } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
   }
 }
