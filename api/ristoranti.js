@@ -7,13 +7,7 @@ export default async function handler(req, res) {
       provider: "ristoranti",
       data: [
         {
-          nome: "Ristorante La Pergola",
-          voto: "4.7",
-          link: `https://www.tripadvisor.it/Search?q=${destinazione}+ristoranti`
-        },
-        {
-          nome: "Trattoria Da Mario",
-          voto: "4.5",
+          nome: "Ristoranti su TripAdvisor",
           link: `https://www.tripadvisor.it/Search?q=${destinazione}+ristoranti`
         }
       ]
