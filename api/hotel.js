@@ -8,15 +8,18 @@ export default async function handler(req, res) {
       data: [
         {
           provider: "Booking",
-          nome: "Hotel Centrale",
-          prezzo: "250€ per 3 notti",
+          nome: "Hotel su Booking",
           link: `https://www.booking.com/searchresults.html?ss=${destinazione}&checkin=${checkin}&checkout=${checkout}&group_adults=${persone}`
         },
         {
           provider: "Expedia",
-          nome: "Hotel Relax",
-          prezzo: "260€ per 3 notti",
-          link: `https://www.expedia.it/Hotel-Search?destination=${destinazione}`
+          nome: "Hotel su Expedia",
+          link: `https://www.expedia.it/Hotel-Search?destination=${destinazione}&startDate=${checkin}&endDate=${checkout}`
+        },
+        {
+          provider: "Hotels.com",
+          nome: "Hotel su Hotels.com",
+          link: `https://it.hotels.com/search.do?q-destination=${destinazione}&q-check-in=${checkin}&q-check-out=${checkout}`
         }
       ]
     });
