@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GlobalGlide360 - Itinerari AI</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
     *{margin:0;padding:0;box-sizing:border-box;}
     body{font-family:'Segoe UI',Arial,sans-serif;color:#222;background:#fff;line-height:1.4;}
@@ -61,6 +62,11 @@
     .day-card h4{color:#0077b6;margin-bottom:6px;font-size:18px;}
     .day-card p{font-size:15px;line-height:1.4;margin-bottom:5px;}
 
+    #download-pdf{
+      display:block;margin:20px auto;background:#00b4d8;color:white;border:none;
+      padding:12px 18px;font-size:16px;border-radius:8px;cursor:pointer;display:none;
+    }
+
     footer{background:#222;color:#ccc;text-align:center;font-size:14px;padding:20px;margin-top:20px;}
     a{color:#0077b6;text-decoration:none;}
     a:hover{text-decoration:underline;}
@@ -108,6 +114,7 @@
   </section>
 
   <div id="results"></div>
+  <button id="download-pdf">📄 Scarica Itinerario in PDF</button>
 
   <footer>
     <p>© 2025 GlobalGlide360 – Tutti i diritti riservati</p>
@@ -116,10 +123,14 @@
 <script>
 const form = document.getElementById("travel-form");
 const results = document.getElementById("results");
+const btnPDF = document.getElementById("download-pdf");
+
+let currentItinerary = ""; // Stringa che raccoglierà il contenuto da salvare in PDF
 
 form.addEventListener("submit", async e => {
   e.preventDefault();
   results.innerHTML = "<p style='text-align:center;'>⏳ Ricerca in corso...</p>";
+  btnPDF.style.display = "none";
 
   const origin = form.elements["origin"].value;
   const destinazione = form.elements["destinazione"].value;
@@ -144,12 +155,15 @@ form.addEventListener("submit", async e => {
     const resRistoranti = await fetch(`/api/ristoranti?destinazione=${destinazione}`);
     const ristoranti = (await resRistoranti.json()).data;
 
-    // Costruzione HTML
+    // Costruzione HTML e stringa per PDF
     results.innerHTML = "";
+    currentItinerary = `ITINERARIO PER ${destinazione.toUpperCase()}\n\n`;
 
     // Voli
     results.innerHTML += `<div class="card"><h3>✈️ Voli disponibili</h3>
-      <div class="options">${voli.map(v=>`
+      <div class="options">${voli.map(v=>{
+        currentItinerary += `Volo: ${v.compagnia} - €${v.prezzo} - Durata: ${v.durata}\n`;
+        return `
         <div class="option">
           <img src="${v.img}" alt="${v.compagnia}">
           <div class="option-info">
@@ -157,13 +171,15 @@ form.addEventListener("submit", async e => {
             <span>Durata: ${v.durata}</span>
           </div>
           <strong>€${v.prezzo}</strong>
-        </div>`).join("")}
+        </div>`}).join("")}
       </div>
-    </div>`;
+    </div>\n`;
 
     // Hotel
     results.innerHTML += `<div class="card"><h3>🏨 Hotel consigliati</h3>
-      <div class="options">${hotel.map(h=>`
+      <div class="options">${hotel.map(h=>{
+        currentItinerary += `Hotel: ${h.nome} - €${h.prezzo}/notte - Valutazione: ${h.rating}\n`;
+        return `
         <div class="option">
           <img src="${h.img}" alt="${h.nome}">
           <div class="option-info">
@@ -172,9 +188,9 @@ form.addEventListener("submit", async e => {
             <p style="font-size:14px;">${h.descrizione}</p>
           </div>
           <strong>€${h.prezzo}/notte</strong>
-        </div>`).join("")}
+        </div>`}).join("")}
       </div>
-    </div>`;
+    </div>\n`;
 
     // Itinerario Giorno per Giorno
     results.innerHTML += `<div class="card"><h3>🗓️ Itinerario suggerito</h3>
@@ -182,6 +198,7 @@ form.addEventListener("submit", async e => {
         const attivitàFiltrate = attivita.filter(a => preferenze.length === 0 || preferenze.includes(a.tipo));
         const attG = attivitàFiltrate[g % attivitàFiltrate.length];
         const commento = g===0 ? "Scopri la città e ambientati." : "Attività principali e tempo libero.";
+        currentItinerary += `Giorno ${g+1}: ${commento}, ${attG ? attG.titolo : "Attività libera"}\n`;
         return `
           <div class="day-card">
             <h4>Giorno ${g+1}</h4>
@@ -194,10 +211,23 @@ form.addEventListener("submit", async e => {
       }).join("")}</div>
     </div>`;
 
+    btnPDF.style.display = "block";
+
   } catch (error) {
     console.error("Errore durante la ricerca:", error);
     results.innerHTML = "<p style='text-align:center;color:red;'>❌ Errore durante la ricerca. Riprova più tardi.</p>";
   }
+});
+
+// DOWNLOAD PDF
+btnPDF.addEventListener("click", () => {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+  doc.setFont("helvetica","normal");
+  doc.setFontSize(12);
+  const lines = doc.splitTextToSize(currentItinerary, 180);
+  doc.text(lines, 15, 20);
+  doc.save("Itinerario-GlobalGlide360.pdf");
 });
 </script>
 </body>
