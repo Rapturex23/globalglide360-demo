@@ -15,7 +15,7 @@
     }
     header img{height:36px;}
     header h1{color:#0077b6;font-size:18px;margin-left:6px;}
-    .hero{position:relative;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+    .hero{position:relative;height:80vh;overflow:hidden;display:flex;align-items:center;justify-content:center;}
     .hero img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;}
     .hero::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.5);}
     .hero-content{position:relative;z-index:1;text-align:center;color:white;padding:20px;max-width:800px;}
@@ -23,13 +23,15 @@
     .search-section form{display:grid;gap:10px;max-width:700px;margin:0 auto;}
     .search-section input{padding:12px;border:1px solid #ccc;border-radius:6px;font-size:16px;width:100%;}
     .search-section button{background:#0077b6;color:white;padding:12px;border:none;border-radius:6px;font-size:16px;cursor:pointer;}
+    #results{max-width:900px;margin:20px auto;padding:10px;}
     .card{background:white;padding:20px;border-radius:10px;box-shadow:0 4px 8px rgba(0,0,0,0.1);margin-bottom:20px;}
+    .card h3{margin-bottom:10px;color:#0077b6;}
+    .card p, .card a{font-size:16px;line-height:1.4;}
     .timeline{position:relative;margin:20px 0;padding-left:30px;border-left:2px solid #0077b6;}
     .timeline-item{margin-bottom:20px;position:relative;}
     .timeline-item::before{content:'';position:absolute;left:-9px;top:5px;width:15px;height:15px;background:#0077b6;border-radius:50%;}
     .timeline-item h4{color:#0077b6;margin-bottom:5px;}
     footer{background:#222;color:#ccc;text-align:center;font-size:14px;padding:20px;}
-    #results{max-width:800px;margin:20px auto;padding:10px;}
   </style>
 </head>
 <body>
@@ -80,12 +82,11 @@ form.addEventListener("submit", async e => {
   const dataRitorno = form.elements["dataRitorno"].value;
   const persone = form.elements["persone"].value;
 
-  // Giorni di viaggio
   const giorni = Math.max(1, Math.round((new Date(dataRitorno) - new Date(dataPartenza)) / (1000*60*60*24)) + 1);
 
   try {
     const [voliRes, hotelRes, attivitaRes, ristorantiRes] = await Promise.all([
-      fetch(`/api/voli?origin=${origin}&destinazione=${destinazione}&dataPartenza=${dataPartenza}&dataRitorno=${dataRitorno}&persone=${persone}`),
+      fetch(`/api/voli?origin=${origin}&destinazione=${destinazione}&dataPartenza=${dataPartenza}&dataRitorno=${dataRitorno}`),
       fetch(`/api/hotel?destinazione=${destinazione}&checkin=${dataPartenza}&checkout=${dataRitorno}&persone=${persone}`),
       fetch(`/api/attivita?destinazione=${destinazione}`),
       fetch(`/api/ristoranti?destinazione=${destinazione}`)
@@ -100,21 +101,21 @@ form.addEventListener("submit", async e => {
 
     // Voli
     results.innerHTML += `<div class="card"><h3>✈️ Voli</h3>${
-      voli.data.map(v => `<p><a href="${v.link}" target="_blank">${v.provider}</a> - ${v.prezzo}</p>`).join("")
+      voli.data.map(v => `<p><a href="${v.link}" target="_blank">${v.provider}</a></p>`).join("")
     }</div>`;
 
     // Hotel
     results.innerHTML += `<div class="card"><h3>🏨 Hotel</h3>${
-      hotel.data.map(h => `<p><a href="${h.link}" target="_blank">${h.provider}</a> - ${h.nome} - ${h.prezzo}</p>`).join("")
+      hotel.data.map(h => `<p><a href="${h.link}" target="_blank">${h.provider} - ${h.nome}</a></p>`).join("")
     }</div>`;
 
-    // Itinerario Giorno per Giorno
-    results.innerHTML += `<h3 style="text-align:center;">🗓️ Itinerario</h3><div class="timeline" id="timeline"></div>`;
+    // Itinerario
+    results.innerHTML += `<h3 style="text-align:center;">🗓️ Itinerario suggerito</h3><div class="timeline" id="timeline"></div>`;
     const timeline = document.getElementById("timeline");
 
     for(let g = 1; g <= giorni; g++) {
       const attivitaG = attivita.data[g-1] ? `<a href="${attivita.data[g-1].link}" target="_blank">${attivita.data[g-1].titolo}</a>` : "Attività libera";
-      const ristoranteG = ristoranti.data[g-1] ? `<a href="${ristoranti.data[g-1].link}" target="_blank">${ristoranti.data[g-1].nome}</a>` : "Cena libera";
+      const ristoranteG = ristoranti.data[0] ? `<a href="${ristoranti.data[0].link}" target="_blank">${ristoranti.data[0].nome}</a>` : "Cena libera";
 
       timeline.innerHTML += `
         <div class="timeline-item">
