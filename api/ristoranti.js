@@ -4,15 +4,14 @@ export default async function handler(req, res) {
   try {
     res.status(200).json({
       success: true,
-      provider: "ristoranti",
       data: [
         {
-          nome: "Ristoranti su TripAdvisor",
+          provider: "TripAdvisor",
           link: `https://www.tripadvisor.it/Search?q=${destinazione}+ristoranti`
         }
       ]
     });
-  } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
   }
 }
