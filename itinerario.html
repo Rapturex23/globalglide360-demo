@@ -30,6 +30,9 @@
     .day-card h4{color:#0077b6;margin-bottom:6px;font-size:18px;}
     .day-card p{font-size:15px;line-height:1.4;margin-bottom:5px;}
 
+    .links a{display:block;margin:5px 0;color:#0077b6;text-decoration:none;}
+    .links a:hover{text-decoration:underline;}
+
     #download-pdf{
       display:block;margin:20px auto;background:#00b4d8;color:white;border:none;
       padding:12px 18px;font-size:16px;border-radius:8px;cursor:pointer;display:none;
@@ -87,6 +90,7 @@ if(!itinerarioId){
         ${data.voli.map(v => `
           <img src="${v.immagine}" alt="Volo">
           <p>${v.titolo} - ${v.prezzo}</p>
+          <div class="links"><a href="${v.link}" target="_blank">🔗 Prenota volo</a></div>
         `).join("")}
       </div>
       <div class="card">
@@ -94,11 +98,19 @@ if(!itinerarioId){
         ${data.hotel.map(h => `
           <img src="${h.immagine}" alt="Hotel">
           <p>${h.nome} - ${h.prezzo}</p>
+          <div class="links"><a href="${h.link}" target="_blank">🔗 Prenota hotel</a></div>
         `).join("")}
       </div>
       <div class="card">
         <h3>🍽️ Ristoranti consigliati</h3>
         <p>${data.ristoranti.join(", ")}</p>
+        <div class="links"><a href="https://www.tripadvisor.it/Search?q=${data.destinazione}" target="_blank">🔗 Trova ristoranti su Tripadvisor</a></div>
+      </div>
+      <div class="card">
+        <h3>🎟️ Attività</h3>
+        ${data.attivita.map(a => `
+          <div class="links"><a href="${a.link}" target="_blank">🔗 ${a.titolo}</a></div>
+        `).join("")}
       </div>
       <div class="card">
         <h3>🗓️ Itinerario Giorno per Giorno</h3>
