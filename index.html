@@ -33,14 +33,14 @@
 
     /* HERO */
     .hero {
-      position:relative;height:90vh;display:flex;align-items:center;justify-content:center;text-align:center;
-      background:url('hero-travel-new.png') center/cover no-repeat;
+      position:relative;height:95vh;display:flex;align-items:center;justify-content:center;text-align:center;
+      background:url('hero-travel-optimized.png') center/cover no-repeat;
     }
     .hero::after {
       content:'';position:absolute;inset:0;background:rgba(0,0,0,0.3);
     }
     .hero-content {
-      position:relative;z-index:1;max-width:800px;padding:20px;margin-top:40px;
+      position:relative;z-index:1;max-width:850px;padding:20px;margin-top:40px;
     }
     .hero-content h2 {
       font-size:42px;font-weight:600;margin-bottom:20px;
@@ -54,8 +54,19 @@
       display:grid;gap:10px;background:rgba(255,255,255,0.1);
       padding:20px;border-radius:12px;
     }
-    .search-box input {
+    .form-row {
+      display:flex;gap:10px;flex-wrap:wrap;
+    }
+    .search-box input, .search-box select {
+      flex:1;
       padding:12px;border:none;border-radius:8px;font-size:16px;
+    }
+    .pref-container {
+      text-align:left;margin-top:10px;
+      display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;
+    }
+    .pref-container label {
+      font-size:14px;display:flex;align-items:center;gap:6px;
     }
     .search-box button {
       background:#fcbf49;border:none;padding:12px;border-radius:8px;
@@ -134,11 +145,28 @@
       <h2>Organizza il tuo viaggio perfetto con noi</h2>
       <p>Voli, hotel, attività e ristoranti selezionati con cura per te</p>
       <div class="search-box">
-        <input type="text" placeholder="📍 Meta (es. Parigi)">
-        <input type="date" placeholder="Data partenza">
-        <input type="date" placeholder="Data ritorno">
-        <input type="number" placeholder="Viaggiatori">
-        <input type="number" placeholder="Budget totale (€)">
+        <div class="form-row">
+          <input type="text" placeholder="📍 Meta (es. Parigi)">
+        </div>
+        <div class="form-row">
+          <input type="date" placeholder="Data partenza">
+          <input type="date" placeholder="Data ritorno">
+        </div>
+        <div class="form-row">
+          <input type="number" placeholder="Adulti">
+          <input type="number" placeholder="Bambini (<12)">
+        </div>
+        <div class="form-row">
+          <input type="number" placeholder="Budget totale (€)">
+        </div>
+        <div class="pref-container">
+          <label><input type="checkbox">Musei</label>
+          <label><input type="checkbox">Natura</label>
+          <label><input type="checkbox">Mare</label>
+          <label><input type="checkbox">Shopping</label>
+          <label><input type="checkbox">Avventura</label>
+          <label><input type="checkbox">Relax</label>
+        </div>
         <button>Inizia</button>
       </div>
     </div>
