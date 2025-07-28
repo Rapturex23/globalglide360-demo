@@ -16,18 +16,18 @@
       display:flex;justify-content:space-between;align-items:center;
       padding:10px 30px;box-shadow:0 4px 8px rgba(0,0,0,0.1);z-index:1000;
     }
-    header img{height:65px;}
-    header h1{color:#0077b6;font-size:24px;margin-left:8px;letter-spacing:1px;}
+    header img{height:80px;}
+    header h1{color:#0077b6;font-size:28px;margin-left:10px;letter-spacing:1px;}
 
-    .hero{position:relative;height:70vh;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+    .hero{position:relative;height:65vh;overflow:hidden;display:flex;align-items:center;justify-content:center;}
     .hero img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;}
-    .hero::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.45);}
-    .hero-content{position:relative;z-index:1;text-align:center;color:white;padding:20px;max-width:850px;animation:fadeIn 1.2s ease;}
-    .hero-content h2{font-size:38px;margin-bottom:15px;}
+    .hero::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.4);}
+    .hero-content{position:relative;z-index:1;text-align:center;color:white;padding:20px;max-width:900px;animation:fadeIn 1.2s ease;}
+    .hero-content h2{font-size:40px;margin-bottom:15px;}
     .hero-content p{font-size:18px;}
 
     .search-section{background:#f1f7fb;padding:40px 20px;text-align:center;}
-    .search-section h3{font-size:22px;margin-bottom:15px;color:#0077b6;}
+    .search-section h3{font-size:24px;margin-bottom:15px;color:#0077b6;}
     .search-section form{display:grid;gap:12px;max-width:780px;margin:0 auto;}
     .search-section input, .search-section select{
       padding:14px;border:1px solid #ccc;border-radius:8px;font-size:16px;width:100%;
@@ -44,6 +44,7 @@
     #results{max-width:1000px;margin:30px auto;padding:10px;animation:fadeIn 1s ease;}
     .card{background:white;padding:20px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.08);margin-bottom:25px;}
     .card h3{margin-bottom:10px;color:#0077b6;font-size:20px;border-bottom:1px solid #eee;padding-bottom:8px;}
+    .card img{width:100%;border-radius:8px;margin-bottom:10px;}
 
     .day-card{
       background:#f8f9fa;margin-bottom:20px;padding:15px;border-radius:10px;
@@ -74,8 +75,8 @@
   <section class="hero">
     <img src="hero-travel.png" alt="Hero Travel">
     <div class="hero-content">
-      <h2>Il tuo viaggio perfetto, creato da un'AI</h2>
-      <p>Voli, hotel, attività e ristoranti organizzati in un itinerario completo.</p>
+      <h2>Organizza viaggi perfetti con l’AI</h2>
+      <p>Voli, hotel, attività, ristoranti e itinerario giorno per giorno</p>
     </div>
   </section>
 
@@ -128,31 +129,87 @@ form.addEventListener("submit", async e => {
   const adulti = form.elements["adulti"].value;
   const bambini = form.elements["bambini"].value;
 
+  // Raccolta preferenze
+  const preferenze = Array.from(form.querySelectorAll("input[name='preferenze']:checked"))
+                          .map(el => el.value);
+
+  // Dati di esempio con link reali affiliati (placeholder)
+  const itinerarioData = {
+    origin,
+    destinazione,
+    dataPartenza,
+    dataRitorno,
+    adulti,
+    bambini,
+    preferenze,
+    voli: [{
+      titolo: `Volo A/R da ${origin} a ${destinazione}`,
+      prezzo: "€285",
+      immagine: "https://picsum.photos/800/300?travel",
+      link: `https://www.skyscanner.it/trasporti/voli/${origin.slice(0,3)}-${destinazione.slice(0,3)}/`
+    }],
+    hotel: [{
+      nome: "Hotel Lumière 4★",
+      prezzo: "€120/notte",
+      immagine: "https://picsum.photos/800/301?hotel",
+      link: `https://www.booking.com/searchresults.it.html?ss=${destinazione}`
+    }],
+    ristoranti: ["Le Relais de l'Entrecôte", "Le Soufflé"],
+    giorni: [
+      { giorno: 1, descrizione: "Visita al Louvre e crociera sulla Senna" },
+      { giorno: 2, descrizione: "Montmartre e cena gourmet" }
+    ],
+    attivita: [{
+      titolo: "Biglietto per il Louvre",
+      link: `https://www.getyourguide.it/s/?q=${destinazione}`
+    }]
+  };
+
+  // Mostra i risultati (HTML)
   results.innerHTML = `
     <div class="card">
       <h3>✈️ Voli</h3>
-      <p>Risultati voli per ${destinazione}...</p>
+      <img src="${itinerarioData.voli[0].immagine}" alt="Volo">
+      <p>${itinerarioData.voli[0].titolo} - ${itinerarioData.voli[0].prezzo}</p>
+      <a href="${itinerarioData.voli[0].link}" target="_blank">🔗 Prenota su Skyscanner</a>
     </div>
     <div class="card">
       <h3>🏨 Hotel</h3>
-      <p>Hotel consigliati...</p>
+      <img src="${itinerarioData.hotel[0].immagine}" alt="Hotel">
+      <p>${itinerarioData.hotel[0].nome} - ${itinerarioData.hotel[0].prezzo}</p>
+      <a href="${itinerarioData.hotel[0].link}" target="_blank">🔗 Prenota su Booking.com</a>
+    </div>
+    <div class="card">
+      <h3>🍽️ Ristoranti consigliati</h3>
+      <p>${itinerarioData.ristoranti.join(", ")}</p>
+      <a href="https://www.tripadvisor.it/Search?q=${destinazione}" target="_blank">🔗 Cerca su Tripadvisor</a>
+    </div>
+    <div class="card">
+      <h3>🎟️ Attività consigliate</h3>
+      <a href="${itinerarioData.attivita[0].link}" target="_blank">🔗 ${itinerarioData.attivita[0].titolo}</a>
     </div>
     <div class="card">
       <h3>🗓️ Itinerario Giorno per Giorno</h3>
-      <div class="day-card">
-        <h4>Giorno 1</h4>
-        <p>Visita guidata + pranzo tipico</p>
-      </div>
-      <div class="day-card">
-        <h4>Giorno 2</h4>
-        <p>Escursione fuori città</p>
-      </div>
-    </div>`;
+      ${itinerarioData.giorni.map(g => `
+        <div class="day-card">
+          <h4>Giorno ${g.giorno}</h4>
+          <p>${g.descrizione}</p>
+        </div>
+      `).join("")}
+    </div>
+  `;
+
+  // Salva l'itinerario sul backend
+  await fetch("/api/itinerari", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ id: itinerarioId, data: itinerarioData })
+  });
 
   btnPDF.style.display = "block";
 });
 
-// 🔹 QR Code aggiornato verso itinerario.html
+// 🔹 PDF con QR code verso itinerario.html
 btnPDF.addEventListener("click", () => {
   const { jsPDF } = window.jspdf;
 
@@ -166,11 +223,11 @@ btnPDF.addEventListener("click", () => {
       pdf.addImage(logo, 'PNG', 15, 10, 25, 18);
       pdf.setFont("helvetica","bold");
       pdf.setFontSize(16);
-      pdf.text("Itinerario creato con GlobalGlide360", 50, 22);
+      pdf.text("Itinerario GlobalGlide360", 50, 22);
 
-      // ✅ QR code che punta alla pagina itinerario.html
+      // QR code
       const qrCanvas = document.createElement("canvas");
-      const qr = new QRCode(qrCanvas, {
+      new QRCode(qrCanvas, {
         text: `https://www.globalglide360.com/itinerario.html?id=${itinerarioId}`,
         width: 35,
         height: 35
