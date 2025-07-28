@@ -9,13 +9,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     * {margin:0;padding:0;box-sizing:border-box;}
-    body {font-family:'Inter', sans-serif; background:#0a192f; color:#fff;}
+    body {font-family:'Inter', sans-serif; background:#0077b6; color:#fff;}
 
     /* HEADER */
     header {
       display:flex;justify-content:space-between;align-items:center;
-      padding:20px 40px;position:fixed;top:0;width:100%;z-index:1000;
-      background:rgba(10,25,47,0.9);backdrop-filter:blur(6px);
+      padding:18px 40px;position:fixed;top:0;width:100%;z-index:1000;
+      background:transparent;
+    }
+    .logo-container {
+      display:flex;align-items:center;gap:10px;
+    }
+    .logo-container img {
+      height:40px;
     }
     header h1 {
       font-size:28px;font-weight:600;color:#fff;
@@ -27,14 +33,14 @@
 
     /* HERO */
     .hero {
-      position:relative;height:85vh;display:flex;align-items:center;justify-content:center;text-align:center;
+      position:relative;height:90vh;display:flex;align-items:center;justify-content:center;text-align:center;
       background:url('hero-travel-new.png') center/cover no-repeat;
     }
     .hero::after {
-      content:'';position:absolute;inset:0;background:rgba(0,0,0,0.4);
+      content:'';position:absolute;inset:0;background:rgba(0,0,0,0.3);
     }
     .hero-content {
-      position:relative;z-index:1;max-width:800px;padding:20px;
+      position:relative;z-index:1;max-width:800px;padding:20px;margin-top:40px;
     }
     .hero-content h2 {
       font-size:42px;font-weight:600;margin-bottom:20px;
@@ -59,7 +65,7 @@
 
     /* COME FUNZIONA */
     .steps {
-      padding:80px 20px;text-align:center;background:#0d223d;
+      padding:80px 20px;text-align:center;background:#0096c7;
     }
     .steps h3 {font-size:28px;margin-bottom:50px;}
     .step-container {
@@ -74,7 +80,7 @@
 
     /* ITINERARI ESEMPIO */
     .itinerari {
-      padding:80px 20px;text-align:center;background:#0a192f;
+      padding:80px 20px;text-align:center;background:#0077b6;
     }
     .itinerari h3 {font-size:28px;margin-bottom:40px;}
     .cards {
@@ -98,7 +104,7 @@
 
     /* FOOTER */
     footer {
-      background:#0d223d;color:#ccc;text-align:center;font-size:14px;padding:20px;
+      background:#0096c7;color:#fff;text-align:center;font-size:14px;padding:20px;
     }
 
     /* MOBILE */
@@ -111,11 +117,14 @@
 <body>
   <!-- HEADER -->
   <header>
-    <h1>GlobalGlide360</h1>
+    <div class="logo-container">
+      <img src="logo-globalglide360.png" alt="Logo GlobalGlide360">
+      <h1>GlobalGlide360</h1>
+    </div>
     <nav>
       <a href="#steps">Come funziona</a>
-      <a href="#itinerari">Itinerari esempio</a>
-      <a href="#">Scarica PDF</a>
+      <a href="#itinerari">Itinerari</a>
+      <a href="#">Contatti</a>
     </nav>
   </header>
 
