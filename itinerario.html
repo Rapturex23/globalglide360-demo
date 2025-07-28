@@ -15,12 +15,14 @@
       display:flex;justify-content:space-between;align-items:center;
       padding:10px 30px;box-shadow:0 4px 8px rgba(0,0,0,0.1);z-index:1000;
     }
-    header img{height:65px;}
-    header h1{color:#0077b6;font-size:24px;margin-left:8px;letter-spacing:1px;}
+    header img{height:80px;}
+    header h1{color:#0077b6;font-size:26px;margin-left:8px;letter-spacing:1px;}
     
     .container{max-width:1000px;margin:120px auto 40px;padding:20px;}
     .card{background:white;padding:20px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.08);margin-bottom:25px;}
     .card h3{margin-bottom:10px;color:#0077b6;font-size:20px;border-bottom:1px solid #eee;padding-bottom:8px;}
+    .card img{width:100%;border-radius:8px;margin-bottom:10px;}
+
     .day-card{
       background:#f8f9fa;margin-bottom:20px;padding:15px;border-radius:10px;
       border-left:5px solid #0077b6;animation:slideIn 0.7s ease;
@@ -30,7 +32,7 @@
 
     #download-pdf{
       display:block;margin:20px auto;background:#00b4d8;color:white;border:none;
-      padding:12px 18px;font-size:16px;border-radius:8px;cursor:pointer;
+      padding:12px 18px;font-size:16px;border-radius:8px;cursor:pointer;display:none;
     }
 
     footer{background:#222;color:#ccc;text-align:center;font-size:14px;padding:20px;margin-top:20px;}
@@ -61,44 +63,59 @@ const container = document.getElementById("itinerario-container");
 const title = document.getElementById("title-itinerario");
 const btnPDF = document.getElementById("download-pdf");
 
-// Legge ID dall'URL
 const params = new URLSearchParams(window.location.search);
 const itinerarioId = params.get("id");
 
 if(!itinerarioId){
   title.innerText = "❌ Nessun itinerario trovato";
-  btnPDF.style.display = "none";
 }else{
-  // 🔹 Dati temporanei simulati (in futuro chiameremo /api/itinerari?id=123)
-  title.innerText = `Itinerario #${itinerarioId}`;
-  container.innerHTML = `
-    <div class="card">
-      <h3>✈️ Voli</h3>
-      <p>Partenza da Milano a Parigi il 10 agosto alle 10:00 - Ritorno il 12 agosto alle 19:00</p>
-    </div>
-    <div class="card">
-      <h3>🏨 Hotel</h3>
-      <p>Hotel Lumière 4★ - €120/notte, vicino alla Torre Eiffel</p>
-    </div>
-    <div class="card">
-      <h3>🍽️ Ristoranti consigliati</h3>
-      <p>Le Relais de l'Entrecôte, Le Soufflé, L'Atelier de Joël Robuchon</p>
-    </div>
-    <div class="card">
-      <h3>🗓️ Itinerario Giorno per Giorno</h3>
-      <div class="day-card">
-        <h4>Giorno 1</h4>
-        <p>Tour del Louvre e crociera sulla Senna</p>
+  // 🔹 Recupera dati dal backend
+  (async () => {
+    const res = await fetch(`/api/itinerari?id=${itinerarioId}`);
+
+    if (!res.ok) {
+      title.innerText = "❌ Itinerario non trovato";
+      return;
+    }
+
+    const data = await res.json();
+    title.innerText = `Itinerario per ${data.destinazione}`;
+
+    container.innerHTML = `
+      <div class="card">
+        <h3>✈️ Voli</h3>
+        ${data.voli.map(v => `
+          <img src="${v.immagine}" alt="Volo">
+          <p>${v.titolo} - ${v.prezzo}</p>
+        `).join("")}
       </div>
-      <div class="day-card">
-        <h4>Giorno 2</h4>
-        <p>Visita a Montmartre e cena con vista</p>
+      <div class="card">
+        <h3>🏨 Hotel</h3>
+        ${data.hotel.map(h => `
+          <img src="${h.immagine}" alt="Hotel">
+          <p>${h.nome} - ${h.prezzo}</p>
+        `).join("")}
       </div>
-    </div>
-  `;
+      <div class="card">
+        <h3>🍽️ Ristoranti consigliati</h3>
+        <p>${data.ristoranti.join(", ")}</p>
+      </div>
+      <div class="card">
+        <h3>🗓️ Itinerario Giorno per Giorno</h3>
+        ${data.giorni.map(g => `
+          <div class="day-card">
+            <h4>Giorno ${g.giorno}</h4>
+            <p>${g.descrizione}</p>
+          </div>
+        `).join("")}
+      </div>
+    `;
+
+    btnPDF.style.display = "block";
+  })();
 }
 
-// PDF export
+// 🔹 Scarica PDF
 btnPDF.addEventListener("click", () => {
   const { jsPDF } = window.jspdf;
 
