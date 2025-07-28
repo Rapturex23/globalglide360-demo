@@ -4,168 +4,167 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Itinerario - GlobalGlide360</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    *{margin:0;padding:0;box-sizing:border-box;}
-    body{font-family:'Poppins',sans-serif;color:#222;background:#fff;line-height:1.5;}
+    * {margin:0;padding:0;box-sizing:border-box;}
+    body {font-family:'Inter',sans-serif;background:#f8f9fa;color:#333;}
 
-    /* HEADER */
-    header{
-      position:fixed;top:0;left:0;width:100%;
-      background:linear-gradient(90deg,#0077b6,#00b4d8);color:white;
-      display:flex;justify-content:center;align-items:center;
-      padding:14px 20px;box-shadow:0 4px 8px rgba(0,0,0,0.1);z-index:1000;
-    }
-    header img{height:70px;margin-right:10px;}
-    header h1{
-      font-size:30px;font-weight:600;letter-spacing:1px;
-      background:linear-gradient(45deg,#fff,#cce7f4);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
+    header {
+      background:#0077b6;padding:15px 30px;text-align:center;
+      color:#fff;font-size:22px;font-weight:600;
     }
 
-    /* HERO */
-    .hero{position:relative;height:45vh;overflow:hidden;display:flex;align-items:center;justify-content:center;}
-    .hero img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;filter:brightness(0.85);}
-    .hero::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.3);}
-    .hero-content{position:relative;z-index:1;text-align:center;color:white;padding:20px;}
-    .hero-content h2{font-size:34px;font-weight:600;text-shadow:0 3px 6px rgba(0,0,0,0.6);}
-
-    /* CONTAINER */
-    .container{max-width:1000px;margin:30px auto;padding:20px;}
-    .card{
-      background:white;padding:20px;border-radius:12px;
-      box-shadow:0 4px 10px rgba(0,0,0,0.08);margin-bottom:25px;
-    }
-    .card h3{
-      margin-bottom:10px;color:#0077b6;font-size:20px;
-      border-bottom:1px solid #eee;padding-bottom:8px;
-    }
-    .card img{width:100%;border-radius:8px;margin-bottom:10px;}
-    .links a{
-      display:inline-block;margin:6px 0;color:white;
-      background:#0077b6;padding:8px 14px;border-radius:6px;
-      font-size:14px;text-decoration:none;
-    }
-    .links a:hover{background:#00b4d8;}
-
-    .day-card{
-      background:#f8f9fa;margin-bottom:15px;padding:15px;border-radius:10px;
-      border-left:5px solid #0077b6;
-    }
-    .day-card h4{color:#0077b6;margin-bottom:6px;font-size:18px;}
-    .day-card p{font-size:15px;line-height:1.4;}
-
-    #download-pdf{
-      display:block;margin:20px auto;background:#00b4d8;color:white;border:none;
-      padding:12px 18px;font-size:16px;border-radius:8px;cursor:pointer;display:none;
+    .container {
+      max-width:900px;margin:30px auto;padding:20px;
     }
 
-    footer{background:#222;color:#ccc;text-align:center;font-size:14px;padding:20px;margin-top:20px;}
+    h2 {
+      text-align:center;margin-bottom:20px;font-size:28px;
+    }
+
+    .section {
+      background:#fff;border-radius:12px;padding:20px;margin-bottom:20px;
+      box-shadow:0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .section h3 {
+      margin-bottom:15px;font-size:22px;color:#0077b6;
+    }
+
+    .item {
+      display:flex;align-items:flex-start;gap:15px;margin-bottom:15px;
+    }
+    .item img {
+      width:100px;height:80px;object-fit:cover;border-radius:8px;
+    }
+    .item-content h4 {
+      font-size:18px;margin-bottom:5px;
+    }
+    .item-content a {
+      display:inline-block;color:#fff;background:#0077b6;
+      padding:6px 12px;border-radius:6px;text-decoration:none;font-size:14px;
+    }
+    .item-content a:hover {background:#00b4d8;}
+
+    /* TIMELINE */
+    .timeline {
+      position:relative;margin:20px 0;padding-left:20px;
+    }
+    .timeline::before {
+      content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:#0077b6;
+    }
+    .timeline-day {
+      position:relative;padding:10px 20px;margin-bottom:20px;background:#fff;
+      border-radius:10px;box-shadow:0 4px 8px rgba(0,0,0,0.1);
+    }
+    .timeline-day::before {
+      content:'';position:absolute;left:-13px;top:18px;width:12px;height:12px;background:#0077b6;border-radius:50%;
+    }
+
+    /* QR CODE */
+    .qr-container {
+      text-align:center;margin-top:30px;
+    }
+    .qr-container img {
+      width:100px;height:100px;
+    }
   </style>
 </head>
 <body>
-  <header>
-    <div style="display:flex;align-items:center;">
-      <img src="logo-globalglide360.png" alt="GlobalGlide360">
-      <h1>GlobalGlide360</h1>
-    </div>
-  </header>
-
-  <!-- HERO -->
-  <section class="hero">
-    <img src="hero-travel-new.png" alt="Hero Travel">
-    <div class="hero-content">
-      <h2>Il tuo itinerario personalizzato</h2>
-    </div>
-  </section>
-
+  <header>GlobalGlide360 - Il tuo itinerario</header>
   <div class="container">
-    <h2 id="title-itinerario" style="margin-bottom:20px;color:#0077b6;">Caricamento itinerario...</h2>
-    <div id="itinerario-container"></div>
-    <button id="download-pdf">📄 Scarica in PDF</button>
+    <h2 id="meta"></h2>
+
+    <div class="section" id="voli-section">
+      <h3>✈️ Voli</h3>
+      <div id="voli-list"></div>
+    </div>
+
+    <div class="section" id="hotel-section">
+      <h3>🏨 Hotel</h3>
+      <div id="hotel-list"></div>
+    </div>
+
+    <div class="section" id="attivita-section">
+      <h3>🎟️ Attività</h3>
+      <div id="attivita-list"></div>
+    </div>
+
+    <div class="section">
+      <h3>🗓️ Itinerario Giornaliero</h3>
+      <div class="timeline" id="timeline"></div>
+    </div>
+
+    <div class="qr-container">
+      <p>Scansiona per condividere l'itinerario</p>
+      <canvas id="qrcode"></canvas>
+    </div>
   </div>
 
-  <footer>
-    <p>© 2025 GlobalGlide360 – Tutti i diritti riservati</p>
-  </footer>
-
-<script>
-const container = document.getElementById("itinerario-container");
-const title = document.getElementById("title-itinerario");
-const btnPDF = document.getElementById("download-pdf");
-
-const params = new URLSearchParams(window.location.search);
-const itinerarioId = params.get("id");
-const pdfMode = params.get("pdf");
-
-if(!itinerarioId){
-  title.innerText = "❌ Nessun itinerario trovato";
-}else{
-  (async () => {
-    const res = await fetch(`/api/itinerari?id=${itinerarioId}`);
-
-    if (!res.ok) {
-      title.innerText = "❌ Itinerario non trovato";
-      return;
-    }
-
-    const data = await res.json();
-    title.innerText = `Itinerario per ${data.destinazione}`;
-
-    container.innerHTML = `
-      <div class="card">
-        <h3>✈️ Voli</h3>
-        ${data.voli.map(v => `
-          <img src="${v.immagine}" alt="Volo">
-          <p>${v.titolo} - ${v.prezzo}</p>
-          <div class="links"><a href="${v.link}" target="_blank">🔗 Prenota volo</a></div>
-        `).join("")}
-      </div>
-      <div class="card">
-        <h3>🏨 Hotel</h3>
-        ${data.hotel.map(h => `
-          <img src="${h.immagine}" alt="Hotel">
-          <p>${h.nome} - ${h.prezzo}</p>
-          <div class="links"><a href="${h.link}" target="_blank">🔗 Prenota hotel</a></div>
-        `).join("")}
-      </div>
-      <div class="card">
-        <h3>🍽️ Ristoranti consigliati</h3>
-        <p>${data.ristoranti.join(", ")}</p>
-        <div class="links"><a href="https://www.tripadvisor.it/Search?q=${data.destinazione}" target="_blank">🔗 Trova ristoranti su Tripadvisor</a></div>
-      </div>
-      <div class="card">
-        <h3>🎟️ Attività</h3>
-        ${data.attivita.map(a => `
-          <div class="links"><a href="${a.link}" target="_blank">🔗 ${a.titolo}</a></div>
-        `).join("")}
-      </div>
-      <div class="card">
-        <h3>🗓️ Itinerario Giorno per Giorno</h3>
-        ${data.giorni.map(g => `
-          <div class="day-card">
-            <h4>Giorno ${g.giorno}</h4>
-            <p>${g.descrizione}</p>
-          </div>
-        `).join("")}
-      </div>
-    `;
-
-    // Mostra pulsante PDF solo se non siamo già in modalità PDF
-    if(!pdfMode){
-      btnPDF.style.display = "block";
-      btnPDF.onclick = () => {
-        window.print(); // Stampa/Salva come PDF
-      }
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+  <script>
+    // Recupera i dati salvati dall'index
+    const dati = JSON.parse(localStorage.getItem("itinerario"));
+    if (!dati) {
+      document.body.innerHTML = "<h2 style='text-align:center;margin-top:50px;'>Nessun itinerario trovato</h2>";
     } else {
-      window.print();
+      document.getElementById("meta").textContent = `Itinerario per ${dati.meta} (${dati.adulti} adulti, ${dati.bambini} bambini)`;
+
+      // Voli
+      const voliList = document.getElementById("voli-list");
+      dati.voli.forEach(v => {
+        voliList.innerHTML += `
+          <div class="item">
+            <img src="https://img.icons8.com/ios-filled/100/0077b6/airplane-take-off.png" alt="Volo">
+            <div class="item-content">
+              <h4>${v.compagnia} - €${v.prezzo}</h4>
+              <a href="${v.link}" target="_blank">Prenota</a>
+            </div>
+          </div>`;
+      });
+
+      // Hotel
+      const hotelList = document.getElementById("hotel-list");
+      dati.hotel.forEach(h => {
+        hotelList.innerHTML += `
+          <div class="item">
+            <img src="${h.immagine}" alt="${h.nome}">
+            <div class="item-content">
+              <h4>${h.nome} - €${h.prezzo}</h4>
+              <a href="${h.link}" target="_blank">Prenota</a>
+            </div>
+          </div>`;
+      });
+
+      // Attività
+      const attivitaList = document.getElementById("attivita-list");
+      dati.attivita.forEach(a => {
+        attivitaList.innerHTML += `
+          <div class="item">
+            <img src="https://img.icons8.com/ios-filled/100/0077b6/ticket.png" alt="Attività">
+            <div class="item-content">
+              <h4>${a.nome} - €${a.prezzo}</h4>
+              <a href="${a.link}" target="_blank">Prenota</a>
+            </div>
+          </div>`;
+      });
+
+      // Timeline
+      const timeline = document.getElementById("timeline");
+      dati.giorni.forEach(g => {
+        timeline.innerHTML += `
+          <div class="timeline-day">
+            <strong>Giorno ${g.giorno}</strong>: ${g.descrizione}
+            <br>Attività: ${g.attivita.nome}
+          </div>`;
+      });
+
+      // QR Code
+      QRCode.toCanvas(document.getElementById('qrcode'), window.location.href, function (error) {
+        if (error) console.error(error);
+      });
     }
-  })();
-}
-</script>
+  </script>
 </body>
 </html>
