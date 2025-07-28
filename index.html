@@ -190,16 +190,27 @@ form.addEventListener("submit", async e => {
   const origin = form.elements["origin"].value;
   const destinazione = form.elements["destinazione"].value;
 
+  // Dati esempio
   const itinerarioData = {
     destinazione,
-    voli: [{ titolo: `Volo A/R da ${origin} a ${destinazione}`, prezzo: "€285", link: "#" }],
-    hotel: [{ nome: "Hotel Lumière 4★", prezzo: "€120/notte", link: "#" }],
+    voli: [{ titolo: `Volo A/R da ${origin} a ${destinazione}`, prezzo: "€285", link: "#", immagine: "https://picsum.photos/800/400?flight" }],
+    hotel: [{ nome: "Hotel Lumière 4★", prezzo: "€120/notte", link: "#", immagine: "https://picsum.photos/800/400?hotel" }],
+    ristoranti: ["Bistro Chez Jean", "Ristorante del Centro"],
+    attivita: [{ titolo: "Visita guidata al centro storico", link: "#" }],
     giorni: [
-      { giorno: 1, descrizione: "Visita culturale" },
-      { giorno: 2, descrizione: "Attività outdoor e relax" }
+      { giorno: 1, descrizione: "Visita al centro storico, pranzo in ristorante tipico, passeggiata serale" },
+      { giorno: 2, descrizione: "Escursione giornaliera nei dintorni e attività di relax" }
     ]
   };
 
+  // 🔹 SALVIAMO l’itinerario tramite API
+  await fetch("/api/itinerari", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ id: itinerarioId, data: itinerarioData })
+  });
+
+  // Mostriamo anteprima
   results.innerHTML = `
     <div style="background:#f8f9fa;padding:20px;border-radius:10px;">
       <h3 style="color:#0077b6;">Itinerario per ${destinazione}</h3>
