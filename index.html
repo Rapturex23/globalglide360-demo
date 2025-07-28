@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Itinerario - GlobalGlide360</title>
+  <title>GlobalGlide360 - Itinerari AI</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <style>
     *{margin:0;padding:0;box-sizing:border-box;}
     body{font-family:'Segoe UI',Arial,sans-serif;color:#222;background:#fff;line-height:1.4;}
@@ -17,10 +18,54 @@
     }
     header img{height:65px;}
     header h1{color:#0077b6;font-size:24px;margin-left:8px;letter-spacing:1px;}
-    
-    .container{max-width:1000px;margin:120px auto 40px;padding:20px;}
+
+    .hero{position:relative;height:70vh;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+    .hero img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;}
+    .hero::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.45);}
+    .hero-content{position:relative;z-index:1;text-align:center;color:white;padding:20px;max-width:850px;animation:fadeIn 1.2s ease;}
+    .hero-content h2{font-size:38px;margin-bottom:15px;}
+    .hero-content p{font-size:18px;}
+
+    .search-section{background:#f1f7fb;padding:40px 20px;text-align:center;}
+    .search-section h3{font-size:22px;margin-bottom:15px;color:#0077b6;}
+    .search-section form{display:grid;gap:12px;max-width:780px;margin:0 auto;}
+    .search-section input, .search-section select{
+      padding:14px;border:1px solid #ccc;border-radius:8px;font-size:16px;width:100%;
+    }
+    .search-section button{
+      background:#0077b6;color:white;padding:14px;border:none;border-radius:8px;font-size:18px;cursor:pointer;
+      transition:all 0.3s;
+    }
+    .search-section button:hover{background:#00b4d8;}
+
+    .description-section{
+      display:flex;flex-wrap:wrap;gap:30px;align-items:center;
+      padding:60px 20px;max-width:1100px;margin:0 auto;
+    }
+    .description-section img{flex:1;max-width:450px;border-radius:15px;box-shadow:0 4px 10px rgba(0,0,0,0.1);}
+    .description-section .text{flex:1;min-width:280px;}
+    .description-section h3{font-size:28px;margin-bottom:15px;color:#0077b6;}
+    .description-section p{font-size:17px;line-height:1.6;margin-bottom:15px;}
+
+    .preferences{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;}
+    .preferences label{font-size:14px;}
+
+    #results{max-width:1000px;margin:30px auto;padding:10px;animation:fadeIn 1s ease;}
     .card{background:white;padding:20px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.08);margin-bottom:25px;}
     .card h3{margin-bottom:10px;color:#0077b6;font-size:20px;border-bottom:1px solid #eee;padding-bottom:8px;}
+    .card p, .card a{font-size:16px;line-height:1.4;}
+
+    .options{display:grid;gap:12px;}
+    .option{
+      display:flex;align-items:center;gap:12px;
+      border:1px solid #ddd;border-radius:8px;padding:10px;background:#fafafa;
+    }
+    .option img{width:90px;height:70px;object-fit:cover;border-radius:6px;}
+    .option-info{flex:1;}
+    .option-info strong{color:#0077b6;display:block;font-size:16px;}
+    .option a{font-size:14px;color:#00b4d8;}
+
+    .timeline{margin:20px 0;}
     .day-card{
       background:#f8f9fa;margin-bottom:20px;padding:15px;border-radius:10px;
       border-left:5px solid #0077b6;animation:slideIn 0.7s ease;
@@ -30,11 +75,14 @@
 
     #download-pdf{
       display:block;margin:20px auto;background:#00b4d8;color:white;border:none;
-      padding:12px 18px;font-size:16px;border-radius:8px;cursor:pointer;
+      padding:12px 18px;font-size:16px;border-radius:8px;cursor:pointer;display:none;
     }
 
     footer{background:#222;color:#ccc;text-align:center;font-size:14px;padding:20px;margin-top:20px;}
+    a{color:#0077b6;text-decoration:none;}
+    a:hover{text-decoration:underline;}
 
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
     @keyframes slideIn{from{transform:translateX(-20px);opacity:0}to{transform:translateX(0);opacity:1}}
   </style>
 </head>
@@ -46,61 +94,107 @@
     </div>
   </header>
 
-  <div class="container">
-    <h2 id="title-itinerario" style="margin-bottom:20px;color:#0077b6;">Caricamento itinerario...</h2>
-    <div id="itinerario-container"></div>
-    <button id="download-pdf">📄 Scarica in PDF</button>
-  </div>
+  <section class="hero">
+    <img src="hero-travel.png" alt="Hero Travel">
+    <div class="hero-content">
+      <h2>Il tuo viaggio perfetto, creato da un'AI</h2>
+      <p>Voli, hotel, attività e ristoranti organizzati in un itinerario completo e dinamico.</p>
+    </div>
+  </section>
+
+  <!-- Descrizione di ciò che facciamo -->
+  <section class="description-section">
+    <img src="about-travel.jpg" alt="Viaggi organizzati">
+    <div class="text">
+      <h3>Cos'è GlobalGlide360?</h3>
+      <p>GlobalGlide360 è il tuo assistente AI che crea itinerari personalizzati e completi.  
+      Selezioniamo i migliori voli, hotel, attività ed esperienze per offrirti un viaggio unico, 
+      senza stress e al miglior prezzo.</p>
+      <p>Puoi scaricare il tuo itinerario dettagliato in PDF e condividerlo facilmente grazie a un QR code dedicato.</p>
+    </div>
+  </section>
+
+  <section class="search-section">
+    <h3>Crea il tuo itinerario personalizzato</h3>
+    <form id="travel-form">
+      <input type="text" name="origin" placeholder="Città di partenza (es. Milano)" required>
+      <input type="text" name="destinazione" placeholder="Destinazione (es. Parigi)" required>
+      <input type="date" name="dataPartenza" required>
+      <input type="date" name="dataRitorno" required>
+      <input type="number" name="adulti" placeholder="Numero adulti" min="1" value="1" required>
+      <input type="number" name="bambini" placeholder="Numero bambini (<12 anni)" min="0" value="0" required>
+
+      <div class="preferences">
+        <label><input type="checkbox" name="preferenze" value="cultura"> Cultura</label>
+        <label><input type="checkbox" name="preferenze" value="avventura"> Avventura</label>
+        <label><input type="checkbox" name="preferenze" value="relax"> Relax</label>
+        <label><input type="checkbox" name="preferenze" value="cibo"> Cibo</label>
+        <label><input type="checkbox" name="preferenze" value="famiglia"> Famiglia</label>
+      </div>
+
+      <button type="submit">Cerca itinerario</button>
+    </form>
+  </section>
+
+  <div id="results"></div>
+  <button id="download-pdf">📄 Scarica Itinerario in PDF</button>
 
   <footer>
     <p>© 2025 GlobalGlide360 – Tutti i diritti riservati</p>
   </footer>
 
 <script>
-const container = document.getElementById("itinerario-container");
-const title = document.getElementById("title-itinerario");
+const form = document.getElementById("travel-form");
+const results = document.getElementById("results");
 const btnPDF = document.getElementById("download-pdf");
+let itinerarioId = null;
 
-// Legge ID dall'URL
-const params = new URLSearchParams(window.location.search);
-const itinerarioId = params.get("id");
-
-if(!itinerarioId){
-  title.innerText = "❌ Nessun itinerario trovato";
+form.addEventListener("submit", async e => {
+  e.preventDefault();
+  results.innerHTML = "<p style='text-align:center;'>⏳ Ricerca in corso...</p>";
   btnPDF.style.display = "none";
-}else{
-  // Qui si recuperano i dati dell'itinerario (in futuro da DB)
-  title.innerText = `Itinerario #${itinerarioId}`;
-  
-  // Simulazione dati
-  container.innerHTML = `
+
+  // ID univoco per l'itinerario
+  itinerarioId = Date.now();
+
+  const origin = form.elements["origin"].value;
+  const destinazione = form.elements["destinazione"].value;
+  const dataPartenza = form.elements["dataPartenza"].value;
+  const dataRitorno = form.elements["dataRitorno"].value;
+  const adulti = form.elements["adulti"].value;
+  const bambini = form.elements["bambini"].value;
+  const giorni = Math.max(1, Math.round((new Date(dataRitorno) - new Date(dataPartenza)) / (1000*60*60*24)) + 1);
+  const preferenze = Array.from(form.querySelectorAll("input[name='preferenze']:checked")).map(cb => cb.value);
+
+  // Qui chiamate API reali o simulate
+  results.innerHTML = `
     <div class="card">
       <h3>✈️ Voli</h3>
-      <p>Volo A/R per Parigi - €285</p>
+      <p>Risultati voli per ${destinazione}...</p>
     </div>
     <div class="card">
       <h3>🏨 Hotel</h3>
-      <p>Hotel Duomo 4★ - €120/notte</p>
+      <p>Hotel consigliati...</p>
     </div>
     <div class="card">
       <h3>🗓️ Itinerario Giorno per Giorno</h3>
       <div class="day-card">
         <h4>Giorno 1</h4>
-        <p>Visita al museo del Louvre e crociera sulla Senna</p>
+        <p>Visita guidata + pranzo in centro città</p>
       </div>
       <div class="day-card">
         <h4>Giorno 2</h4>
-        <p>Torre Eiffel, pranzo gourmet e shopping sugli Champs-Élysées</p>
+        <p>Escursione fuori città e attività all'aperto</p>
       </div>
-    </div>
-  `;
-}
+    </div>`;
+  
+  btnPDF.style.display = "block";
+});
 
-// Download PDF
 btnPDF.addEventListener("click", () => {
   const { jsPDF } = window.jspdf;
 
-  html2canvas(container, {scale:2}).then(canvas => {
+  html2canvas(results, {scale:2}).then(canvas => {
     const imgData = canvas.toDataURL("image/png");
     const pdf = new jsPDF('p','mm','a4');
 
@@ -111,28 +205,44 @@ btnPDF.addEventListener("click", () => {
       pdf.addImage(logo, 'PNG', 15, 10, 25, 18);
       pdf.setFont("helvetica","bold");
       pdf.setFontSize(16);
-      pdf.text(`Itinerario #${itinerarioId}`, 50, 22);
+      pdf.text("Itinerario creato con GlobalGlide360", 50, 22);
 
-      const imgWidth = 180;
-      const pageHeight = 297;
-      const imgHeight = canvas.height * imgWidth / canvas.width;
-      let heightLeft = imgHeight;
-      let position = 40;
+      // QR code più piccolo e dinamico
+      const qrCanvas = document.createElement("canvas");
+      const qr = new QRCode(qrCanvas, {
+        text: `https://www.globalglide360.com/itinerario?id=${itinerarioId}`,
+        width: 45,
+        height: 45
+      });
 
-      pdf.addImage(imgData, 'PNG', 15, position, imgWidth, imgHeight);
-      heightLeft -= pageHeight;
+      setTimeout(() => {
+        const qrImg = qrCanvas.querySelector("img") || qrCanvas;
+        const qrData = qrImg.src || qrImg.toDataURL("image/png");
+        pdf.addImage(qrData, 'PNG', 155, 10, 25, 25);
 
-      while (heightLeft > 0) {
-        position = heightLeft - imgHeight + 40;
-        pdf.addPage();
+        // Contenuto
+        const imgWidth = 180;
+        const pageHeight = 297;
+        const imgHeight = canvas.height * imgWidth / canvas.width;
+        let heightLeft = imgHeight;
+        let position = 40;
+
         pdf.addImage(imgData, 'PNG', 15, position, imgWidth, imgHeight);
         heightLeft -= pageHeight;
-      }
 
-      pdf.save(`Itinerario-${itinerarioId}.pdf`);
+        while (heightLeft > 0) {
+          position = heightLeft - imgHeight + 40;
+          pdf.addPage();
+          pdf.addImage(imgData, 'PNG', 15, position, imgWidth, imgHeight);
+          heightLeft -= pageHeight;
+        }
+
+        pdf.save(`Itinerario-GlobalGlide360-${itinerarioId}.pdf`);
+      }, 300);
     };
   });
 });
 </script>
 </body>
 </html>
+
