@@ -40,6 +40,12 @@
     }
     .search-section button:hover{background:#00b4d8;}
 
+    #results{max-width:1000px;margin:30px auto;padding:20px;text-align:center;}
+    #download-pdf{
+      background:#00b4d8;color:white;border:none;padding:12px 18px;font-size:16px;border-radius:8px;cursor:pointer;
+      display:none;margin:0 auto;
+    }
+
     footer{background:#222;color:#ccc;text-align:center;font-size:14px;padding:20px;margin-top:20px;}
 
     @keyframes fadeIn{from{opacity:0}to{opacity:1}}
@@ -86,7 +92,7 @@
   </section>
 
   <div id="results"></div>
-  <button id="download-pdf" style="display:none;">📄 Scarica Itinerario in PDF</button>
+  <button id="download-pdf">📄 Scarica Itinerario in PDF</button>
 
   <footer>
     <p>© 2025 GlobalGlide360 – Tutti i diritti riservati</p>
@@ -100,11 +106,13 @@ let itinerarioId = null;
 
 form.addEventListener("submit", async e => {
   e.preventDefault();
-  results.innerHTML = "<p style='text-align:center;'>⏳ Ricerca in corso...</p>";
+  results.innerHTML = "<p>⏳ Ricerca in corso...</p>";
   btnPDF.style.display = "none";
 
+  // Generiamo un ID univoco per l'itinerario
   itinerarioId = Date.now();
 
+  // Dati del form
   const origin = form.elements["origin"].value;
   const destinazione = form.elements["destinazione"].value;
   const dataPartenza = form.elements["dataPartenza"].value;
@@ -114,14 +122,9 @@ form.addEventListener("submit", async e => {
   const preferenze = Array.from(form.querySelectorAll("input[name='preferenze']:checked"))
                           .map(el => el.value);
 
+  // Creiamo i dati dell'itinerario (DEMO)
   const itinerarioData = {
-    origin,
     destinazione,
-    dataPartenza,
-    dataRitorno,
-    adulti,
-    bambini,
-    preferenze,
     voli: [{
       titolo: `Volo A/R da ${origin} a ${destinazione}`,
       prezzo: "€285",
@@ -145,27 +148,19 @@ form.addEventListener("submit", async e => {
     }]
   };
 
+  // Visualizziamo un'anteprima dell'itinerario
   results.innerHTML = `
-    <div style="max-width:1000px;margin:30px auto;padding:10px;">
-      <h3 style="color:#0077b6;text-align:center;">Itinerario per ${destinazione}</h3>
-      <div style="margin-top:20px;">
-        <h4>✈️ Volo: ${itinerarioData.voli[0].titolo}</h4>
-        <p>Prezzo: ${itinerarioData.voli[0].prezzo}</p>
-        <a href="${itinerarioData.voli[0].link}" target="_blank">🔗 Prenota volo</a>
-      </div>
-      <div style="margin-top:20px;">
-        <h4>🏨 Hotel consigliato: ${itinerarioData.hotel[0].nome}</h4>
-        <p>${itinerarioData.hotel[0].prezzo}</p>
-        <a href="${itinerarioData.hotel[0].link}" target="_blank">🔗 Prenota hotel</a>
-      </div>
-      <div style="margin-top:20px;">
-        <h4>🎟️ Attività suggerita</h4>
-        <a href="${itinerarioData.attivita[0].link}" target="_blank">${itinerarioData.attivita[0].titolo}</a>
-      </div>
+    <div style="background:#f8f9fa;padding:20px;border-radius:10px;">
+      <h3 style="color:#0077b6;">Itinerario per ${destinazione}</h3>
+      <p>✈️ ${itinerarioData.voli[0].titolo} - ${itinerarioData.voli[0].prezzo}</p>
+      <p>🏨 ${itinerarioData.hotel[0].nome} - ${itinerarioData.hotel[0].prezzo}</p>
+      <p>🎟️ ${itinerarioData.attivita[0].titolo}</p>
+      <br>
+      <a href="itinerario.html?id=${itinerarioId}" style="color:#0077b6;text-decoration:underline;">🔗 Visualizza itinerario completo</a>
     </div>
   `;
 
-  // Salva l'itinerario sul backend
+  // Salviamo sul backend (finto API per demo)
   await fetch("/api/itinerari", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -173,8 +168,8 @@ form.addEventListener("submit", async e => {
   });
 
   btnPDF.style.display = "block";
+  btnPDF.onclick = () => window.location.href = `itinerario.html?id=${itinerarioId}&pdf=1`;
 });
 </script>
 </body>
 </html>
-
