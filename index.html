@@ -146,28 +146,28 @@
       <p>Voli, hotel, attività e ristoranti selezionati con cura per te</p>
       <div class="search-box">
         <div class="form-row">
-          <input type="text" placeholder="📍 Meta (es. Parigi)">
+          <input type="text" id="meta" placeholder="📍 Meta (es. Parigi)">
         </div>
         <div class="form-row">
-          <input type="date" placeholder="Data partenza">
-          <input type="date" placeholder="Data ritorno">
+          <input type="date" id="partenza">
+          <input type="date" id="ritorno">
         </div>
         <div class="form-row">
-          <input type="number" placeholder="Adulti">
-          <input type="number" placeholder="Bambini (<12)">
+          <input type="number" id="adulti" placeholder="Adulti">
+          <input type="number" id="bambini" placeholder="Bambini (<12)">
         </div>
         <div class="form-row">
-          <input type="number" placeholder="Budget totale (€)">
+          <input type="number" id="budget" placeholder="Budget totale (€)">
         </div>
         <div class="pref-container">
-          <label><input type="checkbox">Musei</label>
-          <label><input type="checkbox">Natura</label>
-          <label><input type="checkbox">Mare</label>
-          <label><input type="checkbox">Shopping</label>
-          <label><input type="checkbox">Avventura</label>
-          <label><input type="checkbox">Relax</label>
+          <label><input type="checkbox" value="Musei">Musei</label>
+          <label><input type="checkbox" value="Natura">Natura</label>
+          <label><input type="checkbox" value="Mare">Mare</label>
+          <label><input type="checkbox" value="Shopping">Shopping</label>
+          <label><input type="checkbox" value="Avventura">Avventura</label>
+          <label><input type="checkbox" value="Relax">Relax</label>
         </div>
-        <button>Inizia</button>
+        <button id="btn-inizia">Inizia</button>
       </div>
     </div>
   </section>
@@ -229,5 +229,31 @@
   <footer>
     <p>© 2025 GlobalGlide360 – Tutti i diritti riservati</p>
   </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    document.getElementById("btn-inizia").addEventListener("click", async () => {
+      const meta = document.getElementById("meta").value;
+      const partenza = document.getElementById("partenza").value;
+      const ritorno = document.getElementById("ritorno").value;
+      const adulti = document.getElementById("adulti").value;
+      const bambini = document.getElementById("bambini").value;
+      const budget = document.getElementById("budget").value;
+
+      const preferenze = [...document.querySelectorAll('.pref-container input:checked')].map(c => c.value);
+
+      const dati = { meta, partenza, ritorno, adulti, bambini, budget, preferenze };
+
+      const res = await fetch("/api/itinerario", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dati)
+      });
+
+      const itinerario = await res.json();
+      localStorage.setItem("itinerario", JSON.stringify(itinerario));
+      window.location.href = "itinerario.html";
+    });
+  </script>
 </body>
 </html>
