@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GlobalGlide360 - Itinerari AI</title>
+  <title>Itinerario - GlobalGlide360</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <style>
     *{margin:0;padding:0;box-sizing:border-box;}
     body{font-family:'Segoe UI',Arial,sans-serif;color:#222;background:#fff;line-height:1.4;}
@@ -18,45 +17,10 @@
     }
     header img{height:65px;}
     header h1{color:#0077b6;font-size:24px;margin-left:8px;letter-spacing:1px;}
-
-    .hero{position:relative;height:70vh;overflow:hidden;display:flex;align-items:center;justify-content:center;}
-    .hero img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;}
-    .hero::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.45);}
-    .hero-content{position:relative;z-index:1;text-align:center;color:white;padding:20px;max-width:850px;animation:fadeIn 1.2s ease;}
-    .hero-content h2{font-size:38px;margin-bottom:15px;}
-    .hero-content p{font-size:18px;}
-
-    .search-section{background:#f1f7fb;padding:40px 20px;text-align:center;}
-    .search-section h3{font-size:22px;margin-bottom:15px;color:#0077b6;}
-    .search-section form{display:grid;gap:12px;max-width:780px;margin:0 auto;}
-    .search-section input, .search-section select{
-      padding:14px;border:1px solid #ccc;border-radius:8px;font-size:16px;width:100%;
-    }
-    .search-section button{
-      background:#0077b6;color:white;padding:14px;border:none;border-radius:8px;font-size:18px;cursor:pointer;
-      transition:all 0.3s;
-    }
-    .search-section button:hover{background:#00b4d8;}
-
-    .preferences{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;}
-    .preferences label{font-size:14px;}
-
-    #results{max-width:1000px;margin:30px auto;padding:10px;animation:fadeIn 1s ease;}
+    
+    .container{max-width:1000px;margin:120px auto 40px;padding:20px;}
     .card{background:white;padding:20px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.08);margin-bottom:25px;}
     .card h3{margin-bottom:10px;color:#0077b6;font-size:20px;border-bottom:1px solid #eee;padding-bottom:8px;}
-    .card p, .card a{font-size:16px;line-height:1.4;}
-
-    .options{display:grid;gap:12px;}
-    .option{
-      display:flex;align-items:center;gap:12px;
-      border:1px solid #ddd;border-radius:8px;padding:10px;background:#fafafa;
-    }
-    .option img{width:90px;height:70px;object-fit:cover;border-radius:6px;}
-    .option-info{flex:1;}
-    .option-info strong{color:#0077b6;display:block;font-size:16px;}
-    .option a{font-size:14px;color:#00b4d8;}
-
-    .timeline{margin:20px 0;}
     .day-card{
       background:#f8f9fa;margin-bottom:20px;padding:15px;border-radius:10px;
       border-left:5px solid #0077b6;animation:slideIn 0.7s ease;
@@ -66,14 +30,11 @@
 
     #download-pdf{
       display:block;margin:20px auto;background:#00b4d8;color:white;border:none;
-      padding:12px 18px;font-size:16px;border-radius:8px;cursor:pointer;display:none;
+      padding:12px 18px;font-size:16px;border-radius:8px;cursor:pointer;
     }
 
     footer{background:#222;color:#ccc;text-align:center;font-size:14px;padding:20px;margin-top:20px;}
-    a{color:#0077b6;text-decoration:none;}
-    a:hover{text-decoration:underline;}
 
-    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
     @keyframes slideIn{from{transform:translateX(-20px);opacity:0}to{transform:translateX(0);opacity:1}}
   </style>
 </head>
@@ -85,183 +46,90 @@
     </div>
   </header>
 
-  <section class="hero">
-    <img src="hero-travel.png" alt="Hero Travel">
-    <div class="hero-content">
-      <h2>Il tuo viaggio perfetto, creato da un'AI</h2>
-      <p>Voli, hotel, attività e ristoranti organizzati in un itinerario completo e dinamico.</p>
-    </div>
-  </section>
-
-  <section class="search-section">
-    <h3>Crea il tuo itinerario personalizzato</h3>
-    <form id="travel-form">
-      <input type="text" name="origin" placeholder="Città di partenza (es. Milano)" required>
-      <input type="text" name="destinazione" placeholder="Destinazione (es. Parigi)" required>
-      <input type="date" name="dataPartenza" required>
-      <input type="date" name="dataRitorno" required>
-      <input type="number" name="adulti" placeholder="Numero adulti" min="1" value="1" required>
-      <input type="number" name="bambini" placeholder="Numero bambini (<12 anni)" min="0" value="0" required>
-
-      <div class="preferences">
-        <label><input type="checkbox" name="preferenze" value="cultura"> Cultura</label>
-        <label><input type="checkbox" name="preferenze" value="avventura"> Avventura</label>
-        <label><input type="checkbox" name="preferenze" value="relax"> Relax</label>
-        <label><input type="checkbox" name="preferenze" value="cibo"> Cibo</label>
-        <label><input type="checkbox" name="preferenze" value="famiglia"> Famiglia</label>
-      </div>
-
-      <button type="submit">Cerca itinerario</button>
-    </form>
-  </section>
-
-  <div id="results"></div>
-  <button id="download-pdf">📄 Scarica Itinerario in PDF</button>
+  <div class="container">
+    <h2 id="title-itinerario" style="margin-bottom:20px;color:#0077b6;">Caricamento itinerario...</h2>
+    <div id="itinerario-container"></div>
+    <button id="download-pdf">📄 Scarica in PDF</button>
+  </div>
 
   <footer>
     <p>© 2025 GlobalGlide360 – Tutti i diritti riservati</p>
   </footer>
 
 <script>
-const form = document.getElementById("travel-form");
-const results = document.getElementById("results");
+const container = document.getElementById("itinerario-container");
+const title = document.getElementById("title-itinerario");
 const btnPDF = document.getElementById("download-pdf");
 
-form.addEventListener("submit", async e => {
-  e.preventDefault();
-  results.innerHTML = "<p style='text-align:center;'>⏳ Ricerca in corso...</p>";
+// Legge ID dall'URL
+const params = new URLSearchParams(window.location.search);
+const itinerarioId = params.get("id");
+
+if(!itinerarioId){
+  title.innerText = "❌ Nessun itinerario trovato";
   btnPDF.style.display = "none";
-
-  const origin = form.elements["origin"].value;
-  const destinazione = form.elements["destinazione"].value;
-  const dataPartenza = form.elements["dataPartenza"].value;
-  const dataRitorno = form.elements["dataRitorno"].value;
-  const adulti = form.elements["adulti"].value;
-  const bambini = form.elements["bambini"].value;
-  const giorni = Math.max(1, Math.round((new Date(dataRitorno) - new Date(dataPartenza)) / (1000*60*60*24)) + 1);
-  const preferenze = Array.from(form.querySelectorAll("input[name='preferenze']:checked")).map(cb => cb.value);
-
-  try {
-    // API chiamate fittizie
-    const resVoli = await fetch(`/api/voli?origin=${origin}&destinazione=${destinazione}&dataPartenza=${dataPartenza}&dataRitorno=${dataRitorno}`);
-    const voli = (await resVoli.json()).data;
-
-    const resHotel = await fetch(`/api/hotel?destinazione=${destinazione}&checkin=${dataPartenza}&checkout=${dataRitorno}&adulti=${adulti}&bambini=${bambini}`);
-    const hotel = (await resHotel.json()).data;
-
-    const resAttivita = await fetch(`/api/attivita?destinazione=${destinazione}&preferenze=${preferenze.join(",")}`);
-    const attivita = (await resAttivita.json()).data;
-
-    const resRistoranti = await fetch(`/api/ristoranti?destinazione=${destinazione}`);
-    const ristoranti = (await resRistoranti.json()).data;
-
-    // Popolamento HTML
-    results.innerHTML = "";
-
-    // Voli
-    results.innerHTML += `<div class="card"><h3>✈️ Voli disponibili</h3>
-      <div class="options">${voli.map(v=>`
-        <div class="option">
-          <img src="${v.img}" alt="${v.compagnia}">
-          <div class="option-info">
-            <strong>${v.compagnia}</strong>
-            <span>Durata: ${v.durata}</span>
-          </div>
-          <strong>€${v.prezzo}</strong>
-        </div>`).join("")}
+}else{
+  // Qui si recuperano i dati dell'itinerario (in futuro da DB)
+  title.innerText = `Itinerario #${itinerarioId}`;
+  
+  // Simulazione dati
+  container.innerHTML = `
+    <div class="card">
+      <h3>✈️ Voli</h3>
+      <p>Volo A/R per Parigi - €285</p>
+    </div>
+    <div class="card">
+      <h3>🏨 Hotel</h3>
+      <p>Hotel Duomo 4★ - €120/notte</p>
+    </div>
+    <div class="card">
+      <h3>🗓️ Itinerario Giorno per Giorno</h3>
+      <div class="day-card">
+        <h4>Giorno 1</h4>
+        <p>Visita al museo del Louvre e crociera sulla Senna</p>
       </div>
-    </div>`;
-
-    // Hotel
-    results.innerHTML += `<div class="card"><h3>🏨 Hotel consigliati</h3>
-      <div class="options">${hotel.map(h=>`
-        <div class="option">
-          <img src="${h.img}" alt="${h.nome}">
-          <div class="option-info">
-            <strong>${h.nome}</strong>
-            <span>Valutazione: ${h.rating}</span>
-            <p style="font-size:14px;">${h.descrizione}</p>
-          </div>
-          <strong>€${h.prezzo}/notte</strong>
-        </div>`).join("")}
+      <div class="day-card">
+        <h4>Giorno 2</h4>
+        <p>Torre Eiffel, pranzo gourmet e shopping sugli Champs-Élysées</p>
       </div>
-    </div>`;
+    </div>
+  `;
+}
 
-    // Itinerario Giorno per Giorno
-    results.innerHTML += `<div class="card"><h3>🗓️ Itinerario suggerito</h3>
-      <div class="timeline">${Array.from({length: giorni}).map((_,g)=>{
-        const attivitàFiltrate = attivita.filter(a => preferenze.length === 0 || preferenze.includes(a.tipo));
-        const attG = attivitàFiltrate[g % attivitàFiltrate.length];
-        const commento = g===0 ? "Scopri la città e ambientati." : "Attività principali e tempo libero.";
-        return `
-          <div class="day-card">
-            <h4>Giorno ${g+1}</h4>
-            <p>${commento}</p>
-            <p>Mattina: ${attG ? attG.titolo+" (€"+attG.prezzo+")" : "Attività libera"}</p>
-            <p>Pranzo: ${ristoranti[0].nome} (★${ristoranti[0].rating})</p>
-            <p>Pomeriggio: ${attG ? attG.titolo+" (€"+attG.prezzo+")" : "Attività libera"}</p>
-            <p>Cena: ${ristoranti[1].nome} (★${ristoranti[1].rating})</p>
-          </div>`;
-      }).join("")}</div>
-    </div>`;
-
-    btnPDF.style.display = "block";
-
-  } catch (error) {
-    console.error("Errore durante la ricerca:", error);
-    results.innerHTML = "<p style='text-align:center;color:red;'>❌ Errore durante la ricerca. Riprova più tardi.</p>";
-  }
-});
-
-// DOWNLOAD PDF con QR code
+// Download PDF
 btnPDF.addEventListener("click", () => {
   const { jsPDF } = window.jspdf;
 
-  html2canvas(results, {scale:2}).then(canvas => {
+  html2canvas(container, {scale:2}).then(canvas => {
     const imgData = canvas.toDataURL("image/png");
     const pdf = new jsPDF('p','mm','a4');
 
-    // Logo + titolo
+    // Logo e titolo
     const logo = new Image();
     logo.src = "logo-globalglide360.png";
     logo.onload = () => {
-      pdf.addImage(logo, 'PNG', 15, 10, 30, 20);
+      pdf.addImage(logo, 'PNG', 15, 10, 25, 18);
       pdf.setFont("helvetica","bold");
-      pdf.setFontSize(18);
-      pdf.text("Itinerario creato con GlobalGlide360", 50, 22);
+      pdf.setFontSize(16);
+      pdf.text(`Itinerario #${itinerarioId}`, 50, 22);
 
-      // QR code su canvas temporaneo
-      const qrCanvas = document.createElement("canvas");
-      const qr = new QRCode(qrCanvas, {
-        text: "https://www.globalglide360.com",
-        width: 70,
-        height: 70
-      });
+      const imgWidth = 180;
+      const pageHeight = 297;
+      const imgHeight = canvas.height * imgWidth / canvas.width;
+      let heightLeft = imgHeight;
+      let position = 40;
 
-      setTimeout(() => {
-        const qrImg = qrCanvas.querySelector("img") || qrCanvas;
-        const qrData = qrImg.src || qrImg.toDataURL("image/png");
-        pdf.addImage(qrData, 'PNG', 150, 10, 40, 40);
+      pdf.addImage(imgData, 'PNG', 15, position, imgWidth, imgHeight);
+      heightLeft -= pageHeight;
 
-        // Inserimento contenuto itinerario
-        const imgWidth = 180;
-        const pageHeight = 297;
-        const imgHeight = canvas.height * imgWidth / canvas.width;
-        let heightLeft = imgHeight;
-        let position = 60;
-
+      while (heightLeft > 0) {
+        position = heightLeft - imgHeight + 40;
+        pdf.addPage();
         pdf.addImage(imgData, 'PNG', 15, position, imgWidth, imgHeight);
         heightLeft -= pageHeight;
+      }
 
-        while (heightLeft > 0) {
-          position = heightLeft - imgHeight + 60;
-          pdf.addPage();
-          pdf.addImage(imgData, 'PNG', 15, position, imgWidth, imgHeight);
-          heightLeft -= pageHeight;
-        }
-
-        pdf.save("Itinerario-GlobalGlide360.pdf");
-      }, 300);
+      pdf.save(`Itinerario-${itinerarioId}.pdf`);
     };
   });
 });
