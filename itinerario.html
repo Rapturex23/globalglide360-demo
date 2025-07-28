@@ -78,6 +78,7 @@ const btnPDF = document.getElementById("download-pdf");
 
 const params = new URLSearchParams(window.location.search);
 const itinerarioId = params.get("id");
+const pdfMode = params.get("pdf");
 
 if(!itinerarioId){
   title.innerText = "❌ Nessun itinerario trovato";
@@ -132,7 +133,15 @@ if(!itinerarioId){
       </div>
     `;
 
-    btnPDF.style.display = "block";
+    // Mostra pulsante PDF solo se non siamo già in modalità PDF
+    if(!pdfMode){
+      btnPDF.style.display = "block";
+      btnPDF.onclick = () => {
+        window.print(); // Stampa/Salva come PDF
+      }
+    } else {
+      window.print();
+    }
   })();
 }
 </script>
