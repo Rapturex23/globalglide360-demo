@@ -42,11 +42,7 @@
     .day-content h2 {color:#0077b6; margin-bottom:8px; font-size:20px;}
     .day-content p {font-size:15px; margin-bottom:8px;}
 
-    .day-content p span.icon {
-      margin-right:8px; font-size:18px;
-    }
-
-    /* TOOLS */
+    /* BOTTONI TOOLS */
     .tools {
       display:flex; justify-content:space-between; align-items:center;
       background:#fff; padding:15px; border-radius:10px;
@@ -56,8 +52,20 @@
     .tools button {
       background:#fcbf49; color:#222; border:none; padding:10px 16px;
       border-radius:8px; font-size:16px; cursor:pointer; font-weight:600;
+      transition:0.3s;
     }
     .tools button:hover {background:#0077b6; color:white;}
+
+    /* NUOVA RICERCA */
+    .new-search {
+      display:block; width:100%; text-align:center; margin:20px auto;
+    }
+    .new-search a {
+      display:inline-block; background:#0077b6; color:white; text-decoration:none;
+      padding:12px 20px; border-radius:8px; font-weight:600; font-size:16px;
+      transition:0.3s;
+    }
+    .new-search a:hover {background:#fcbf49; color:#222;}
 
     footer {
       background:#222; color:#ccc; text-align:center;
@@ -68,6 +76,7 @@
       .title-box h1 {font-size:22px;}
       .day img {height:180px;}
       .tools {flex-direction:column; gap:15px;}
+      .tools img {width:80px; height:80px;}
     }
   </style>
 </head>
@@ -92,6 +101,11 @@
       <p id="dettagli-itinerario"></p>
     </div>
 
+    <!-- NUOVA RICERCA -->
+    <div class="new-search">
+      <a href="index.html">🔎 Nuova ricerca</a>
+    </div>
+
     <div id="giorni-itinerario"></div>
 
     <!-- QR & Download -->
@@ -108,55 +122,39 @@
   <script>
     // Recupera i parametri dalla URL
     const params = new URLSearchParams(window.location.search);
-    const partenza = params.get('partenza') || 'Città di partenza';
     const destinazione = params.get('destinazione') || 'Destinazione';
     const adulti = params.get('adulti') || 2;
     const bambini = params.get('bambini') || 0;
     const budget = params.get('budget') || 0;
-    const dataPartenza = params.get('data-partenza') || '';
-    const dataRitorno = params.get('data-ritorno') || '';
-    
+
     const preferenze = [];
     ['mare', 'natura', 'cultura', 'shopping', 'avventura', 'relax'].forEach(pref => {
       if (params.get(pref)) preferenze.push(pref);
     });
 
-    // Popola il titolo e dettagli
     document.getElementById('titolo-itinerario').innerText = `${destinazione} - Itinerario su misura`;
     document.getElementById('dettagli-itinerario').innerText = 
       `${adulti} adulti, ${bambini} bambini | Budget €${budget} | Preferenze: ${preferenze.join(', ')}`;
 
-    // Crea dinamicamente un itinerario base
+    // Itinerario dinamico (demo)
     const giorni = [
-      {
-        titolo: "Giorno 1 - Arrivo e scoperta",
-        descrizione: `<span class="icon">✈️</span> Arrivo a ${destinazione}, sistemazione in hotel centrale e prima passeggiata esplorativa.`,
-        immagine: "day1.jpg"
-      },
-      {
-        titolo: "Giorno 2 - Attività principali",
-        descrizione: `<span class="icon">🏛️</span> Visita delle attrazioni iconiche e attività preferite: ${preferenze.join(', ')}`,
-        immagine: "day2.jpg"
-      },
-      {
-        titolo: "Giorno 3 - Relax e rientro",
-        descrizione: `<span class="icon">🛍️</span> Mattinata libera per shopping o relax, poi rientro nel pomeriggio.`,
-        immagine: "day3.jpg"
-      }
+      { titolo: "Giorno 1 - Arrivo e scoperta", descrizione: "✈️ Arrivo e sistemazione in hotel centrale.", immagine: "day1.jpg" },
+      { titolo: "Giorno 2 - Attività principali", descrizione: "🏛️ Visita attrazioni e attività preferite.", immagine: "day2.jpg" },
+      { titolo: "Giorno 3 - Relax e rientro", descrizione: "🛍️ Relax, shopping e ritorno a casa.", immagine: "day3.jpg" }
     ];
 
     const container = document.getElementById('giorni-itinerario');
     giorni.forEach(g => {
-      const dayDiv = document.createElement('div');
-      dayDiv.classList.add('day');
-      dayDiv.innerHTML = `
+      const div = document.createElement('div');
+      div.classList.add('day');
+      div.innerHTML = `
         <img src="${g.immagine}" alt="${g.titolo}">
         <div class="day-content">
           <h2>${g.titolo}</h2>
           <p>${g.descrizione}</p>
         </div>
       `;
-      container.appendChild(dayDiv);
+      container.appendChild(div);
     });
   </script>
 </body>
