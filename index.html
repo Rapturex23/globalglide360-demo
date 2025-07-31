@@ -7,69 +7,92 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
   <style>
     * {margin:0; padding:0; box-sizing:border-box;}
-    body {font-family:'Inter', sans-serif; background:#f5f7fa; color:#222; line-height:1.5;}
+    html, body {height:100%; font-family:'Inter', sans-serif; background:#f5f7fa; color:#222;}
 
     /* HEADER */
     header {
       position:fixed; top:0; left:0; width:100%;
       display:flex; justify-content:space-between; align-items:center;
-      padding:10px 30px; background:rgba(255,255,255,0.7);
+      padding:12px 20px; background:rgba(255,255,255,0.8);
       backdrop-filter:blur(6px); z-index:1000;
     }
     .logo {display:flex; align-items:center;}
-    .logo img {height:50px; margin-right:10px;}
-    nav a {margin-left:20px; text-decoration:none; color:#0077b6; font-weight:600;}
+    .logo img {height:45px; margin-right:10px;}
+    nav {display:flex; gap:15px;}
+    nav a {
+      text-decoration:none; color:#0077b6; font-weight:600;
+      font-size:15px;
+    }
 
     /* HERO */
     .hero {
       background:url('hero-travel-new.png') center/cover no-repeat;
-      height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center;
-      text-align:center; padding:20px; position:relative;
+      min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
+      padding:20px; text-align:center; position:relative;
     }
-    .hero h1 {
-      font-family:'Playfair Display', serif; font-size:40px; color:white; margin-bottom:10px;
-      text-shadow:0 3px 8px rgba(0,0,0,0.6);
+    .overlay {
+      position:absolute; top:0; left:0; width:100%; height:100%;
+      background:rgba(0,0,0,0.4); z-index:1;
     }
-    .hero p {font-size:18px; color:white; margin-bottom:20px;}
+    .hero-content {
+      position:relative; z-index:2; color:white; max-width:850px;
+    }
+    .hero-content h1 {
+      font-family:'Playfair Display', serif;
+      font-size:42px; margin-bottom:10px; line-height:1.2;
+    }
+    .hero-content p {font-size:18px; margin-bottom:25px;}
     .btn-primary {
-      background:#0077b6; color:white; border:none; padding:14px 30px; font-size:18px;
-      border-radius:8px; cursor:pointer; transition:0.3s;
+      background:#0077b6; color:white; border:none; padding:14px 30px;
+      font-size:18px; border-radius:8px; cursor:pointer; transition:0.3s;
     }
     .btn-primary:hover {background:#fcbf49; color:#222;}
 
-    /* FORM DI RICERCA */
+    /* FORM */
     .search-box {
       background:rgba(255,255,255,0.9); padding:20px; border-radius:12px;
-      max-width:900px; width:90%; margin-top:30px; display:flex; flex-wrap:wrap; gap:10px; justify-content:center;
+      max-width:950px; margin:30px auto 0 auto; display:flex; flex-wrap:wrap; gap:12px; justify-content:center;
     }
     .search-box input, .search-box select {
-      padding:10px; border:1px solid #ccc; border-radius:6px; flex:1 1 150px;
+      padding:12px; border:1px solid #ccc; border-radius:6px; flex:1 1 160px;
+      font-size:15px;
     }
     .preferences {
-      display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:10px;
+      display:flex; gap:10px; justify-content:center; flex-wrap:wrap; width:100%; margin-top:5px;
     }
     .preferences label {
       background:#e9ecef; padding:8px 12px; border-radius:6px; cursor:pointer;
       display:flex; align-items:center; gap:6px; font-size:14px;
+      flex:1 1 auto; text-align:center;
     }
     .preferences input {display:none;}
 
     /* SEZIONE COME FUNZIONA */
     .steps {padding:80px 20px; text-align:center; background:#fff;}
-    .steps h2 {font-family:'Playfair Display', serif; color:#0077b6; font-size:30px; margin-bottom:40px;}
+    .steps h2 {
+      font-family:'Playfair Display', serif; color:#0077b6;
+      font-size:30px; margin-bottom:40px;
+    }
     .steps-grid {display:grid; gap:30px;}
-    .step {background:#f5f7fa; padding:20px; border-radius:10px;}
+    .step {
+      background:#f5f7fa; padding:20px; border-radius:10px;
+      font-size:16px;
+    }
     .step span {font-size:40px; display:block; margin-bottom:10px; color:#0077b6;}
     @media(min-width:768px){.steps-grid {grid-template-columns:repeat(3,1fr);}}
 
     /* ITINERARI ESEMPIO */
     .itinerari {padding:80px 20px; text-align:center;}
-    .itinerari h2 {font-family:'Playfair Display', serif; color:#0077b6; font-size:30px; margin-bottom:40px;}
+    .itinerari h2 {
+      font-family:'Playfair Display', serif; color:#0077b6; font-size:30px; margin-bottom:40px;
+    }
     .cards {display:grid; gap:20px;}
     .card {
-      background:#fff; border-radius:10px; overflow:hidden; box-shadow:0 4px 10px rgba(0,0,0,0.1);
-      text-align:left;
+      background:#fff; border-radius:10px; overflow:hidden;
+      box-shadow:0 4px 10px rgba(0,0,0,0.1); text-align:left;
+      transition:transform 0.3s ease;
     }
+    .card:hover {transform:scale(1.02);}
     .card img {width:100%; height:180px; object-fit:cover;}
     .card-content {padding:15px;}
     .card-content h3 {margin-bottom:6px; color:#0077b6;}
@@ -81,8 +104,21 @@
     @media(min-width:768px){.cards {grid-template-columns:repeat(3,1fr);}}
 
     /* FOOTER */
-    footer {background:#222; color:#ccc; text-align:center; padding:30px;}
+    footer {
+      background:#222; color:#ccc; text-align:center;
+      padding:30px; font-size:15px;
+    }
     footer a {color:#fcbf49; text-decoration:none; margin:0 10px;}
+    
+    /* RESPONSIVE MOBILE FIX */
+    @media(max-width:768px){
+      .hero-content h1 {font-size:30px;}
+      .hero-content p {font-size:16px;}
+      header {flex-direction:column; gap:5px; padding:8px;}
+      nav {flex-wrap:wrap; gap:10px; justify-content:center;}
+      .search-box {flex-direction:column; align-items:stretch;}
+      .preferences label {flex:1 1 45%;}
+    }
   </style>
 </head>
 <body>
@@ -102,29 +138,32 @@
 
   <!-- HERO -->
   <section class="hero">
-    <h1>Organizza il tuo viaggio perfetto con noi</h1>
-    <p>Voli, hotel, attività e ristoranti selezionati su misura per te</p>
-    <button class="btn-primary">Inizia ora</button>
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>Organizza il tuo viaggio perfetto con noi</h1>
+      <p>Voli, hotel, attività e ristoranti selezionati su misura per te</p>
+      <button class="btn-primary">Inizia ora</button>
 
-    <!-- FORM -->
-    <form class="search-box" action="itinerario.html" method="GET">
-      <input type="text" name="partenza" placeholder="Città di partenza">
-      <input type="text" name="destinazione" placeholder="Destinazione">
-      <input type="date" name="data-partenza">
-      <input type="date" name="data-ritorno">
-      <input type="number" name="adulti" placeholder="Adulti">
-      <input type="number" name="bambini" placeholder="Bambini (<12)">
-      <input type="number" name="budget" placeholder="Budget totale €">
+      <!-- FORM -->
+      <form class="search-box" action="itinerario.html" method="GET">
+        <input type="text" name="partenza" placeholder="Città di partenza">
+        <input type="text" name="destinazione" placeholder="Destinazione">
+        <input type="date" name="data-partenza">
+        <input type="date" name="data-ritorno">
+        <input type="number" name="adulti" placeholder="Adulti">
+        <input type="number" name="bambini" placeholder="Bambini (<12)">
+        <input type="number" name="budget" placeholder="Budget totale €">
 
-      <div class="preferences">
-        <label><input type="checkbox" name="mare">🏖️ Mare</label>
-        <label><input type="checkbox" name="natura">🌲 Natura</label>
-        <label><input type="checkbox" name="cultura">🏛️ Cultura</label>
-        <label><input type="checkbox" name="shopping">🛍️ Shopping</label>
-        <label><input type="checkbox" name="avventura">🧗 Avventura</label>
-        <label><input type="checkbox" name="relax">🛶 Relax</label>
-      </div>
-    </form>
+        <div class="preferences">
+          <label><input type="checkbox" name="mare">🏖️ Mare</label>
+          <label><input type="checkbox" name="natura">🌲 Natura</label>
+          <label><input type="checkbox" name="cultura">🏛️ Cultura</label>
+          <label><input type="checkbox" name="shopping">🛍️ Shopping</label>
+          <label><input type="checkbox" name="avventura">🧗 Avventura</label>
+          <label><input type="checkbox" name="relax">🛶 Relax</label>
+        </div>
+      </form>
+    </div>
   </section>
 
   <!-- COME FUNZIONA -->
