@@ -3,257 +3,181 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GlobalGlide360 - Viaggi personalizzati</title>
-
-  <!-- Font & CSS -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <title>GlobalGlide360 - Organizza il tuo viaggio perfetto</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
   <style>
-    * {margin:0;padding:0;box-sizing:border-box;}
-    body {font-family:'Inter', sans-serif; background:#0077b6; color:#fff;}
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body {font-family:'Inter', sans-serif; background:#f5f7fa; color:#222; line-height:1.5;}
 
     /* HEADER */
     header {
-      display:flex;justify-content:space-between;align-items:center;
-      padding:18px 40px;position:fixed;top:0;width:100%;z-index:1000;
-      background:transparent;
+      position:fixed; top:0; left:0; width:100%;
+      display:flex; justify-content:space-between; align-items:center;
+      padding:10px 30px; background:rgba(255,255,255,0.7);
+      backdrop-filter:blur(6px); z-index:1000;
     }
-    .logo-container {
-      display:flex;align-items:center;gap:10px;
-    }
-    .logo-container img {
-      height:40px;
-    }
-    header h1 {
-      font-size:28px;font-weight:600;color:#fff;
-    }
-    nav a {
-      color:#fff;text-decoration:none;margin-left:20px;font-size:16px;
-    }
-    nav a:hover {color:#fcbf49;}
+    .logo {display:flex; align-items:center;}
+    .logo img {height:50px; margin-right:10px;}
+    nav a {margin-left:20px; text-decoration:none; color:#0077b6; font-weight:600;}
 
     /* HERO */
     .hero {
-      position:relative;height:95vh;display:flex;align-items:center;justify-content:center;text-align:center;
-      background:url('hero-travel-optimized.png') center/cover no-repeat;
+      background:url('hero-travel-new.png') center/cover no-repeat;
+      height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center;
+      text-align:center; padding:20px; position:relative;
     }
-    .hero::after {
-      content:'';position:absolute;inset:0;background:rgba(0,0,0,0.3);
+    .hero h1 {
+      font-family:'Playfair Display', serif; font-size:40px; color:white; margin-bottom:10px;
+      text-shadow:0 3px 8px rgba(0,0,0,0.6);
     }
-    .hero-content {
-      position:relative;z-index:1;max-width:850px;padding:20px;margin-top:40px;
+    .hero p {font-size:18px; color:white; margin-bottom:20px;}
+    .btn-primary {
+      background:#0077b6; color:white; border:none; padding:14px 30px; font-size:18px;
+      border-radius:8px; cursor:pointer; transition:0.3s;
     }
-    .hero-content h2 {
-      font-size:42px;font-weight:600;margin-bottom:20px;
-    }
-    .hero-content p {
-      font-size:18px;margin-bottom:20px;
-    }
+    .btn-primary:hover {background:#fcbf49; color:#222;}
 
-    /* FORM */
+    /* FORM DI RICERCA */
     .search-box {
-      display:grid;gap:10px;background:rgba(255,255,255,0.1);
-      padding:20px;border-radius:12px;
-    }
-    .form-row {
-      display:flex;gap:10px;flex-wrap:wrap;
+      background:rgba(255,255,255,0.9); padding:20px; border-radius:12px;
+      max-width:900px; width:90%; margin-top:30px; display:flex; flex-wrap:wrap; gap:10px; justify-content:center;
     }
     .search-box input, .search-box select {
-      flex:1;
-      padding:12px;border:none;border-radius:8px;font-size:16px;
+      padding:10px; border:1px solid #ccc; border-radius:6px; flex:1 1 150px;
     }
-    .pref-container {
-      text-align:left;margin-top:10px;
-      display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;
+    .preferences {
+      display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:10px;
     }
-    .pref-container label {
-      font-size:14px;display:flex;align-items:center;gap:6px;
+    .preferences label {
+      background:#e9ecef; padding:8px 12px; border-radius:6px; cursor:pointer;
+      display:flex; align-items:center; gap:6px; font-size:14px;
     }
-    .search-box button {
-      background:#fcbf49;border:none;padding:12px;border-radius:8px;
-      font-weight:600;font-size:18px;cursor:pointer;color:#0a192f;
-    }
-    .search-box button:hover {background:#ffda6b;}
+    .preferences input {display:none;}
 
-    /* COME FUNZIONA */
-    .steps {
-      padding:80px 20px;text-align:center;background:#0096c7;
-    }
-    .steps h3 {font-size:28px;margin-bottom:50px;}
-    .step-container {
-      display:flex;flex-wrap:wrap;gap:30px;justify-content:center;
-    }
-    .step {
-      max-width:280px;text-align:center;
-    }
-    .step img {
-      width:60px;height:60px;margin-bottom:20px;
-    }
+    /* SEZIONE COME FUNZIONA */
+    .steps {padding:80px 20px; text-align:center; background:#fff;}
+    .steps h2 {font-family:'Playfair Display', serif; color:#0077b6; font-size:30px; margin-bottom:40px;}
+    .steps-grid {display:grid; gap:30px;}
+    .step {background:#f5f7fa; padding:20px; border-radius:10px;}
+    .step span {font-size:40px; display:block; margin-bottom:10px; color:#0077b6;}
+    @media(min-width:768px){.steps-grid {grid-template-columns:repeat(3,1fr);}}
 
     /* ITINERARI ESEMPIO */
-    .itinerari {
-      padding:80px 20px;text-align:center;background:#0077b6;
-    }
-    .itinerari h3 {font-size:28px;margin-bottom:40px;}
-    .cards {
-      display:flex;flex-wrap:wrap;gap:30px;justify-content:center;
-    }
+    .itinerari {padding:80px 20px; text-align:center;}
+    .itinerari h2 {font-family:'Playfair Display', serif; color:#0077b6; font-size:30px; margin-bottom:40px;}
+    .cards {display:grid; gap:20px;}
     .card {
-      background:#fff;color:#0a192f;border-radius:12px;overflow:hidden;
-      width:280px;text-align:left;box-shadow:0 4px 8px rgba(0,0,0,0.2);
-      transition:transform 0.3s;
+      background:#fff; border-radius:10px; overflow:hidden; box-shadow:0 4px 10px rgba(0,0,0,0.1);
+      text-align:left;
     }
-    .card:hover {transform:translateY(-6px);}
-    .card img {width:100%;height:180px;object-fit:cover;}
+    .card img {width:100%; height:180px; object-fit:cover;}
     .card-content {padding:15px;}
-    .card-content h4 {font-size:20px;margin-bottom:6px;}
-    .card-content p {font-size:16px;margin-bottom:10px;}
-    .card-content button {
-      background:#0077b6;color:white;border:none;padding:8px 12px;border-radius:6px;
-      cursor:pointer;font-size:14px;
+    .card-content h3 {margin-bottom:6px; color:#0077b6;}
+    .card-content p {font-size:14px; margin-bottom:10px;}
+    .card-content a {
+      display:inline-block; background:#0077b6; color:white; text-decoration:none;
+      padding:8px 14px; border-radius:6px; font-size:14px;
     }
-    .card-content button:hover {background:#00b4d8;}
+    @media(min-width:768px){.cards {grid-template-columns:repeat(3,1fr);}}
 
     /* FOOTER */
-    footer {
-      background:#0096c7;color:#fff;text-align:center;font-size:14px;padding:20px;
-    }
-
-    /* MOBILE */
-    @media(max-width:768px){
-      .step-container, .cards {flex-direction:column;align-items:center;}
-      .hero-content h2{font-size:32px;}
-    }
+    footer {background:#222; color:#ccc; text-align:center; padding:30px;}
+    footer a {color:#fcbf49; text-decoration:none; margin:0 10px;}
   </style>
 </head>
 <body>
+
   <!-- HEADER -->
   <header>
-    <div class="logo-container">
-      <img src="logo-globalglide360.png" alt="Logo GlobalGlide360">
-      <h1>GlobalGlide360</h1>
+    <div class="logo">
+      <img src="logo-globalglide360.png" alt="GlobalGlide360">
+      <strong>GlobalGlide360</strong>
     </div>
     <nav>
-      <a href="#steps">Come funziona</a>
+      <a href="#">Home</a>
       <a href="#itinerari">Itinerari</a>
-      <a href="#">Contatti</a>
+      <a href="#contatti">Contatti</a>
     </nav>
   </header>
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-content">
-      <h2>Organizza il tuo viaggio perfetto con noi</h2>
-      <p>Voli, hotel, attività e ristoranti selezionati con cura per te</p>
-      <div class="search-box">
-        <div class="form-row">
-          <input type="text" id="meta" placeholder="📍 Meta (es. Parigi)">
-        </div>
-        <div class="form-row">
-          <input type="date" id="partenza">
-          <input type="date" id="ritorno">
-        </div>
-        <div class="form-row">
-          <input type="number" id="adulti" placeholder="Adulti">
-          <input type="number" id="bambini" placeholder="Bambini (<12)">
-        </div>
-        <div class="form-row">
-          <input type="number" id="budget" placeholder="Budget totale (€)">
-        </div>
-        <div class="pref-container">
-          <label><input type="checkbox" value="Musei">Musei</label>
-          <label><input type="checkbox" value="Natura">Natura</label>
-          <label><input type="checkbox" value="Mare">Mare</label>
-          <label><input type="checkbox" value="Shopping">Shopping</label>
-          <label><input type="checkbox" value="Avventura">Avventura</label>
-          <label><input type="checkbox" value="Relax">Relax</label>
-        </div>
-        <button id="btn-inizia">Inizia</button>
+    <h1>Organizza il tuo viaggio perfetto con noi</h1>
+    <p>Voli, hotel, attività e ristoranti selezionati su misura per te</p>
+    <button class="btn-primary">Inizia ora</button>
+
+    <!-- FORM -->
+    <form class="search-box" action="itinerario.html" method="GET">
+      <input type="text" name="partenza" placeholder="Città di partenza">
+      <input type="text" name="destinazione" placeholder="Destinazione">
+      <input type="date" name="data-partenza">
+      <input type="date" name="data-ritorno">
+      <input type="number" name="adulti" placeholder="Adulti">
+      <input type="number" name="bambini" placeholder="Bambini (<12)">
+      <input type="number" name="budget" placeholder="Budget totale €">
+
+      <div class="preferences">
+        <label><input type="checkbox" name="mare">🏖️ Mare</label>
+        <label><input type="checkbox" name="natura">🌲 Natura</label>
+        <label><input type="checkbox" name="cultura">🏛️ Cultura</label>
+        <label><input type="checkbox" name="shopping">🛍️ Shopping</label>
+        <label><input type="checkbox" name="avventura">🧗 Avventura</label>
+        <label><input type="checkbox" name="relax">🛶 Relax</label>
       </div>
-    </div>
+    </form>
   </section>
 
   <!-- COME FUNZIONA -->
-  <section id="steps" class="steps">
-    <h3>Come funziona</h3>
-    <div class="step-container">
-      <div class="step">
-        <img src="https://img.icons8.com/ios-filled/100/ffffff/airplane-take-off.png" alt="meta">
-        <h4>1. Inserisci la meta</h4>
-        <p>Seleziona destinazione, date e preferenze di viaggio</p>
-      </div>
-      <div class="step">
-        <img src="https://img.icons8.com/ios-filled/100/ffffff/ai.png" alt="AI">
-        <h4>2. L'AI cerca per te</h4>
-        <p>Analizziamo voli, hotel e attività in tempo reale</p>
-      </div>
-      <div class="step">
-        <img src="https://img.icons8.com/ios-filled/100/ffffff/checked.png" alt="itinerario">
-        <h4>3. Ricevi l'itinerario</h4>
-        <p>Un piano completo pronto per essere prenotato</p>
-      </div>
+  <section class="steps">
+    <h2>Come funziona</h2>
+    <div class="steps-grid">
+      <div class="step"><span>1️⃣</span> Inserisci meta, date e preferenze.</div>
+      <div class="step"><span>2️⃣</span> L’AI cerca voli, hotel e attività per te.</div>
+      <div class="step"><span>3️⃣</span> Ricevi un itinerario completo pronto da prenotare.</div>
     </div>
   </section>
 
   <!-- ITINERARI ESEMPIO -->
-  <section id="itinerari" class="itinerari">
-    <h3>Itinerari esempio</h3>
+  <section class="itinerari" id="itinerari">
+    <h2>Itinerari esempio</h2>
     <div class="cards">
       <div class="card">
-        <img src="https://picsum.photos/400/300?parigi" alt="Parigi">
+        <img src="parigi.jpg" alt="Parigi">
         <div class="card-content">
-          <h4>Parigi</h4>
-          <p>3 giorni da €400</p>
-          <button>Scopri</button>
+          <h3>Parigi - 3 giorni</h3>
+          <p>Scopri la città dell’amore con voli, hotel e attività da 350€</p>
+          <a href="itinerario.html">Scopri</a>
         </div>
       </div>
       <div class="card">
-        <img src="https://picsum.photos/400/300?venezia" alt="Venezia">
+        <img src="santorini.jpg" alt="Santorini">
         <div class="card-content">
-          <h4>Venezia</h4>
-          <p>4 giorni da €600</p>
-          <button>Scopri</button>
+          <h3>Santorini - 5 giorni</h3>
+          <p>Mare, relax e tramonti mozzafiato a partire da 500€</p>
+          <a href="itinerario.html">Scopri</a>
         </div>
       </div>
       <div class="card">
-        <img src="https://picsum.photos/400/300?santorini" alt="Santorini">
+        <img src="newyork.jpg" alt="New York">
         <div class="card-content">
-          <h4>Santorini</h4>
-          <p>3 giorni da €900</p>
-          <button>Scopri</button>
+          <h3>New York - 7 giorni</h3>
+          <p>La città che non dorme mai, da 950€</p>
+          <a href="itinerario.html">Scopri</a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer>
-    <p>© 2025 GlobalGlide360 – Tutti i diritti riservati</p>
+  <footer id="contatti">
+    <p>📧 info@globalglide360.com</p>
+    <p>
+      <a href="#">Instagram</a> | 
+      <a href="#">Facebook</a> | 
+      <a href="#">TikTok</a>
+    </p>
+    <p>© 2025 GlobalGlide360 – Non vendiamo pacchetti, solo itinerari con link affiliati.</p>
   </footer>
 
-  <!-- SCRIPT -->
-  <script>
-    document.getElementById("btn-inizia").addEventListener("click", async () => {
-      const meta = document.getElementById("meta").value;
-      const partenza = document.getElementById("partenza").value;
-      const ritorno = document.getElementById("ritorno").value;
-      const adulti = document.getElementById("adulti").value;
-      const bambini = document.getElementById("bambini").value;
-      const budget = document.getElementById("budget").value;
-
-      const preferenze = [...document.querySelectorAll('.pref-container input:checked')].map(c => c.value);
-
-      const dati = { meta, partenza, ritorno, adulti, bambini, budget, preferenze };
-
-      const res = await fetch("/api/itinerario", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(dati)
-      });
-
-      const itinerario = await res.json();
-      localStorage.setItem("itinerario", JSON.stringify(itinerario));
-      window.location.href = "itinerario.html";
-    });
-  </script>
 </body>
 </html>
