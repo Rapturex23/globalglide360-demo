@@ -4,167 +4,133 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Itinerario - GlobalGlide360</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
   <style>
-    * {margin:0;padding:0;box-sizing:border-box;}
-    body {font-family:'Inter',sans-serif;background:#f8f9fa;color:#333;}
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body {font-family:'Inter', sans-serif; background:#f5f7fa; color:#222;}
 
     header {
-      background:#0077b6;padding:15px 30px;text-align:center;
-      color:#fff;font-size:22px;font-weight:600;
+      background:#0077b6; color:white; text-align:center;
+      padding:15px; font-size:20px; font-weight:600;
+      position:sticky; top:0; z-index:1000;
     }
 
-    .container {
-      max-width:900px;margin:30px auto;padding:20px;
+    main {max-width:1000px; margin:20px auto; padding:20px;}
+
+    .title-box {text-align:center; margin-bottom:30px;}
+    .title-box h1 {
+      font-family:'Playfair Display', serif; font-size:28px; margin-bottom:5px;
+    }
+    .title-box p {font-size:15px; color:#666;}
+
+    .day {
+      background:white; border-radius:10px; margin-bottom:20px; overflow:hidden;
+      box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    }
+    .day img {width:100%; height:220px; object-fit:cover;}
+    .day-content {padding:15px;}
+    .day-content h2 {color:#0077b6; margin-bottom:8px; font-size:20px;}
+    .day-content p {font-size:15px; margin-bottom:8px;}
+
+    /* QR code & download */
+    .tools {
+      display:flex; justify-content:space-between; align-items:center;
+      background:#fff; padding:15px; border-radius:10px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.1); margin-top:25px;
+    }
+    .tools img {width:90px; height:90px;}
+    .tools button {
+      background:#0077b6; color:white; border:none; padding:10px 16px;
+      border-radius:8px; font-size:16px; cursor:pointer;
+    }
+    .tools button:hover {background:#fcbf49; color:#222;}
+
+    footer {
+      background:#222; color:#ccc; text-align:center;
+      padding:20px; font-size:14px; margin-top:40px;
     }
 
-    h2 {
-      text-align:center;margin-bottom:20px;font-size:28px;
-    }
-
-    .section {
-      background:#fff;border-radius:12px;padding:20px;margin-bottom:20px;
-      box-shadow:0 4px 8px rgba(0,0,0,0.1);
-    }
-
-    .section h3 {
-      margin-bottom:15px;font-size:22px;color:#0077b6;
-    }
-
-    .item {
-      display:flex;align-items:flex-start;gap:15px;margin-bottom:15px;
-    }
-    .item img {
-      width:100px;height:80px;object-fit:cover;border-radius:8px;
-    }
-    .item-content h4 {
-      font-size:18px;margin-bottom:5px;
-    }
-    .item-content a {
-      display:inline-block;color:#fff;background:#0077b6;
-      padding:6px 12px;border-radius:6px;text-decoration:none;font-size:14px;
-    }
-    .item-content a:hover {background:#00b4d8;}
-
-    /* TIMELINE */
-    .timeline {
-      position:relative;margin:20px 0;padding-left:20px;
-    }
-    .timeline::before {
-      content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:#0077b6;
-    }
-    .timeline-day {
-      position:relative;padding:10px 20px;margin-bottom:20px;background:#fff;
-      border-radius:10px;box-shadow:0 4px 8px rgba(0,0,0,0.1);
-    }
-    .timeline-day::before {
-      content:'';position:absolute;left:-13px;top:18px;width:12px;height:12px;background:#0077b6;border-radius:50%;
-    }
-
-    /* QR CODE */
-    .qr-container {
-      text-align:center;margin-top:30px;
-    }
-    .qr-container img {
-      width:100px;height:100px;
+    @media(max-width:768px){
+      .title-box h1 {font-size:22px;}
+      .day img {height:180px;}
+      .tools {flex-direction:column; gap:15px;}
     }
   </style>
 </head>
 <body>
-  <header>GlobalGlide360 - Il tuo itinerario</header>
-  <div class="container">
-    <h2 id="meta"></h2>
-
-    <div class="section" id="voli-section">
-      <h3>✈️ Voli</h3>
-      <div id="voli-list"></div>
+  <header>GlobalGlide360</header>
+  <main>
+    <div class="title-box">
+      <h1 id="titolo-itinerario">Itinerario viaggio</h1>
+      <p id="dettagli-itinerario"></p>
     </div>
 
-    <div class="section" id="hotel-section">
-      <h3>🏨 Hotel</h3>
-      <div id="hotel-list"></div>
-    </div>
+    <div id="giorni-itinerario"></div>
 
-    <div class="section" id="attivita-section">
-      <h3>🎟️ Attività</h3>
-      <div id="attivita-list"></div>
+    <!-- QR & Download -->
+    <div class="tools">
+      <img src="qrcode.png" alt="QR Code">
+      <button onclick="window.print()">📄 Scarica PDF</button>
     </div>
+  </main>
 
-    <div class="section">
-      <h3>🗓️ Itinerario Giornaliero</h3>
-      <div class="timeline" id="timeline"></div>
-    </div>
+  <footer>
+    <p>© 2025 GlobalGlide360 – Tutti i diritti riservati</p>
+  </footer>
 
-    <div class="qr-container">
-      <p>Scansiona per condividere l'itinerario</p>
-      <canvas id="qrcode"></canvas>
-    </div>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
   <script>
-    // Recupera i dati salvati dall'index
-    const dati = JSON.parse(localStorage.getItem("itinerario"));
-    if (!dati) {
-      document.body.innerHTML = "<h2 style='text-align:center;margin-top:50px;'>Nessun itinerario trovato</h2>";
-    } else {
-      document.getElementById("meta").textContent = `Itinerario per ${dati.meta} (${dati.adulti} adulti, ${dati.bambini} bambini)`;
+    // Recupera i parametri dalla URL
+    const params = new URLSearchParams(window.location.search);
+    const partenza = params.get('partenza') || 'Città di partenza';
+    const destinazione = params.get('destinazione') || 'Destinazione';
+    const adulti = params.get('adulti') || 2;
+    const bambini = params.get('bambini') || 0;
+    const budget = params.get('budget') || 0;
+    const dataPartenza = params.get('data-partenza') || '';
+    const dataRitorno = params.get('data-ritorno') || '';
+    
+    const preferenze = [];
+    ['mare', 'natura', 'cultura', 'shopping', 'avventura', 'relax'].forEach(pref => {
+      if (params.get(pref)) preferenze.push(pref);
+    });
 
-      // Voli
-      const voliList = document.getElementById("voli-list");
-      dati.voli.forEach(v => {
-        voliList.innerHTML += `
-          <div class="item">
-            <img src="https://img.icons8.com/ios-filled/100/0077b6/airplane-take-off.png" alt="Volo">
-            <div class="item-content">
-              <h4>${v.compagnia} - €${v.prezzo}</h4>
-              <a href="${v.link}" target="_blank">Prenota</a>
-            </div>
-          </div>`;
-      });
+    // Popola il titolo e dettagli
+    document.getElementById('titolo-itinerario').innerText = `${destinazione} - Itinerario su misura`;
+    document.getElementById('dettagli-itinerario').innerText = 
+      `${adulti} adulti, ${bambini} bambini | Budget €${budget} | Preferenze: ${preferenze.join(', ')}`;
 
-      // Hotel
-      const hotelList = document.getElementById("hotel-list");
-      dati.hotel.forEach(h => {
-        hotelList.innerHTML += `
-          <div class="item">
-            <img src="${h.immagine}" alt="${h.nome}">
-            <div class="item-content">
-              <h4>${h.nome} - €${h.prezzo}</h4>
-              <a href="${h.link}" target="_blank">Prenota</a>
-            </div>
-          </div>`;
-      });
+    // Crea dinamicamente un itinerario base
+    const giorni = [
+      {
+        titolo: "Giorno 1 - Arrivo e scoperta",
+        descrizione: `✈️ Arrivo a ${destinazione}, sistemazione in hotel centrale e prima passeggiata esplorativa.`,
+        immagine: "day1.jpg"
+      },
+      {
+        titolo: "Giorno 2 - Attività principali",
+        descrizione: `Visita alle attrazioni iconiche di ${destinazione}, attività personalizzate in base alle tue preferenze (${preferenze.join(', ')}).`,
+        immagine: "day2.jpg"
+      },
+      {
+        titolo: "Giorno 3 - Relax e rientro",
+        descrizione: "Mattinata libera per shopping o relax, quindi rientro nel pomeriggio.",
+        immagine: "day3.jpg"
+      }
+    ];
 
-      // Attività
-      const attivitaList = document.getElementById("attivita-list");
-      dati.attivita.forEach(a => {
-        attivitaList.innerHTML += `
-          <div class="item">
-            <img src="https://img.icons8.com/ios-filled/100/0077b6/ticket.png" alt="Attività">
-            <div class="item-content">
-              <h4>${a.nome} - €${a.prezzo}</h4>
-              <a href="${a.link}" target="_blank">Prenota</a>
-            </div>
-          </div>`;
-      });
-
-      // Timeline
-      const timeline = document.getElementById("timeline");
-      dati.giorni.forEach(g => {
-        timeline.innerHTML += `
-          <div class="timeline-day">
-            <strong>Giorno ${g.giorno}</strong>: ${g.descrizione}
-            <br>Attività: ${g.attivita.nome}
-          </div>`;
-      });
-
-      // QR Code
-      QRCode.toCanvas(document.getElementById('qrcode'), window.location.href, function (error) {
-        if (error) console.error(error);
-      });
-    }
+    const container = document.getElementById('giorni-itinerario');
+    giorni.forEach(g => {
+      const dayDiv = document.createElement('div');
+      dayDiv.classList.add('day');
+      dayDiv.innerHTML = `
+        <img src="${g.immagine}" alt="${g.titolo}">
+        <div class="day-content">
+          <h2>${g.titolo}</h2>
+          <p>${g.descrizione}</p>
+        </div>
+      `;
+      container.appendChild(dayDiv);
+    });
   </script>
 </body>
 </html>
