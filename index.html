@@ -23,37 +23,62 @@
       <h2 class="text-4xl font-serif mb-6">
         Il tuo viaggio perfetto, creato in pochi secondi
       </h2>
-      <form id="tripForm" class="max-w-3xl mx-auto bg-white p-6 rounded-lg text-gray-900 space-y-4">
-        <div>
-          <label for="destinazione" class="block font-bold mb-1">Destinazione</label>
-          <input id="destinazione" name="destinazione" type="text" class="w-full p-2 border rounded-lg" placeholder="Es. Bali, Italia, New York" required />
-        </div>
-        <div class="grid md:grid-cols-2 gap-4">
-          <div>
-            <label for="giorni" class="block font-bold mb-1">Durata (giorni)</label>
-            <input id="giorni" name="giorni" type="number" class="w-full p-2 border rounded-lg" min="1" max="30" required />
-          </div>
-          <div>
-            <label for="budget" class="block font-bold mb-1">Budget (€)</label>
-            <input id="budget" name="budget" type="number" class="w-full p-2 border rounded-lg" min="100" step="50" required />
-          </div>
-        </div>
-        <div>
-          <label for="interessi" class="block font-bold mb-1">Interessi principali</label>
-          <select id="interessi" name="interessi" class="w-full p-2 border rounded-lg">
-            <option value="cultura">Cultura</option>
-            <option value="mare">Mare</option>
-            <option value="avventura">Avventura</option>
-            <option value="famiglia">Famiglia</option>
-            <option value="relax">Relax</option>
-          </select>
-        </div>
-        <button type="submit" class="bg-green-600 w-full py-3 rounded-lg text-lg font-semibold text-white hover:bg-green-700">
-          Crea il tuo itinerario
-        </button>
-      </form>
+      <form id="tripForm" class="max-w-4xl mx-auto bg-white p-6 rounded-lg text-gray-900 space-y-4">
+  <div class="grid md:grid-cols-2 gap-4">
+    <div>
+      <label for="partenza" class="block font-bold mb-1">Città di partenza</label>
+      <input id="partenza" name="partenza" type="text" class="w-full p-2 border rounded-lg" placeholder="Es. Milano" required />
     </div>
-  </section>
+    <div>
+      <label for="destinazione" class="block font-bold mb-1">Città di arrivo / destinazione</label>
+      <input id="destinazione" name="destinazione" type="text" class="w-full p-2 border rounded-lg" placeholder="Es. Bali" required />
+    </div>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-4">
+    <div>
+      <label for="data-partenza" class="block font-bold mb-1">Data di partenza</label>
+      <input id="data-partenza" name="data-partenza" type="date" class="w-full p-2 border rounded-lg" required />
+    </div>
+    <div>
+      <label for="data-ritorno" class="block font-bold mb-1">Data di ritorno</label>
+      <input id="data-ritorno" name="data-ritorno" type="date" class="w-full p-2 border rounded-lg" required />
+    </div>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-4">
+    <div>
+      <label for="adulti" class="block font-bold mb-1">Adulti</label>
+      <input id="adulti" name="adulti" type="number" min="1" class="w-full p-2 border rounded-lg" required />
+    </div>
+    <div>
+      <label for="bambini" class="block font-bold mb-1">Bambini</label>
+      <input id="bambini" name="bambini" type="number" min="0" class="w-full p-2 border rounded-lg" required />
+    </div>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-4">
+    <div>
+      <label for="budget" class="block font-bold mb-1">Budget (€)</label>
+      <input id="budget" name="budget" type="number" class="w-full p-2 border rounded-lg" min="100" step="50" required />
+    </div>
+    <div>
+      <label for="preferenze" class="block font-bold mb-1">Preferenze di viaggio</label>
+      <select id="preferenze" name="preferenze" class="w-full p-2 border rounded-lg">
+        <option value="cultura">Cultura</option>
+        <option value="mare">Mare</option>
+        <option value="avventura">Avventura</option>
+        <option value="famiglia">Famiglia</option>
+        <option value="relax">Relax</option>
+      </select>
+    </div>
+  </div>
+
+  <button type="submit" class="bg-green-600 w-full py-3 rounded-lg text-lg font-semibold text-white hover:bg-green-700">
+    Crea il tuo itinerario
+  </button>
+</form>
+
 
   <!-- Itinerari in evidenza -->
   <section class="py-16 bg-gray-100">
@@ -90,16 +115,24 @@
     </p>
   </footer>
 
-  <script>
-    document.getElementById('tripForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-      const destinazione = document.getElementById('destinazione').value;
-      const giorni = document.getElementById('giorni').value;
-      const budget = document.getElementById('budget').value;
-      const interessi = document.getElementById('interessi').value;
+ <script>
+  document.getElementById('tripForm').addEventListener('submit', function (e) {
+    e.preventDefault();
 
-      window.location.href = `itinerario-demo.html?dest=${encodeURIComponent(destinazione)}&days=${giorni}&budget=${budget}&interests=${interessi}`;
+    const params = new URLSearchParams({
+      partenza: document.getElementById('partenza').value,
+      destinazione: document.getElementById('destinazione').value,
+      data_partenza: document.getElementById('data-partenza').value,
+      data_ritorno: document.getElementById('data-ritorno').value,
+      adulti: document.getElementById('adulti').value,
+      bambini: document.getElementById('bambini').value,
+      budget: document.getElementById('budget').value,
+      preferenze: document.getElementById('preferenze').value,
     });
-  </script>
+
+    window.location.href = `itinerario-demo.html?${params.toString()}`;
+  });
+</script>
+
 </body>
 </html>
