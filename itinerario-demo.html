@@ -21,8 +21,9 @@
 
     <!-- Hero Section -->
     <section class="relative bg-blue-600 text-white text-center py-16">
-      <h2 class="text-4xl font-serif mb-4">Bali, Indonesia</h2>
-      <p class="text-lg mb-6">7 giorni • Budget medio: 1.850 €</p>
+      <h2 id="titolo-destinazione" class="text-4xl font-serif mb-4">Destinazione</h2>
+      <p id="info-durata" class="text-lg mb-2">Durata</p>
+      <p id="info-budget" class="text-lg mb-6">Budget</p>
       <button class="bg-green-600 px-6 py-3 rounded-lg text-lg font-semibold hover:bg-green-700">
         Personalizza questo itinerario
       </button>
@@ -33,7 +34,7 @@
       <div class="grid md:grid-cols-4 gap-6 text-center">
         <div>
           <h4 class="font-bold text-lg">Durata</h4>
-          <p class="text-gray-600">7 giorni</p>
+          <p id="info-durata-2" class="text-gray-600">7 giorni</p>
         </div>
         <div>
           <h4 class="font-bold text-lg">Periodo consigliato</h4>
@@ -41,7 +42,7 @@
         </div>
         <div>
           <h4 class="font-bold text-lg">Budget</h4>
-          <p class="text-gray-600">1.850 €</p>
+          <p id="info-budget-2" class="text-gray-600">1.850 €</p>
         </div>
         <div>
           <h4 class="font-bold text-lg">Mappa</h4>
@@ -53,47 +54,16 @@
     <!-- Timeline giorno per giorno -->
     <section class="max-w-4xl mx-auto py-12 px-6">
       <h3 class="text-3xl font-serif text-center mb-8">Itinerario Giorno per Giorno</h3>
-      <div class="space-y-6">
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <h4 class="font-bold mb-2">Giorno 1: Arrivo a Bali</h4>
-          <p class="text-gray-600">Check-in in hotel e relax sulla spiaggia di Kuta.</p>
-        </div>
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <h4 class="font-bold mb-2">Giorno 2: Ubud e le risaie</h4>
-          <p class="text-gray-600">Escursione ad Ubud, visita al Monkey Forest e alle terrazze di Tegalalang.</p>
-        </div>
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <h4 class="font-bold mb-2">Giorno 3: Templi e cultura</h4>
-          <p class="text-gray-600">Tour dei templi di Tanah Lot e Uluwatu con spettacolo di danza Kecak.</p>
-        </div>
+      <div id="timeline" class="space-y-6">
+        <!-- Le tappe verranno generate dallo script -->
       </div>
     </section>
 
     <!-- Attività consigliate -->
     <section class="bg-gray-100 py-12 px-6">
       <h3 class="text-3xl font-serif text-center mb-8">Attività Consigliate</h3>
-      <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-        <div class="bg-white rounded-lg shadow hover:shadow-lg cursor-pointer">
-          <div class="h-40 bg-gray-300 rounded-t-lg"></div>
-          <div class="p-4">
-            <h4 class="font-bold text-lg">Snorkeling a Nusa Penida</h4>
-            <p class="text-gray-600">Da 50 €</p>
-          </div>
-        </div>
-        <div class="bg-white rounded-lg shadow hover:shadow-lg cursor-pointer">
-          <div class="h-40 bg-gray-300 rounded-t-lg"></div>
-          <div class="p-4">
-            <h4 class="font-bold text-lg">Lezione di cucina balinese</h4>
-            <p class="text-gray-600">Da 30 €</p>
-          </div>
-        </div>
-        <div class="bg-white rounded-lg shadow hover:shadow-lg cursor-pointer">
-          <div class="h-40 bg-gray-300 rounded-t-lg"></div>
-          <div class="p-4">
-            <h4 class="font-bold text-lg">Tour in jeep sul vulcano Batur</h4>
-            <p class="text-gray-600">Da 70 €</p>
-          </div>
-        </div>
+      <div id="attivita" class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <!-- Le attività verranno generate dallo script -->
       </div>
     </section>
 
@@ -129,5 +99,97 @@
         © <script>document.write(new Date().getFullYear())</script> GlobalGlide360. Tutti i diritti riservati.
       </p>
     </footer>
+
+    <!-- Script dinamico -->
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const destinazione = params.get('dest') || "Destinazione";
+      const giorni = params.get('days') || "7";
+      const budget = params.get('budget') || "1850";
+      const interessi = params.get('interests') || "cultura";
+
+      // Aggiorna info base
+      document.getElementById('titolo-destinazione').textContent = destinazione;
+      document.getElementById('info-durata').textContent = `${giorni} giorni`;
+      document.getElementById('info-durata-2').textContent = `${giorni} giorni`;
+      document.getElementById('info-budget').textContent = `${budget} €`;
+      document.getElementById('info-budget-2').textContent = `${budget} €`;
+
+      // Contenuti variabili in base agli interessi
+      const timelineData = {
+        cultura: [
+          "Visita guidata al centro storico",
+          "Musei e siti archeologici",
+          "Tour gastronomico tipico"
+        ],
+        mare: [
+          "Relax in spiaggia",
+          "Escursione in barca",
+          "Snorkeling o diving"
+        ],
+        avventura: [
+          "Trekking nella natura",
+          "Sport estremi (rafting, zipline)",
+          "Safari o tour 4x4"
+        ],
+        famiglia: [
+          "Attività per bambini",
+          "Zoo o parchi tematici",
+          "Giornata di relax in resort"
+        ],
+        relax: [
+          "Spa e benessere",
+          "Giornata in resort",
+          "Cena romantica panoramica"
+        ]
+      };
+
+      const attivitaData = {
+        cultura: [
+          { nome: "Tour guidato al museo locale", prezzo: "40 €" },
+          { nome: "Lezione di cucina tradizionale", prezzo: "35 €" },
+          { nome: "Escursione in città d'arte vicina", prezzo: "60 €" }
+        ],
+        mare: [
+          { nome: "Snorkeling", prezzo: "50 €" },
+          { nome: "Giro in catamarano", prezzo: "75 €" },
+          { nome: "Lezione di surf", prezzo: "45 €" }
+        ],
+        avventura: [
+          { nome: "Rafting sul fiume", prezzo: "65 €" },
+          { nome: "Escursione sul vulcano", prezzo: "80 €" },
+          { nome: "Tour in jeep 4x4", prezzo: "90 €" }
+        ],
+        famiglia: [
+          { nome: "Biglietto parco divertimenti", prezzo: "40 €" },
+          { nome: "Giornata in fattoria didattica", prezzo: "30 €" },
+          { nome: "Visita all'acquario", prezzo: "35 €" }
+        ],
+        relax: [
+          { nome: "Ingresso spa", prezzo: "50 €" },
+          { nome: "Giornata in resort all inclusive", prezzo: "90 €" },
+          { nome: "Crociera panoramica al tramonto", prezzo: "70 €" }
+        ]
+      };
+
+      // Popola timeline
+      const timeline = document.getElementById('timeline');
+      timelineData[interessi].forEach((attivita, i) => {
+        const div = document.createElement('div');
+        div.className = "bg-white p-6 rounded-lg shadow-md";
+        div.innerHTML = `<h4 class="font-bold mb-2">Giorno ${i + 1}</h4><p class="text-gray-600">${attivita}</p>`;
+        timeline.appendChild(div);
+      });
+
+      // Popola attività consigliate
+      const attivitaContainer = document.getElementById('attivita');
+      attivitaData[interessi].forEach(att => {
+        const div = document.createElement('div');
+        div.className = "bg-white rounded-lg shadow hover:shadow-lg cursor-pointer";
+        div.innerHTML = `<div class="h-40 bg-gray-300 rounded-t-lg"></div><div class="p-4"><h4 class="font-bold text-lg">${att.nome}</h4><p class="text-gray-600">Da ${att.prezzo}</p></div>`;
+        attivitaContainer.appendChild(div);
+      });
+    </script>
   </body>
 </html>
+
