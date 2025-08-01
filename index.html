@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang="it">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GlobalGlide360</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
-  <body class="bg-gray-50 text-gray-900">
-    <!-- Navbar -->
-    <header class="flex justify-between items-center px-6 py-4 bg-white shadow">
-      <h1 class="text-xl font-bold text-blue-600">GlobalGlide360</h1>
-      <nav class="space-x-6 text-gray-700">
-        <a href="#" class="hover:text-blue-600">Chi siamo</a>
-        <a href="#" class="hover:text-blue-600">Contatti</a>
-        <a href="#" class="hover:text-blue-600">Privacy</a>
-      </nav>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GlobalGlide360</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+  <!-- Navbar -->
+  <header class="flex justify-between items-center px-6 py-4 bg-white shadow">
+    <h1 class="text-xl font-bold text-blue-600">GlobalGlide360</h1>
+    <nav class="space-x-6 text-gray-700">
+      <a href="#" class="hover:text-blue-600">Chi siamo</a>
+      <a href="#" class="hover:text-blue-600">Contatti</a>
+      <a href="#" class="hover:text-blue-600">Privacy</a>
+    </nav>
+  </header>
 
-    <!-- Hero Section con Form -->
-    <section class="relative bg-blue-600 text-white text-center py-16 px-6">
+  <!-- Hero Section con Form -->
+  <section class="relative text-white text-center py-16 px-6 bg-cover bg-center" style="background-image: url('img/hero-spiaggia.jpg');">
+    <div class="bg-black bg-opacity-40 p-6 rounded-lg inline-block">
       <h2 class="text-4xl font-serif mb-6">
         Il tuo viaggio perfetto, creato in pochi secondi
       </h2>
@@ -51,77 +52,54 @@
           Crea il tuo itinerario
         </button>
       </form>
-    </section>
+    </div>
+  </section>
 
-    <!-- How It Works -->
-    <section class="py-16 text-center">
-      <h3 class="text-3xl font-serif mb-10">Come funziona</h3>
-      <div class="flex flex-col md:flex-row justify-center gap-12">
-        <div>
-          <div class="text-5xl mb-4">📍</div>
-          <h4 class="font-bold">Scegli</h4>
-          <p class="text-gray-600">Inserisci le tue preferenze di viaggio</p>
+  <!-- Itinerari in evidenza -->
+  <section class="py-16 bg-gray-100">
+    <h3 class="text-3xl font-serif text-center mb-10">Itinerari in evidenza</h3>
+    <div class="grid md:grid-cols-3 gap-8 px-6">
+      <a href="itinerario-demo.html" class="bg-white rounded-lg shadow hover:shadow-lg cursor-pointer">
+        <img src="img/bali.jpg" alt="Bali" class="h-48 w-full object-cover rounded-t-lg" />
+        <div class="p-4">
+          <h4 class="font-bold text-lg">Bali, Indonesia</h4>
+          <p class="text-gray-600">7 giorni da 1.850 €</p>
         </div>
-        <div>
-          <div class="text-5xl mb-4">🛠️</div>
-          <h4 class="font-bold">Personalizza</h4>
-          <p class="text-gray-600">Ottieni un itinerario su misura</p>
+      </a>
+      <a href="itinerario-demo.html" class="bg-white rounded-lg shadow hover:shadow-lg cursor-pointer">
+        <img src="img/venezia.jpg" alt="Italia" class="h-48 w-full object-cover rounded-t-lg" />
+        <div class="p-4">
+          <h4 class="font-bold text-lg">Italia</h4>
+          <p class="text-gray-600">10 giorni da 800 €</p>
         </div>
-        <div>
-          <div class="text-5xl mb-4">✈️</div>
-          <h4 class="font-bold">Parti</h4>
-          <p class="text-gray-600">Prenota e goditi l'esperienza</p>
+      </a>
+      <a href="itinerario-demo.html" class="bg-white rounded-lg shadow hover:shadow-lg cursor-pointer">
+        <img src="img/newyork.jpg" alt="New York" class="h-48 w-full object-cover rounded-t-lg" />
+        <div class="p-4">
+          <h4 class="font-bold text-lg">New York, Stati Uniti</h4>
+          <p class="text-gray-600">9 giorni da 1.300 €</p>
         </div>
-      </div>
-    </section>
+      </a>
+    </div>
+  </section>
 
-    <!-- Featured Itineraries -->
-    <section class="py-16 bg-gray-100">
-      <h3 class="text-3xl font-serif text-center mb-10">Itinerari in evidenza</h3>
-      <div class="grid md:grid-cols-3 gap-8 px-6">
-        <a href="itinerario-demo.html" class="bg-white rounded-lg shadow hover:shadow-lg cursor-pointer">
-          <div class="h-48 bg-gray-300 rounded-t-lg"></div>
-          <div class="p-4">
-            <h4 class="font-bold text-lg">Bali, Indonesia</h4>
-            <p class="text-gray-600">7 giorni da 1.850 €</p>
-          </div>
-        </a>
-        <a href="itinerario-demo.html" class="bg-white rounded-lg shadow hover:shadow-lg cursor-pointer">
-          <div class="h-48 bg-gray-300 rounded-t-lg"></div>
-          <div class="p-4">
-            <h4 class="font-bold text-lg">Italia</h4>
-            <p class="text-gray-600">10 giorni da 800 €</p>
-          </div>
-        </a>
-        <a href="itinerario-demo.html" class="bg-white rounded-lg shadow hover:shadow-lg cursor-pointer">
-          <div class="h-48 bg-gray-300 rounded-t-lg"></div>
-          <div class="p-4">
-            <h4 class="font-bold text-lg">New York, Stati Uniti</h4>
-            <p class="text-gray-600">9 giorni da 1.300 €</p>
-          </div>
-        </a>
-      </div>
-    </section>
+  <!-- Footer -->
+  <footer class="bg-white text-center py-6 mt-10 border-t">
+    <p class="text-gray-600">
+      © <script>document.write(new Date().getFullYear())</script> GlobalGlide360. Tutti i diritti riservati.
+    </p>
+  </footer>
 
-    <!-- Footer -->
-    <footer class="bg-white text-center py-6 mt-10 border-t">
-      <p class="text-gray-600">
-        © <script>document.write(new Date().getFullYear())</script> GlobalGlide360. Tutti i diritti riservati.
-      </p>
-    </footer>
+  <script>
+    document.getElementById('tripForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const destinazione = document.getElementById('destinazione').value;
+      const giorni = document.getElementById('giorni').value;
+      const budget = document.getElementById('budget').value;
+      const interessi = document.getElementById('interessi').value;
 
-    <!-- Script: redirect alla pagina itinerario con dati -->
-    <script>
-      document.getElementById('tripForm').addEventListener('submit', function (e) {
-        e.preventDefault();
-        const destinazione = document.getElementById('destinazione').value;
-        const giorni = document.getElementById('giorni').value;
-        const budget = document.getElementById('budget').value;
-        const interessi = document.getElementById('interessi').value;
-
-        // Reindirizza alla pagina demo con i dati come parametri GET
-        window.location.href = `itinerario-demo.html?dest=${encodeURIComponent(destinazione)}&days=${giorni}&budget=${budget}&interests=${interessi}`;
-      });
-    </script>
-  </body>
+      window.location.href = `itinerario-demo.html?dest=${encodeURIComponent(destinazione)}&days=${giorni}&budget=${budget}&interests=${interessi}`;
+    });
+  </script>
+</body>
 </html>
