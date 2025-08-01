@@ -17,16 +17,40 @@
       </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="relative bg-blue-600 text-white text-center py-20">
+    <!-- Hero Section con Form -->
+    <section class="relative bg-blue-600 text-white text-center py-16 px-6">
       <h2 class="text-4xl font-serif mb-6">
         Il tuo viaggio perfetto, creato in pochi secondi
       </h2>
-      <a href="itinerario-demo.html">
-        <button class="bg-green-600 px-6 py-3 rounded-lg text-lg font-semibold hover:bg-green-700">
+      <form id="tripForm" class="max-w-3xl mx-auto bg-white p-6 rounded-lg text-gray-900 space-y-4">
+        <div>
+          <label for="destinazione" class="block font-bold mb-1">Destinazione</label>
+          <input id="destinazione" name="destinazione" type="text" class="w-full p-2 border rounded-lg" placeholder="Es. Bali, Italia, New York" required />
+        </div>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <label for="giorni" class="block font-bold mb-1">Durata (giorni)</label>
+            <input id="giorni" name="giorni" type="number" class="w-full p-2 border rounded-lg" min="1" max="30" required />
+          </div>
+          <div>
+            <label for="budget" class="block font-bold mb-1">Budget (€)</label>
+            <input id="budget" name="budget" type="number" class="w-full p-2 border rounded-lg" min="100" step="50" required />
+          </div>
+        </div>
+        <div>
+          <label for="interessi" class="block font-bold mb-1">Interessi principali</label>
+          <select id="interessi" name="interessi" class="w-full p-2 border rounded-lg">
+            <option value="cultura">Cultura</option>
+            <option value="mare">Mare</option>
+            <option value="avventura">Avventura</option>
+            <option value="famiglia">Famiglia</option>
+            <option value="relax">Relax</option>
+          </select>
+        </div>
+        <button type="submit" class="bg-green-600 w-full py-3 rounded-lg text-lg font-semibold text-white hover:bg-green-700">
           Crea il tuo itinerario
         </button>
-      </a>
+      </form>
     </section>
 
     <!-- How It Works -->
@@ -85,6 +109,19 @@
         © <script>document.write(new Date().getFullYear())</script> GlobalGlide360. Tutti i diritti riservati.
       </p>
     </footer>
+
+    <!-- Script: redirect alla pagina itinerario con dati -->
+    <script>
+      document.getElementById('tripForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const destinazione = document.getElementById('destinazione').value;
+        const giorni = document.getElementById('giorni').value;
+        const budget = document.getElementById('budget').value;
+        const interessi = document.getElementById('interessi').value;
+
+        // Reindirizza alla pagina demo con i dati come parametri GET
+        window.location.href = `itinerario-demo.html?dest=${encodeURIComponent(destinazione)}&days=${giorni}&budget=${budget}&interests=${interessi}`;
+      });
+    </script>
   </body>
 </html>
-
