@@ -20,34 +20,14 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="relative bg-blue-600 text-white text-center py-16">
-      <h2 id="titolo-destinazione" class="text-4xl font-serif mb-4">Destinazione</h2>
-      <p id="info-durata" class="text-lg mb-2">Durata</p>
-      <p id="info-budget" class="text-lg mb-6">Budget</p>
-      <button class="bg-green-600 px-6 py-3 rounded-lg text-lg font-semibold hover:bg-green-700">
-        Personalizza questo itinerario
-      </button>
-    </section>
-
-    <!-- Info principali -->
-    <section class="py-8 px-6 bg-white shadow-md mt-6 max-w-4xl mx-auto rounded-lg">
-      <div class="grid md:grid-cols-4 gap-6 text-center">
-        <div>
-          <h4 class="font-bold text-lg">Durata</h4>
-          <p id="info-durata-2" class="text-gray-600">7 giorni</p>
-        </div>
-        <div>
-          <h4 class="font-bold text-lg">Periodo consigliato</h4>
-          <p class="text-gray-600">Aprile - Ottobre</p>
-        </div>
-        <div>
-          <h4 class="font-bold text-lg">Budget</h4>
-          <p id="info-budget-2" class="text-gray-600">1.850 €</p>
-        </div>
-        <div>
-          <h4 class="font-bold text-lg">Mappa</h4>
-          <div class="h-16 bg-gray-300 rounded-lg"></div>
-        </div>
+    <section class="relative bg-cover bg-center text-white text-center py-16" style="background-image: url('img/hero-spiaggia.jpg');">
+      <div class="bg-black bg-opacity-40 p-6 rounded-lg inline-block">
+        <h2 id="titolo-destinazione" class="text-4xl font-serif mb-4">Destinazione</h2>
+        <p id="info-durata" class="text-lg mb-2">Durata</p>
+        <p id="info-budget" class="text-lg mb-6">Budget</p>
+        <button class="bg-green-600 px-6 py-3 rounded-lg text-lg font-semibold hover:bg-green-700">
+          Personalizza questo itinerario
+        </button>
       </div>
     </section>
 
@@ -55,7 +35,7 @@
     <section class="max-w-4xl mx-auto py-12 px-6">
       <h3 class="text-3xl font-serif text-center mb-8">Itinerario Giorno per Giorno</h3>
       <div id="timeline" class="space-y-6">
-        <!-- Le tappe verranno generate dallo script -->
+        <!-- Timeline dinamica -->
       </div>
     </section>
 
@@ -63,23 +43,7 @@
     <section class="bg-gray-100 py-12 px-6">
       <h3 class="text-3xl font-serif text-center mb-8">Attività Consigliate</h3>
       <div id="attivita" class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-        <!-- Le attività verranno generate dallo script -->
-      </div>
-    </section>
-
-    <!-- Prenotazioni -->
-    <section class="max-w-4xl mx-auto py-12 px-6">
-      <h3 class="text-3xl font-serif text-center mb-8">Prenotazioni</h3>
-      <div class="grid md:grid-cols-3 gap-6 text-center">
-        <a href="#" class="bg-green-600 text-white py-3 rounded-lg hover:bg-green-700">
-          Voli
-        </a>
-        <a href="#" class="bg-green-600 text-white py-3 rounded-lg hover:bg-green-700">
-          Hotel
-        </a>
-        <a href="#" class="bg-green-600 text-white py-3 rounded-lg hover:bg-green-700">
-          Auto a noleggio
-        </a>
+        <!-- Card dinamiche -->
       </div>
     </section>
 
@@ -87,9 +51,9 @@
     <section class="bg-gray-100 py-12 px-6">
       <h3 class="text-3xl font-serif text-center mb-8">Gallery</h3>
       <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-        <div class="h-40 bg-gray-300 rounded-lg"></div>
-        <div class="h-40 bg-gray-300 rounded-lg"></div>
-        <div class="h-40 bg-gray-300 rounded-lg"></div>
+        <img src="img/famiglia.jpg" alt="Famiglia in viaggio" class="h-40 w-full object-cover rounded-lg">
+        <img src="img/tempio.jpg" alt="Tempio" class="h-40 w-full object-cover rounded-lg">
+        <img src="img/montagna.jpg" alt="Montagna" class="h-40 w-full object-cover rounded-lg">
       </div>
     </section>
 
@@ -108,14 +72,10 @@
       const budget = params.get('budget') || "1850";
       const interessi = params.get('interests') || "cultura";
 
-      // Aggiorna info base
       document.getElementById('titolo-destinazione').textContent = destinazione;
       document.getElementById('info-durata').textContent = `${giorni} giorni`;
-      document.getElementById('info-durata-2').textContent = `${giorni} giorni`;
       document.getElementById('info-budget').textContent = `${budget} €`;
-      document.getElementById('info-budget-2').textContent = `${budget} €`;
 
-      // Contenuti variabili in base agli interessi
       const timelineData = {
         cultura: [
           "Visita guidata al centro storico",
@@ -146,33 +106,33 @@
 
       const attivitaData = {
         cultura: [
-          { nome: "Tour guidato al museo locale", prezzo: "40 €" },
-          { nome: "Lezione di cucina tradizionale", prezzo: "35 €" },
-          { nome: "Escursione in città d'arte vicina", prezzo: "60 €" }
+          { nome: "Tour guidato al museo locale", prezzo: "40 €", img: "img/tempio.jpg" },
+          { nome: "Lezione di cucina tradizionale", prezzo: "35 €", img: "img/famiglia.jpg" },
+          { nome: "Escursione in città d'arte vicina", prezzo: "60 €", img: "img/montagna.jpg" }
         ],
         mare: [
-          { nome: "Snorkeling", prezzo: "50 €" },
-          { nome: "Giro in catamarano", prezzo: "75 €" },
-          { nome: "Lezione di surf", prezzo: "45 €" }
+          { nome: "Snorkeling", prezzo: "50 €", img: "img/hero-spiaggia.jpg" },
+          { nome: "Giro in catamarano", prezzo: "75 €", img: "img/bali.jpg" },
+          { nome: "Lezione di surf", prezzo: "45 €", img: "img/rafting.jpg" }
         ],
         avventura: [
-          { nome: "Rafting sul fiume", prezzo: "65 €" },
-          { nome: "Escursione sul vulcano", prezzo: "80 €" },
-          { nome: "Tour in jeep 4x4", prezzo: "90 €" }
+          { nome: "Rafting sul fiume", prezzo: "65 €", img: "img/rafting.jpg" },
+          { nome: "Escursione sul vulcano", prezzo: "80 €", img: "img/montagna.jpg" },
+          { nome: "Tour in jeep 4x4", prezzo: "90 €", img: "img/resort.jpg" }
         ],
         famiglia: [
-          { nome: "Biglietto parco divertimenti", prezzo: "40 €" },
-          { nome: "Giornata in fattoria didattica", prezzo: "30 €" },
-          { nome: "Visita all'acquario", prezzo: "35 €" }
+          { nome: "Biglietto parco divertimenti", prezzo: "40 €", img: "img/famiglia.jpg" },
+          { nome: "Giornata in fattoria didattica", prezzo: "30 €", img: "img/resort.jpg" },
+          { nome: "Visita all'acquario", prezzo: "35 €", img: "img/montagna.jpg" }
         ],
         relax: [
-          { nome: "Ingresso spa", prezzo: "50 €" },
-          { nome: "Giornata in resort all inclusive", prezzo: "90 €" },
-          { nome: "Crociera panoramica al tramonto", prezzo: "70 €" }
+          { nome: "Ingresso spa", prezzo: "50 €", img: "img/resort.jpg" },
+          { nome: "Giornata in resort all inclusive", prezzo: "90 €", img: "img/resort.jpg" },
+          { nome: "Crociera panoramica al tramonto", prezzo: "70 €", img: "img/bali.jpg" }
         ]
       };
 
-      // Popola timeline
+      // Timeline
       const timeline = document.getElementById('timeline');
       timelineData[interessi].forEach((attivita, i) => {
         const div = document.createElement('div');
@@ -181,15 +141,14 @@
         timeline.appendChild(div);
       });
 
-      // Popola attività consigliate
+      // Attività consigliate
       const attivitaContainer = document.getElementById('attivita');
       attivitaData[interessi].forEach(att => {
         const div = document.createElement('div');
         div.className = "bg-white rounded-lg shadow hover:shadow-lg cursor-pointer";
-        div.innerHTML = `<div class="h-40 bg-gray-300 rounded-t-lg"></div><div class="p-4"><h4 class="font-bold text-lg">${att.nome}</h4><p class="text-gray-600">Da ${att.prezzo}</p></div>`;
+        div.innerHTML = `<img src="${att.img}" class="h-40 w-full object-cover rounded-t-lg"><div class="p-4"><h4 class="font-bold text-lg">${att.nome}</h4><p class="text-gray-600">Da ${att.prezzo}</p></div>`;
         attivitaContainer.appendChild(div);
       });
     </script>
   </body>
 </html>
-
