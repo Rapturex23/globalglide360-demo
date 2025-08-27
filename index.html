@@ -8,9 +8,15 @@
 </head>
 <body class="bg-white text-gray-800">
 
+  <!-- Navbar -->
+  <header class="absolute top-0 left-0 w-full z-10 flex items-center justify-between p-4 bg-black bg-opacity-50">
+    <img src="img/logo.png" alt="GlobalGlide360" class="h-10">
+    <a href="#crea" class="text-white border border-white px-4 py-2 rounded hover:bg-white hover:text-black transition">Crea il tuo viaggio</a>
+  </header>
+
   <!-- Hero -->
   <section class="relative h-screen bg-cover bg-center flex items-center justify-center text-white" style="background-image: url('img/hero-spiaggia.png');">
-    <div class="bg-black bg-opacity-50 p-8 rounded-lg text-center max-w-2xl">
+    <div class="bg-black bg-opacity-50 p-8 rounded-lg text-center max-w-2xl mt-16">
       <h1 class="text-4xl md:text-5xl font-bold mb-4">Crea il tuo itinerario personalizzato</h1>
       <p class="text-lg md:text-xl mb-6">Scopri il mondo con viaggi su misura, creati per le tue passioni, il tuo budget e la tua famiglia.</p>
       <a href="#crea" class="bg-green-600 hover:bg-green-700 px-6 py-3 rounded text-lg font-semibold">Prova ora gratis</a>
@@ -36,7 +42,7 @@
     </div>
   </section>
 
-  <!-- Perché sceglierci -->
+  <!-- Perché noi -->
   <section class="py-16 px-6 text-center">
     <h2 class="text-3xl font-bold mb-10">Perché scegliere GlobalGlide360</h2>
     <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -90,20 +96,67 @@
   <section class="py-20 bg-green-600 text-white text-center">
     <h2 class="text-3xl font-bold mb-4">Pronto a partire?</h2>
     <p class="text-lg mb-6">Crea il tuo itinerario personalizzato ora.</p>
-    <a href="#crea" class="bg-white text-green-600 font-semibold px-6 py-3 rounded hover:bg-gray-200">Prova subito</a>
+    <a href="#crea" class="bg-white text-green-600 font-semibold px-6 py-3 rounded hover:bg-gray-200">Crea ora</a>
   </section>
 
-  <!-- Form (ancora presente, identico) -->
+  <!-- Form creazione itinerario -->
   <section id="crea" class="max-w-4xl mx-auto mt-12 px-4 pb-20">
     <form id="tripForm" class="bg-white p-6 rounded-lg shadow space-y-6">
-      <!-- (lo stesso form di prima, lo manteniamo invariato per ora) -->
-      <!-- Puoi incollare qui quello già aggiornato nella tua versione attuale -->
+      <div class="grid md:grid-cols-2 gap-4">
+        <div>
+          <label for="partenza" class="font-semibold">Città di partenza</label>
+          <input id="partenza" name="partenza" type="text" class="w-full p-2 border rounded" placeholder="Es. Milano" required />
+        </div>
+        <div>
+          <label for="destinazione" class="font-semibold">Città di arrivo / destinazione</label>
+          <input id="destinazione" name="destinazione" type="text" class="w-full p-2 border rounded" placeholder="Es. Bali" required />
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div>
+          <label for="data-partenza" class="font-semibold">Data di partenza</label>
+          <input id="data-partenza" name="data-partenza" type="date" class="w-full p-2 border rounded" required />
+        </div>
+        <div>
+          <label for="data-ritorno" class="font-semibold">Data di ritorno</label>
+          <input id="data-ritorno" name="data-ritorno" type="date" class="w-full p-2 border rounded" required />
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div>
+          <label for="adulti" class="font-semibold">Adulti</label>
+          <input id="adulti" name="adulti" type="number" min="1" class="w-full p-2 border rounded" required />
+        </div>
+        <div>
+          <label for="bambini" class="font-semibold">Bambini</label>
+          <input id="bambini" name="bambini" type="number" min="0" class="w-full p-2 border rounded" required />
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div>
+          <label for="budget" class="font-semibold">Budget (€)</label>
+          <input id="budget" name="budget" type="number" min="100" step="50" class="w-full p-2 border rounded" required />
+        </div>
+        <div>
+          <label for="preferenze" class="font-semibold">Preferenze di viaggio</label>
+          <select id="preferenze" name="preferenze" class="w-full p-2 border rounded">
+            <option value="cultura">Cultura</option>
+            <option value="mare">Mare</option>
+            <option value="avventura">Avventura</option>
+            <option value="famiglia">Famiglia</option>
+            <option value="relax">Relax</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="w-full bg-green-600 text-white p-3 rounded hover:bg-green-700 text-lg">
+        Crea il tuo itinerario
+      </button>
     </form>
   </section>
 
-  <!-- Script per redirect -->
+  <!-- Script -->
   <script>
-    document.getElementById('tripForm')?.addEventListener('submit', function (e) {
+    document.getElementById('tripForm').addEventListener('submit', function (e) {
       e.preventDefault();
       const params = new URLSearchParams({
         partenza: document.getElementById('partenza').value,
@@ -118,5 +171,6 @@
       window.location.href = `itinerario-demo.html?${params.toString()}`;
     });
   </script>
+
 </body>
 </html>
