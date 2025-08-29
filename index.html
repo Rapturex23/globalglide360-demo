@@ -3,279 +3,277 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>GlobalGlide360 – Trova il tuo viaggio con prezzi reali</title>
+  <title>GlobalGlide360 – Risultati reali (Skyscanner • Booking • GetYourGuide)</title>
   <style>
-    :root{
-      --bg:#0b1220; --card:#121a2b; --muted:#90a4c0; --text:#eaf0ff; --accent:#38bdf8; --accent2:#22c55e;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif;background:linear-gradient(180deg,#081021,#0b1220 30%,#0b1220);color:var(--text)}
-    a{color:inherit;text-decoration:none}
+    :root{--bg:#0b1220;--card:#121a2b;--muted:#95a7c7;--text:#eaf0ff;--accent:#38bdf8;--ok:#22c55e}
+    *{box-sizing:border-box} body{margin:0;font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;background:#0b1220;color:var(--text)}
     .container{max-width:1100px;margin:0 auto;padding:16px}
-    header{position:sticky;top:0;background:rgba(8,16,33,0.7);backdrop-filter:blur(8px);border-bottom:1px solid #1c2740;z-index:20}
+    header{position:sticky;top:0;background:rgba(8,16,33,.7);backdrop-filter:blur(8px);border-bottom:1px solid #1c2740}
     .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 4px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{height:48px;width:auto;filter:drop-shadow(0 2px 8px rgba(56,189,248,.3))}
-    .title{font-weight:700;font-size:1.25rem;letter-spacing:.3px}
-    .pill{padding:6px 12px;border:1px solid #263251;border-radius:999px;color:var(--muted)}
-    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center;padding:28px 0}
+    .brand{display:flex;align-items:center;gap:12px}.logo{height:48px}
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center;padding:26px 0}
     @media (max-width:900px){.hero{grid-template-columns:1fr}}
-    .headline{font-size:2rem;line-height:1.15;margin:0 0 8px}
-    .sub{color:var(--muted);margin:0 0 16px}
+    .headline{font-size:2rem;margin:0 0 6px}.sub{color:var(--muted);margin:0 0 14px}
     .card{background:var(--card);border:1px solid #1e2a46;border-radius:16px;box-shadow:0 8px 24px rgba(2,12,36,.35)}
     .search{padding:16px}
     .tabs{display:flex;gap:8px;margin:8px 0 14px}
-    .tab{flex:1;text-align:center;padding:10px 12px;border:1px solid #2a3a61;background:#0f1830;color:#cfe2ff;border-radius:999px;cursor:pointer;user-select:none}
-    .tab.active{background:linear-gradient(180deg,#132448,#0f1b35);border-color:#3a4f80;box-shadow:inset 0 0 0 2px rgba(56,189,248,.15)}
+    .tab{flex:1;text-align:center;padding:10px 12px;border:1px solid #2a3a61;background:#0f1830;color:#cfe2ff;border-radius:999px;cursor:pointer}
+    .tab.active{background:linear-gradient(180deg,#132448,#0f1b35);border-color:#3a4f80}
     form{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
     @media (max-width:800px){form{grid-template-columns:1fr 1fr}}
-    label{font-size:.82rem;color:#b8c7e8}
-    input,select,button{width:100%;padding:10px 12px;border:1px solid #2a3a61;border-radius:10px;background:#0f1830;color:#eaf0ff;outline:none}
-    input::placeholder{color:#7f93b8}
-    .one-line{grid-column:1/-1}
-    .btn{background:linear-gradient(180deg,#38bdf8,#0ea5e9);border:none;font-weight:700;cursor:pointer}
-    .btn:hover{filter:brightness(1.05)}
-    .btn-alt{background:linear-gradient(180deg,#22c55e,#16a34a)}
-    .chips{display:flex;flex-wrap:wrap;gap:8px}
-    .chip{display:inline-flex;align-items:center;gap:6px;border:1px solid #284064;background:#0f1830;border-radius:999px;padding:6px 10px;font-size:.9rem;color:#cfe2ff}
-    .chip input{accent-color:#38bdf8}
-    .section{margin:26px 0;padding:16px}
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    @media (max-width:900px){.grid-3{grid-template-columns:1fr}}
-    .muted{color:var(--muted)}
-    footer{border-top:1px solid #1e2a46;margin-top:28px}
-    small{color:#95a7c7}
+    label{font-size:.82rem;color:#c8d6fb} input,select,button{width:100%;padding:10px 12px;border:1px solid #2a3a61;border-radius:10px;background:#0f1830;color:#eaf0ff}
+    .one-line{grid-column:1/-1}.btn{background:linear-gradient(180deg,#38bdf8,#0ea5e9);border:none;font-weight:700;cursor:pointer}
+    .btn:hover{filter:brightness(1.05)} .btn-alt{background:linear-gradient(180deg,#22c55e,#16a34a)}
+    .chips{display:flex;flex-wrap:wrap;gap:8px}.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid #284064;background:#0f1830;border-radius:999px;padding:6px 10px}
+    .section{margin:26px 0;padding:16px}.muted{color:var(--muted)}
   </style>
 </head>
 <body>
 <header>
   <div class="container nav">
     <div class="brand">
-      <!-- Usa il tuo logo: sostituisci src con il file reale -->
-      <img class="logo" src="logo-globalglide360.png" alt="GlobalGlide360 logo" />
-      <div class="title">GlobalGlide360</div>
+      <img class="logo" src="logo-globalglide360.png" alt="GlobalGlide360" />
+      <strong>GlobalGlide360</strong>
     </div>
-    <div class="pill">Prezzi reali • Affiliazioni ufficiali</div>
+    <div>Prezzi reali da fonti ufficiali</div>
   </div>
 </header>
 
 <main class="container">
   <section class="hero">
     <div>
-      <h1 class="headline">Trova voli, hotel ed esperienze con <span style="color:var(--accent)">risultati reali</span></h1>
-      <p class="sub">Motore leggero collegato ai partner Travelpayouts: le ricerche aprono pagine di risultato **vere** pronte alla prenotazione.</p>
+      <h1 class="headline">Cerca <span style="color:var(--accent)">voli</span>, <span style="color:var(--ok)">hotel</span> ed esperienze con risultati reali</h1>
+      <p class="sub">La ricerca apre direttamente Skyscanner, Booking e GetYourGuide con i campi già compilati.</p>
       <div class="chips" aria-label="Preferenze di viaggio">
-        <label class="chip"><input type="checkbox" name="prefs" value="mare" checked /> Mare</label>
-        <label class="chip"><input type="checkbox" name="prefs" value="natura" /> Natura</label>
-        <label class="chip"><input type="checkbox" name="prefs" value="cultura" /> Cultura</label>
-        <label class="chip"><input type="checkbox" name="prefs" value="famiglia" checked /> Famiglia</label>
-        <label class="chip"><input type="checkbox" name="prefs" value="trekking" /> Trekking</label>
-        <label class="chip"><input type="checkbox" name="prefs" value="citta" /> Città</label>
+        <label class="chip"><input type="checkbox" checked /> Famiglia</label>
+        <label class="chip"><input type="checkbox" /> Mare</label>
+        <label class="chip"><input type="checkbox" /> Natura</label>
+        <label class="chip"><input type="checkbox" /> Cultura</label>
+        <label class="chip"><input type="checkbox" /> Città</label>
       </div>
     </div>
 
-    <!-- CARD DI RICERCA -->
     <div class="card search">
       <div class="tabs">
-        <div class="tab active" id="tab-flights" role="button" tabindex="0" aria-controls="panel-flights">Voli</div>
-        <div class="tab" id="tab-hotels" role="button" tabindex="0" aria-controls="panel-hotels">Hotel</div>
+        <div class="tab active" id="tab-flights" role="button" tabindex="0" aria-controls="panel-flights">Voli (Skyscanner)</div>
+        <div class="tab" id="tab-hotels" role="button" tabindex="0" aria-controls="panel-hotels">Hotel (Booking)</div>
+        <div class="tab" id="tab-exps" role="button" tabindex="0" aria-controls="panel-exps">Esperienze (GetYourGuide)</div>
       </div>
 
-      <!-- PANEL VOLI -->
+      <!-- VOLI -->
       <section id="panel-flights" aria-labelledby="tab-flights">
         <form id="form-flights">
           <div>
-            <label>Da (IATA) *</label>
-            <input id="from" name="from" placeholder="ROM (Roma), MIL, FCO, MXP..." maxlength="3" required />
+            <label>Da (IATA)*</label>
+            <input id="f-from" placeholder="ROM, MIL, FCO, MXP…" maxlength="3" required />
           </div>
           <div>
-            <label>A (IATA) *</label>
-            <input id="to" name="to" placeholder="PAR, LON, NYC, ATH..." maxlength="3" required />
+            <label>A (IATA)*</label>
+            <input id="f-to" placeholder="PAR, LON, ATH…" maxlength="3" required />
           </div>
           <div>
-            <label>Partenza *</label>
-            <input id="dep" type="date" required />
+            <label>Partenza*</label>
+            <input id="f-dep" type="date" required />
           </div>
           <div>
             <label>Ritorno</label>
-            <input id="ret" type="date" />
+            <input id="f-ret" type="date" />
           </div>
           <div>
             <label>Adulti</label>
-            <input id="adults" type="number" min="1" value="1" />
+            <input id="f-adults" type="number" min="1" value="1" />
           </div>
           <div>
-            <label>Solo andata</label>
-            <select id="oneway">
-              <option value="0">No</option>
-              <option value="1">Sì</option>
+            <label>Classe</label>
+            <select id="f-cabin">
+              <option value="economy" selected>Economy</option>
+              <option value="premiumeconomy">Premium</option>
+              <option value="business">Business</option>
+              <option value="first">First</option>
             </select>
           </div>
           <div class="one-line">
-            <button class="btn" type="submit">Cerca voli</button>
+            <button class="btn" type="submit">Cerca su Skyscanner</button>
           </div>
-          <small class="muted one-line">Suggerimento: usa i codici IATA (es. ROM, MIL, PAR). La versione “completa” con autocompletamento verrà attivata quando incollerai i widget ufficiali.</small>
+          <small class="muted one-line">Apro la pagina risultati di Skyscanner con i parametri già inseriti.</small>
         </form>
       </section>
 
-      <!-- PANEL HOTEL -->
+      <!-- HOTEL -->
       <section id="panel-hotels" aria-labelledby="tab-hotels" hidden>
         <form id="form-hotels">
           <div class="one-line">
-            <label>Destinazione *</label>
-            <input id="h-dest" placeholder="Tokyo, Bali, Parigi..." required />
+            <label>Destinazione*</label>
+            <input id="h-dest" placeholder="Tokyo, Bali, Parigi…" required />
           </div>
           <div>
-            <label>Check-in *</label>
+            <label>Check-in*</label>
             <input id="h-in" type="date" required />
           </div>
           <div>
-            <label>Check-out *</label>
+            <label>Check-out*</label>
             <input id="h-out" type="date" required />
           </div>
           <div>
             <label>Adulti</label>
             <input id="h-adults" type="number" min="1" value="2" />
           </div>
-          <div class="one-line">
-            <button class="btn btn-alt" type="submit">Cerca hotel</button>
+          <div>
+            <label>Camere</label>
+            <input id="h-rooms" type="number" min="1" value="1" />
           </div>
-          <small class="muted one-line">La ricerca si apre su Hotellook con il form già compilato (link affiliato).</small>
+          <div class="one-line">
+            <button class="btn btn-alt" type="submit">Cerca su Booking</button>
+          </div>
+          <small class="muted one-line">Apro la pagina risultati di Booking con date e occupanti già compilati.</small>
+        </form>
+      </section>
+
+      <!-- ESPERIENZE -->
+      <section id="panel-exps" aria-labelledby="tab-exps" hidden>
+        <form id="form-exps">
+          <div class="one-line">
+            <label>Destinazione / Città*</label>
+            <input id="x-dest" placeholder="Parigi, Roma, Tokyo…" required />
+          </div>
+          <div>
+            <label>Dal</label>
+            <input id="x-from" type="date" />
+          </div>
+          <div>
+            <label>Al</label>
+            <input id="x-to" type="date" />
+          </div>
+          <div>
+            <label>Persone</label>
+            <input id="x-pax" type="number" min="1" value="2" />
+          </div>
+          <div class="one-line">
+            <button class="btn" type="submit">Cerca su GetYourGuide</button>
+          </div>
+          <small class="muted one-line">Apro la pagina risultati di GetYourGuide filtrata per città (e date se fornite).</small>
         </form>
       </section>
     </div>
   </section>
 
-  <!-- SEZIONI INFORMATIVA -->
   <section class="section card">
-    <div class="grid-3">
-      <div>
-        <h3>Perché GlobalGlide360</h3>
-        <p class="muted">Un’unica ricerca, risultati reali da partner affidabili (voli e hotel). Senza placeholder.</p>
-      </div>
-      <div>
-        <h3>Come funziona</h3>
-        <p class="muted">Compili il modulo e ti reindirizziamo alla pagina risultati (White Label/Hotellook) pronta alla prenotazione.</p>
-      </div>
-      <div>
-        <h3>Trasparenza</h3>
-        <p class="muted">Se prenoti dai nostri link, riceviamo una piccola commissione senza costi extra per te.</p>
-      </div>
-    </div>
+    <h3 style="margin-top:0">Come funziona</h3>
+    <p class="muted">Compili i campi ➜ ti reindirizziamo a <strong>Skyscanner</strong>, <strong>Booking</strong> o <strong>GetYourGuide</strong> con la ricerca già pronta. Sono risultati <strong>ufficiali e prenotabili</strong>. Quando le affiliazioni saranno attive, aggiungeremo i parametri partner per tracciare le commissioni e (se disponibili) i widget/API per mostrare prezzi in pagina.</p>
   </section>
-
-  <section class="section">
-    <h3>Chi siamo</h3>
-    <p class="muted">GlobalGlide360 aiuta famiglie e viaggiatori curiosi a trasformare idee in viaggi reali con strumenti semplici e dati aggiornati.</p>
-  </section>
-
 </main>
 
-<footer class="container">
-  <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:16px 0">
-    <small>© GlobalGlide360</small>
-    <small>Contatti: <a href="mailto:info@globalglide360.com">info@globalglide360.com</a></small>
-  </div>
-</footer>
-
 <script>
-/* =======================
-   CONFIGURA QUI I LINK
-   =======================
+/* =========
+   PARTNER IDS (metti i tuoi quando approvati)
+   ========= */
+const SKY_PARTNER = "";      // es. &associateid=SKY_xxx (se previsto dal tuo account)
+const BKG_AID     = "";      // es. &aid=1234567
+const GYG_PARTNER_ID = "";   // es. &partner_id=ABCDE
 
-1) VOLI (White Label Travelpayouts – Aviasales):
-   - Crea la tua White Label (es. https://voliglobal.globalglide360.com)
-   - Inserisci qui il dominio completo ↓
-*/
-const AVIA_WL_BASE = "https://INSERISCI-QUI-IL-TUO-DOMINIO-WL/"; // es. "https://voliglobal.globalglide360.com/"
+/* =========
+   UTIL
+   ========= */
+const $ = (id) => document.getElementById(id);
+const pad = (n)=> n.toString().padStart(2,'0');
+const toYMD = (d)=> {
+  const t = new Date(d); if (isNaN(t)) return "";
+  return t.getFullYear()+"-"+pad(t.getMonth()+1)+"-"+pad(t.getDate());
+};
+const cleanIATA = (v)=> (v||"").trim().toUpperCase().slice(0,3);
 
-/*
-2) HOTEL (Hotellook):
-   - Nel pannello Travelpayouts > Hotellook > Tools > Links
-   - Genera un link affiliato alla homepage Hotellook
-   - Incollalo qui come BASE; lo script aggiungerà destinazione e date
-*/
-const HOTELLOOK_AFFILIATE_BASE = "https://hotellook.com/"; // Sostituisci con il TUO link affiliato generato da Travelpayouts
-
-/* =======================
-   UI: Tab switch
-   ======================= */
-const tabFlights = document.getElementById('tab-flights');
-const tabHotels = document.getElementById('tab-hotels');
-const panelFlights = document.getElementById('panel-flights');
-const panelHotels = document.getElementById('panel-hotels');
-
-function activate(tab){
-  if(tab === 'flights'){
-    tabFlights.classList.add('active'); tabHotels.classList.remove('active');
-    panelFlights.hidden = false; panelHotels.hidden = true;
-  }else{
-    tabHotels.classList.add('active'); tabFlights.classList.remove('active');
-    panelHotels.hidden = false; panelFlights.hidden = true;
-  }
-}
-tabFlights.onclick = () => activate('flights');
-tabHotels.onclick = () => activate('hotels');
-tabFlights.onkeydown = e => { if(e.key==='Enter'||e.key===' ') activate('flights') };
-tabHotels.onkeydown = e => { if(e.key==='Enter'||e.key===' ') activate('hotels') };
-
-/* =======================
-   Helpers
-   ======================= */
-const pad = n => n.toString().padStart(2,'0');
-function toDDMM(dateStr){
-  // dateStr: "YYYY-MM-DD" -> "DDMM"
-  const d = new Date(dateStr);
-  if(isNaN(d)) return "";
-  return pad(d.getDate()) + pad(d.getMonth()+1);
-}
-function cleanIATA(val){
-  return (val||"").trim().toUpperCase().slice(0,3);
+/* =========
+   TABS
+   ========= */
+const tabs = [
+  {btn:'tab-flights', panel:'panel-flights'},
+  {btn:'tab-hotels',  panel:'panel-hotels'},
+  {btn:'tab-exps',    panel:'panel-exps'},
+];
+tabs.forEach(t=>{
+  $(t.btn).onclick = ()=> activate(t.btn);
+  $(t.btn).onkeydown = (e)=>{ if(e.key==='Enter'||e.key===' ') activate(t.btn) };
+});
+function activate(id){
+  tabs.forEach(t=>{
+    const active = (t.btn===id);
+    $(t.btn).classList.toggle('active', active);
+    $(t.panel).hidden = !active;
+  });
 }
 
-/* =======================
-   Submit: Voli
-   ======================= */
-document.getElementById('form-flights').addEventListener('submit', (e)=>{
+/* =========
+   VOLI → Skyscanner
+   URL tipo:
+   https://www.skyscanner.net/transport/flights/FCO/CDG/2025-10-10/2025-10-15/?adults=2&cabinclass=economy&locale=it-IT&currency=EUR
+   ========= */
+$('form-flights').addEventListener('submit', (e)=>{
   e.preventDefault();
-  if(!AVIA_WL_BASE || AVIA_WL_BASE.includes("INSERISCI-QUI")){
-    alert("Configura prima AVIA_WL_BASE con il tuo dominio White Label Travelpayouts.");
-    return;
-  }
-  const from = cleanIATA(document.getElementById('from').value);
-  const to = cleanIATA(document.getElementById('to').value);
-  const dep = document.getElementById('dep').value;
-  const ret = document.getElementById('ret').value;
-  const oneway = document.getElementById('oneway').value === '1';
-  // FlightSearch param (documentazione TP): ORGDDMMDEST[DDMM]
-  const seg1 = `${from}${toDDMM(dep)}${to}`;
-  const seg2 = (!oneway && ret) ? toDDMM(ret) : "";
-  const flightSearch = seg1 + seg2; // round trip se c'è seg2
-  // (Opzionale) passeggeri/classe possono essere aggiunti, ma non sono obbligatori per aprire la ricerca
-  const url = new URL(AVIA_WL_BASE);
-  url.searchParams.set('flightSearch', flightSearch);
+  const from = cleanIATA($('f-from').value);
+  const to   = cleanIATA($('f-to').value);
+  const dep  = toYMD($('f-dep').value);
+  const retV = toYMD($('f-ret').value);
+  const ad   = Math.max(1, parseInt($('f-adults').value || '1', 10));
+  const cabin= $('f-cabin').value || 'economy';
+
+  if(!from || !to || !dep){ alert('Compila Da, A e Partenza'); return; }
+
+  const base = `https://www.skyscanner.net/transport/flights/${from}/${to}/${dep}${retV?`/${retV}`:""}/`;
+  const params = new URLSearchParams({
+    adults: ad, cabinclass: cabin, locale: 'it-IT', currency: 'EUR'
+  });
+  // opzionale: partner id se previsto
+  if(SKY_PARTNER) params.append('associateid', SKY_PARTNER);
+
+  window.open(`${base}?${params.toString()}`, '_blank', 'noopener');
+});
+
+/* =========
+   HOTEL → Booking.com
+   URL tipo:
+   https://www.booking.com/searchresults.html?ss=Paris&checkin=2025-10-10&checkout=2025-10-15&group_adults=2&no_rooms=1
+   ========= */
+$('form-hotels').addEventListener('submit', (e)=>{
+  e.preventDefault();
+  const dest = $('h-dest').value.trim();
+  const ci   = toYMD($('h-in').value);
+  const co   = toYMD($('h-out').value);
+  const ad   = Math.max(1, parseInt($('h-adults').value || '2', 10));
+  const rooms= Math.max(1, parseInt($('h-rooms').value  || '1', 10));
+  if(!dest || !ci || !co){ alert('Compila destinazione e date'); return; }
+
+  const url = new URL('https://www.booking.com/searchresults.html');
+  url.searchParams.set('ss', dest);
+  url.searchParams.set('checkin', ci);
+  url.searchParams.set('checkout', co);
+  url.searchParams.set('group_adults', ad);
+  url.searchParams.set('no_rooms', rooms);
+  // opzionale: affiliate id
+  if(BKG_AID) url.searchParams.set('aid', BKG_AID);
+
   window.open(url.toString(), '_blank', 'noopener');
 });
 
-/* =======================
-   Submit: Hotel
-   ======================= */
-document.getElementById('form-hotels').addEventListener('submit', (e)=>{
+/* =========
+   ESPERIENZE → GetYourGuide
+   URL “universale”:
+   https://www.getyourguide.com/s/?q=Paris&date_from=2025-10-10&date_to=2025-10-15&number_of_participants=2
+   (Se una città ha pagina dedicata, GYG reindirizza automaticamente.)
+   ========= */
+$('form-exps').addEventListener('submit', (e)=>{
   e.preventDefault();
-  if(!HOTELLOOK_AFFILIATE_BASE){
-    alert("Configura prima HOTELLOOK_AFFILIATE_BASE con il tuo link affiliato Hotellook.");
-    return;
-  }
-  const dest = document.getElementById('h-dest').value.trim();
-  const checkIn = document.getElementById('h-in').value;
-  const checkOut = document.getElementById('h-out').value;
-  const adults = document.getElementById('h-adults').value || 2;
+  const q    = $('x-dest').value.trim();
+  const df   = toYMD($('x-from').value);
+  const dt   = toYMD($('x-to').value);
+  const pax  = Math.max(1, parseInt($('x-pax').value || '2', 10));
+  if(!q){ alert('Inserisci una destinazione'); return; }
 
-  const url = new URL(HOTELLOOK_AFFILIATE_BASE);
-  url.searchParams.set('destination', dest);
-  url.searchParams.set('checkIn', checkIn);
-  url.searchParams.set('checkOut', checkOut);
-  url.searchParams.set('adults', adults);
+  const url = new URL('https://www.getyourguide.com/s/');
+  url.searchParams.set('q', q);
+  if(df) url.searchParams.set('date_from', df);
+  if(dt) url.searchParams.set('date_to', dt);
+  url.searchParams.set('number_of_participants', pax);
+  if(GYG_PARTNER_ID) url.searchParams.set('partner_id', GYG_PARTNER_ID);
 
   window.open(url.toString(), '_blank', 'noopener');
 });
