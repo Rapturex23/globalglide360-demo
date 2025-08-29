@@ -67,15 +67,16 @@
       <a id="cta-hotel" class="inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700" target="_blank" rel="noopener">Vedi disponibilità alloggi</a>
       <a id="cta-exp"   class="inline-block bg-yellow-500 text-gray-900 px-4 py-2 rounded hover:bg-yellow-600" target="_blank" rel="noopener">Esplora attività</a>
     </div>
+    <p class="text-xs text-gray-500">I link aprono le pagine ufficiali con i campi già impostati (risultati reali).</p>
   </div>
 
   <!-- Itinerario -->
   <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    <article class="bg-white rounded shadow p-4"><h3 class="font-semibold text-blue-800 mb-1">Giorno 1</h3><p class="text-sm text-gray-700">Arrivo e Shibuya Crossing.</p></article>
-    <article class="bg-white rounded shadow p-4"><h3 class="font-semibold text-blue-800 mb-1">Giorno 2</h3><p class="text-sm text-gray-700">Templi Asakusa & Ueno.</p></article>
-    <article class="bg-white rounded shadow p-4"><h3 class="font-semibold text-blue-800 mb-1">Giorno 3</h3><p class="text-sm text-gray-700">Shinjuku e giardini.</p></article>
-    <article class="bg-white rounded shadow p-4"><h3 class="font-semibold text-blue-800 mb-1">Giorno 4</h3><p class="text-sm text-gray-700">Gita a Nikko o Kamakura.</p></article>
-    <article class="bg-white rounded shadow p-4"><h3 class="font-semibold text-blue-800 mb-1">Giorno 5</h3><p class="text-sm text-gray-700">Shopping a Ginza e rientro.</p></article>
+    <article class="bg-white rounded shadow p-4"><h3 class="font-semibold text-blue-800 mb-1">Giorno 1 – Shibuya & Shinjuku</h3><p class="text-sm text-gray-700">Arrivo, check-in, Shibuya Crossing, Hachikō, serata a Shinjuku.</p></article>
+    <article class="bg-white rounded shadow p-4"><h3 class="font-semibold text-blue-800 mb-1">Giorno 2 – Asakusa & Ueno</h3><p class="text-sm text-gray-700">Sensō-ji, Nakamise-dori, parco di Ueno e musei.</p></article>
+    <article class="bg-white rounded shadow p-4"><h3 class="font-semibold text-blue-800 mb-1">Giorno 3 – Akihabara & Odaiba</h3><p class="text-sm text-gray-700">Akihabara tech/anime, teamLab a Odaiba, Rainbow Bridge.</p></article>
+    <article class="bg-white rounded shadow p-4"><h3 class="font-semibold text-blue-800 mb-1">Giorno 4 – Meiji & Harajuku</h3><p class="text-sm text-gray-700">Santuario Meiji, Takeshita-dori, Omotesandō.</p></article>
+    <article class="bg-white rounded shadow p-4"><h3 class="font-semibold text-blue-800 mb-1">Giorno 5 – Nikko/Kamakura (opz.)</h3><p class="text-sm text-gray-700">Escursione fuori città o shopping a Ginza.</p></article>
   </section>
 </main>
 
@@ -84,32 +85,92 @@
   <p class="text-sm text-gray-500">&copy; 2025 GlobalGlide360</p>
 </footer>
 
-<!-- Script CTA -->
-<script src="/assets/gg-links.js"></script>
+<!-- ================= GG CORE INLINE + SCRIPT ROBUSTO ================= -->
 <script>
-document.addEventListener('DOMContentLoaded', function(){
-  const $=id=>document.getElementById(id);
-  const toYMD=d=>new Date(d).toISOString().slice(0,10);
-  const today=new Date(),in7=new Date(today),in12=new Date(today);
-  in7.setDate(today.getDate()+7);in12.setDate(today.getDate()+12);
-  if($('#checkin')&&!$('#checkin').value)$('#checkin').value=toYMD(in7);
-  if($('#checkout')&&!$('#checkout').value)$('#checkout').value=toYMD(in12);
+/* === GG core inline (sostituisce /assets/gg-links.js) === */
+window.GG_CFG = window.GG_CFG || { sky_partner:"", bkg_aid:"", gyg_partner:"" };
+const pad = (n)=> n.toString().padStart(2,'0');
+const toYMD = (d)=> { const t = new Date(d); if (isNaN(t)) return ""; return t.getFullYear()+"-"+pad(t.getMonth()+1)+"-"+pad(t.getDate()); };
+const addDays = (dateStr, days)=>{ if(!dateStr) return ""; const d = new Date(dateStr); d.setDate(d.getDate()+days); return toYMD(d); };
+const cleanIATA = (v)=> (v||"").trim().toUpperCase().slice(0,3);
 
-  function refresh(){
-    const from=$('#from').value||'ROM';
-    const ci=$('#checkin').value,co=$('#checkout').value;
-    const ad=parseInt($('#adults').value||'2',10);
-    const ch=parseInt($('#children').value||'0',10);
-    const dest='Tokyo';
-    try{
-      $('#cta-volo').href=ggBuildFlight({from,to:'NRT',dep:ci,ret:co,adults:ad,cabin:'economy'});
-      $('#cta-hotel').href=ggBuildHotel({dest,checkin:ci,checkout:co,adults:ad,children:ch,rooms:1});
-      $('#cta-exp').href=ggBuildExp({city:dest,fromDate:ci,toDate:co,pax:ad+ch});
-    }catch(e){console.error(e);}
+window.ggBuildFlight = ({from, to, dep, ret, adults=2, cabin='economy'})=>{
+  const base = `https://www.skyscanner.net/transport/flights/${cleanIATA(from)}/${cleanIATA(to)}/${dep}${ret?`/${ret}`:""}/`;
+  const qs = new URLSearchParams({adults, cabinclass:cabin, locale:'it-IT', currency:'EUR'});
+  if (window.GG_CFG.sky_partner) qs.set('associateid', window.GG_CFG.sky_partner);
+  return `${base}?${qs.toString()}`;
+};
+window.ggBuildHotel = ({dest, checkin, checkout, adults=2, children=0, rooms=1})=>{
+  const u = new URL('https://www.booking.com/searchresults.html');
+  u.searchParams.set('ss', dest);
+  u.searchParams.set('checkin', checkin);
+  u.searchParams.set('checkout', checkout || addDays(checkin,3));
+  u.searchParams.set('group_adults', adults);
+  u.searchParams.set('group_children', children);
+  u.searchParams.set('no_rooms', rooms);
+  if (window.GG_CFG.bkg_aid) u.searchParams.set('aid', window.GG_CFG.bkg_aid);
+  return u.toString();
+};
+window.ggBuildExp = ({city, fromDate, toDate, pax})=>{
+  const u = new URL('https://www.getyourguide.com/s/');
+  u.searchParams.set('q', city);
+  if (fromDate) u.searchParams.set('date_from', fromDate);
+  if (toDate)   u.searchParams.set('date_to', toDate);
+  if (pax)      u.searchParams.set('number_of_participants', pax);
+  if (window.GG_CFG.gyg_partner) u.searchParams.set('partner_id', window.GG_CFG.gyg_partner);
+  return u.toString();
+};
+
+/* === Script pagina robusto === */
+document.addEventListener('DOMContentLoaded', function () {
+  const $ = id => document.getElementById(id);
+
+  // Precompila date 7→12 gg se vuote
+  const today=new Date(), in7=new Date(today), in12=new Date(today);
+  in7.setDate(today.getDate()+7); in12.setDate(today.getDate()+12);
+  if ($('#checkin')  && !$('#checkin').value)  $('#checkin').value  = in7.toISOString().slice(0,10);
+  if ($('#checkout') && !$('#checkout').value) $('#checkout').value = in12.toISOString().slice(0,10);
+
+  function safeVal(id, fallback=''){ const el = $(id); return el && typeof el.value!=='undefined' ? el.value : fallback; }
+
+  function refreshCTAs(){
+    const from = (safeVal('from','ROM')||'ROM').trim();
+    const dest = (safeVal('dest','Tokyo')||'Tokyo').trim();
+    const ci   = safeVal('checkin');
+    const co   = safeVal('checkout');
+    const ad   = Math.max(1, parseInt(safeVal('adults','2'),10));
+    const ch   = Math.max(0, parseInt(safeVal('children','0'),10));
+
+    const toIata = dest.length===3 ? dest.toUpperCase() : 'NRT';
+    const cityForListings = dest.length===3 ? 'Tokyo' : dest;
+
+    try {
+      const hrefFlight = ggBuildFlight({from, to: toIata, dep: ci, ret: co, adults: ad, cabin:'economy'});
+      const hrefHotel  = ggBuildHotel({dest: cityForListings, checkin: ci, checkout: co, adults: ad, children: ch, rooms: 1});
+      const hrefExp    = ggBuildExp({city: cityForListings, fromDate: ci, toDate: co, pax: ad+ch});
+
+      if ($('#cta-volo'))  $('#cta-volo').href  = hrefFlight || '#';
+      if ($('#cta-hotel')) $('#cta-hotel').href = hrefHotel  || '#';
+      if ($('#cta-exp'))   $('#cta-exp').href   = hrefExp    || '#';
+
+      console.log('[GG] href volo:', hrefFlight);
+      console.log('[GG] href hotel:', hrefHotel);
+      console.log('[GG] href exp:', hrefExp);
+
+      [['cta-volo',hrefFlight],['cta-hotel',hrefHotel],['cta-exp',hrefExp]].forEach(([id,link])=>{
+        const a = $(id); if(!a) return;
+        if (!link) { a.classList.add('opacity-50','pointer-events-none'); a.setAttribute('aria-disabled','true'); }
+        else { a.classList.remove('opacity-50','pointer-events-none'); a.removeAttribute('aria-disabled'); }
+      });
+    } catch(e){
+      console.error('[GG] Errore costruzione link:', e);
+    }
   }
-  ['from','checkin','checkout','adults','children'].forEach(id=>{
-    const el=$('#'+id);if(el){el.addEventListener('input',refresh);el.addEventListener('change',refresh);}});
-  refresh();
+
+  ['from','dest','checkin','checkout','adults','children'].forEach(id=>{
+    const el = $(id); if (el) { el.addEventListener('input',refreshCTAs); el.addEventListener('change',refreshCTAs); }
+  });
+  refreshCTAs();
 });
 </script>
 </body>
