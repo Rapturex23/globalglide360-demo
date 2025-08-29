@@ -162,11 +162,39 @@
         <div>
           <label for="preferenze" class="font-semibold">Preferenze di viaggio</label>
           <select id="preferenze" name="preferenze" class="w-full p-2 border rounded">
-            <option value="cultura">Cultura</option>
-            <option value="mare">Mare</option>
-            <option value="avventura">Avventura</option>
-            <option value="famiglia">Famiglia</option>
-            <option value="relax">Relax</option>
+            <!-- ✅ HEADER CON LOGO PIÙ GRANDE -->
+<header class="bg-white shadow py-4 px-6 flex items-center justify-between">
+  <div class="flex items-center">
+    <img src="img/logo.png" alt="GlobalGlide360 Logo" class="h-16 w-auto"> <!-- altezza aumentata da h-10 a h-16 -->
+    <span class="ml-4 text-2xl font-bold text-blue-700">GlobalGlide360</span>
+  </div>
+</header>
+
+<!-- ✅ CAMPO PREFERENZE VIAGGIO MULTIPLO -->
+<section class="bg-white mt-6 p-6 rounded shadow">
+  <h2 class="text-xl font-semibold mb-4">Preferenze di viaggio</h2>
+  <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+    <label class="flex items-center">
+      <input type="checkbox" name="preferenze[]" value="natura" class="mr-2"> Natura
+    </label>
+    <label class="flex items-center">
+      <input type="checkbox" name="preferenze[]" value="città"> Città
+    </label>
+    <label class="flex items-center">
+      <input type="checkbox" name="preferenze[]" value="cultura"> Cultura
+    </label>
+    <label class="flex items-center">
+      <input type="checkbox" name="preferenze[]" value="mare"> Mare
+    </label>
+    <label class="flex items-center">
+      <input type="checkbox" name="preferenze[]" value="montagna"> Montagna
+    </label>
+    <label class="flex items-center">
+      <input type="checkbox" name="preferenze[]" value="famiglia"> Famiglia
+    </label>
+  </div>
+</section>
+
           </select>
         </div>
       </div>
