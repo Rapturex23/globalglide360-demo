@@ -85,14 +85,20 @@
   <p class="text-sm text-gray-500">&copy; 2025 GlobalGlide360</p>
 </footer>
 
-<!-- ================= GG CORE INLINE + SCRIPT ROBUSTO ================= -->
+<!-- ================= GG CORE INLINE + SCRIPT ROBUSTO (fix date) ================= -->
 <script>
-/* === GG core inline (sostituisce /assets/gg-links.js) === */
+/* === GG core inline === */
 window.GG_CFG = window.GG_CFG || { sky_partner:"", bkg_aid:"", gyg_partner:"" };
-const pad = (n)=> n.toString().padStart(2,'0');
-const toYMD = (d)=> { const t = new Date(d); if (isNaN(t)) return ""; return t.getFullYear()+"-"+pad(t.getMonth()+1)+"-"+pad(t.getDate()); };
-const addDays = (dateStr, days)=>{ if(!dateStr) return ""; const d = new Date(dateStr); d.setDate(d.getDate()+days); return toYMD(d); };
-const cleanIATA = (v)=> (v||"").trim().toUpperCase().slice(0,3);
+const pad = n => n.toString().padStart(2,'0');
+const localISO = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+const addDays = (dateStr, days) => {
+  if(!dateStr) return "";
+  const [y,m,dd] = dateStr.split('-').map(Number);
+  const d = new Date(y, m-1, dd);
+  d.setDate(d.getDate()+days);
+  return localISO(d);
+};
+const cleanIATA = v => (v||"").trim().toUpperCase().slice(0,3);
 
 window.ggBuildFlight = ({from, to, dep, ret, adults=2, cabin='economy'})=>{
   const base = `https://www.skyscanner.net/transport/flights/${cleanIATA(from)}/${cleanIATA(to)}/${dep}${ret?`/${ret}`:""}/`;
@@ -125,21 +131,29 @@ window.ggBuildExp = ({city, fromDate, toDate, pax})=>{
 document.addEventListener('DOMContentLoaded', function () {
   const $ = id => document.getElementById(id);
 
-  // Precompila date 7→12 gg se vuote
-  const today=new Date(), in7=new Date(today), in12=new Date(today);
+  // Date di default 7→12 giorni (formato locale YYYY-MM-DD)
+  const today = new Date(), in7 = new Date(today), in12 = new Date(today);
   in7.setDate(today.getDate()+7); in12.setDate(today.getDate()+12);
-  if ($('#checkin')  && !$('#checkin').value)  $('#checkin').value  = in7.toISOString().slice(0,10);
-  if ($('#checkout') && !$('#checkout').value) $('#checkout').value = in12.toISOString().slice(0,10);
+  const defCheckin  = localISO(in7);
+  const defCheckout = localISO(in12);
 
-  function safeVal(id, fallback=''){ const el = $(id); return el && typeof el.value!=='undefined' ? el.value : fallback; }
+  if ($('#checkin')  && !$('#checkin').value)  $('#checkin').value  = defCheckin;
+  if ($('#checkout') && !$('#checkout').value) $('#checkout').value = defCheckout;
+
+  const safeVal = (id, fb='') => { const el = $(id); return (el && typeof el.value!=='undefined') ? el.value : fb; };
 
   function refreshCTAs(){
     const from = (safeVal('from','ROM')||'ROM').trim();
     const dest = (safeVal('dest','Tokyo')||'Tokyo').trim();
-    const ci   = safeVal('checkin');
-    const co   = safeVal('checkout');
-    const ad   = Math.max(1, parseInt(safeVal('adults','2'),10));
-    const ch   = Math.max(0, parseInt(safeVal('children','0'),10));
+
+    // Leggi date dagli input; se vuote, usa fallback locali
+    let ci = safeVal('checkin', defCheckin);
+    let co = safeVal('checkout', defCheckout);
+    if (!ci) ci = defCheckin;
+    if (!co) co = defCheckout;
+
+    const ad = Math.max(1, parseInt(safeVal('adults','2'),10));
+    const ch = Math.max(0, parseInt(safeVal('children','0'),10));
 
     const toIata = dest.length===3 ? dest.toUpperCase() : 'NRT';
     const cityForListings = dest.length===3 ? 'Tokyo' : dest;
@@ -173,5 +187,3 @@ document.addEventListener('DOMContentLoaded', function () {
   refreshCTAs();
 });
 </script>
-</body>
-</html>
