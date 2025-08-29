@@ -5,27 +5,25 @@
 <title>Bali – Mini-guida (5 giorni) | GlobalGlide360</title>
 <meta name="description" content="Mini-guida di Bali: itinerario reale 5 giorni con link a disponibilità aggiornate per voli, hotel e attività.">
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <!-- Travelpayouts LinkSwitcher -->
-  <script data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
-    (function () {
-        var script = document.createElement("script");
-        script.async = 1;
-        script.src = 'https://tpembars.com/NDU0MTUz.js?t=454153';
-        document.head.appendChild(script);
-    })();
-  </script>
+
+<!-- Travelpayouts LinkSwitcher -->
+<script data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
+  (function () {
+      var script = document.createElement("script");
+      script.async = 1;
+      script.src = 'https://tpembars.com/NDU0MTUz.js?t=454153';
+      document.head.appendChild(script);
+  })();
+</script>
 </head>
 <body class="bg-blue-50 text-gray-800">
+
 <header class="bg-white shadow py-6 px-6">
   <div class="max-w-6xl mx-auto flex items-center justify-between">
     <a href="/" class="flex items-center">
-      <img src="/img/logo.png" alt="GlobalGlide360" class="h-14 w-auto"><span class="ml-3 text-2xl font-bold text-blue-800">GlobalGlide360</span>
+      <img src="/img/logo.png" alt="GlobalGlide360" class="h-14 w-auto">
+      <span class="ml-3 text-2xl font-bold text-blue-800">GlobalGlide360</span>
     </a>
-    <nav class="hidden md:flex items-center space-x-6 text-blue-800">
-      <a href="/mini-guide/" class="hover:underline">Mini-guide</a>
-      <a href="/chi-siamo.html" class="hover:underline">Chi siamo</a>
-      <a href="/contatti.html" class="hover:underline">Contatti</a>
-    </nav>
   </div>
 </header>
 
@@ -33,106 +31,57 @@
   <h1 class="text-3xl font-bold text-blue-900 mb-2">Bali — 5 giorni</h1>
   <p class="text-gray-700 mb-6">Itinerario reale con link a disponibilità aggiornate (voli, hotel, esperienze).</p>
 
-  <!-- Parametri rapidi -->
   <div class="bg-white rounded shadow p-4 mb-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-    <label class="block text-sm">Origine (IATA)
-      <input id="from" class="w-full border rounded px-3 py-2 mt-1" placeholder="ROM/MXP/FCO" value="ROM">
-    </label>
-    <label class="block text-sm">Destinazione
-      <input id="dest" class="w-full border rounded px-3 py-2 mt-1" placeholder="Bali / DPS" value="Bali">
-    </label>
-    <label class="block text-sm">Check-in
-      <input id="checkin" type="date" class="w-full border rounded px-3 py-2 mt-1">
-    </label>
-    <label class="block text-sm">Check-out
-      <input id="checkout" type="date" class="w-full border rounded px-3 py-2 mt-1">
-    </label>
-    <label class="block text-sm">Adulti
-      <input id="adults" type="number" min="1" value="2" class="w-full border rounded px-3 py-2 mt-1">
-    </label>
-    <label class="block text-sm">Bambini
-      <input id="children" type="number" min="0" value="0" class="w-full border rounded px-3 py-2 mt-1">
-    </label>
+    <input id="from" placeholder="ROM/MXP/FCO" value="ROM" class="border px-3 py-2 rounded">
+    <input id="dest" placeholder="Bali / DPS" value="Bali" class="border px-3 py-2 rounded">
+    <input id="checkin" type="date" class="border px-3 py-2 rounded">
+    <input id="checkout" type="date" class="border px-3 py-2 rounded">
+    <input id="adults" type="number" value="2" class="border px-3 py-2 rounded">
+    <input id="children" type="number" value="0" class="border px-3 py-2 rounded">
   </div>
 
-  <!-- CTA neutre -->
-  <div class="bg-white rounded shadow p-4 mb-8 space-y-2">
-    <h2 class="text-xl font-semibold text-blue-800">Prenotazioni rapide</h2>
-    <div class="flex flex-wrap gap-3">
-      <a id="cta-volo"  class="inline-block bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800" target="_blank" rel="noopener">Vedi disponibilità volo</a>
-      <a id="cta-hotel" class="inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700" target="_blank" rel="noopener">Vedi disponibilità alloggi</a>
-      <a id="cta-exp"   class="inline-block bg-yellow-500 text-gray-900 px-4 py-2 rounded hover:bg-yellow-600" target="_blank" rel="noopener">Esplora attività</a>
-    </div>
-    <p class="text-xs text-gray-500">I link aprono le pagine ufficiali con i campi già impostati (risultati reali).</p>
+  <div class="bg-white rounded shadow p-4 mb-8">
+    <h2 class="text-xl font-semibold text-blue-800 mb-2">Prenotazioni rapide</h2>
+    <a id="cta-volo"  class="block bg-blue-700 text-white px-4 py-2 rounded mb-2" target="_blank">Vedi disponibilità volo</a>
+    <a id="cta-hotel" class="block bg-green-600 text-white px-4 py-2 rounded mb-2" target="_blank">Vedi disponibilità alloggi</a>
+    <a id="cta-exp"   class="block bg-yellow-500 text-gray-900 px-4 py-2 rounded" target="_blank">Esplora attività</a>
   </div>
 
-  <!-- Itinerario day-by-day -->
   <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    <article class="bg-white rounded shadow p-4">
-      <h3 class="font-semibold text-blue-800 mb-1">Giorno 1 – Ubud</h3>
-      <p class="text-sm text-gray-700">Arrivo a Denpasar (DPS), trasferimento a Ubud, Monkey Forest e Campuhan Ridge Walk.</p>
-    </article>
-    <article class="bg-white rounded shadow p-4">
-      <h3 class="font-semibold text-blue-800 mb-1">Giorno 2 – Templi & risaie</h3>
-      <p class="text-sm text-gray-700">Tirta Empul, Tegalalang, tempio di Gunung Kawi. Tramonto a Tanah Lot (se tempi permettono).</p>
-    </article>
-    <article class="bg-white rounded shadow p-4">
-      <h3 class="font-semibold text-blue-800 mb-1">Giorno 3 – Cascate & relax</h3>
-      <p class="text-sm text-gray-700">Cascate Tegenungan o Tukad Cepung + spa/massaggio tradizionale balinese.</p>
-    </article>
-    <article class="bg-white rounded shadow p-4">
-      <h3 class="font-semibold text-blue-800 mb-1">Giorno 4 – Mare</h3>
-      <p class="text-sm text-gray-700">Giornata a Nusa Dua / Sanur / Seminyak. Snorkeling o lezione di surf (facoltativi).</p>
-    </article>
-    <article class="bg-white rounded shadow p-4">
-      <h3 class="font-semibold text-blue-800 mb-1">Giorno 5 – Sud dell’isola</h3>
-      <p class="text-sm text-gray-700">Uluwatu Temple + Kecak Dance al tramonto. Cena vista oceano a Jimbaran.</p>
-    </article>
+    <article class="bg-white rounded shadow p-4"><h3>Giorno 1</h3><p>Arrivo a Denpasar, Ubud.</p></article>
+    <article class="bg-white rounded shadow p-4"><h3>Giorno 2</h3><p>Foresta delle Scimmie, templi di Ubud.</p></article>
+    <article class="bg-white rounded shadow p-4"><h3>Giorno 3</h3><p>Escursione a Tanah Lot.</p></article>
+    <article class="bg-white rounded shadow p-4"><h3>Giorno 4</h3><p>Spiagge di Nusa Dua o Seminyak.</p></article>
+    <article class="bg-white rounded shadow p-4"><h3>Giorno 5</h3><p>Relax e rientro.</p></article>
   </section>
 </main>
 
-<footer class="bg-white text-center py-6 mt-8 border-t">
-  <div class="text-sm text-gray-600 space-x-4">
-    <a href="/privacy.html" class="hover:underline">Privacy</a>
-    <a href="/cookie.html" class="hover:underline">Cookie</a>
-    <a href="/termini.html" class="hover:underline">Termini</a>
-    <a href="/chi-siamo.html" class="hover:underline">Chi siamo</a>
-    <a href="/contatti.html" class="hover:underline">Contatti</a>
-  </div>
-  <p class="text-sm text-gray-500 mt-2">&copy; 2025 GlobalGlide360</p>
-</footer>
+<footer class="bg-white text-center py-6 mt-8 border-t"><p>&copy; 2025 GlobalGlide360</p></footer>
 
-<!-- Script deeplink riutilizzabile -->
 <script src="/assets/gg-links.js"></script>
 <script>
-  // Precompila date (tra 7 e 12 giorni da oggi) per demo
-  const today=new Date(), in7=new Date(today), in12=new Date(today);
-  in7.setDate(today.getDate()+7); in12.setDate(today.getDate()+12);
-  const toYMD=(d)=> d.toISOString().slice(0,10);
-  document.getElementById('checkin').value  = toYMD(in7);
-  document.getElementById('checkout').value = toYMD(in12);
-
-  function refreshCTAs(){
-    const from = document.getElementById('from').value.trim();
-    const dest = document.getElementById('dest').value.trim(); // città o IATA
-    const ci   = document.getElementById('checkin').value;
-    const co   = document.getElementById('checkout').value;
-    const ad   = Math.max(1, parseInt(document.getElementById('adults').value||'2',10));
-    const ch   = Math.max(0, parseInt(document.getElementById('children').value||'0',10));
-
-    // Per Bali usiamo DPS (Denpasar) come IATA di riferimento
-    const toIata = (dest.length===3 ? dest.toUpperCase() : 'DPS');
-    const cityForListings = (dest.length===3 ? 'Bali' : dest);
-
-    document.getElementById('cta-volo').href  = ggBuildFlight({from, to: toIata, dep: ci, ret: co, adults: ad, cabin: 'economy'});
-    document.getElementById('cta-hotel').href = ggBuildHotel({dest: cityForListings, checkin: ci, checkout: co, adults: ad, children: ch, rooms: 1});
-    document.getElementById('cta-exp').href   = ggBuildExp({city: cityForListings, fromDate: ci, toDate: co, pax: ad+ch});
+document.addEventListener('DOMContentLoaded',function(){
+  const $=id=>document.getElementById(id);
+  const toYMD=d=>new Date(d).toISOString().slice(0,10);
+  const today=new Date(),in7=new Date(today),in12=new Date(today);
+  in7.setDate(today.getDate()+7);in12.setDate(today.getDate()+12);
+  if(!$('#checkin').value)$('#checkin').value=toYMD(in7);
+  if(!$('#checkout').value)$('#checkout').value=toYMD(in12);
+  function refresh(){
+    const from=$('#from').value||'ROM';
+    const ci=$('#checkin').value,co=$('#checkout').value;
+    const ad=parseInt($('#adults').value||'2',10);
+    const ch=parseInt($('#children').value||'0',10);
+    try{
+      $('#cta-volo').href=ggBuildFlight({from,to:'DPS',dep:ci,ret:co,adults:ad,cabin:'economy'});
+      $('#cta-hotel').href=ggBuildHotel({dest:'Bali',checkin:ci,checkout:co,adults:ad,children:ch,rooms:1});
+      $('#cta-exp').href=ggBuildExp({city:'Bali',fromDate:ci,toDate:co,pax:ad+ch});
+    }catch(e){console.error(e);}
   }
-  ['from','dest','checkin','checkout','adults','children'].forEach(id=>{
-    document.getElementById(id).addEventListener('input', refreshCTAs);
-    document.getElementById(id).addEventListener('change', refreshCTAs);
-  });
-  refreshCTAs();
+  ['from','checkin','checkout','adults','children'].forEach(id=>{
+    $('#'+id).addEventListener('input',refresh);$('#'+id).addEventListener('change',refresh);});
+  refresh();
+});
 </script>
 </body>
 </html>
