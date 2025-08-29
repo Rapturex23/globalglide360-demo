@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tokyo – Mini-guida (5 giorni) | GlobalGlide360</title>
+<meta name="description" content="Mini-guida di Tokyo: itinerario reale 5 giorni con link a disponibilità aggiornate per voli, hotel e attività.">
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-blue-50 text-gray-800">
+<header class="bg-white shadow py-6 px-6">
+  <div class="max-w-6xl mx-auto flex items-center justify-between">
+    <a href="/" class="flex items-center">
+      <img src="/img/logo.png" alt="GlobalGlide360" class="h-14 w-auto"><span class="ml-3 text-2xl font-bold text-blue-800">GlobalGlide360</span>
+    </a>
+    <nav class="hidden md:flex items-center space-x-6 text-blue-800">
+      <a href="/mini-guide/" class="hover:underline">Mini-guide</a>
+      <a href="/chi-siamo.html" class="hover:underline">Chi siamo</a>
+      <a href="/contatti.html" class="hover:underline">Contatti</a>
+    </nav>
+  </div>
+</header>
+
+<main class="max-w-5xl mx-auto p-6">
+  <h1 class="text-3xl font-bold text-blue-900 mb-2">Tokyo — 5 giorni</h1>
+  <p class="text-gray-700 mb-6">Itinerario reale con link a disponibilità aggiornate (voli, hotel, esperienze).</p>
+
+  <!-- Parametri rapidi -->
+  <div class="bg-white rounded shadow p-4 mb-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+    <label class="block text-sm">Origine (IATA)
+      <input id="from" class="w-full border rounded px-3 py-2 mt-1" placeholder="ROM/MXP/FCO" value="ROM">
+    </label>
+    <label class="block text-sm">Destinazione
+      <input id="dest" class="w-full border rounded px-3 py-2 mt-1" placeholder="Tokyo / TYO / NRT" value="Tokyo">
+    </label>
+    <label class="block text-sm">Check-in
+      <input id="checkin" type="date" class="w-full border rounded px-3 py-2 mt-1">
+    </label>
+    <label class="block text-sm">Check-out
+      <input id="checkout" type="date" class="w-full border rounded px-3 py-2 mt-1">
+    </label>
+    <label class="block text-sm">Adulti
+      <input id="adults" type="number" min="1" value="2" class="w-full border rounded px-3 py-2 mt-1">
+    </label>
+    <label class="block text-sm">Bambini
+      <input id="children" type="number" min="0" value="0" class="w-full border rounded px-3 py-2 mt-1">
+    </label>
+  </div>
+
+  <!-- CTA neutre -->
+  <div class="bg-white rounded shadow p-4 mb-8 space-y-2">
+    <h2 class="text-xl font-semibold text-blue-800">Prenotazioni rapide</h2>
+    <div class="flex flex-wrap gap-3">
+      <a id="cta-volo"  class="inline-block bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800" target="_blank" rel="noopener">Vedi disponibilità volo</a>
+      <a id="cta-hotel" class="inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700" target="_blank" rel="noopener">Vedi disponibilità alloggi</a>
+      <a id="cta-exp"   class="inline-block bg-yellow-500 text-gray-900 px-4 py-2 rounded hover:bg-yellow-600" target="_blank" rel="noopener">Esplora attività</a>
+    </div>
+    <p class="text-xs text-gray-500">I link aprono le pagine ufficiali con i campi già impostati (risultati reali).</p>
+  </div>
+
+  <!-- Itinerario day-by-day -->
+  <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <article class="bg-white rounded shadow p-4">
+      <h3 class="font-semibold text-blue-800 mb-1">Giorno 1 – Shibuya & Shinjuku</h3>
+      <p class="text-sm text-gray-700">Arrivo, check-in. Shibuya Crossing, Hachikō, viewpoint Shibuya Sky. Sera: Omoide Yokocho/Shinjuku.</p>
+    </article>
+    <article class="bg-white rounded shadow p-4">
+      <h3 class="font-semibold text-blue-800 mb-1">Giorno 2 – Asakusa & Ueno</h3>
+      <p class="text-sm text-gray-700">Tempio Sensō-ji, Nakamise-dori, crociera Sumida (facoltativa), parco di Ueno e musei.</p>
+    </article>
+    <article class="bg-white rounded shadow p-4">
+      <h3 class="font-semibold text-blue-800 mb-1">Giorno 3 – Akihabara & Odaiba</h3>
+      <p class="text-sm text-gray-700">Akihabara (tech/anime), teamLab/Palette Town a Odaiba, Rainbow Bridge vista serale.</p>
+    </article>
+    <article class="bg-white rounded shadow p-4">
+      <h3 class="font-semibold text-blue-800 mb-1">Giorno 4 – Meiji & Harajuku</h3>
+      <p class="text-sm text-gray-700">Santuario Meiji, Takeshita-dori, Omotesandō, serata a Roppongi Hills/ Mori Art Museum.</p>
+    </article>
+    <article class="bg-white rounded shadow p-4">
+      <h3 class="font-semibold text-blue-800 mb-1">Giorno 5 – Nikko/Kamakura (opz.)</h3>
+      <p class="text-sm text-gray-700">Escursione fuori città o shopping a Ginza/Marunouchi prima della partenza.</p>
+    </article>
+  </section>
+</main>
+
+<footer class="bg-white text-center py-6 mt-8 border-t">
+  <div class="text-sm text-gray-600 space-x-4">
+    <a href="/privacy.html" class="hover:underline">Privacy</a>
+    <a href="/cookie.html" class="hover:underline">Cookie</a>
+    <a href="/termini.html" class="hover:underline">Termini</a>
+    <a href="/chi-siamo.html" class="hover:underline">Chi siamo</a>
+    <a href="/contatti.html" class="hover:underline">Contatti</a>
+  </div>
+  <p class="text-sm text-gray-500 mt-2">&copy; 2025 GlobalGlide360</p>
+</footer>
+
+<!-- Script deeplink riutilizzabile -->
+<script src="/assets/gg-links.js"></script>
+<script>
+  // Precompila date (tra 7 e 12 giorni da oggi) per una demo funzionante
+  const today=new Date(), in7=new Date(today), in12=new Date(today);
+  in7.setDate(today.getDate()+7); in12.setDate(today.getDate()+12);
+  const toYMD=(d)=> d.toISOString().slice(0,10);
+  document.getElementById('checkin').value  = toYMD(in7);
+  document.getElementById('checkout').value = toYMD(in12);
+
+  function refreshCTAs(){
+    const from = document.getElementById('from').value.trim();
+    const dest = document.getElementById('dest').value.trim(); // città o IATA
+    const ci   = document.getElementById('checkin').value;
+    const co   = document.getElementById('checkout').value;
+    const ad   = Math.max(1, parseInt(document.getElementById('adults').value||'2',10));
+    const ch   = Math.max(0, parseInt(document.getElementById('children').value||'0',10));
+
+    // Per la rotta scegliamo NRT (Tokyo Narita) come default
+    const toIata = (dest.length===3 ? dest.toUpperCase() : 'NRT');
+
+    document.getElementById('cta-volo').href  = ggBuildFlight({from, to: toIata, dep: ci, ret: co, adults: ad, cabin: 'economy'});
+    document.getElementById('cta-hotel').href = ggBuildHotel({dest: (dest.length===3?'Tokyo':dest), checkin: ci, checkout: co, adults: ad, children: ch, rooms: 1});
+    document.getElementById('cta-exp').href   = ggBuildExp({city: (dest.length===3?'Tokyo':dest), fromDate: ci, toDate: co, pax: ad+ch});
+  }
+  ['from','dest','checkin','checkout','adults','children'].forEach(id=>{
+    document.getElementById(id).addEventListener('input', refreshCTAs);
+    document.getElementById(id).addEventListener('change', refreshCTAs);
+  });
+  refreshCTAs();
+</script>
+</body>
+</html>
