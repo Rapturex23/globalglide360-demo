@@ -85,7 +85,7 @@
   <p class="text-sm text-gray-500">&copy; 2025 GlobalGlide360</p>
 </footer>
 
-<!-- ================= GG CORE INLINE + SCRIPT ROBUSTO (fix date) ================= -->
+<!-- ================= GG CORE INLINE + SCRIPT STABILE ================= -->
 <script>
 /* === GG core inline === */
 window.GG_CFG = window.GG_CFG || { sky_partner:"", bkg_aid:"", gyg_partner:"" };
@@ -127,63 +127,81 @@ window.ggBuildExp = ({city, fromDate, toDate, pax})=>{
   return u.toString();
 };
 
-/* === Script pagina robusto === */
+/* === Script pagina “stabile” === */
 document.addEventListener('DOMContentLoaded', function () {
   const $ = id => document.getElementById(id);
 
-  // Date di default 7→12 giorni (formato locale YYYY-MM-DD)
-  const today = new Date(), in7 = new Date(today), in12 = new Date(today);
+  // 1) Imposta date di default e CONGELA in memoria
+  const today=new Date(), in7=new Date(today), in12=new Date(today);
   in7.setDate(today.getDate()+7); in12.setDate(today.getDate()+12);
-  const defCheckin  = localISO(in7);
-  const defCheckout = localISO(in12);
+  const defaultCheckin  = localISO(in7);
+  const defaultCheckout = localISO(in12);
 
-  if ($('#checkin')  && !$('#checkin').value)  $('#checkin').value  = defCheckin;
-  if ($('#checkout') && !$('#checkout').value) $('#checkout').value = defCheckout;
+  if ($('#checkin')  && !$('#checkin').value)  $('#checkin').value  = defaultCheckin;
+  if ($('#checkout') && !$('#checkout').value) $('#checkout').value = defaultCheckout;
 
-  const safeVal = (id, fb='') => { const el = $(id); return (el && typeof el.value!=='undefined') ? el.value : fb; };
+  // Stato "toccato dall'utente"
+  const touched = { checkin:false, checkout:false, from:false, dest:false, adults:false, children:false };
 
-  function refreshCTAs(){
-    const from = (safeVal('from','ROM')||'ROM').trim();
-    const dest = (safeVal('dest','Tokyo')||'Tokyo').trim();
+  // 2) Funzione che legge i valori "stabili"
+  function getParams(){
+    const from  = ($('#from') && (touched.from ? $('#from').value : ($('#from').value || 'ROM'))) || 'ROM';
+    const dest  = ($('#dest') && (touched.dest ? $('#dest').value : ($('#dest').value || document.title.split('–')[0].trim()))) || 'Tokyo';
 
-    // Leggi date dagli input; se vuote, usa fallback locali
-    let ci = safeVal('checkin', defCheckin);
-    let co = safeVal('checkout', defCheckout);
-    if (!ci) ci = defCheckin;
-    if (!co) co = defCheckout;
+    // se l'utente NON ha toccato le date, usa i default congelati
+    const ci = $('#checkin')  ? (touched.checkin  ? $('#checkin').value  : ($('#checkin').value  || defaultCheckin))  : defaultCheckin;
+    const co = $('#checkout') ? (touched.checkout ? $('#checkout').value : ($('#checkout').value || defaultCheckout)) : defaultCheckout;
 
-    const ad = Math.max(1, parseInt(safeVal('adults','2'),10));
-    const ch = Math.max(0, parseInt(safeVal('children','0'),10));
+    const ad = $('#adults')   ? (touched.adults   ? parseInt($('#adults').value||'2',10)   : parseInt($('#adults').value||'2',10)) : 2;
+    const ch = $('#children') ? (touched.children ? parseInt($('#children').value||'0',10) : parseInt($('#children').value||'0',10)) : 0;
 
-    const toIata = dest.length===3 ? dest.toUpperCase() : 'NRT';
-    const cityForListings = dest.length===3 ? 'Tokyo' : dest;
+    // IATA default per la pagina
+    const path = (location.pathname||'').toLowerCase();
+    let defaultIATA = 'PAR';
+    if (path.includes('tokyo')) defaultIATA='NRT';
+    else if (path.includes('bali')) defaultIATA='DPS';
+    else if (path.includes('newyork')) defaultIATA='NYC';
+    else if (path.includes('parigi')) defaultIATA='PAR';
 
-    try {
-      const hrefFlight = ggBuildFlight({from, to: toIata, dep: ci, ret: co, adults: ad, cabin:'economy'});
-      const hrefHotel  = ggBuildHotel({dest: cityForListings, checkin: ci, checkout: co, adults: ad, children: ch, rooms: 1});
-      const hrefExp    = ggBuildExp({city: cityForListings, fromDate: ci, toDate: co, pax: ad+ch});
+    const toIata = dest.length===3 ? dest.toUpperCase() : defaultIATA;
+    const cityForListings = dest.length===3
+      ? (path.includes('tokyo') ? 'Tokyo' : path.includes('bali') ? 'Bali' : path.includes('newyork') ? 'New York' : 'Paris')
+      : dest;
 
-      if ($('#cta-volo'))  $('#cta-volo').href  = hrefFlight || '#';
-      if ($('#cta-hotel')) $('#cta-hotel').href = hrefHotel  || '#';
-      if ($('#cta-exp'))   $('#cta-exp').href   = hrefExp    || '#';
-
-      console.log('[GG] href volo:', hrefFlight);
-      console.log('[GG] href hotel:', hrefHotel);
-      console.log('[GG] href exp:', hrefExp);
-
-      [['cta-volo',hrefFlight],['cta-hotel',hrefHotel],['cta-exp',hrefExp]].forEach(([id,link])=>{
-        const a = $(id); if(!a) return;
-        if (!link) { a.classList.add('opacity-50','pointer-events-none'); a.setAttribute('aria-disabled','true'); }
-        else { a.classList.remove('opacity-50','pointer-events-none'); a.removeAttribute('aria-disabled'); }
-      });
-    } catch(e){
-      console.error('[GG] Errore costruzione link:', e);
-    }
+    return { from, dest, ci, co, ad, ch, toIata, cityForListings };
   }
 
-  ['from','dest','checkin','checkout','adults','children'].forEach(id=>{
-    const el = $(id); if (el) { el.addEventListener('input',refreshCTAs); el.addEventListener('change',refreshCTAs); }
+  // 3) Applica href UNA VOLTA e poi SOLO su input utente
+  function applyCTAs(){
+    const {from,ci,co,ad,ch,toIata,cityForListings} = getParams();
+    const hrefFlight = ggBuildFlight({from, to: toIata, dep: ci, ret: co, adults: ad, cabin:'economy'});
+    const hrefHotel  = ggBuildHotel({dest: cityForListings, checkin: ci, checkout: co, adults: ad, children: ch, rooms: 1});
+    const hrefExp    = ggBuildExp({city: cityForListings, fromDate: ci, toDate: co, pax: ad+ch});
+
+    const aF = document.getElementById('cta-volo');
+    const aH = document.getElementById('cta-hotel');
+    const aE = document.getElementById('cta-exp');
+
+    if (aF) aF.href = hrefFlight || '#';
+    if (aH) aH.href = hrefHotel  || '#';
+    if (aE) aE.href = hrefExp    || '#';
+
+    console.log('[GG] href volo:', hrefFlight);
+    console.log('[GG] href hotel:', hrefHotel);
+    console.log('[GG] href exp:', hrefExp);
+  }
+
+  // Bind SOLO su eventi utente (non su mutazioni DOM)
+  [['from','from'],['dest','dest'],['checkin','checkin'],['checkout','checkout'],['adults','adults'],['children','children']]
+  .forEach(([id,key])=>{
+    const el = $('#'+id);
+    if (!el) return;
+    el.addEventListener('input', ()=>{ touched[key]=true; applyCTAs(); });
+    el.addEventListener('change', ()=>{ touched[key]=true; applyCTAs(); });
   });
-  refreshCTAs();
+
+  // Prima applicazione: calcola una volta e basta
+  applyCTAs();
 });
 </script>
+
