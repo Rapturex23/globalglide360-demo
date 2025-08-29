@@ -4,78 +4,87 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>GlobalGlide360 – Viaggi su misura</title>
+  <meta name="description" content="Crea un itinerario reale con link a disponibilità aggiornate di voli, alloggi e attività.">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <meta name="description" content="Crea un itinerario reale con prezzi aggiornati da fonti ufficiali.">
 </head>
 <body class="bg-blue-50 text-gray-800">
 
   <!-- HEADER -->
-  <header class="bg-white shadow py-6 px-6 flex items-center justify-between">
-    <div class="flex items-center">
-      <img src="img/logo.png" alt="GlobalGlide360 Logo" class="h-20 w-auto">
-      <span class="ml-4 text-3xl font-bold text-blue-800">GlobalGlide360</span>
+  <header class="bg-white shadow py-6 px-6">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <div class="flex items-center">
+        <img src="img/logo.png" alt="GlobalGlide360 Logo" class="h-20 w-auto">
+        <span class="ml-4 text-3xl font-bold text-blue-800">GlobalGlide360</span>
+      </div>
+      <nav class="hidden md:flex items-center space-x-6 text-blue-800">
+        <a href="/mini-guide/" class="hover:underline">Mini-guide</a>
+        <a href="/chi-siamo.html" class="hover:underline">Chi siamo</a>
+        <a href="/contatti.html" class="hover:underline">Contatti</a>
+      </nav>
     </div>
   </header>
 
   <!-- HERO + FORM -->
   <section class="bg-gradient-to-br from-blue-50 to-white py-12 px-6 text-center">
-    <h1 class="text-4xl font-extrabold text-blue-900 mb-4">Il tuo viaggio su misura inizia qui</h1>
-    <p class="text-gray-700 text-lg mb-6">Inserisci le tue preferenze e genera un itinerario reale con disponibilità e prezzi aggiornati</p>
+    <div class="max-w-6xl mx-auto">
+      <h1 class="text-4xl font-extrabold text-blue-900 mb-4">Il tuo viaggio su misura inizia qui</h1>
+      <p class="text-gray-700 text-lg mb-6">Inserisci le tue preferenze e genera un itinerario reale con disponibilità aggiornate</p>
 
-    <form id="gg-form" class="bg-white max-w-3xl mx-auto p-6 rounded shadow-md">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-        <input id="cityFrom" type="text" placeholder="Città di partenza (IATA es. FCO/MXP/ROM)" class="border px-4 py-2 rounded" required>
-        <input id="cityTo"   type="text" placeholder="Destinazione (IATA o città es. CDG/Paris)" class="border px-4 py-2 rounded" required>
+      <form id="gg-form" class="bg-white max-w-3xl mx-auto p-6 rounded shadow-md">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <input id="cityFrom" type="text" placeholder="Città di partenza (IATA o città es. ROM/FCO/MXP)" class="border px-4 py-2 rounded" required>
+          <input id="cityTo"   type="text" placeholder="Destinazione (IATA o città es. PAR/LON/NYC/DPS)" class="border px-4 py-2 rounded" required>
 
-        <input id="dateFrom" type="date" class="border px-4 py-2 rounded" required>
-        <input id="dateTo"   type="date" class="border px-4 py-2 rounded">
+          <input id="dateFrom" type="date" class="border px-4 py-2 rounded" required>
+          <input id="dateTo"   type="date" class="border px-4 py-2 rounded">
 
-        <input id="adults"   type="number" placeholder="Adulti" class="border px-4 py-2 rounded" min="1" value="2">
-        <input id="children" type="number" placeholder="Bambini" class="border px-4 py-2 rounded" min="0" value="0">
+          <input id="adults"   type="number" placeholder="Adulti" class="border px-4 py-2 rounded" min="1" value="2">
+          <input id="children" type="number" placeholder="Bambini" class="border px-4 py-2 rounded" min="0" value="0">
 
-        <input id="budget"   type="text" placeholder="Budget (es. 1500€)" class="border px-4 py-2 rounded md:col-span-2">
-      </div>
+          <input id="budget"   type="text" placeholder="Budget (es. 1500€)" class="border px-4 py-2 rounded md:col-span-2">
+        </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4 text-left">
-        <label class="flex items-center"><input id="oneWay" type="checkbox" class="mr-2"> Solo andata</label>
-        <label class="flex items-center">Classe
-          <select id="cabin" class="ml-2 border px-3 py-2 rounded w-full">
-            <option value="economy" selected>Economy</option>
-            <option value="premiumeconomy">Premium</option>
-            <option value="business">Business</option>
-            <option value="first">First</option>
-          </select>
-        </label>
-        <label class="flex items-center">Camere
-          <input id="rooms" type="number" min="1" value="1" class="ml-2 border px-3 py-2 rounded w-24">
-        </label>
-      </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4 text-left">
+          <label class="flex items-center"><input id="oneWay" type="checkbox" class="mr-2"> Solo andata</label>
+          <label class="flex items-center">Classe
+            <select id="cabin" class="ml-2 border px-3 py-2 rounded w-full">
+              <option value="economy" selected>Economy</option>
+              <option value="premiumeconomy">Premium</option>
+              <option value="business">Business</option>
+              <option value="first">First</option>
+            </select>
+          </label>
+          <label class="flex items-center">Camere
+            <input id="rooms" type="number" min="1" value="1" class="ml-2 border px-3 py-2 rounded w-24">
+          </label>
+        </div>
 
-      <h2 class="text-lg font-semibold text-left mb-2">Preferenze di viaggio</h2>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-2 text-left mb-6">
-        <label class="flex items-center"><input type="checkbox" name="pref" value="natura" class="mr-2"> Natura</label>
-        <label class="flex items-center"><input type="checkbox" name="pref" value="città" class="mr-2"> Città</label>
-        <label class="flex items-center"><input type="checkbox" name="pref" value="cultura" class="mr-2"> Cultura</label>
-        <label class="flex items-center"><input type="checkbox" name="pref" value="mare" class="mr-2"> Mare</label>
-        <label class="flex items-center"><input type="checkbox" name="pref" value="montagna" class="mr-2"> Montagna</label>
-        <label class="flex items-center"><input type="checkbox" name="pref" value="famiglia" class="mr-2" checked> Famiglia</label>
-      </div>
+        <h2 class="text-lg font-semibold text-left mb-2">Preferenze di viaggio</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-2 text-left mb-6">
+          <label class="flex items-center"><input type="checkbox" name="pref" value="natura" class="mr-2"> Natura</label>
+          <label class="flex items-center"><input type="checkbox" name="pref" value="città" class="mr-2"> Città</label>
+          <label class="flex items-center"><input type="checkbox" name="pref" value="cultura" class="mr-2"> Cultura</label>
+          <label class="flex items-center"><input type="checkbox" name="pref" value="mare" class="mr-2"> Mare</label>
+          <label class="flex items-center"><input type="checkbox" name="pref" value="montagna" class="mr-2"> Montagna</label>
+          <label class="flex items-center"><input type="checkbox" name="pref" value="famiglia" class="mr-2" checked> Famiglia</label>
+        </div>
 
-      <div class="flex items-center justify-center">
-        <button class="bg-blue-700 text-white px-6 py-3 rounded hover:bg-blue-800" type="submit">
-          Genera itinerario
-        </button>
-      </div>
+        <div class="flex items-center justify-center">
+          <button class="bg-blue-700 text-white px-6 py-3 rounded hover:bg-blue-800" type="submit">
+            Genera itinerario
+          </button>
+        </div>
 
-      <p class="text-xs text-gray-500 mt-3">
-        Suggerimento: per i voli è più affidabile usare i <strong>codici IATA</strong> (es. FCO → CDG). I risultati si aprono sui portali ufficiali con i campi già compilati.
-      </p>
-    </form>
+        <p class="text-xs text-gray-500 mt-3">
+          Suggerimento: per i voli è più affidabile usare i <strong>codici IATA</strong> (es. ROM → PAR, MIL → LON, DPS per Bali).
+        </p>
+      </form>
+    </div>
   </section>
 
   <!-- ITINERARIO PROPOSTO -->
   <section id="itinerary" class="py-10 px-6 hidden">
-    <div class="max-w-5xl mx-auto">
+    <div class="max-w-6xl mx-auto">
       <h2 class="text-3xl font-bold text-blue-900 mb-6">Itinerario proposto</h2>
 
       <!-- Riepilogo -->
@@ -121,137 +130,168 @@
     </div>
   </section>
 
-  <!-- DESTINAZIONI DEMO -->
+  <!-- DESTINAZIONI POPOLARI (senza Tokyo e Famiglia) -->
   <section class="py-12 px-6 bg-white">
-    <h2 class="text-2xl font-bold text-center text-blue-900 mb-6">Destinazioni popolari</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-      <div><img src="img/bali.png" alt="Bali" class="rounded shadow"><p class="mt-2 text-center font-semibold">Bali</p></div>
-      <div><img src="img/newyork.png" alt="New York" class="rounded shadow"><p class="mt-2 text-center font-semibold">New York</p></div>
-      <div><img src="img/montagna.png" alt="Montagna" class="rounded shadow"><p class="mt-2 text-center font-semibold">Montagna</p></div>
-      <div><img src="img/tempio.png" alt="Tempio" class="rounded shadow"><p class="mt-2 text-center font-semibold">Tempio</p></div>
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-2xl font-bold text-center text-blue-900 mb-6">Destinazioni popolari</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div><img src="img/bali.png" alt="Bali" class="rounded shadow"><p class="mt-2 text-center font-semibold">Bali</p></div>
+        <div><img src="img/newyork.png" alt="New York" class="rounded shadow"><p class="mt-2 text-center font-semibold">New York</p></div>
+        <div><img src="img/montagna.png" alt="Montagna" class="rounded shadow"><p class="mt-2 text-center font-semibold">Montagna</p></div>
+        <div><img src="img/tempio.png" alt="Tempio" class="rounded shadow"><p class="mt-2 text-center font-semibold">Tempio</p></div>
+      </div>
     </div>
   </section>
 
   <!-- CHI SIAMO -->
   <section class="py-12 px-6 bg-blue-50 text-center">
-    <h2 class="text-3xl font-bold text-blue-800 mb-4">Chi siamo</h2>
-    <p class="max-w-3xl mx-auto text-gray-700 text-lg">
-      GlobalGlide360 aiuta a trasformare idee in viaggi reali: itinerari con tappe giornaliere, link a disponibilità aggiornate e prenotazioni in totale trasparenza.
-    </p>
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-blue-800 mb-4">Chi siamo</h2>
+      <p class="max-w-3xl mx-auto text-gray-700 text-lg">
+        GlobalGlide360 aiuta a trasformare idee in viaggi reali: itinerari con tappe giornaliere, link a disponibilità aggiornate e prenotazioni in totale trasparenza.
+      </p>
+    </div>
   </section>
 
   <!-- COME FUNZIONA -->
   <section class="py-12 px-6 bg-blue-100 text-center">
-    <h2 class="text-3xl font-bold text-blue-900 mb-4">Come funziona</h2>
-    <div class="max-w-4xl mx-auto text-gray-700 text-lg space-y-4 text-left">
-      <p><strong>1.</strong> Inserisci dati e preferenze.</p>
-      <p><strong>2.</strong> Generiamo un itinerario con tappe e link a disponibilità reali.</p>
-      <p><strong>3.</strong> Prenoti direttamente sui portali ufficiali, senza sovrapprezzi.</p>
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-blue-900 mb-4">Come funziona</h2>
+      <div class="max-w-4xl mx-auto text-gray-700 text-lg space-y-4 text-left">
+        <p><strong>1.</strong> Inserisci dati e preferenze.</p>
+        <p><strong>2.</strong> Generiamo un itinerario con tappe e link a disponibilità reali.</p>
+        <p><strong>3.</strong> Prenoti direttamente sui portali ufficiali, senza sovrapprezzi.</p>
+      </div>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer class="bg-white text-center py-6 mt-8 border-t">
-    <p class="text-sm text-gray-500">&copy; 2025 GlobalGlide360 – Tutti i diritti riservati</p>
-    <p class="text-sm text-gray-400">info@globalglide360.com</p>
+    <div class="text-sm text-gray-600 space-x-4">
+      <a href="/privacy.html" class="hover:underline">Privacy</a>
+      <a href="/cookie.html" class="hover:underline">Cookie</a>
+      <a href="/termini.html" class="hover:underline">Termini</a>
+      <a href="/chi-siamo.html" class="hover:underline">Chi siamo</a>
+      <a href="/contatti.html" class="hover:underline">Contatti</a>
+    </div>
+    <p class="text-sm text-gray-500 mt-2">&copy; 2025 GlobalGlide360 – Tutti i diritti riservati</p>
   </footer>
 
-  <!-- SCRIPT -->
+  <!-- COOKIE BANNER -->
+  <div id="cookie-banner" class="fixed bottom-3 left-3 right-3 md:left-6 md:right-auto md:max-w-xl bg-white border rounded shadow p-4 text-gray-800 hidden">
+    <p class="text-sm">Usiamo cookie tecnici e link a siti terzi. Continuando accetti la <a href="/cookie.html" class="text-blue-700 underline">Cookie Policy</a>.</p>
+    <div class="mt-2 flex gap-2">
+      <button id="cookie-accept" class="bg-blue-700 text-white px-3 py-1 rounded">Accetta</button>
+      <a href="/cookie.html" class="px-3 py-1 border rounded">Preferenze</a>
+    </div>
+  </div>
+
+  <!-- SCRIPT PRINCIPALE -->
   <script>
     /* ====== PARAMETRI AFFILIAZIONE (invisibili agli utenti) ======
        Inseriscili quando approvato:
-       - Skyscanner: associateid
-       - Booking: aid
-       - GetYourGuide: partner_id
+       - Volo: associateid
+       - Hotel: aid
+       - Esperienze: partner_id
     */
-    const SKY_PARTNER = "";     // es. 'SKY_xxx'
-    const BKG_AID     = "";     // es. '1234567'
-    const GYG_PARTNER = "";     // es. 'ABCDE'
+    const AFF = {
+      SKY_PARTNER: "",   // es. 'SKY_xxx'
+      BKG_AID:     "",   // es. '1234567'
+      GYG_PARTNER: ""    // es. 'ABCDE'
+    };
 
-    // Helpers
+    // === Helpers ===
     const $ = (id) => document.getElementById(id);
     const pad = (n) => n.toString().padStart(2,'0');
-    const toYMD = (d) => {
-      const t = new Date(d);
-      if (isNaN(t)) return "";
-      return t.getFullYear()+"-"+pad(t.getMonth()+1)+"-"+pad(t.getDate());
+    const toYMD = (d) => { const t = new Date(d); if (isNaN(t)) return ""; return t.getFullYear()+"-"+pad(t.getMonth()+1)+"-"+pad(t.getDate()); };
+    const addDays = (dateStr, days) => { if(!dateStr) return ""; const d = new Date(dateStr); d.setDate(d.getDate()+days); return toYMD(d); };
+
+    // Mini mappa IATA (IT/EN più comuni). Se non trovata: prime 3 lettere maiuscole.
+    const IATA_MAP = {
+      "ROM":"ROM","ROMA":"ROM","ROME":"ROM","FCO":"FCO","CIA":"CIA",
+      "MIL":"MIL","MILANO":"MIL","MILAN":"MIL","MXP":"MXP","LIN":"LIN","BGY":"BGY",
+      "PAR":"PAR","PARIS":"PAR","PARIGI":"PAR","CDG":"CDG","ORY":"ORY","BVA":"BVA",
+      "LON":"LON","LONDON":"LON","LONDRA":"LON","LHR":"LHR","LGW":"LGW","LTN":"LTN","STN":"STN","LCY":"LCY","SEN":"SEN",
+      "NYC":"NYC","NEW YORK":"NYC","JFK":"JFK","EWR":"EWR","LGA":"LGA",
+      "OSL":"OSL","OSLO":"OSL",
+      "ATH":"ATH","ATENE":"ATH","ATHENS":"ATH",
+      "KRK":"KRK","CRACOVIA":"KRK","KRAKOW":"KRK",
+      "WAW":"WAW","VARSAW":"WAW","VARSAVIA":"WAW","WARSAW":"WAW",
+      "CFU":"CFU","CORFU":"CFU","KERKYRA":"CFU",
+      "DPS":"DPS","BALI":"DPS","DENPASAR":"DPS",
+      "TYO":"TYO","TOKYO":"TYO","HND":"HND","NRT":"NRT"
     };
-    const addDays = (dateStr, days) => {
-      if(!dateStr) return "";
-      const d = new Date(dateStr);
-      d.setDate(d.getDate()+days);
-      return toYMD(d);
+    const toIATA = (val) => {
+      if(!val) return "";
+      const v = val.trim().toUpperCase();
+      if (v.length === 3) return v;               // già IATA
+      if (IATA_MAP[v]) return IATA_MAP[v];        // mapping comune
+      return v.slice(0,3);                        // fallback
     };
-    const cleanIATA = (v) => (v||"").trim().toUpperCase().slice(0,3);
 
-    // Costruisce i link “neutri” ai risultati reali (nessun brand nei CTA)
-    function buildLinks({from, to, dep, ret, ad, ch, oneway, cabin, rooms}){
-      // Voli → Skyscanner
-      const fromIATA = cleanIATA(from);
-      const toIATA   = cleanIATA(to);
-      const flightBase = `https://www.skyscanner.net/transport/flights/${fromIATA}/${toIATA}/${dep}${(!oneway && ret)?`/${ret}`:""}/`;
-      const fParams = new URLSearchParams({
-        adults: ad, cabinclass: cabin, locale: 'it-IT', currency: 'EUR'
-      });
-      if(SKY_PARTNER) fParams.set('associateid', SKY_PARTNER);
-
-      // Hotel → Booking
-      const hotelURL = new URL('https://www.booking.com/searchresults.html');
-      hotelURL.searchParams.set('ss', to);
-      hotelURL.searchParams.set('checkin', dep);
-      hotelURL.searchParams.set('checkout', ret || addDays(dep, 3));
-      hotelURL.searchParams.set('group_adults', ad);
-      hotelURL.searchParams.set('group_children', ch);
-      hotelURL.searchParams.set('no_rooms', rooms || 1);
-      if(BKG_AID) hotelURL.searchParams.set('aid', BKG_AID);
-
-      // Esperienze → GetYourGuide
-      const expURL = new URL('https://www.getyourguide.com/s/');
-      expURL.searchParams.set('q', to);
-      if(dep) expURL.searchParams.set('date_from', dep);
-      if(ret) expURL.searchParams.set('date_to', ret || addDays(dep, 3));
-      if(GYG_PARTNER) expURL.searchParams.set('partner_id', GYG_PARTNER);
-
-      return {
-        flightHref: `${flightBase}?${fParams.toString()}`,
-        hotelHref:  hotelURL.toString(),
-        expHref:    expURL.toString()
-      };
+    // === Costruttori deeplink (neutri nei testi) ===
+    function buildFlightLink({from, to, dep, ret, adults=2, cabin='economy', oneway=false}){
+      const f = toIATA(from), t = toIATA(to);
+      const base = `https://www.skyscanner.net/transport/flights/${f}/${t}/${dep}${(!oneway && ret)?`/${ret}`:""}/`;
+      const qs = new URLSearchParams({ adults, cabinclass:cabin, locale:'it-IT', currency:'EUR' });
+      if (AFF.SKY_PARTNER) qs.set('associateid', AFF.SKY_PARTNER);
+      return `${base}?${qs.toString()}`;
     }
 
-    // Genera un mini-itinerario day-by-day coerente con le date
+    function buildHotelLink({dest, checkin, checkout, adults=2, children=0, rooms=1}){
+      const u = new URL('https://www.booking.com/searchresults.html');
+      u.searchParams.set('ss', dest);
+      u.searchParams.set('checkin', checkin);
+      u.searchParams.set('checkout', checkout || addDays(checkin,3));
+      u.searchParams.set('group_adults', adults);
+      u.searchParams.set('group_children', children);
+      u.searchParams.set('no_rooms', rooms);
+      if (AFF.BKG_AID) u.searchParams.set('aid', AFF.BKG_AID);
+      return u.toString();
+    }
+
+    function buildExpLink({city, fromDate, toDate, pax}){
+      const u = new URL('https://www.getyourguide.com/s/');
+      u.searchParams.set('q', city);
+      if (fromDate) u.searchParams.set('date_from', fromDate);
+      if (toDate)   u.searchParams.set('date_to', toDate);
+      if (pax)      u.searchParams.set('number_of_participants', pax);
+      if (AFF.GYG_PARTNER) u.searchParams.set('partner_id', AFF.GYG_PARTNER);
+      return u.toString();
+    }
+
+    // === Render itinerario day-by-day in base alle date ===
     function renderDays(container, {to, dep, ret, prefs}){
       container.innerHTML = "";
       const start = dep;
       const end   = ret || addDays(dep, 3);
       const d1 = new Date(start), d2 = new Date(end);
       const days = Math.max(1, Math.round((d2 - d1) / (1000*60*60*24)));
-
       const ideas = (prefs.length ? prefs : ["città","cultura","famiglia"]);
+
       for(let i=0;i<Math.min(days,6);i++){
-        const dayTitle = `Giorno ${i+1}`;
         const focus = ideas[i % ideas.length];
         const card = document.createElement('div');
         card.className = "bg-white rounded shadow p-5";
         card.innerHTML = `
-          <h4 class="font-semibold text-blue-800 mb-1">${dayTitle}</h4>
+          <h4 class="font-semibold text-blue-800 mb-1">Giorno ${i+1}</h4>
           <p class="text-gray-700 text-sm">
-            Mattina: attività ${focus}. Pomeriggio: tempo libero / visita quartiere caratteristico.
-            Sera: ristorante tipico. (Suggerimenti dettagliati nelle mini-guide)
+            Mattina: attività ${focus}. Pomeriggio: tempo libero / quartiere caratteristico.
+            Sera: ristorante tipico. (Dettagli nelle mini-guide)
           </p>
         `;
         container.appendChild(card);
       }
     }
 
-    // Submit → genera itinerario + link
+    // === Submit form → genera itinerario + link reali (CTA neutre) ===
     document.getElementById('gg-form').addEventListener('submit', (e)=>{
       e.preventDefault();
 
       const from = $('cityFrom').value.trim();
       const to   = $('cityTo').value.trim();
       const dep  = toYMD($('dateFrom').value);
-      const ret  = toYMD($('dateTo').value);
+      const ret0 = toYMD($('dateTo').value);
       const ad   = Math.max(1, parseInt(($('adults').value || '2'), 10));
       const ch   = Math.max(0, parseInt(($('children').value || '0'), 10));
       const oneway = $('oneWay').checked;
@@ -262,6 +302,8 @@
         alert('Compila almeno: partenza, destinazione e data di partenza.');
         return;
       }
+      // se solo andata e niente ritorno: per hotel/attività ipotizziamo 3 notti
+      const ret = oneway ? "" : ret0;
 
       const prefs = Array.from(document.querySelectorAll('input[name="pref"]:checked')).map(i=>i.value);
 
@@ -270,7 +312,7 @@
         <div class="flex flex-col md:flex-row md:items-center md:justify-between">
           <div class="mb-2 md:mb-0">
             <p><strong>Da:</strong> ${from} &nbsp; <strong>A:</strong> ${to}</p>
-            <p><strong>Date:</strong> ${dep} ${ret ? ' → ' + ret : (oneway ? '(solo andata)' : '→ +3 giorni predefiniti')}</p>
+            <p><strong>Date:</strong> ${dep} ${ret ? ' → ' + ret : (oneway ? '(solo andata)' : '→ +3 notti predefinite')}</p>
             <p><strong>Passeggeri:</strong> ${ad} adulti${ch? ' + ' + ch + ' bambini':''} &nbsp; <strong>Camere:</strong> ${rooms}</p>
           </div>
           <div class="text-sm text-gray-500">Preferenze: ${prefs.length ? prefs.join(', ') : 'standard'}</div>
@@ -281,7 +323,10 @@
       renderDays($('days'), {to, dep, ret, prefs});
 
       // Link reali (CTA neutre)
-      const { flightHref, hotelHref, expHref } = buildLinks({from, to, dep, ret, ad, ch, oneway, cabin, rooms});
+      const flightHref = buildFlightLink({from, to, dep, ret, adults: ad, cabin, oneway});
+      const hotelHref  = buildHotelLink({dest: to, checkin: dep, checkout: ret || addDays(dep,3), adults: ad, children: ch, rooms});
+      const expHref    = buildExpLink({city: to, fromDate: dep, toDate: ret || addDays(dep,3), pax: ad+ch});
+
       $('flightLink').href = flightHref;
       $('hotelLink').href  = hotelHref;
       $('expLink').href    = expHref;
@@ -294,10 +339,20 @@
 
       // Mostra sezione itinerario
       $('itinerary').classList.remove('hidden');
-
-      // Scroll verso l'itinerario
       $('itinerary').scrollIntoView({behavior:'smooth'});
     });
+
+    // === Cookie banner semplice ===
+    (function(){
+      const K = "gg_cookie_ok_v1";
+      if(!localStorage.getItem(K)){
+        document.getElementById('cookie-banner').classList.remove('hidden');
+      }
+      document.getElementById('cookie-accept').onclick = function(){
+        localStorage.setItem(K, "1");
+        document.getElementById('cookie-banner').remove();
+      };
+    })();
   </script>
 </body>
 </html>
