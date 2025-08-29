@@ -31,6 +31,7 @@
   <h1 class="text-3xl font-bold text-blue-900 mb-2">Bali — 5 giorni</h1>
   <p class="text-gray-700 mb-6">Itinerario reale con link a disponibilità aggiornate (voli, hotel, esperienze).</p>
 
+  <!-- Parametri -->
   <div class="bg-white rounded shadow p-4 mb-6 grid grid-cols-1 md:grid-cols-2 gap-4">
     <input id="from" placeholder="ROM/MXP/FCO" value="ROM" class="border px-3 py-2 rounded">
     <input id="dest" placeholder="Bali / DPS" value="Bali" class="border px-3 py-2 rounded">
@@ -40,6 +41,7 @@
     <input id="children" type="number" value="0" class="border px-3 py-2 rounded">
   </div>
 
+  <!-- CTA -->
   <div class="bg-white rounded shadow p-4 mb-8">
     <h2 class="text-xl font-semibold text-blue-800 mb-2">Prenotazioni rapide</h2>
     <a id="cta-volo"  class="block bg-blue-700 text-white px-4 py-2 rounded mb-2" target="_blank">Vedi disponibilità volo</a>
@@ -47,41 +49,76 @@
     <a id="cta-exp"   class="block bg-yellow-500 text-gray-900 px-4 py-2 rounded" target="_blank">Esplora attività</a>
   </div>
 
+  <!-- Itinerario -->
   <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    <article class="bg-white rounded shadow p-4"><h3>Giorno 1</h3><p>Arrivo a Denpasar, Ubud.</p></article>
-    <article class="bg-white rounded shadow p-4"><h3>Giorno 2</h3><p>Foresta delle Scimmie, templi di Ubud.</p></article>
-    <article class="bg-white rounded shadow p-4"><h3>Giorno 3</h3><p>Escursione a Tanah Lot.</p></article>
-    <article class="bg-white rounded shadow p-4"><h3>Giorno 4</h3><p>Spiagge di Nusa Dua o Seminyak.</p></article>
+    <article class="bg-white rounded shadow p-4"><h3>Giorno 1</h3><p>Arrivo a Denpasar e trasferimento a Ubud.</p></article>
+    <article class="bg-white rounded shadow p-4"><h3>Giorno 2</h3><p>Foresta delle Scimmie e templi di Ubud.</p></article>
+    <article class="bg-white rounded shadow p-4"><h3>Giorno 3</h3><p>Escursione a Tanah Lot e risaie.</p></article>
+    <article class="bg-white rounded shadow p-4"><h3>Giorno 4</h3><p>Spiagge di Seminyak o Nusa Dua.</p></article>
     <article class="bg-white rounded shadow p-4"><h3>Giorno 5</h3><p>Relax e rientro.</p></article>
   </section>
 </main>
 
 <footer class="bg-white text-center py-6 mt-8 border-t"><p>&copy; 2025 GlobalGlide360</p></footer>
 
-<script src="/assets/gg-links.js"></script>
+<!-- GG CORE INLINE + SCRIPT STABILE -->
 <script>
+window.GG_CFG = window.GG_CFG || { sky_partner:"", bkg_aid:"", gyg_partner:"" };
+const pad=n=>n.toString().padStart(2,'0');
+const localISO=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+const addDays=(dateStr,days)=>{if(!dateStr)return"";const[y,m,dd]=dateStr.split('-').map(Number);const d=new Date(y,m-1,dd);d.setDate(d.getDate()+days);return localISO(d);};
+const cleanIATA=v=>(v||"").trim().toUpperCase().slice(0,3);
+
+window.ggBuildFlight=({from,to,dep,ret,adults=2,cabin='economy'})=>{
+  const base=`https://www.skyscanner.net/transport/flights/${cleanIATA(from)}/${cleanIATA(to)}/${dep}${ret?`/${ret}`:""}/`;
+  const qs=new URLSearchParams({adults,cabinclass:cabin,locale:'it-IT',currency:'EUR'});
+  return `${base}?${qs.toString()}`;
+};
+window.ggBuildHotel=({dest,checkin,checkout,adults=2,children=0,rooms=1})=>{
+  const u=new URL('https://www.booking.com/searchresults.html');
+  u.searchParams.set('ss',dest);
+  u.searchParams.set('checkin',checkin);
+  u.searchParams.set('checkout',checkout||addDays(checkin,3));
+  u.searchParams.set('group_adults',adults);
+  u.searchParams.set('group_children',children);
+  u.searchParams.set('no_rooms',rooms);
+  return u.toString();
+};
+window.ggBuildExp=({city,fromDate,toDate,pax})=>{
+  const u=new URL('https://www.getyourguide.com/s/');
+  u.searchParams.set('q',city);
+  if(fromDate)u.searchParams.set('date_from',fromDate);
+  if(toDate)u.searchParams.set('date_to',toDate);
+  if(pax)u.searchParams.set('number_of_participants',pax);
+  return u.toString();
+};
+
 document.addEventListener('DOMContentLoaded',function(){
   const $=id=>document.getElementById(id);
-  const toYMD=d=>new Date(d).toISOString().slice(0,10);
   const today=new Date(),in7=new Date(today),in12=new Date(today);
   in7.setDate(today.getDate()+7);in12.setDate(today.getDate()+12);
-  if(!$('#checkin').value)$('#checkin').value=toYMD(in7);
-  if(!$('#checkout').value)$('#checkout').value=toYMD(in12);
-  function refresh(){
+  const defaultCheckin=localISO(in7),defaultCheckout=localISO(in12);
+  if($('#checkin')&&!$('#checkin').value)$('#checkin').value=defaultCheckin;
+  if($('#checkout')&&!$('#checkout').value)$('#checkout').value=defaultCheckout;
+
+  function applyCTAs(){
     const from=$('#from').value||'ROM';
-    const ci=$('#checkin').value,co=$('#checkout').value;
+    const ci=$('#checkin').value||defaultCheckin;
+    const co=$('#checkout').value||defaultCheckout;
     const ad=parseInt($('#adults').value||'2',10);
     const ch=parseInt($('#children').value||'0',10);
-    try{
-      $('#cta-volo').href=ggBuildFlight({from,to:'DPS',dep:ci,ret:co,adults:ad,cabin:'economy'});
-      $('#cta-hotel').href=ggBuildHotel({dest:'Bali',checkin:ci,checkout:co,adults:ad,children:ch,rooms:1});
-      $('#cta-exp').href=ggBuildExp({city:'Bali',fromDate:ci,toDate:co,pax:ad+ch});
-    }catch(e){console.error(e);}
+    const hrefFlight=ggBuildFlight({from,to:'DPS',dep:ci,ret:co,adults:ad});
+    const hrefHotel=ggBuildHotel({dest:'Bali',checkin:ci,checkout:co,adults:ad,children:ch});
+    const hrefExp=ggBuildExp({city:'Bali',fromDate:ci,toDate:co,pax:ad+ch});
+    $('#cta-volo').href=hrefFlight;$('#cta-hotel').href=hrefHotel;$('#cta-exp').href=hrefExp;
+    console.log('[GG] Bali:',hrefFlight,hrefHotel,hrefExp);
   }
+
   ['from','checkin','checkout','adults','children'].forEach(id=>{
-    $('#'+id).addEventListener('input',refresh);$('#'+id).addEventListener('change',refresh);});
-  refresh();
+    const el=$('#'+id);if(el){el.addEventListener('input',applyCTAs);el.addEventListener('change',applyCTAs);}});
+  applyCTAs();
 });
 </script>
 </body>
 </html>
+
