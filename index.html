@@ -1,90 +1,284 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GlobalGlide360 – Viaggi su misura</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GlobalGlide360 – Trova il tuo viaggio con prezzi reali</title>
+  <style>
+    :root{
+      --bg:#0b1220; --card:#121a2b; --muted:#90a4c0; --text:#eaf0ff; --accent:#38bdf8; --accent2:#22c55e;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif;background:linear-gradient(180deg,#081021,#0b1220 30%,#0b1220);color:var(--text)}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:16px}
+    header{position:sticky;top:0;background:rgba(8,16,33,0.7);backdrop-filter:blur(8px);border-bottom:1px solid #1c2740;z-index:20}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 4px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{height:48px;width:auto;filter:drop-shadow(0 2px 8px rgba(56,189,248,.3))}
+    .title{font-weight:700;font-size:1.25rem;letter-spacing:.3px}
+    .pill{padding:6px 12px;border:1px solid #263251;border-radius:999px;color:var(--muted)}
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center;padding:28px 0}
+    @media (max-width:900px){.hero{grid-template-columns:1fr}}
+    .headline{font-size:2rem;line-height:1.15;margin:0 0 8px}
+    .sub{color:var(--muted);margin:0 0 16px}
+    .card{background:var(--card);border:1px solid #1e2a46;border-radius:16px;box-shadow:0 8px 24px rgba(2,12,36,.35)}
+    .search{padding:16px}
+    .tabs{display:flex;gap:8px;margin:8px 0 14px}
+    .tab{flex:1;text-align:center;padding:10px 12px;border:1px solid #2a3a61;background:#0f1830;color:#cfe2ff;border-radius:999px;cursor:pointer;user-select:none}
+    .tab.active{background:linear-gradient(180deg,#132448,#0f1b35);border-color:#3a4f80;box-shadow:inset 0 0 0 2px rgba(56,189,248,.15)}
+    form{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+    @media (max-width:800px){form{grid-template-columns:1fr 1fr}}
+    label{font-size:.82rem;color:#b8c7e8}
+    input,select,button{width:100%;padding:10px 12px;border:1px solid #2a3a61;border-radius:10px;background:#0f1830;color:#eaf0ff;outline:none}
+    input::placeholder{color:#7f93b8}
+    .one-line{grid-column:1/-1}
+    .btn{background:linear-gradient(180deg,#38bdf8,#0ea5e9);border:none;font-weight:700;cursor:pointer}
+    .btn:hover{filter:brightness(1.05)}
+    .btn-alt{background:linear-gradient(180deg,#22c55e,#16a34a)}
+    .chips{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{display:inline-flex;align-items:center;gap:6px;border:1px solid #284064;background:#0f1830;border-radius:999px;padding:6px 10px;font-size:.9rem;color:#cfe2ff}
+    .chip input{accent-color:#38bdf8}
+    .section{margin:26px 0;padding:16px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    @media (max-width:900px){.grid-3{grid-template-columns:1fr}}
+    .muted{color:var(--muted)}
+    footer{border-top:1px solid #1e2a46;margin-top:28px}
+    small{color:#95a7c7}
+  </style>
 </head>
-<body class="bg-blue-50 text-gray-800">
-
-  <!-- ✅ HEADER CON LOGO -->
-  <header class="bg-white shadow py-6 px-6 flex items-center justify-between">
-    <div class="flex items-center">
-      <img src="img/logo.png" alt="GlobalGlide360 Logo" class="h-20 w-auto">
-      <span class="ml-4 text-3xl font-bold text-blue-800">GlobalGlide360</span>
+<body>
+<header>
+  <div class="container nav">
+    <div class="brand">
+      <!-- Usa il tuo logo: sostituisci src con il file reale -->
+      <img class="logo" src="logo-globalglide360.png" alt="GlobalGlide360 logo" />
+      <div class="title">GlobalGlide360</div>
     </div>
-  </header>
+    <div class="pill">Prezzi reali • Affiliazioni ufficiali</div>
+  </div>
+</header>
 
-  <!-- ✅ HERO SECTION -->
-  <section class="bg-gradient-to-br from-blue-50 to-white py-12 px-6 text-center">
-    <h1 class="text-4xl font-extrabold text-blue-900 mb-4">Il tuo viaggio su misura inizia qui</h1>
-    <p class="text-gray-700 text-lg mb-6">Inserisci le tue preferenze e scopri itinerari reali con prezzi aggiornati</p>
+<main class="container">
+  <section class="hero">
+    <div>
+      <h1 class="headline">Trova voli, hotel ed esperienze con <span style="color:var(--accent)">risultati reali</span></h1>
+      <p class="sub">Motore leggero collegato ai partner Travelpayouts: le ricerche aprono pagine di risultato **vere** pronte alla prenotazione.</p>
+      <div class="chips" aria-label="Preferenze di viaggio">
+        <label class="chip"><input type="checkbox" name="prefs" value="mare" checked /> Mare</label>
+        <label class="chip"><input type="checkbox" name="prefs" value="natura" /> Natura</label>
+        <label class="chip"><input type="checkbox" name="prefs" value="cultura" /> Cultura</label>
+        <label class="chip"><input type="checkbox" name="prefs" value="famiglia" checked /> Famiglia</label>
+        <label class="chip"><input type="checkbox" name="prefs" value="trekking" /> Trekking</label>
+        <label class="chip"><input type="checkbox" name="prefs" value="citta" /> Città</label>
+      </div>
+    </div>
 
-    <!-- ✅ FORM -->
-    <form class="bg-white max-w-3xl mx-auto p-6 rounded shadow-md">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-        <input type="text" placeholder="Città di partenza" class="border px-4 py-2 rounded">
-        <input type="text" placeholder="Destinazione" class="border px-4 py-2 rounded">
-        <input type="date" class="border px-4 py-2 rounded">
-        <input type="date" class="border px-4 py-2 rounded">
-        <input type="number" placeholder="Adulti" class="border px-4 py-2 rounded">
-        <input type="number" placeholder="Bambini" class="border px-4 py-2 rounded">
-        <input type="text" placeholder="Budget (es. 1500€)" class="border px-4 py-2 rounded">
+    <!-- CARD DI RICERCA -->
+    <div class="card search">
+      <div class="tabs">
+        <div class="tab active" id="tab-flights" role="button" tabindex="0" aria-controls="panel-flights">Voli</div>
+        <div class="tab" id="tab-hotels" role="button" tabindex="0" aria-controls="panel-hotels">Hotel</div>
       </div>
 
-      <h2 class="text-lg font-semibold text-left mb-2">Preferenze di viaggio</h2>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-2 text-left mb-4">
-        <label><input type="checkbox" name="preferenze[]" value="natura" class="mr-2"> Natura</label>
-        <label><input type="checkbox" name="preferenze[]" value="città" class="mr-2"> Città</label>
-        <label><input type="checkbox" name="preferenze[]" value="cultura" class="mr-2"> Cultura</label>
-        <label><input type="checkbox" name="preferenze[]" value="mare" class="mr-2"> Mare</label>
-        <label><input type="checkbox" name="preferenze[]" value="montagna" class="mr-2"> Montagna</label>
-        <label><input type="checkbox" name="preferenze[]" value="famiglia" class="mr-2"> Famiglia</label>
+      <!-- PANEL VOLI -->
+      <section id="panel-flights" aria-labelledby="tab-flights">
+        <form id="form-flights">
+          <div>
+            <label>Da (IATA) *</label>
+            <input id="from" name="from" placeholder="ROM (Roma), MIL, FCO, MXP..." maxlength="3" required />
+          </div>
+          <div>
+            <label>A (IATA) *</label>
+            <input id="to" name="to" placeholder="PAR, LON, NYC, ATH..." maxlength="3" required />
+          </div>
+          <div>
+            <label>Partenza *</label>
+            <input id="dep" type="date" required />
+          </div>
+          <div>
+            <label>Ritorno</label>
+            <input id="ret" type="date" />
+          </div>
+          <div>
+            <label>Adulti</label>
+            <input id="adults" type="number" min="1" value="1" />
+          </div>
+          <div>
+            <label>Solo andata</label>
+            <select id="oneway">
+              <option value="0">No</option>
+              <option value="1">Sì</option>
+            </select>
+          </div>
+          <div class="one-line">
+            <button class="btn" type="submit">Cerca voli</button>
+          </div>
+          <small class="muted one-line">Suggerimento: usa i codici IATA (es. ROM, MIL, PAR). La versione “completa” con autocompletamento verrà attivata quando incollerai i widget ufficiali.</small>
+        </form>
+      </section>
+
+      <!-- PANEL HOTEL -->
+      <section id="panel-hotels" aria-labelledby="tab-hotels" hidden>
+        <form id="form-hotels">
+          <div class="one-line">
+            <label>Destinazione *</label>
+            <input id="h-dest" placeholder="Tokyo, Bali, Parigi..." required />
+          </div>
+          <div>
+            <label>Check-in *</label>
+            <input id="h-in" type="date" required />
+          </div>
+          <div>
+            <label>Check-out *</label>
+            <input id="h-out" type="date" required />
+          </div>
+          <div>
+            <label>Adulti</label>
+            <input id="h-adults" type="number" min="1" value="2" />
+          </div>
+          <div class="one-line">
+            <button class="btn btn-alt" type="submit">Cerca hotel</button>
+          </div>
+          <small class="muted one-line">La ricerca si apre su Hotellook con il form già compilato (link affiliato).</small>
+        </form>
+      </section>
+    </div>
+  </section>
+
+  <!-- SEZIONI INFORMATIVA -->
+  <section class="section card">
+    <div class="grid-3">
+      <div>
+        <h3>Perché GlobalGlide360</h3>
+        <p class="muted">Un’unica ricerca, risultati reali da partner affidabili (voli e hotel). Senza placeholder.</p>
       </div>
-
-      <button class="bg-blue-700 text-white px-6 py-2 rounded hover:bg-blue-800">Crea il tuo itinerario</button>
-    </form>
-  </section>
-
-  <!-- ✅ IMMAGINI DEMO -->
-  <section class="py-12 px-6 bg-white">
-    <h2 class="text-2xl font-bold text-center text-blue-900 mb-6">Destinazioni popolari</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-      <div><img src="img/tokyo.png" alt="Tokyo" class="rounded shadow"><p class="mt-2 text-center font-semibold">Tokyo</p></div>
-      <div><img src="img/bali.png" alt="Bali" class="rounded shadow"><p class="mt-2 text-center font-semibold">Bali</p></div>
-      <div><img src="img/newyork.png" alt="New York" class="rounded shadow"><p class="mt-2 text-center font-semibold">New York</p></div>
-      <div><img src="img/montagna.png" alt="Montagna" class="rounded shadow"><p class="mt-2 text-center font-semibold">Montagna</p></div>
-      <div><img src="img/tempio.png" alt="Tempio" class="rounded shadow"><p class="mt-2 text-center font-semibold">Tempio</p></div>
-      <div><img src="img/famiglia.png" alt="Famiglia" class="rounded shadow"><p class="mt-2 text-center font-semibold">Famiglia</p></div>
+      <div>
+        <h3>Come funziona</h3>
+        <p class="muted">Compili il modulo e ti reindirizziamo alla pagina risultati (White Label/Hotellook) pronta alla prenotazione.</p>
+      </div>
+      <div>
+        <h3>Trasparenza</h3>
+        <p class="muted">Se prenoti dai nostri link, riceviamo una piccola commissione senza costi extra per te.</p>
+      </div>
     </div>
   </section>
 
-  <!-- ✅ SEZIONE CHI SIAMO -->
-  <section class="py-12 px-6 bg-blue-50 text-center">
-    <h2 class="text-3xl font-bold text-blue-800 mb-4">Chi siamo</h2>
-    <p class="max-w-3xl mx-auto text-gray-700 text-lg">
-      GlobalGlide360 nasce per offrire ai viaggiatori uno strumento semplice, efficace e gratuito per trovare ispirazione e pianificare viaggi su misura. Ogni itinerario è reale, costruito con tappe dettagliate e costi aggiornati. Il nostro obiettivo è rendere la pianificazione del viaggio accessibile a tutti, offrendo esperienze autentiche, complete e personalizzabili.
-    </p>
+  <section class="section">
+    <h3>Chi siamo</h3>
+    <p class="muted">GlobalGlide360 aiuta famiglie e viaggiatori curiosi a trasformare idee in viaggi reali con strumenti semplici e dati aggiornati.</p>
   </section>
 
-  <!-- ✅ SEZIONE COME FUNZIONA -->
-  <section class="py-12 px-6 bg-blue-100 text-center">
-    <h2 class="text-3xl font-bold text-blue-900 mb-4">Come funziona</h2>
-    <div class="max-w-4xl mx-auto text-gray-700 text-lg space-y-4 text-left">
-      <p><strong>1.</strong> Inserisci i tuoi dati di viaggio: partenza, destinazione, date, preferenze e budget.</p>
-      <p><strong>2.</strong> Visualizza itinerari già pronti con prezzi reali (hotel, attività, voli e trasporti).</p>
-      <p><strong>3.</strong> Prenota direttamente tramite i link affiliati (senza costi aggiuntivi e in piena trasparenza).</p>
-      <p><strong>4.</strong> Oppure salva l’ispirazione per creare un viaggio personalizzato in autonomia.</p>
-      <p><strong>5.</strong> Approfondisci con mini-guide e consigli di viaggio da chi ha già vissuto l’esperienza.</p>
-    </div>
-  </section>
+</main>
 
-  <!-- ✅ FOOTER -->
-  <footer class="bg-white text-center py-6 mt-8 border-t">
-    <p class="text-sm text-gray-500">&copy; 2025 GlobalGlide360 – Tutti i diritti riservati</p>
-    <p class="text-sm text-gray-400">info@globalglide360.com</p>
-  </footer>
+<footer class="container">
+  <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:16px 0">
+    <small>© GlobalGlide360</small>
+    <small>Contatti: <a href="mailto:info@globalglide360.com">info@globalglide360.com</a></small>
+  </div>
+</footer>
 
+<script>
+/* =======================
+   CONFIGURA QUI I LINK
+   =======================
+
+1) VOLI (White Label Travelpayouts – Aviasales):
+   - Crea la tua White Label (es. https://voliglobal.globalglide360.com)
+   - Inserisci qui il dominio completo ↓
+*/
+const AVIA_WL_BASE = "https://INSERISCI-QUI-IL-TUO-DOMINIO-WL/"; // es. "https://voliglobal.globalglide360.com/"
+
+/*
+2) HOTEL (Hotellook):
+   - Nel pannello Travelpayouts > Hotellook > Tools > Links
+   - Genera un link affiliato alla homepage Hotellook
+   - Incollalo qui come BASE; lo script aggiungerà destinazione e date
+*/
+const HOTELLOOK_AFFILIATE_BASE = "https://hotellook.com/"; // Sostituisci con il TUO link affiliato generato da Travelpayouts
+
+/* =======================
+   UI: Tab switch
+   ======================= */
+const tabFlights = document.getElementById('tab-flights');
+const tabHotels = document.getElementById('tab-hotels');
+const panelFlights = document.getElementById('panel-flights');
+const panelHotels = document.getElementById('panel-hotels');
+
+function activate(tab){
+  if(tab === 'flights'){
+    tabFlights.classList.add('active'); tabHotels.classList.remove('active');
+    panelFlights.hidden = false; panelHotels.hidden = true;
+  }else{
+    tabHotels.classList.add('active'); tabFlights.classList.remove('active');
+    panelHotels.hidden = false; panelFlights.hidden = true;
+  }
+}
+tabFlights.onclick = () => activate('flights');
+tabHotels.onclick = () => activate('hotels');
+tabFlights.onkeydown = e => { if(e.key==='Enter'||e.key===' ') activate('flights') };
+tabHotels.onkeydown = e => { if(e.key==='Enter'||e.key===' ') activate('hotels') };
+
+/* =======================
+   Helpers
+   ======================= */
+const pad = n => n.toString().padStart(2,'0');
+function toDDMM(dateStr){
+  // dateStr: "YYYY-MM-DD" -> "DDMM"
+  const d = new Date(dateStr);
+  if(isNaN(d)) return "";
+  return pad(d.getDate()) + pad(d.getMonth()+1);
+}
+function cleanIATA(val){
+  return (val||"").trim().toUpperCase().slice(0,3);
+}
+
+/* =======================
+   Submit: Voli
+   ======================= */
+document.getElementById('form-flights').addEventListener('submit', (e)=>{
+  e.preventDefault();
+  if(!AVIA_WL_BASE || AVIA_WL_BASE.includes("INSERISCI-QUI")){
+    alert("Configura prima AVIA_WL_BASE con il tuo dominio White Label Travelpayouts.");
+    return;
+  }
+  const from = cleanIATA(document.getElementById('from').value);
+  const to = cleanIATA(document.getElementById('to').value);
+  const dep = document.getElementById('dep').value;
+  const ret = document.getElementById('ret').value;
+  const oneway = document.getElementById('oneway').value === '1';
+  // FlightSearch param (documentazione TP): ORGDDMMDEST[DDMM]
+  const seg1 = `${from}${toDDMM(dep)}${to}`;
+  const seg2 = (!oneway && ret) ? toDDMM(ret) : "";
+  const flightSearch = seg1 + seg2; // round trip se c'è seg2
+  // (Opzionale) passeggeri/classe possono essere aggiunti, ma non sono obbligatori per aprire la ricerca
+  const url = new URL(AVIA_WL_BASE);
+  url.searchParams.set('flightSearch', flightSearch);
+  window.open(url.toString(), '_blank', 'noopener');
+});
+
+/* =======================
+   Submit: Hotel
+   ======================= */
+document.getElementById('form-hotels').addEventListener('submit', (e)=>{
+  e.preventDefault();
+  if(!HOTELLOOK_AFFILIATE_BASE){
+    alert("Configura prima HOTELLOOK_AFFILIATE_BASE con il tuo link affiliato Hotellook.");
+    return;
+  }
+  const dest = document.getElementById('h-dest').value.trim();
+  const checkIn = document.getElementById('h-in').value;
+  const checkOut = document.getElementById('h-out').value;
+  const adults = document.getElementById('h-adults').value || 2;
+
+  const url = new URL(HOTELLOOK_AFFILIATE_BASE);
+  url.searchParams.set('destination', dest);
+  url.searchParams.set('checkIn', checkIn);
+  url.searchParams.set('checkOut', checkOut);
+  url.searchParams.set('adults', adults);
+
+  window.open(url.toString(), '_blank', 'noopener');
+});
+</script>
 </body>
 </html>
