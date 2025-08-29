@@ -1,226 +1,89 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GlobalGlide360 - Viaggi su misura</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Travelpayouts Tracking Script -->
-<script data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
-  (function () {
-    var script = document.createElement("script");
-    script.async = 1;
-    script.src = 'https://tpembars.com/NDU0MTUz.js?t=454153';
-    document.head.appendChild(script);
-  })();
-</script>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GlobalGlide360 – Viaggi su misura</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="bg-white text-gray-800">
+<body class="bg-blue-50 text-gray-800">
 
-  <!-- Navbar -->
-  <header class="absolute top-0 left-0 w-full z-10 flex items-center justify-between p-4 bg-black bg-opacity-50">
-    <img src="img/logo.png" alt="GlobalGlide360" class="h-16">
-    <a href="#crea" class="text-white border border-white px-4 py-2 rounded hover:bg-white hover:text-black transition">Crea il tuo viaggio</a>
+  <!-- ✅ HEADER CON LOGO -->
+  <header class="bg-white shadow py-6 px-6 flex items-center justify-between">
+    <div class="flex items-center">
+      <img src="img/logo.png" alt="GlobalGlide360 Logo" class="h-20 w-auto">
+      <span class="ml-4 text-3xl font-bold text-blue-800">GlobalGlide360</span>
+    </div>
   </header>
 
-  <!-- Hero -->
-  <section class="relative h-screen bg-cover bg-center flex items-center justify-center text-white" style="background-image: url('img/hero-spiaggia.png');">
-    <div class="bg-black bg-opacity-50 p-8 rounded-lg text-center max-w-2xl mt-16">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4">Crea il tuo itinerario personalizzato</h1>
-      <p class="text-lg md:text-xl mb-6">Scopri il mondo con viaggi su misura, creati per le tue passioni, il tuo budget e la tua famiglia.</p>
-      <a href="#crea" class="bg-green-600 hover:bg-green-700 px-6 py-3 rounded text-lg font-semibold">Prova ora gratis</a>
-    </div>
-  </section>
+  <!-- ✅ HERO SECTION -->
+  <section class="bg-gradient-to-br from-blue-50 to-white py-12 px-6 text-center">
+    <h1 class="text-4xl font-extrabold text-blue-900 mb-4">Il tuo viaggio su misura inizia qui</h1>
+    <p class="text-gray-700 text-lg mb-6">Inserisci le tue preferenze e scopri itinerari reali con prezzi aggiornati</p>
 
-  <!-- Come funziona -->
-  <section class="py-16 px-6 bg-gray-100 text-center">
-    <h2 class="text-3xl font-bold mb-10">Come funziona</h2>
-    <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto text-left">
-      <div>
-        <h3 class="text-xl font-semibold mb-2">1. Inserisci i tuoi dati</h3>
-        <p>Partenza, destinazione, date, budget e preferenze: ci pensiamo noi al resto.</p>
+    <!-- ✅ FORM -->
+    <form class="bg-white max-w-3xl mx-auto p-6 rounded shadow-md">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <input type="text" placeholder="Città di partenza" class="border px-4 py-2 rounded">
+        <input type="text" placeholder="Destinazione" class="border px-4 py-2 rounded">
+        <input type="date" class="border px-4 py-2 rounded">
+        <input type="date" class="border px-4 py-2 rounded">
+        <input type="number" placeholder="Adulti" class="border px-4 py-2 rounded">
+        <input type="number" placeholder="Bambini" class="border px-4 py-2 rounded">
+        <input type="text" placeholder="Budget (es. 1500€)" class="border px-4 py-2 rounded">
       </div>
-      <div>
-        <h3 class="text-xl font-semibold mb-2">2. Ricevi un itinerario completo</h3>
-        <p>Giorno per giorno, attività, consigli, immagini. Tutto pronto da consultare o stampare.</p>
-      </div>
-      <div>
-        <h3 class="text-xl font-semibold mb-2">3. Personalizza e prenota</h3>
-        <p>Aggiungi tappe, salva in PDF, prenota alloggi o tour con i nostri partner.</p>
-      </div>
-    </div>
-  </section>
 
-  <!-- Perché noi -->
-  <section class="py-16 px-6 text-center">
-    <h2 class="text-3xl font-bold mb-10">Perché scegliere GlobalGlide360</h2>
-    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-      <div class="bg-white p-6 shadow rounded">
-        <h4 class="text-lg font-semibold mb-2">🎯 Viaggi su misura</h4>
-        <p>Ogni itinerario è unico, basato sulle tue preferenze reali.</p>
+      <h2 class="text-lg font-semibold text-left mb-2">Preferenze di viaggio</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-2 text-left mb-4">
+        <label><input type="checkbox" name="preferenze[]" value="natura" class="mr-2"> Natura</label>
+        <label><input type="checkbox" name="preferenze[]" value="città" class="mr-2"> Città</label>
+        <label><input type="checkbox" name="preferenze[]" value="cultura" class="mr-2"> Cultura</label>
+        <label><input type="checkbox" name="preferenze[]" value="mare" class="mr-2"> Mare</label>
+        <label><input type="checkbox" name="preferenze[]" value="montagna" class="mr-2"> Montagna</label>
+        <label><input type="checkbox" name="preferenze[]" value="famiglia" class="mr-2"> Famiglia</label>
       </div>
-      <div class="bg-white p-6 shadow rounded">
-        <h4 class="text-lg font-semibold mb-2">⚡ Zero tempo perso</h4>
-        <p>Ottieni il tuo piano completo in meno di 30 secondi.</p>
-      </div>
-      <div class="bg-white p-6 shadow rounded">
-        <h4 class="text-lg font-semibold mb-2">💡 Ispirazione continua</h4>
-        <p>Non sai dove andare? Lasciati ispirare dai nostri esempi.</p>
-      </div>
-    </div>
-  </section>
 
-  <!-- Itinerari demo -->
-  <section class="py-16 px-6 bg-gray-100">
-    <h2 class="text-3xl font-bold text-center mb-10">Esplora alcuni esempi</h2>
-    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-      <div class="bg-white rounded-lg shadow hover:shadow-lg transition">
-        <img src="img/bali.png" alt="Bali" class="h-48 w-full object-cover rounded-t-lg" />
-        <div class="p-4">
-          <h4 class="text-xl font-semibold mb-2">Avventura a Bali</h4>
-          <p class="mb-2 text-sm text-gray-600">7 giorni tra foreste, templi e mare turchese.</p>
-          <a href="itinerario-demo.html?partenza=Milano&destinazione=Bali&data_partenza=2025-07-01&data_ritorno=2025-07-08&adulti=2&bambini=1&budget=2000&preferenze=avventura" class="text-green-600 hover:underline text-sm">Visualizza itinerario</a>
-        </div>
-      </div>
-      <div class="bg-white rounded-lg shadow hover:shadow-lg transition">
-        <img src="img/venezia.png" alt="Venezia" class="h-48 w-full object-cover rounded-t-lg" />
-        <div class="p-4">
-          <h4 class="text-xl font-semibold mb-2">Weekend romantico a Venezia</h4>
-          <p class="mb-2 text-sm text-gray-600">Cultura, gondole e tramonti sull'acqua.</p>
-          <a href="itinerario-demo.html?partenza=Torino&destinazione=Venezia&data_partenza=2025-09-01&data_ritorno=2025-09-03&adulti=2&bambini=0&budget=600&preferenze=relax" class="text-green-600 hover:underline text-sm">Visualizza itinerario</a>
-        </div>
-      </div>
-      <div class="bg-white rounded-lg shadow hover:shadow-lg transition">
-        <img src="img/famiglia.png" alt="Viaggio in famiglia" class="h-48 w-full object-cover rounded-t-lg" />
-        <div class="p-4">
-          <h4 class="text-xl font-semibold mb-2">Vacanza in famiglia</h4>
-          <p class="mb-2 text-sm text-gray-600">Divertimento per grandi e piccoli in natura.</p>
-          <a href="itinerario-demo.html?partenza=Roma&destinazione=Trentino&data_partenza=2025-07-15&data_ritorno=2025-07-22&adulti=2&bambini=2&budget=1500&preferenze=famiglia" class="text-green-600 hover:underline text-sm">Visualizza itinerario</a>
-        </div>
-      </div>
-    </div>
-  </section>
-<section class="bg-white py-8 px-4 mt-6 rounded shadow">
-  <h2 class="text-2xl font-bold mb-3">Perché visitare Bali</h2>
-  <p class="text-gray-700 leading-relaxed">
-    Bali è una destinazione magica, perfetta per famiglie, coppie o viaggiatori solitari. Dalle risaie di Ubud alle spiagge cristalline di Nusa Dua, ogni angolo dell’isola offre emozioni diverse. I templi sacri, la cultura balinese, il cibo locale e le escursioni nella natura rendono ogni viaggio memorabile. Con costi accessibili e strutture eccellenti, Bali è ideale per una vacanza rilassante ma avventurosa.
-  </p>
-</section>
-<section class="bg-white py-8 px-4 mt-6 rounded shadow">
-  <h2 class="text-2xl font-bold mb-3">Perché visitare Tokyo</h2>
-  <p class="text-gray-700 leading-relaxed">
-    Tokyo è una delle metropoli più affascinanti al mondo, dove la modernità sfiora antiche tradizioni. Dai grattacieli di Shinjuku ai templi silenziosi di Asakusa, ogni quartiere offre un viaggio unico. La città è perfetta per chi cerca tecnologia, cultura pop, cucina eccezionale e parchi tranquilli. Visitare Tokyo significa esplorare il Giappone del futuro senza perdere il contatto con la sua anima millenaria.
-  </p>
-</section>
-
-  <!-- CTA finale -->
-  <section class="py-20 bg-green-600 text-white text-center">
-    <h2 class="text-3xl font-bold mb-4">Pronto a partire?</h2>
-    <p class="text-lg mb-6">Crea il tuo itinerario personalizzato ora.</p>
-    <a href="#crea" class="bg-white text-green-600 font-semibold px-6 py-3 rounded hover:bg-gray-200">Crea ora</a>
-  </section>
-
-  <!-- Form creazione itinerario -->
-  <section id="crea" class="max-w-4xl mx-auto mt-12 px-4 pb-20">
-    <form id="tripForm" class="bg-white p-6 rounded-lg shadow space-y-6">
-      <div class="grid md:grid-cols-2 gap-4">
-        <div>
-          <label for="partenza" class="font-semibold">Città di partenza</label>
-          <input id="partenza" name="partenza" type="text" class="w-full p-2 border rounded" placeholder="Es. Milano" required />
-        </div>
-        <div>
-          <label for="destinazione" class="font-semibold">Città di arrivo / destinazione</label>
-          <input id="destinazione" name="destinazione" type="text" class="w-full p-2 border rounded" placeholder="Es. Bali" required />
-        </div>
-      </div>
-      <div class="grid md:grid-cols-2 gap-4">
-        <div>
-          <label for="data-partenza" class="font-semibold">Data di partenza</label>
-          <input id="data-partenza" name="data-partenza" type="date" class="w-full p-2 border rounded" required />
-        </div>
-        <div>
-          <label for="data-ritorno" class="font-semibold">Data di ritorno</label>
-          <input id="data-ritorno" name="data-ritorno" type="date" class="w-full p-2 border rounded" required />
-        </div>
-      </div>
-      <div class="grid md:grid-cols-2 gap-4">
-        <div>
-          <label for="adulti" class="font-semibold">Adulti</label>
-          <input id="adulti" name="adulti" type="number" min="1" class="w-full p-2 border rounded" required />
-        </div>
-        <div>
-          <label for="bambini" class="font-semibold">Bambini</label>
-          <input id="bambini" name="bambini" type="number" min="0" class="w-full p-2 border rounded" required />
-        </div>
-      </div>
-      <div class="grid md:grid-cols-2 gap-4">
-        <div>
-          <label for="budget" class="font-semibold">Budget (€)</label>
-          <input id="budget" name="budget" type="number" min="100" step="50" class="w-full p-2 border rounded" required />
-        </div>
-        <div>
-          <label for="preferenze" class="font-semibold">Preferenze di viaggio</label>
-          <select id="preferenze" name="preferenze" class="w-full p-2 border rounded">
-            <!-- ✅ HEADER CON LOGO PIÙ GRANDE -->
-<header class="bg-white shadow py-4 px-6 flex items-center justify-between">
-  <div class="flex items-center">
-    <img src="img/logo.png" alt="GlobalGlide360 Logo" class="h-16 w-auto"> <!-- altezza aumentata da h-10 a h-16 -->
-    <span class="ml-4 text-2xl font-bold text-blue-700">GlobalGlide360</span>
-  </div>
-</header>
-
-<!-- ✅ CAMPO PREFERENZE VIAGGIO MULTIPLO -->
-<section class="bg-white mt-6 p-6 rounded shadow">
-  <h2 class="text-xl font-semibold mb-4">Preferenze di viaggio</h2>
-  <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-    <label class="flex items-center">
-      <input type="checkbox" name="preferenze[]" value="natura" class="mr-2"> Natura
-    </label>
-    <label class="flex items-center">
-      <input type="checkbox" name="preferenze[]" value="città"> Città
-    </label>
-    <label class="flex items-center">
-      <input type="checkbox" name="preferenze[]" value="cultura"> Cultura
-    </label>
-    <label class="flex items-center">
-      <input type="checkbox" name="preferenze[]" value="mare"> Mare
-    </label>
-    <label class="flex items-center">
-      <input type="checkbox" name="preferenze[]" value="montagna"> Montagna
-    </label>
-    <label class="flex items-center">
-      <input type="checkbox" name="preferenze[]" value="famiglia"> Famiglia
-    </label>
-  </div>
-</section>
-
-          </select>
-        </div>
-      </div>
-      <button type="submit" class="w-full bg-green-600 text-white p-3 rounded hover:bg-green-700 text-lg">
-        Crea il tuo itinerario
-      </button>
+      <button class="bg-blue-700 text-white px-6 py-2 rounded hover:bg-blue-800">Crea il tuo itinerario</button>
     </form>
   </section>
 
-  <!-- Script -->
-  <script>
-    document.getElementById('tripForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-      const params = new URLSearchParams({
-        partenza: document.getElementById('partenza').value,
-        destinazione: document.getElementById('destinazione').value,
-        data_partenza: document.getElementById('data-partenza').value,
-        data_ritorno: document.getElementById('data-ritorno').value,
-        adulti: document.getElementById('adulti').value,
-        bambini: document.getElementById('bambini').value,
-        budget: document.getElementById('budget').value,
-        preferenze: document.getElementById('preferenze').value
-      });
-      window.location.href = `itinerario-demo.html?${params.toString()}`;
-    });
-  </script>
+  <!-- ✅ IMMAGINI DEMO -->
+  <section class="py-12 px-6 bg-white">
+    <h2 class="text-2xl font-bold text-center text-blue-900 mb-6">Destinazioni popolari</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      <div><img src="img/tokyo.png" alt="Tokyo" class="rounded shadow"><p class="mt-2 text-center font-semibold">Tokyo</p></div>
+      <div><img src="img/bali.png" alt="Bali" class="rounded shadow"><p class="mt-2 text-center font-semibold">Bali</p></div>
+      <div><img src="img/newyork.png" alt="New York" class="rounded shadow"><p class="mt-2 text-center font-semibold">New York</p></div>
+      <div><img src="img/montagna.png" alt="Montagna" class="rounded shadow"><p class="mt-2 text-center font-semibold">Montagna</p></div>
+      <div><img src="img/tempio.png" alt="Tempio" class="rounded shadow"><p class="mt-2 text-center font-semibold">Tempio</p></div>
+      <div><img src="img/famiglia.png" alt="Famiglia" class="rounded shadow"><p class="mt-2 text-center font-semibold">Famiglia</p></div>
+    </div>
+  </section>
+
+  <!-- ✅ SEZIONE CHI SIAMO -->
+  <section class="py-12 px-6 bg-blue-50 text-center">
+    <h2 class="text-3xl font-bold text-blue-800 mb-4">Chi siamo</h2>
+    <p class="max-w-3xl mx-auto text-gray-700 text-lg">
+      GlobalGlide360 nasce per offrire ai viaggiatori uno strumento semplice, efficace e gratuito per trovare ispirazione e pianificare viaggi su misura. Ogni itinerario è reale, costruito con tappe dettagliate e costi aggiornati.
+    </p>
+  </section>
+
+  <!-- ✅ SEZIONE COME FUNZIONA -->
+  <section class="py-12 px-6 bg-blue-100 text-center">
+    <h2 class="text-3xl font-bold text-blue-900 mb-4">Come funziona</h2>
+    <div class="max-w-4xl mx-auto text-gray-700 text-lg space-y-4 text-left">
+      <p>1. Inserisci i tuoi dati di viaggio: partenza, destinazione, date, preferenze e budget.</p>
+      <p>2. Visualizza itinerari già pronti con prezzi reali (hotel, attività, voli e trasporti).</p>
+      <p>3. Prenota direttamente tramite i link affiliati (senza costi aggiuntivi).</p>
+      <p>4. Oppure salva l’ispirazione per creare un viaggio personalizzato in autonomia.</p>
+    </div>
+  </section>
+
+  <!-- ✅ FOOTER -->
+  <footer class="bg-white text-center py-6 mt-8 border-t">
+    <p class="text-sm text-gray-500">&copy; 2025 GlobalGlide360 – Tutti i diritti riservati</p>
+    <p class="text-sm text-gray-400">info@globalglide360.com</p>
+  </footer>
 
 </body>
 </html>
