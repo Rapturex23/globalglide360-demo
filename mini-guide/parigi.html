@@ -17,6 +17,23 @@
 </script>
 </head>
 <body class="bg-blue-50 text-gray-800">
+<script>
+  window.GG_CFG = window.GG_CFG || {};
+  window.GG_CFG.gyg_partner = "HWU00MZ"; // il tuo partner ID
+
+  // sub_id automatico (così sai da quale pagina arrivano i click)
+  (function(){
+    const path=(location.pathname||"/").toLowerCase();
+    let slug="home"; 
+    const m=path.match(/([a-z0-9\-]+)\.html$/);
+    if(m&&m[1]) slug=m[1];
+    else if(path.includes('/mini-guide/')){
+      const parts=path.split('/').filter(Boolean);
+      slug=(parts[parts.length-1]||'mini-guide').replace('.html','');
+    }
+    window.GG_SUBID = slug;
+  })();
+</script>
 
 <header class="bg-white shadow py-6 px-6">
   <div class="max-w-6xl mx-auto flex items-center justify-between">
