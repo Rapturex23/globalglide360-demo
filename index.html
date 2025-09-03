@@ -40,6 +40,16 @@
     window.GG_SUBID = slug;
   })();
 </script>
+<script>
+async function loadPartials() {
+  const header = await fetch('/partials/header.html').then(r => r.text());
+  document.getElementById('include-header').innerHTML = header;
+
+  const footer = await fetch('/partials/footer.html').then(r => r.text());
+  document.getElementById('include-footer').innerHTML = footer;
+}
+loadPartials();
+</script>
 
   <body>
   <div id="include-header"></div>
