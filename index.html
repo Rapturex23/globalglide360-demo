@@ -70,9 +70,56 @@
   </header>
 
   <!-- HERO -->
-  <section class="bg-gradient-to-br from-blue-50 to-white py-12 px-6 text-center">
-    <h1 class="text-4xl font-extrabold text-blue-900 mb-4">Il tuo viaggio su misura inizia qui</h1>
-    <p class="text-gray-700 text-lg mb-6">Inserisci le tue preferenze e scopri itinerari reali con link a disponibilità aggiornate.</p>
+ <section id="itinerari-pronti" class="container mx-auto px-4 py-10">
+  <div class="flex items-center gap-2 mb-6">
+    <h2 class="text-2xl font-bold">Itinerari pronti</h2>
+    <span class="text-sm px-2 py-1 rounded-full bg-gray-100">MXP</span>
+  </div>
+
+  <div class="inline-flex rounded-2xl bg-gray-100 p-1 mb-6">
+    <button id="tabCity" class="px-4 py-2 rounded-2xl bg-white shadow">Mono-città</button>
+    <button id="tabArea" class="px-4 py-2">Aree / Paesi</button>
+  </div>
+
+  <div id="gridCity" class="grid md:grid-cols-3 gap-5">
+    <!-- le 7 card esistenti: Tokyo, Bali, NYC, Parigi, Roma, Londra, Barcellona -->
+  </div>
+
+  <div id="gridArea" class="grid md:grid-cols-3 gap-5 hidden">
+    <!-- nuove card area/paese -->
+    <a href="/itinerari/giappone-15-giorni.html" class="block rounded-2xl overflow-hidden shadow hover:shadow-lg transition">
+      <img src="/assets/itinerari/giappone/cover_1200x630.jpg" alt="Giappone 15 giorni" class="w-full aspect-[16/9] object-cover">
+      <div class="p-4">
+        <h3 class="font-semibold">Giappone – 15 giorni</h3>
+        <p class="text-sm text-gray-600">Tokyo • Hakone • Kyoto • Nara • Osaka</p>
+      </div>
+    </a>
+    <a href="/itinerari/messico-15-giorni.html" class="block rounded-2xl overflow-hidden shadow hover:shadow-lg transition">
+      <img src="/assets/itinerari/messico/cover_1200x630.jpg" alt="Messico 15 giorni" class="w-full aspect-[16/9] object-cover">
+      <div class="p-4">
+        <h3 class="font-semibold">Messico – 15 giorni</h3>
+        <p class="text-sm text-gray-600">Città del Messico • Oaxaca • Chiapas • Yucatán</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<script>
+  const tabCity = document.getElementById('tabCity');
+  const tabArea = document.getElementById('tabArea');
+  const gridCity = document.getElementById('gridCity');
+  const gridArea = document.getElementById('gridArea');
+
+  function sel(isArea){
+    tabCity.className = "px-4 py-2 rounded-2xl " + (isArea ? "" : "bg-white shadow");
+    tabArea.className = "px-4 py-2 rounded-2xl " + (isArea ? "bg-white shadow" : "");
+    gridCity.classList.toggle('hidden', isArea);
+    gridArea.classList.toggle('hidden', !isArea);
+  }
+  tabCity.onclick = () => sel(false);
+  tabArea.onclick = () => sel(true);
+</script>
+
 
     <!-- FORM (redir semplice alle mini-guide) -->
     <form class="bg-white max-w-3xl mx-auto p-6 rounded shadow-md" onsubmit="event.preventDefault(); window.location.href='/mini-guide/';">
