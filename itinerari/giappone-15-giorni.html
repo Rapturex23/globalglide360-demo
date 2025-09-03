@@ -6,31 +6,38 @@
   <meta name="description" content="Itinerario reale di 15 giorni in Giappone: Tokyo, Hakone (Fuji), Kyoto, Nara, Osaka. Voli open-jaw da MXP, hotel per tappa, attività GetYourGuide, dove mangiare (TripAdvisor).">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- OG -->
- <!-- Open Graph -->
-<meta property="og:type" content="article">
-<meta property="og:title" content="Giappone in 15 giorni (MXP → HND / KIX → MXP)">
-<meta property="og:description" content="Tokyo • Hakone • Kyoto • Nara • Osaka — voli, hotel city-by-city, attività e ristoranti.">
-<meta property="og:image" content="https://TUO-DOMINIO.com/globalglide360-demo/assets/itinerari/giappone/cover_1200x630.jpg">
-<meta property="og:url" content="https://TUO-DOMINIO.com/globalglide360-demo/itinerari/giappone-15-giorni.html">
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Giappone in 15 giorni (MXP → HND / KIX → MXP)">
+  <meta property="og:description" content="Tokyo • Hakone • Kyoto • Nara • Osaka — voli, hotel city-by-city, attività e ristoranti.">
+  <meta property="og:image" content="https://www.globalglide360.com/assets/itinerari/giappone/cover_1200x630.jpg">
+  <meta property="og:url" content="https://www.globalglide360.com/itinerari/giappone-15-giorni.html">
 
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Giappone in 15 giorni (MXP → HND / KIX → MXP)">
-<meta name="twitter:description" content="Tokyo • Hakone • Kyoto • Nara • Osaka — voli, hotel city-by-city, attività e ristoranti.">
-<meta name="twitter:image" content="https://TUO-DOMINIO.com/globalglide360-demo/assets/itinerari/giappone/cover_1200x630.jpg">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Giappone in 15 giorni (MXP → HND / KIX → MXP)">
+  <meta name="twitter:description" content="Tokyo • Hakone • Kyoto • Nara • Osaka — voli, hotel city-by-city, attività e ristoranti.">
+  <meta name="twitter:image" content="https://www.globalglide360.com/assets/itinerari/giappone/cover_1200x630.jpg">
 
-
-  <!-- Tailwind (se già globale, puoi rimuovere) -->
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Config affiliazioni base -->
+  <script>
+    // Partner GYG + sub_id pagina (usati dal resolver)
+    window.GG_CFG = window.GG_CFG || {};
+    window.GG_CFG.gyg_partner = "HWU00MZ";
+    window.GG_SUBID = "giappone-15-giorni";
+  </script>
 </head>
 <body class="antialiased bg-white text-gray-800">
-  <!-- Placeholder header/footer (opzionali) -->
+
+  <!-- Header dinamico -->
   <div id="include-header"></div>
 
   <main class="container mx-auto px-4 py-8 max-w-5xl">
     <header class="mb-6">
-      <img src="/assets/itinerari/giappone_cover_1200x630.jpg" alt="Giappone 15 giorni" class="w-full rounded-2xl mb-4">
+      <img src="/assets/itinerari/giappone/cover_1200x630.jpg" alt="Giappone 15 giorni" class="w-full rounded-2xl mb-4">
       <h1 class="text-3xl font-bold mb-2">Giappone in 15 giorni</h1>
       <p class="text-gray-600">Tokyo • Hakone (Fuji) • Kyoto • Nara • Osaka — voli da MXP, hotel per tappa, attività e ristoranti</p>
     </header>
@@ -66,21 +73,16 @@
       <div id="food" class="grid md:grid-cols-2 gap-4"></div>
     </section>
 
-    <!-- Trasparenza & FAQ (riuso blocco) -->
+    <!-- Trasparenza & FAQ (puoi riusare il blocco dell'index) -->
     <section id="trasparenza" class="max-w-3xl">
-      <!-- puoi incollare qui lo stesso blocco “Trasparenza & FAQ” usato in index -->
+      <!-- incolla qui il blocco “Trasparenza & FAQ” se vuoi mostrarlo anche nella pagina -->
     </section>
   </main>
 
+  <!-- Footer dinamico -->
   <div id="include-footer"></div>
 
-  <!-- Config GYG -->
-  <script>
-    window.GYG_PARTNER_ID = "HWU00MZ";
-    window.GYG_SUBID = "giappone-15-giorni";
-  </script>
-
-  <!-- Link builders + Render -->
+  <!-- Dati pagina + builder link (voli/hotel) -->
   <script>
     const ORIGIN_IATA = "MXP";
     const DATA = {
@@ -89,11 +91,11 @@
       mainArrival: "HND",
       mainDeparture: "KIX",
       cities: [
-        { name:"Tokyo",   nights:5, iataNear:"HND", bookingQuery:"Tokyo", gygQuery:"Tokyo",  taFoodUrl:"https://www.tripadvisor.it/Restaurants-g298184-Tokyo_Tokyo_Prefecture_Kanto.html" },
-        { name:"Hakone",  nights:1, iataNear:"HND", bookingQuery:"Hakone", gygQuery:"Hakone", taFoodUrl:"https://www.tripadvisor.it/Restaurants-g298171-Hakone_machi_Ashigarashimo_gun_Kanagawa_Prefecture_Kanto.html" },
-        { name:"Kyoto",   nights:5, iataNear:"ITM", bookingQuery:"Kyoto", gygQuery:"Kyoto",  taFoodUrl:"https://www.tripadvisor.it/Restaurants-g298564-Kyoto_Kyoto_Prefecture_Kinki.html" },
-        { name:"Nara",    nights:1, iataNear:"ITM", bookingQuery:"Nara",  gygQuery:"Nara",   taFoodUrl:"https://www.tripadvisor.it/Restaurants-g298198-Nara_Nara_Prefecture_Kinki.html" },
-        { name:"Osaka",   nights:3, iataNear:"KIX", bookingQuery:"Osaka", gygQuery:"Osaka",  taFoodUrl:"https://www.tripadvisor.it/Restaurants-g298566-Osaka_Osaka_Prefecture_Kinki.html" }
+        { name:"Tokyo",   nights:5, iataNear:"HND", bookingQuery:"Tokyo",   gygQuery:"Tokyo",   taFoodUrl:"https://www.tripadvisor.it/Restaurants-g298184-Tokyo_Tokyo_Prefecture_Kanto.html" },
+        { name:"Hakone",  nights:1, iataNear:"HND", bookingQuery:"Hakone",  gygQuery:"Hakone",  taFoodUrl:"https://www.tripadvisor.it/Restaurants-g298171-Hakone_machi_Ashigarashimo_gun_Kanagawa_Prefecture_Kanto.html" },
+        { name:"Kyoto",   nights:5, iataNear:"ITM", bookingQuery:"Kyoto",   gygQuery:"Kyoto",   taFoodUrl:"https://www.tripadvisor.it/Restaurants-g298564-Kyoto_Kyoto_Prefecture_Kinki.html" },
+        { name:"Nara",    nights:1, iataNear:"ITM", bookingQuery:"Nara",    gygQuery:"Nara",    taFoodUrl:"https://www.tripadvisor.it/Restaurants-g298198-Nara_Nara_Prefecture_Kinki.html" },
+        { name:"Osaka",   nights:3, iataNear:"KIX", bookingQuery:"Osaka",   gygQuery:"Osaka",   taFoodUrl:"https://www.tripadvisor.it/Restaurants-g298566-Osaka_Osaka_Prefecture_Kinki.html" }
       ],
       departures: [
         { start:"2025-10-24", length:15 },
@@ -105,8 +107,11 @@
     const fmt = d => d.toISOString().slice(0,10);
     const addDays = (iso, n) => { const d=new Date(iso+"T12:00:00"); d.setDate(d.getDate()+n); return fmt(d); };
 
+    // ATTENZIONE: questi deep link Skyscanner possono cambiare / rompersi.
+    // Li lasciamo così (come richiesto), poi li migriamo alle "routes" o referral API quando vuoi.
     const skyRound = (from,to,dep,ret) => `https://www.skyscanner.it/trasporti/voli/${from}/${to}/${dep}/${ret}/`;
     const skyOne  = (from,to,date)      => `https://www.skyscanner.it/trasporti/voli/${from}/${to}/${date}/`;
+
     const bookCity= (q,cin,cout) => {
       const u=new URL("https://www.booking.com/searchresults.it.html");
       u.searchParams.set("ss", q);
@@ -115,19 +120,8 @@
       u.searchParams.set("group_adults","2"); u.searchParams.set("no_rooms","1"); u.searchParams.set("group_children","0");
       return u.toString();
     };
-    const gyg = (q,date) => {
-      const u=new URL("https://www.getyourguide.com/-/en/");
-      u.searchParams.set("q", q);
-      u.searchParams.set("partner_id", window.GYG_PARTNER_ID);
-      u.searchParams.set("sub_id", window.GYG_SUBID);
-      // u.searchParams.set("date", date); // opzionale
-      return u.toString();
-    };
 
     function render(startISO){
-      // date buttons highlight
-      [...document.querySelectorAll('#dateButtons button')].forEach(b=>b.classList.remove('bg-black','text-white'));
-
       // calcolo soggiorni
       let day=0;
       const spans = DATA.cities.map(c => {
@@ -138,9 +132,8 @@
       });
       const endISO = addDays(startISO, day);
 
-      // voli
+      // VOLI
       const flights = document.getElementById('flights'); flights.innerHTML="";
-      // Open-jaw come 2 one-way
       const outA = document.createElement('a');
       outA.className="block p-4 rounded-2xl border hover:border-black";
       outA.target="_blank"; outA.textContent = `MXP → ${DATA.mainArrival} (${startISO})`;
@@ -153,14 +146,13 @@
       retA.href = skyOne(DATA.mainDeparture, ORIGIN_IATA, endISO);
       flights.appendChild(retA);
 
-      // alternativa A/R su Tokyo
       const alt = document.createElement('a');
       alt.className="block p-4 rounded-2xl border hover:border-black";
       alt.target="_blank"; alt.textContent = `Alternativa: A/R MXP ↔ HND`;
       alt.href = skyRound(ORIGIN_IATA, "HND", startISO, endISO);
       flights.appendChild(alt);
 
-      // stays
+      // STAYS (hotel + attività + food)
       const stays = document.getElementById('stays'); stays.innerHTML="";
       spans.forEach(c=>{
         const w=document.createElement('div');
@@ -172,24 +164,25 @@
           </div>
           <div class="flex flex-wrap gap-2">
             <a class="px-3 py-2 rounded-xl bg-black text-white" target="_blank" href="${bookCity(c.bookingQuery,c.checkin,c.checkout)}">Hotel su Booking</a>
-            <a class="px-3 py-2 rounded-xl bg-gray-900 text-white" target="_blank" href="${gyg(c.gygQuery,c.checkin)}">Attività GYG</a>
+            <a class="px-3 py-2 rounded-xl bg-gray-900 text-white cta-gyg" data-gyg="${c.gygQuery}" href="#">Attività a ${c.name}</a>
             <a class="px-3 py-2 rounded-xl bg-gray-200" target="_blank" href="${c.taFoodUrl}">Dove mangiare (TripAdvisor)</a>
           </div>
         `;
         stays.appendChild(w);
       });
 
-      // activities (2 macro)
+      // ATTIVITÀ (macro)
       const acts = document.getElementById('activities'); acts.innerHTML="";
       [spans[0], spans[2]].forEach(c=>{
         const a=document.createElement('a');
-        a.className="block p-4 rounded-2xl border hover:border-black";
-        a.target="_blank"; a.textContent = `Top attività a ${c.name}`;
-        a.href = gyg(c.gygQuery, c.checkin);
+        a.className="block p-4 rounded-2xl border hover:border-black cta-gyg";
+        a.setAttribute("data-gyg", c.gygQuery);
+        a.href = "#";
+        a.textContent = `Top attività a ${c.name}`;
         acts.appendChild(a);
       });
 
-      // food
+      // FOOD (macro)
       const food = document.getElementById('food'); food.innerHTML="";
       [spans[0], spans[2]].forEach(c=>{
         const a=document.createElement('a');
@@ -198,15 +191,27 @@
         a.href = c.taFoodUrl;
         food.appendChild(a);
       });
+
+      // Collega/aggiorna le CTA GYG appena create
+      if (window.GG_GYG && typeof GG_GYG.wireGygCtas === "function") {
+        GG_GYG.wireGygCtas();
+      }
     }
 
-    // date buttons
+    // Date buttons
     const wrap = document.getElementById('dateButtons');
     DATA.departures.forEach((opt,i)=>{
       const b=document.createElement('button');
       b.className="px-3 py-2 rounded-xl bg-white border hover:border-black";
       b.textContent = `${opt.start} • ${opt.length}g`;
-      b.onclick = ()=>{ render(opt.start); b.classList.add('bg-black','text-white'); };
+      b.onclick = ()=>{
+        // reset stile
+        [...wrap.querySelectorAll('button')].forEach(x=>x.classList.remove('bg-black','text-white'));
+        // selezione
+        b.classList.add('bg-black','text-white');
+        // render
+        render(opt.start);
+      };
       wrap.appendChild(b);
       if(i===0) setTimeout(()=>b.click(),0);
     });
@@ -273,12 +278,19 @@
   }
   </script>
 
-  <!-- (facoltativo) loader partials; puoi ometterlo se stiamo “pausando” l’header -->
+  <!-- Loader partials header/footer (root) -->
   <script>
-    // const HEADER_PATH="/globalglide360-demo/partials/header.html", FOOTER_PATH="/globalglide360-demo/partials/footer.html";
-    // fetch(HEADER_PATH).then(r=>r.ok?r.text():"").then(h=>document.getElementById('include-header').innerHTML=h);
-    // fetch(FOOTER_PATH).then(r=>r.ok?r.text():"").then(f=>document.getElementById('include-footer').innerHTML=f);
+    const HEADER_PATH="/partials/header.html", FOOTER_PATH="/partials/footer.html";
+    document.addEventListener("DOMContentLoaded", async () => {
+      try {
+        const [h,f] = await Promise.all([fetch(HEADER_PATH), fetch(FOOTER_PATH)]);
+        if (h.ok) document.getElementById('include-header').innerHTML = await h.text();
+        if (f.ok) document.getElementById('include-footer').innerHTML = await f.text();
+      } catch(e) { console.error("Errore caricando i partials:", e); }
+    });
   </script>
+
+  <!-- Resolver GYG (necessario per le CTA attività) -->
   <script src="/assets/js/gyg-resolver.js"></script>
 </body>
 </html>
