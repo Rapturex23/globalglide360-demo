@@ -124,5 +124,6 @@ const DATES={ott:{dep:'2025-10-24',ret:'2025-10-29'},nov:{dep:'2025-11-07',ret:'
 function applyDates(key){const from="MXP";const {dep,ret}=DATES[key];document.getElementById('cta-volo').href=buildFlight({from,dep,ret,adults:2});document.getElementById('cta-hotel').href=buildHotel({checkin:dep,checkout:ret,adults:2});document.getElementById('cta-exp').href=buildExp({fromDate:dep,toDate:ret,pax:2});}
 document.getElementById('btn-ott').addEventListener('click',()=>applyDates('ott'));document.getElementById('btn-nov').addEventListener('click',()=>applyDates('nov'));applyDates('ott');
 </script>
+  <script src="/assets/js/gyg-resolver.js"></script>
 </body>
 </html>
