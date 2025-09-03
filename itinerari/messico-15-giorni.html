@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <title>Messico in 15 giorni (MXP → MEX / CUN → MXP) | GlobalGlide360</title>
+  <meta name="description" content="Itinerario reale di 15 giorni in Messico: Città del Messico, Oaxaca, Chiapas, Yucatán. Voli open-jaw da MXP, hotel per tappa, attività GetYourGuide, dove mangiare (TripAdvisor).">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- OG -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Messico in 15 giorni (MXP → MEX / CUN → MXP)">
+  <meta property="og:description" content="CDMX • Oaxaca • Chiapas • Yucatán — voli, hotel city-by-city, attività e ristoranti.">
+  <meta property="og:image" content="https://www.globalglide360.com/assets/itinerari/messico/cover_1200x630.jpg">
+  <meta property="og:url" content="https://www.globalglide360.com/itinerari/messico-15-giorni.html">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="antialiased bg-white text-gray-800">
+  <div id="include-header"></div>
+
+  <main class="container mx-auto px-4 py-8 max-w-5xl">
+    <header class="mb-6">
+      <img src="/assets/itinerari/messico/cover_1200x630.jpg" alt="Messico 15 giorni" class="w-full rounded-2xl mb-4">
+      <h1 class="text-3xl font-bold mb-2">Messico in 15 giorni</h1>
+      <p class="text-gray-600">Città del Messico • Oaxaca • Chiapas • Yucatán — voli da MXP, hotel per tappa, attività e ristoranti</p>
+    </header>
+
+    <!-- Switch date -->
+    <div class="bg-gray-50 rounded-2xl p-4 mb-6 flex flex-wrap gap-2 items-center">
+      <span class="text-sm">Partenza da <strong>MXP</strong>:</span>
+      <div id="dateButtons" class="flex flex-wrap gap-2"></div>
+    </div>
+
+    <!-- Voli -->
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold mb-3">Voli</h2>
+      <p class="text-sm text-gray-600 mb-3">Open-jaw consigliato: MXP → MEX / CUN → MXP. Con 2–3 voli interni (o bus notturni) tra le tappe.</p>
+      <div id="flights" class="grid md:grid-cols-2 gap-4"></div>
+    </section>
+
+    <!-- Soggiorni -->
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold mb-3">Dove dormire (notte per notte)</h2>
+      <div id="stays" class="space-y-4"></div>
+    </section>
+
+    <!-- Attività -->
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold mb-3">Attività suggerite</h2>
+      <div id="activities" class="grid md:grid-cols-2 gap-4"></div>
+    </section>
+
+    <!-- Food -->
+    <section class="mb-12">
+      <h2 class="text-xl font-semibold mb-3">Dove mangiare</h2>
+      <div id="food" class="grid md:grid-cols-2 gap-4"></div>
+    </section>
+
+    <section id="trasparenza" class="max-w-3xl">
+      <!-- incolla qui il blocco “Trasparenza & FAQ” -->
+    </section>
+  </main>
+
+  <div id="include-footer"></div>
+
+  <!-- Config GYG -->
+  <script>
+    window.GYG_PARTNER_ID = "HWU00MZ";
+    window.GYG_SUBID = "messico-15-giorni";
+  </script>
+
+  <!-- Link builders + Render -->
+  <script>
+    const ORIGIN_IATA = "MXP";
+    const DATA = {
+      slug: "messico-15-giorni",
+      title: "Messico in 15 giorni",
+      mainArrival: "MEX",
+      mainDeparture: "CUN",
+      cities: [
+        { name:"Città del Messico", nights:4, iataNear:"MEX", bookingQuery:"Mexico City", gygQuery:"Mexico City", taFoodUrl:"https://www.tripadvisor.it/Restaurants-g150800-Mexico_City_Central_Mexico_and_Gulf_Coast.html" },
+        { name:"Oaxaca",             nights:3, iataNear:"OAX", bookingQuery:"Oaxaca",      gygQuery:"Oaxaca",      taFoodUrl:"https://www.tripadvisor.it/Restaurants-g150801-Oaxaca_Southern_Mexico.html" },
+        { name:"San Cristóbal (Chiapas)", nights:3, iataNear:"TGZ", bookingQuery:"San Cristobal de las Casas", gygQuery:"Chiapas", taFoodUrl:"https://www.tripadvisor.it/Restaurants-g150802-San_Cristobal_de_las_Casas_Southern_Mexico.html" },
+        { name:"Riviera Maya (Tulum/Playa/Cancún)", nights:5, iataNear:"CUN", bookingQuery:"Tulum", gygQuery:"Tulum", taFoodUrl:"https://www.tripadvisor.it/Restaurants-g150813-Tulum_Yucatan_Peninsula.html" }
+      ],
+      internalMoves: [
+        { from:"MEX", to:"OAX", dayOffset:4 },
+        { from:"OAX", to:"TGZ", dayOffset:7 },
+        { from:"TGZ", to:"CUN", dayOffset:10 }
+      ],
+      departures: [
+        { start:"2025-10-24", length:15 },
+        { start:"2025-11-07", length:15 },
+        { start:"2025-11-21", length:15 }
+      ]
+    };
+
+    const fmt = d => d.toISOString().slice(0,10);
+    const addDays = (iso, n) => { const d=new Date(iso+"T12:00:00"); d.setDate(d.getDate()+n); return fmt(d); };
+
+    const skyRound = (from,to,dep,ret) => `https://www.skyscanner.it/trasporti/voli/${from}/${to}/${dep}/${ret}/`;
+    const skyOne  = (from,to,date)      => `https://www.skyscanner.it/trasporti/voli/${from}/${to}/${date}/`;
+    const bookCity= (q,cin,cout) => {
+      const u=new URL("https://www.booking.com/searchresults.it.html");
+      u.searchParams.set("ss", q);
+      u.searchParams.set("checkin", cin);
+      u.searchParams.set("checkout", cout);
+      u.searchParams.set("group_adults","2"); u.searchParams.set("no_rooms","1"); u.searchParams.set("group_children","0");
+      return u.toString();
+    };
+    const gyg = (q,date) => {
+      const u=new URL("https://www.getyourguide.com/-/en/");
+      u.searchParams.set("q", q);
+      u.searchParams.set("partner_id", window.GYG_PARTNER_ID);
+      u.searchParams.set("sub_id", window.GYG_SUBID);
+      return u.toString();
+    };
+
+    function render(startISO){
+      // calcolo soggiorni
+      let day=0;
+      const spans = DATA.cities.map(c => {
+        const cin = addDays(startISO, day);
+        const cout= addDays(startISO, day + c.nights);
+        day += c.nights;
+        return { ...c, checkin:cin, checkout:cout };
+      });
+      const endISO = addDays(startISO, day);
+
+      // voli
+      const flights = document.getElementById('flights'); flights.innerHTML="";
+      const outA = document.createElement('a');
+      outA.className="block p-4 rounded-2xl border hover:border-black";
+      outA.target="_blank"; outA.textContent = `MXP → ${DATA.mainArrival} (${startISO})`;
+      outA.href = skyOne(ORIGIN_IATA, DATA.mainArrival, startISO);
+      flights.appendChild(outA);
+
+      const retA = document.createElement('a');
+      retA.className="block p-4 rounded-2xl border hover:border-black";
+      retA.target="_blank"; retA.textContent = `${DATA.mainDeparture} → MXP (${endISO})`;
+      retA.href = skyOne(DATA.mainDeparture, ORIGIN_IATA, endISO);
+      flights.appendChild(retA);
+
+      // voli interni (CTA one-way semplificate)
+      (DATA.internalMoves||[]).forEach(m=>{
+        const a=document.createElement('a');
+        a.className="block p-4 rounded-2xl border hover:border-black";
+        a.target="_blank";
+        const date = addDays(startISO, m.dayOffset);
+        a.textContent = `Volo interno ${m.from} → ${m.to} (${date})`;
+        a.href = skyOne(m.from, m.to, date);
+        flights.appendChild(a);
+      });
+
+      // stays
+      const stays = document.getElementById('stays'); stays.innerHTML="";
+      spans.forEach(c=>{
+        const w=document.createElement('div');
+        w.className="p-4 rounded-2xl border space-y-3";
+        w.innerHTML = `
+          <div class="flex items-center justify-between gap-2">
+            <h3 class="font-semibold text-lg">${c.name}</h3>
+            <span class="text-sm bg-gray-100 rounded-full px-2 py-1">${c.checkin} → ${c.checkout} (${c.nights} notti)</span>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <a class="px-3 py-2 rounded-xl bg-black text-white" target="_blank" href="${bookCity(c.bookingQuery,c.checkin,c.checkout)}">Hotel su Booking</a>
+            <a class="px-3 py-2 rounded-xl bg-gray-900 text-white" target="_blank" href="${gyg(c.gygQuery,c.checkin)}">Attività GYG</a>
+            <a class="px-3 py-2 rounded-xl bg-gray-200" target="_blank" href="${c.taFoodUrl}">Dove mangiare (TripAdvisor)</a>
+          </div>
+        `;
+        stays.appendChild(w);
+      });
+
+      // activities
+      const acts = document.getElementById('activities'); acts.innerHTML="";
+      [spans[0], spans[3]].forEach(c=>{
+        const a=document.createElement('a');
+        a.className="block p-4 rounded-2xl border hover:border-black";
+        a.target="_blank"; a.textContent = `Top attività a ${c.name}`;
+        a.href = gyg(c.gygQuery, c.checkin);
+        acts.appendChild(a);
+      });
+
+      // food
+      const food = document.getElementById('food'); food.innerHTML="";
+      [spans[0], spans[3]].forEach(c=>{
+        const a=document.createElement('a');
+        a.className="block p-4 rounded-2xl border hover:border-black";
+        a.target="_blank"; a.textContent = `Ristoranti consigliati a ${c.name} (TripAdvisor)`;
+        a.href = c.taFoodUrl;
+        food.appendChild(a);
+      });
+    }
+
+    // date buttons
+    const wrap = document.getElementById('dateButtons');
+    DATA.departures.forEach((opt,i)=>{
+      const b=document.createElement('button');
+      b.className="px-3 py-2 rounded-xl bg-white border hover:border-black";
+      b.textContent = `${opt.start} • ${opt.length}g`;
+      b.onclick = ()=>{ render(opt.start); b.classList.add('bg-black','text-white'); };
+      wrap.appendChild(b);
+      if(i===0) setTimeout(()=>b.click(),0);
+    });
+  </script>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@graph":[
+      {
+        "@type":"WebPage",
+        "@id":"https://www.globalglide360.com/itinerari/messico-15-giorni.html",
+        "url":"https://www.globalglide360.com/itinerari/messico-15-giorni.html",
+        "name":"Messico in 15 giorni | GlobalGlide360",
+        "description":"Itinerario reale: Città del Messico, Oaxaca, Chiapas, Yucatán. Voli da MXP, hotel per tappa, attività e ristoranti.",
+        "breadcrumb":{"@id":"https://www.globalglide360.com/#breadcrumb-messico15"},
+        "publisher":{"@id":"https://www.globalglide360.com/#org"},
+        "isPartOf":{"@id":"https://www.globalglide360.com/#website"}
+      },
+      {
+        "@type":"BreadcrumbList",
+        "@id":"https://www.globalglide360.com/#breadcrumb-messico15",
+        "itemListElement":[
+          {"@type":"ListItem","position":1,"name":"Home","item":"https://www.globalglide360.com/"},
+          {"@type":"ListItem","position":2,"name":"Itinerari pronti","item":"https://www.globalglide360.com/#itinerari-pronti"},
+          {"@type":"ListItem","position":3,"name":"Messico – 15 giorni","item":"https://www.globalglide360.com/itinerari/messico-15-giorni.html"}
+        ]
+      },
+      {
+        "@type":"TouristTrip",
+        "@id":"https://www.globalglide360.com/itinerari/messico-15-giorni.html#trip",
+        "name":"Messico – 15 giorni",
+        "description":"Itinerario di 15 giorni con tappe multiple e attività prenotabili.",
+        "touristType":"Famiglie | Coppie | Amici",
+        "itinerary":{
+          "@type":"ItemList",
+          "itemListElement":[
+            {"@type":"ListItem","position":1,"name":"Città del Messico – 4 notti"},
+            {"@type":"ListItem","position":2,"name":"Oaxaca – 3 notti"},
+            {"@type":"ListItem","position":3,"name":"San Cristóbal (Chiapas) – 3 notti"},
+            {"@type":"ListItem","position":4,"name":"Riviera Maya – 5 notti"}
+          ]
+        },
+        "departureStation":{"@type":"Airport","name":"Milano Malpensa","iataCode":"MXP"},
+        "arrivalStation":{"@type":"Airport","name":"Mexico City","iataCode":"MEX"},
+        "provider":{"@id":"https://www.globalglide360.com/#org"},
+        "image":["https://www.globalglide360.com/assets/itinerari/messico/cover_1200x630.jpg"]
+      },
+      {
+        "@type":"Organization",
+        "@id":"https://www.globalglide360.com/#org",
+        "name":"GlobalGlide360",
+        "url":"https://www.globalglide360.com/",
+        "logo":{"@type":"ImageObject","url":"https://www.globalglide360.com/assets/logo-gg360.png"}
+      },
+      {
+        "@type":"WebSite",
+        "@id":"https://www.globalglide360.com/#website",
+        "url":"https://www.globalglide360.com/","name":"GlobalGlide360"
+      }
+    ]
+  }
+  </script>
+
+  <!-- (facoltativo) loader partials -->
+  <script>
+    // const HEADER_PATH="/globalglide360-demo/partials/header.html", FOOTER_PATH="/globalglide360-demo/partials/footer.html";
+    // fetch(HEADER_PATH).then(r=>r.ok?r.text():"").then(h=>document.getElementById('include-header').innerHTML=h);
+    // fetch(FOOTER_PATH).then(r=>r.ok?r.text():"").then(f=>document.getElementById('include-footer').innerHTML=f);
+  </script>
+</body>
+</html>
