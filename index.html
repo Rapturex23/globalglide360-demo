@@ -1,301 +1,326 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GlobalGlide360 – Viaggi su misura</title>
-  <meta name="description" content="Crea il tuo itinerario: idee reali con link a disponibilità aggiornate per voli, hotel ed esperienze.">
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta name="description" content="Crea il tuo itinerario: idee reali con link a disponibilità aggiornate per voli, hotel ed esperienze." />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
 
-  <!-- Travelpayouts LinkSwitcher (il tuo snippet) -->
+  <!-- Travelpayouts LinkSwitcher -->
   <script data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
     (function () {
-        var script = document.createElement("script");
-        script.async = 1;
-        script.src = 'https://tpembars.com/NDU0MTUz.js?t=454153';
-        document.head.appendChild(script);
+      var script = document.createElement("script");
+      script.async = 1;
+      script.src = "https://tpembars.com/NDU0MTUz.js?t=454153";
+      document.head.appendChild(script);
     })();
   </script>
 
   <style>
-    /* piccolo miglioramento focus accessibilità */
     a:focus, button:focus, input:focus { outline: 2px solid #1D4ED8; outline-offset: 2px; }
   </style>
 </head>
+
 <body class="bg-blue-50 text-gray-800">
-<script>
-  window.GG_CFG = window.GG_CFG || {};
-  window.GG_CFG.gyg_partner = "HWU00MZ"; // il tuo partner ID
-
-  // sub_id automatico (così sai da quale pagina arrivano i click)
-  (function(){
-    const path=(location.pathname||"/").toLowerCase();
-    let slug="home"; 
-    const m=path.match(/([a-z0-9\-]+)\.html$/);
-    if(m&&m[1]) slug=m[1];
-    else if(path.includes('/mini-guide/')){
-      const parts=path.split('/').filter(Boolean);
-      slug=(parts[parts.length-1]||'mini-guide').replace('.html','');
-    }
-    window.GG_SUBID = slug;
-  })();
-</script>
-<script>
-async function loadPartials() {
-  const header = await fetch('/partials/header.html').then(r => r.text());
-  document.getElementById('include-header').innerHTML = header;
-
-  const footer = await fetch('/partials/footer.html').then(r => r.text());
-  document.getElementById('include-footer').innerHTML = footer;
-}
-loadPartials();
-</script>
-
-  <body>
+  <!-- Placeholder header -->
   <div id="include-header"></div>
 
   <main class="container mx-auto px-4 py-10">
-    <!-- contenuto pagina -->
+    <!-- HERO -->
+    <section class="py-10 text-center">
+      <h1 class="text-4xl font-extrabold text-blue-900">Itinerari pronti, prezzi reali</h1>
+      <p class="mt-3 text-lg text-gray-700">Voli, hotel e attività con disponibilità aggiornata. Prenoti sempre sui portali ufficiali.</p>
+    </section>
+
+    <!-- Itinerari pronti: toggle Mono-città / Aree -->
+    <section id="itinerari-pronti" class="py-10">
+      <div class="flex items-center gap-2 mb-6">
+        <h2 class="text-2xl font-bold">Itinerari pronti</h2>
+        <span class="text-sm px-2 py-1 rounded-full bg-gray-100">Partenza MXP</span>
+      </div>
+
+      <div class="inline-flex rounded-2xl bg-gray-100 p-1 mb-6">
+        <button id="tabCity" class="px-4 py-2 rounded-2xl bg-white shadow">Mono-città</button>
+        <button id="tabArea" class="px-4 py-2">Aree / Paesi</button>
+      </div>
+
+      <!-- Grid Mono-città -->
+      <div id="gridCity" class="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
+        <a href="/itinerari/tokyo-5-giorni.html" class="block rounded-2xl overflow-hidden shadow hover:shadow-lg transition bg-white">
+          <img src="/img/tokyo.png" alt="Tokyo 5 giorni" class="w-full h-44 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold">Tokyo — 5 giorni</h3>
+            <p class="text-sm text-gray-600">MXP • 24–29 Ott / 7–12 Nov</p>
+          </div>
+        </a>
+        <a href="/itinerari/bali-5-giorni.html" class="block rounded-2xl overflow-hidden shadow hover:shadow-lg transition bg-white">
+          <img src="/img/bali.png" alt="Bali 5 giorni" class="w-full h-44 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold">Bali — 5 giorni</h3>
+            <p class="text-sm text-gray-600">MXP • 24–29 Ott / 7–12 Nov</p>
+          </div>
+        </a>
+        <a href="/itinerari/newyork-5-giorni.html" class="block rounded-2xl overflow-hidden shadow hover:shadow-lg transition bg-white">
+          <img src="/img/newyork.png" alt="New York 5 giorni" class="w-full h-44 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold">New York — 5 giorni</h3>
+            <p class="text-sm text-gray-600">MXP • 24–29 Ott / 7–12 Nov</p>
+          </div>
+        </a>
+        <a href="/itinerari/parigi-5-giorni.html" class="block rounded-2xl overflow-hidden shadow hover:shadow-lg transition bg-white">
+          <img src="/img/parigi.png" alt="Parigi 5 giorni" class="w-full h-44 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold">Parigi — 5 giorni</h3>
+            <p class="text-sm text-gray-600">MXP • 24–29 Ott / 7–12 Nov</p>
+          </div>
+        </a>
+        <a href="/itinerari/roma-5-giorni.html" class="block rounded-2xl overflow-hidden shadow hover:shadow-lg transition bg-white">
+          <img src="/img/venezia.png" alt="Roma 5 giorni" class="w-full h-44 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold">Roma — 5 giorni</h3>
+            <p class="text-sm text-gray-600">MXP • 24–29 Ott / 7–12 Nov</p>
+          </div>
+        </a>
+        <a href="/itinerari/londra-5-giorni.html" class="block rounded-2xl overflow-hidden shadow hover:shadow-lg transition bg-white">
+          <img src="/img/montagna.png" alt="Londra 5 giorni" class="w-full h-44 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold">Londra — 5 giorni</h3>
+            <p class="text-sm text-gray-600">MXP • 24–29 Ott / 7–12 Nov</p>
+          </div>
+        </a>
+        <a href="/itinerari/barcellona-5-giorni.html" class="block rounded-2xl overflow-hidden shadow hover:shadow-lg transition bg-white">
+          <img src="/img/rafting.png" alt="Barcellona 5 giorni" class="w-full h-44 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold">Barcellona — 5 giorni</h3>
+            <p class="text-sm text-gray-600">MXP • 24–29 Ott / 7–12 Nov</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Grid Aree / Paesi -->
+      <div id="gridArea" class="grid sm:grid-cols-2 md:grid-cols-3 gap-5 hidden">
+        <a href="/itinerari/giappone-15-giorni.html" class="block rounded-2xl overflow-hidden shadow hover:shadow-lg transition bg-white">
+          <img src="/assets/itinerari/giappone/cover_1200x630.jpg" alt="Giappone 15 giorni" class="w-full h-44 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold">Giappone — 15 giorni</h3>
+            <p class="text-sm text-gray-600">Tokyo • Hakone • Kyoto • Nara • Osaka</p>
+          </div>
+        </a>
+        <a href="/itinerari/messico-15-giorni.html" class="block rounded-2xl overflow-hidden shadow hover:shadow-lg transition bg-white">
+          <img src="/assets/itinerari/messico/cover_1200x630.jpg" alt="Messico 15 giorni" class="w-full h-44 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold">Messico — 15 giorni</h3>
+            <p class="text-sm text-gray-600">CDMX • Oaxaca • Chiapas • Yucatán</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Form semplice (redir alle mini-guide) -->
+    <section class="py-10">
+      <form class="bg-white max-w-3xl mx-auto p-6 rounded-2xl shadow" onsubmit="event.preventDefault(); window.location.href='/mini-guide/';">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <input type="text" placeholder="Città di partenza (es. MXP)" class="border px-4 py-2 rounded">
+          <input type="text" placeholder="Destinazione (es. Tokyo / NYC / PAR)" class="border px-4 py-2 rounded">
+          <input type="date" class="border px-4 py-2 rounded">
+          <input type="date" class="border px-4 py-2 rounded">
+          <input type="number" placeholder="Adulti" class="border px-4 py-2 rounded">
+          <input type="number" placeholder="Bambini" class="border px-4 py-2 rounded">
+          <input type="text" placeholder="Budget indicativo (es. 1500€)" class="border px-4 py-2 rounded md:col-span-2">
+        </div>
+
+        <h3 class="text-lg font-semibold mb-2">Preferenze di viaggio</h3>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-2 mb-4">
+          <label><input type="checkbox" class="mr-2"> Natura</label>
+          <label><input type="checkbox" class="mr-2"> Città</label>
+          <label><input type="checkbox" class="mr-2"> Cultura</label>
+          <label><input type="checkbox" class="mr-2"> Mare</label>
+          <label><input type="checkbox" class="mr-2"> Montagna</label>
+          <label><input type="checkbox" class="mr-2"> Famiglia</label>
+        </div>
+
+        <button class="bg-blue-700 text-white px-6 py-2 rounded hover:bg-blue-800">Crea il tuo itinerario</button>
+        <p class="text-xs text-gray-500 mt-2">Verrai reindirizzato alle mini-guide con risultati reali tramite i partner ufficiali.</p>
+      </form>
+    </section>
+
+    <!-- Destinazioni popolari (link alle mini-guide) -->
+    <section class="py-12 px-2 bg-white rounded-2xl">
+      <h2 class="text-2xl font-bold text-center text-blue-900 mb-6">Destinazioni popolari</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+        <a href="/mini-guide/tokyo.html" class="block group">
+          <img src="/img/tokyo.png" alt="Tokyo skyline" class="rounded shadow group-hover:shadow-lg transition">
+          <p class="mt-2 text-center font-semibold text-blue-800">Tokyo</p>
+        </a>
+        <a href="/mini-guide/bali.html" class="block group">
+          <img src="/img/bali.png" alt="Bali risaie" class="rounded shadow group-hover:shadow-lg transition">
+          <p class="mt-2 text-center font-semibold text-blue-800">Bali</p>
+        </a>
+        <a href="/mini-guide/newyork.html" class="block group">
+          <img src="/img/newyork.png" alt="New York skyline" class="rounded shadow group-hover:shadow-lg transition">
+          <p class="mt-2 text-center font-semibold text-blue-800">New York</p>
+        </a>
+        <a href="/mini-guide/parigi.html" class="block group">
+          <img src="/img/parigi.png" alt="Parigi Torre Eiffel" class="rounded shadow group-hover:shadow-lg transition">
+          <p class="mt-2 text-center font-semibold text-blue-800">Parigi</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Chi siamo -->
+    <section class="py-12 text-center">
+      <h2 class="text-3xl font-bold text-blue-800 mb-4">Chi siamo</h2>
+      <p class="max-w-3xl mx-auto text-gray-700 text-lg">
+        GlobalGlide360 è un magazine di viaggi: mini-guide e itinerari pronti con link a disponibilità aggiornate
+        (voli, hotel, attività). Non vendiamo pacchetti: prenoti sempre sui portali ufficiali, senza costi extra.
+      </p>
+    </section>
+
+    <!-- Come funziona -->
+    <section class="py-12 bg-blue-100 rounded-2xl">
+      <h2 class="text-3xl font-bold text-blue-900 mb-4 text-center">Come funziona</h2>
+      <div class="max-w-4xl mx-auto text-gray-700 text-lg space-y-4">
+        <p><strong>1.</strong> Scegli un itinerario pronto o inserisci le tue preferenze.</p>
+        <p><strong>2.</strong> Apri le SERP ufficiali con date preimpostate per voli, hotel e attività.</p>
+        <p><strong>3.</strong> Prenota direttamente sui portali ufficiali tramite i nostri link affiliati.</p>
+        <p><strong>4.</strong> Contenuti gratuiti e trasparenti: nessun sovrapprezzo.</p>
+      </div>
+    </section>
+
+    <!-- Trasparenza & FAQ -->
+    <section id="trasparenza" class="max-w-3xl mx-auto px-2 py-10">
+      <h2 class="text-2xl font-bold mb-4">Trasparenza &amp; FAQ</h2>
+      <p class="mb-4">
+        GlobalGlide360 è un magazine editoriale. Alcuni link ai partner (es. voli, hotel, attività) sono
+        <strong>link di affiliazione</strong>: se acquisti, potremmo ricevere una commissione senza costi extra per te.
+      </p>
+
+      <div class="bg-gray-50 rounded-xl p-5 space-y-4">
+        <details class="group">
+          <summary class="cursor-pointer font-semibold">Come guadagniamo?</summary>
+          <p class="mt-2">Attraverso programmi di affiliazione (es. GetYourGuide, Booking, Skyscanner). I contenuti restano indipendenti e non vendiamo pacchetti viaggio.</p>
+        </details>
+
+        <details class="group">
+          <summary class="cursor-pointer font-semibold">Cosa sono partner_id e sub_id?</summary>
+          <p class="mt-2">Il <code>partner_id</code> identifica GlobalGlide360 presso il partner (es. <code>HWU00MZ</code> su GetYourGuide). Il <code>sub_id</code> è un’etichetta tecnica per attribuire le performance a singole pagine (es. <code>tokyo-5-giorni</code>).</p>
+        </details>
+
+        <details class="group">
+          <summary class="cursor-pointer font-semibold">I prezzi sono in tempo reale?</summary>
+          <p class="mt-2">Mostriamo link verso SERP ufficiali (volo/hotel/attività) con date preimpostate. I prezzi finali li vedi direttamente sul sito del partner, sempre aggiornati.</p>
+        </details>
+
+        <details class="group">
+          <summary class="cursor-pointer font-semibold">Usate cookie o tracciamenti?</summary>
+          <p class="mt-2">Usiamo solo gli script necessari alla funzionalità dei link affiliati e all’analisi anonima del traffico. Consulta l’Informativa Privacy per i dettagli.</p>
+        </details>
+
+        <details class="group">
+          <summary class="cursor-pointer font-semibold">Posso suggerire correzioni?</summary>
+          <p class="mt-2">Certo! Scrivici a <a href="mailto:info@globalglide360.com">info@globalglide360.com</a>. Aggiorniamo gli itinerari con cadenza regolare.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- JSON-LD FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Come guadagniamo?", "acceptedAnswer": { "@type": "Answer", "text": "Attraverso programmi di affiliazione (es. GetYourGuide, Booking, Skyscanner). I contenuti restano indipendenti e non vendiamo pacchetti viaggio." } },
+        { "@type": "Question", "name": "Cosa sono partner_id e sub_id?", "acceptedAnswer": { "@type": "Answer", "text": "Il partner_id identifica GlobalGlide360 presso il partner (es. HWU00MZ su GetYourGuide). Il sub_id è un’etichetta tecnica per attribuire le performance a singole pagine (es. tokyo-5-giorni)." } },
+        { "@type": "Question", "name": "I prezzi sono in tempo reale?", "acceptedAnswer": { "@type": "Answer", "text": "Mostriamo link verso SERP ufficiali (volo/hotel/attività) con date preimpostate. I prezzi finali li vedi direttamente sul sito del partner, sempre aggiornati." } },
+        { "@type": "Question", "name": "Usate cookie o tracciamenti?", "acceptedAnswer": { "@type": "Answer", "text": "Usiamo solo gli script necessari alla funzionalità dei link affiliati e all’analisi anonima del traffico. Consulta l’Informativa Privacy per i dettagli." } },
+        { "@type": "Question", "name": "Posso suggerire correzioni?", "acceptedAnswer": { "@type": "Answer", "text": "Sì: scrivi a info@globalglide360.com. Aggiorniamo gli itinerari con cadenza regolare." } }
+      ]
+    }
+    </script>
   </main>
 
+  <!-- Placeholder footer -->
   <div id="include-footer"></div>
-</body>
 
+  <!-- Tracking/config base per GYG (partner & sub_id pagina) -->
+  <script>
+    window.GG_CFG = window.GG_CFG || {};
+    window.GG_CFG.gyg_partner = "HWU00MZ";
+    (function () {
+      const path = (location.pathname || "/").toLowerCase();
+      let slug = "home";
+      const m = path.match(/([a-z0-9\-]+)\.html$/);
+      if (m && m[1]) slug = m[1];
+      else if (path.includes("/mini-guide/")) {
+        const parts = path.split("/").filter(Boolean);
+        slug = (parts[parts.length - 1] || "mini-guide").replace(".html", "");
+      }
+      window.GG_SUBID = slug;
+    })();
+  </script>
 
-  <!-- HERO -->
- <section id="itinerari-pronti" class="container mx-auto px-4 py-10">
-  <div class="flex items-center gap-2 mb-6">
-    <h2 class="text-2xl font-bold">Itinerari pronti</h2>
-    <span class="text-sm px-2 py-1 rounded-full bg-gray-100">MXP</span>
-  </div>
+  <!-- Loader dei partials -->
+  <script>
+    (function () {
+      // Se il sito è in sottocartella, cambia in "./partials/header.html" e "./partials/footer.html"
+      const HEADER_PATH = "/partials/header.html";
+      const FOOTER_PATH = "/partials/footer.html";
 
-  <div class="inline-flex rounded-2xl bg-gray-100 p-1 mb-6">
-    <button id="tabCity" class="px-4 py-2 rounded-2xl bg-white shadow">Mono-città</button>
-    <button id="tabArea" class="px-4 py-2">Aree / Paesi</button>
-  </div>
+      function inject(id, html) {
+        const el = document.getElementById(id);
+        if (el) el.innerHTML = html;
+      }
 
-  <div id="gridCity" class="grid md:grid-cols-3 gap-5">
-    <!-- le 7 card esistenti: Tokyo, Bali, NYC, Parigi, Roma, Londra, Barcellona -->
-  </div>
+      async function load(url) {
+        const res = await fetch(url, { cache: "no-store" });
+        if (!res.ok) throw new Error("HTTP " + res.status + " for " + url);
+        return res.text();
+      }
 
-  <div id="gridArea" class="grid md:grid-cols-3 gap-5 hidden">
-    <!-- nuove card area/paese -->
-    <a href="/itinerari/giappone-15-giorni.html" class="block rounded-2xl overflow-hidden shadow hover:shadow-lg transition">
-      <img src="/assets/itinerari/giappone/cover_1200x630.jpg" alt="Giappone 15 giorni" class="w-full aspect-[16/9] object-cover">
-      <div class="p-4">
-        <h3 class="font-semibold">Giappone – 15 giorni</h3>
-        <p class="text-sm text-gray-600">Tokyo • Hakone • Kyoto • Nara • Osaka</p>
-      </div>
-    </a>
-    <a href="/itinerari/messico-15-giorni.html" class="block rounded-2xl overflow-hidden shadow hover:shadow-lg transition">
-      <img src="/assets/itinerari/messico/cover_1200x630.jpg" alt="Messico 15 giorni" class="w-full aspect-[16/9] object-cover">
-      <div class="p-4">
-        <h3 class="font-semibold">Messico – 15 giorni</h3>
-        <p class="text-sm text-gray-600">Città del Messico • Oaxaca • Chiapas • Yucatán</p>
-      </div>
-    </a>
-  </div>
-</section>
+      async function loadPartials() {
+        try {
+          const [header, footer] = await Promise.all([load(HEADER_PATH), load(FOOTER_PATH)]);
+          inject("include-header", header);
+          inject("include-footer", footer);
+        } catch (e) {
+          console.error("Errore caricando i partials:", e);
+        }
+      }
 
-<script>
-  const tabCity = document.getElementById('tabCity');
-  const tabArea = document.getElementById('tabArea');
-  const gridCity = document.getElementById('gridCity');
-  const gridArea = document.getElementById('gridArea');
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", loadPartials);
+      } else {
+        loadPartials();
+      }
+    })();
+  </script>
 
-  function sel(isArea){
-    tabCity.className = "px-4 py-2 rounded-2xl " + (isArea ? "" : "bg-white shadow");
-    tabArea.className = "px-4 py-2 rounded-2xl " + (isArea ? "bg-white shadow" : "");
-    gridCity.classList.toggle('hidden', isArea);
-    gridArea.classList.toggle('hidden', !isArea);
-  }
-  tabCity.onclick = () => sel(false);
-  tabArea.onclick = () => sel(true);
-</script>
+  <!-- Script pagina: tab Mono-città / Aree -->
+  <script>
+    (function(){
+      function initTabs(){
+        const tabCity = document.getElementById('tabCity');
+        const tabArea = document.getElementById('tabArea');
+        const gridCity = document.getElementById('gridCity');
+        const gridArea = document.getElementById('gridArea');
+        if(!tabCity || !tabArea || !gridCity || !gridArea) return;
 
-
-    <!-- FORM (redir semplice alle mini-guide) -->
-    <form class="bg-white max-w-3xl mx-auto p-6 rounded shadow-md" onsubmit="event.preventDefault(); window.location.href='/mini-guide/';">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-        <input type="text" placeholder="Città di partenza (es. ROM/MXP/FCO)" class="border px-4 py-2 rounded">
-        <input type="text" placeholder="Destinazione (es. Tokyo / PAR / NYC)" class="border px-4 py-2 rounded">
-        <input type="date" class="border px-4 py-2 rounded">
-        <input type="date" class="border px-4 py-2 rounded">
-        <input type="number" placeholder="Adulti" class="border px-4 py-2 rounded">
-        <input type="number" placeholder="Bambini" class="border px-4 py-2 rounded">
-        <input type="text" placeholder="Budget indicativo (es. 1500€)" class="border px-4 py-2 rounded md:col-span-2">
-      </div>
-
-      <h2 class="text-lg font-semibold text-left mb-2">Preferenze di viaggio</h2>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-2 text-left mb-4">
-        <label><input type="checkbox" class="mr-2"> Natura</label>
-        <label><input type="checkbox" class="mr-2"> Città</label>
-        <label><input type="checkbox" class="mr-2"> Cultura</label>
-        <label><input type="checkbox" class="mr-2"> Mare</label>
-        <label><input type="checkbox" class="mr-2"> Montagna</label>
-        <label><input type="checkbox" class="mr-2"> Famiglia</label>
-      </div>
-
-      <button class="bg-blue-700 text-white px-6 py-2 rounded hover:bg-blue-800">Crea il tuo itinerario</button>
-      <p class="text-xs text-gray-500 mt-2">Verrai reindirizzato alle mini-guide con risultati reali tramite i partner ufficiali.</p>
-    </form>
-  </section>
-
-  <!-- DESTINAZIONI POPOLARI -->
-  <section class="py-12 px-6 bg-white">
-    <h2 class="text-2xl font-bold text-center text-blue-900 mb-6">Destinazioni popolari</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
-      <a href="/mini-guide/tokyo.html" class="block group">
-        <img src="img/tokyo.png" alt="Tokyo skyline" class="rounded shadow group-hover:shadow-lg transition">
-        <p class="mt-2 text-center font-semibold text-blue-800">Tokyo</p>
-      </a>
-      <a href="/mini-guide/bali.html" class="block group">
-        <img src="img/bali.png" alt="Bali risaie" class="rounded shadow group-hover:shadow-lg transition">
-        <p class="mt-2 text-center font-semibold text-blue-800">Bali</p>
-      </a>
-      <a href="/mini-guide/newyork.html" class="block group">
-        <img src="img/newyork.png" alt="New York skyline" class="rounded shadow group-hover:shadow-lg transition">
-        <p class="mt-2 text-center font-semibold text-blue-800">New York</p>
-      </a>
-      <a href="/mini-guide/parigi.html" class="block group">
-        <img src="img/parigi.png" alt="Parigi Torre Eiffel" class="rounded shadow group-hover:shadow-lg transition">
-        <p class="mt-2 text-center font-semibold text-blue-800">Parigi</p>
-      </a>
-    </div>
-  </section>
-<section class="py-12 px-6 bg-white">
-  <h2 class="text-2xl font-bold text-center text-blue-900 mb-6">Itinerari veri (con prezzi e link)</h2>
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
-
-    <a href="/itinerari/tokyo-5-giorni.html" class="block group bg-white rounded shadow hover:shadow-lg transition">
-      <img src="/img/tokyo.png" alt="Tokyo 5 giorni" class="rounded-t w-full h-40 object-cover">
-      <div class="p-3">
-        <p class="font-semibold text-blue-800">Tokyo — 5 giorni</p>
-        <p class="text-sm text-gray-600">MXP • Ott 24→29 / Nov 7→12</p>
-      </div>
-    </a>
-
-    <a href="/itinerari/bali-5-giorni.html" class="block group bg-white rounded shadow hover:shadow-lg transition">
-      <img src="/img/bali.png" alt="Bali 5 giorni" class="rounded-t w-full h-40 object-cover">
-      <div class="p-3">
-        <p class="font-semibold text-blue-800">Bali — 5 giorni</p>
-        <p class="text-sm text-gray-600">MXP • Ott 24→29 / Nov 7→12</p>
-      </div>
-    </a>
-
-    <a href="/itinerari/newyork-5-giorni.html" class="block group bg-white rounded shadow hover:shadow-lg transition">
-      <img src="/img/newyork.png" alt="New York 5 giorni" class="rounded-t w-full h-40 object-cover">
-      <div class="p-3">
-        <p class="font-semibold text-blue-800">New York — 5 giorni</p>
-        <p class="text-sm text-gray-600">MXP • Ott 24→29 / Nov 7→12</p>
-      </div>
-    </a>
-
-    <a href="/itinerari/parigi-5-giorni.html" class="block group bg-white rounded shadow hover:shadow-lg transition">
-      <img src="/img/parigi.png" alt="Parigi 5 giorni" class="rounded-t w-full h-40 object-cover">
-      <div class="p-3">
-        <p class="font-semibold text-blue-800">Parigi — 5 giorni</p>
-        <p class="text-sm text-gray-600">MXP • Ott 24→29 / Nov 7→12</p>
-      </div>
-    </a>
-
-  </div>
-</section>
-
-  <!-- CHI SIAMO -->
-  <section class="py-12 px-6 bg-blue-50 text-center">
-    <h2 class="text-3xl font-bold text-blue-800 mb-4">Chi siamo</h2>
-    <p class="max-w-3xl mx-auto text-gray-700 text-lg">
-      GlobalGlide360 è una piattaforma editoriale di viaggi: creiamo mini-guide con itinerari reali e link a disponibilità aggiornate
-      (voli, hotel, attività). Non vendiamo pacchetti: prenoti sempre sui portali ufficiali, senza costi aggiuntivi.
-    </p>
-  </section>
-
-  <!-- COME FUNZIONA -->
-  <section class="py-12 px-6 bg-blue-100 text-center">
-    <h2 class="text-3xl font-bold text-blue-900 mb-4">Come funziona</h2>
-    <div class="max-w-4xl mx-auto text-gray-700 text-lg space-y-4 text-left">
-      <p><strong>1.</strong> Inserisci i tuoi dati o scegli una mini-guida pronta.</p>
-      <p><strong>2.</strong> Visualizza itinerari con voli, alloggi e attività collegati ai partner (risultati reali).</p>
-      <p><strong>3.</strong> Prenota direttamente sui portali ufficiali tramite i nostri link.</p>
-      <p><strong>4.</strong> I contenuti sono gratuiti e trasparenti: niente sovrapprezzi.</p>
-    </div>
-  </section>
-<section id="trasparenza" class="container mx-auto max-w-3xl px-4 py-10">
-  <h2 class="text-2xl font-bold mb-4">Trasparenza &amp; FAQ</h2>
-  <p class="mb-4">
-    GlobalGlide360 è un magazine editoriale. Alcuni link ai partner (es. voli, hotel, attività) sono
-    <strong>link di affiliazione</strong>: se acquisti, potremmo ricevere una commissione senza costi extra per te.
-  </p>
-
-  <div class="bg-gray-50 rounded-xl p-5 space-y-4">
-    <details class="group">
-      <summary class="cursor-pointer font-semibold">Come guadagniamo?</summary>
-      <p class="mt-2">Attraverso programmi di affiliazione (es. GetYourGuide, Booking, Skyscanner). I contenuti restano indipendenti e non vendiamo pacchetti viaggio.</p>
-    </details>
-
-    <details class="group">
-      <summary class="cursor-pointer font-semibold">Cosa sono partner_id e sub_id?</summary>
-      <p class="mt-2">Il <code>partner_id</code> identifica GlobalGlide360 presso il partner (es. <code>HWU00MZ</code> su GetYourGuide). Il <code>sub_id</code> è un’etichetta tecnica per attribuire le performance a singole pagine (es. <code>tokyo-5-giorni</code>).</p>
-    </details>
-
-    <details class="group">
-      <summary class="cursor-pointer font-semibold">I prezzi sono in tempo reale?</summary>
-      <p class="mt-2">Mostriamo link verso SERP ufficiali (volo/hotel/attività) con date pre-impostate. I prezzi finali li vedi direttamente sul sito del partner, sempre aggiornati.</p>
-    </details>
-
-    <details class="group">
-      <summary class="cursor-pointer font-semibold">Usate cookie o tracciamenti?</summary>
-      <p class="mt-2">Usiamo solo gli script necessari alla funzionalità dei link affiliati e all’analisi anonima del traffico. Consulta l’Informativa Privacy per i dettagli.</p>
-    </details>
-
-    <details class="group">
-      <summary class="cursor-pointer font-semibold">Posso suggerire correzioni?</summary>
-      <p class="mt-2">Certo! Scrivici a <a href="mailto:info@globalglide360.com">info@globalglide360.com</a>. Aggiorniamo gli itinerari con cadenza regolare.</p>
-    </details>
-  </div>
-</section>
-
-<!-- JSON-LD FAQPage -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    { "@type": "Question", "name": "Come guadagniamo?", "acceptedAnswer": { "@type": "Answer", "text": "Attraverso programmi di affiliazione (es. GetYourGuide, Booking, Skyscanner). I contenuti restano indipendenti e non vendiamo pacchetti viaggio." } },
-    { "@type": "Question", "name": "Cosa sono partner_id e sub_id?", "acceptedAnswer": { "@type": "Answer", "text": "Il partner_id identifica GlobalGlide360 presso il partner (es. HWU00MZ su GetYourGuide). Il sub_id è un’etichetta tecnica per attribuire le performance a singole pagine (es. tokyo-5-giorni)." } },
-    { "@type": "Question", "name": "I prezzi sono in tempo reale?", "acceptedAnswer": { "@type": "Answer", "text": "Mostriamo link verso SERP ufficiali (volo/hotel/attività) con date pre-impostate. I prezzi finali li vedi direttamente sul sito del partner, sempre aggiornati." } },
-    { "@type": "Question", "name": "Usate cookie o tracciamenti?", "acceptedAnswer": { "@type": "Answer", "text": "Usiamo solo gli script necessari alla funzionalità dei link affiliati e all’analisi anonima del traffico. Consulta l’Informativa Privacy per i dettagli." } },
-    { "@type": "Question", "name": "Posso suggerire correzioni?", "acceptedAnswer": { "@type": "Answer", "text": "Sì: scrivi a info@globalglide360.com. Aggiorniamo gli itinerari con cadenza regolare." } }
-  ]
-}
-</script>
-
-  <!-- FOOTER -->
-  <footer class="bg-white text-center py-6 mt-8 border-t">
-    <div class="text-sm text-gray-600 space-x-4">
-      <a href="/privacy.html" class="hover:underline">Privacy</a>
-      <a href="/cookie.html" class="hover:underline">Cookie</a>
-      <a href="/termini.html" class="hover:underline">Termini</a>
-      <a href="/chi-siamo.html" class="hover:underline">Chi siamo</a>
-      <a href="/contatti.html" class="hover:underline">Contatti</a>
-    </div>
-    <div class="mt-4 flex justify-center">
-      <a href="https://www.instagram.com/globalglide360" target="_blank" rel="noopener" aria-label="Instagram GlobalGlide360">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-pink-600 hover:text-pink-700" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 
-          5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm0 
-          2h10c1.654 0 3 1.346 3 3v10c0 1.654-1.346 3-3 
-          3H7c-1.654 0-3-1.346-3-3V7c0-1.654 1.346-3 
-          3-3zm11 1a1 1 0 100 2 1 1 0 000-2zM12 
-          7c-2.757 0-5 2.243-5 5s2.243 5 5 5c2.757 0 
-          5-2.243 5-5s-2.243-5-5-5zm0 2c1.654 0 3 1.346 3 
-          3s-1.346 3-3 3-3-1.346-3-3 1.346-3 3-3z"/>
-        </svg>
-      </a>
-    </div>
-    <p class="text-sm text-gray-500 mt-2">&copy; 2025 GlobalGlide360 – Tutti i diritti riservati</p>
-  </footer>
-
+        function sel(isArea){
+          tabCity.className = "px-4 py-2 rounded-2xl " + (isArea ? "" : "bg-white shadow");
+          tabArea.className = "px-4 py-2 rounded-2xl " + (isArea ? "bg-white shadow" : "");
+          gridCity.classList.toggle('hidden', isArea);
+          gridArea.classList.toggle('hidden', !isArea);
+        }
+        tabCity.onclick = () => sel(false);
+        tabArea.onclick = () => sel(true);
+      }
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initTabs);
+      } else {
+        initTabs();
+      }
+    })();
+  </script>
 </body>
 </html>
