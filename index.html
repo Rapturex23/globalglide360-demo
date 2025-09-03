@@ -242,7 +242,25 @@
 
   <!-- Placeholder footer -->
   <div id="include-footer"></div>
+<script>
+  const HEADER_PATH = "/partials/header.html";
+  const FOOTER_PATH = "/partials/footer.html";
 
+  async function loadPartials() {
+    try {
+      const [h, f] = await Promise.all([fetch(HEADER_PATH), fetch(FOOTER_PATH)]);
+      if (h.ok) document.getElementById("include-header").innerHTML = await h.text();
+      if (f.ok) document.getElementById("include-footer").innerHTML = await f.text();
+    } catch (e) {
+      console.error("Errore caricando i partials:", e);
+    }
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", loadPartials);
+  } else {
+    loadPartials();
+  }
+</script>
   <!-- Tracking/config base per GYG (partner & sub_id pagina) -->
   <script>
     window.GG_CFG = window.GG_CFG || {};
