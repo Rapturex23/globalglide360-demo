@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <title>TITOLO DINAMICO | GlobalGlide360</title>
+  <meta name="description" content="Itinerario reale di 15 giorni con voli da MXP, pernottamenti città-per-città, attività consigliate e dove mangiare.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- OG base -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="TITOLO DINAMICO">
+  <meta property="og:description" content="Voli, hotel per ogni tappa, attività e ristoranti consigliati.">
+  <meta property="og:image" content="/assets/itinerari/SLUG/cover_1200x630.jpg">
+  <meta property="og:url" content="https://www.globalglide360.com/itinerari/SLUG.html">
+
+  <!-- Tailwind (se già presente nel tuo bundle, rimuovi questo) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="antialiased">
+
+<!-- Snippet GYG globale -->
+<script>
+  window.GYG_PARTNER_ID = "HWU00MZ";
+  window.GYG_SUBID = (location.pathname.split('/').pop() || '').replace('.html','');
+</script>
+
+<main class="container mx-auto px-4 py-8 max-w-5xl">
+  <header class="mb-6">
+    <h1 class="text-3xl font-bold mb-2" id="title"></h1>
+    <p class="text-gray-600" id="subtitle"></p>
+  </header>
+
+  <!-- Date switch -->
+  <div class="bg-gray-50 rounded-2xl p-4 mb-6 flex flex-wrap gap-3 items-center">
+    <span class="text-sm">Partenza da <strong>MXP</strong>:</span>
+    <div id="dateButtons" class="flex flex-wrap gap-2"></div>
+  </div>
+
+  <!-- CTA Voli principali -->
+  <section class="mb-8">
+    <h2 class="text-xl font-semibold mb-3">Voli</h2>
+    <div id="flights" class="grid md:grid-cols-2 gap-4"></div>
+  </section>
+
+  <!-- Tabella notti per città -->
+  <section class="mb-8">
+    <h2 class="text-xl font-semibold mb-3">Dove dormire (notte per notte)</h2>
+    <div id="stays" class="space-y-4"></div>
+  </section>
+
+  <!-- Attività -->
+  <section class="mb-8">
+    <h2 class="text-xl font-semibold mb-3">Attività suggerite</h2>
+    <div id="activities" class="grid md:grid-cols-2 gap-4"></div>
+  </section>
+
+  <!-- Dove mangiare -->
+  <section class="mb-8">
+    <h2 class="text-xl font-semibold mb-3">Dove mangiare</h2>
+    <div id="food" class="grid md:grid-cols-2 gap-4"></div>
+  </section>
+
+  <!-- Trasparenza & FAQ (riuso blocco) -->
+  <section id="trasparenza" class="max-w-3xl">
+    <!-- incolla qui il blocco “Trasparenza & FAQ” già fornito in precedenza -->
+  </section>
+</main>
+
+<!-- DATA + RENDER -->
+<script>
+  // ========= CONFIG GENERICA =========
+  const ORIGIN_IATA = "MXP";
+  const PARTENZE_SUGGERITE = [
+    {start: "2025-10-24", length: 15},
+    {start: "2025-11-07", length: 15},
+    {start: "2025-11-21", length: 15}
+  ];
+
+  // === UTIL ===
+  const fmt = d => d.toISOString().slice(0,10);
+  const addDays = (iso, n) => { const d = new Date(iso+"T12:00:00"); d.setDate(d.getDate()+n); return fmt(d); };
+
+  function mkSkyscannerRoundtrip(from, to, dep, ret){
+    // formato flessibile: usa i tuoi pattern standard Skyscanner
+    return `https://www.skyscanner.it/trasporti/voli/${from}/${to}/${dep}/${ret}/`;
+  }
+  function mkSkyscannerOneWay(from, to, date){
+    return `https://www.skyscanner.it/trasporti/voli/${from}/${to}/${date}/`;
+  }
+  function mkBookingCity(cityQuery, checkin, checkout){
+    const u = new URL("https://www.booking.com/searchresults.it.html");
+    u.searchParams.set("ss", cityQuery); // es. "Tokyo"
+    u.searchParams.set("checkin", checkin);
+    u.searchParams.set("checkout", checkout);
+    u.searchParams.set("group_adults", "2"); // adegua pax
+    u.searchParams.set("no_rooms", "1");
+    u.searchParams.set("group_children", "0");
+    return u.toString();
+  }
+  function mkGYG(queryOrPath, date, citySlug){
+    const base = queryOrPath.startsWith("https")
+      ? new URL(queryOrPath)
+      : new URL(`https://www.getyourguide.com/-/en/`);
+    // se passi path GYG, lascialo; se passi "q=Tokyo Pass", genera ?q=
+    if(!queryOrPath.startsWith("https")){
+      base.searchParams.set("q", queryOrPath); // tollerante: puoi anche usare /tokyo-l123/ se conosci lo slug
+    }
+    base.searchParams.set("partner_id", window.GYG_PARTNER_ID);
+    base.searchParams.set("sub_id", window.GYG_SUBID || citySlug || "area");
+    // opzionale: data (non sempre gestita da GYG a livello SERP)
+    if(date) base.searchParams.set("date", date);
+    return base.toString();
+  }
+  function mkTripAdvisorCity(url){
+    // passa direttamente l’URL città/ristoranti di TripAdvisor
+    return url;
+  }
+
+  // ========= DATA SPECIFICO (SCEGLI UNO PER PAGINA) =========
+
+  // ESEMPIO 1: GIAPPONE 15 GIORNI
+  const DATA = {
+    slug: "giappone-15-giorni",
+    title: "Giappone in 15 giorni",
+    subtitle: "Tokyo • Hakone (Fuji) • Kyoto • Nara • Osaka — voli da MXP, hotel per tappa, attività e ristoranti",
+    mainArrival: "HND",      // principale per A/R
+    mainDeparture: "KIX",    // open-jaw consigliato (altrimenti usa HND/NRT)
+    cities: [
+      { name: "Tokyo",   nights: 5, iataNear: "HND", bookingQuery: "Tokyo", gygQuery: "Tokyo top attractions", taFoodUrl: "https://www.tripadvisor.it/Restaurants-g298184-Tokyo_Tokyo_Prefecture_Kanto.html" },
+      { name: "Hakone",  nights: 1, iataNear: "HND", bookingQuery: "Hakone", gygQuery: "Hakone", taFoodUrl: "https://www.tripadvisor.it/Restaurants-g298171-Hakone_machi_Ashigarashimo_gun_Kanagawa_Prefecture_Kanto.html" },
+      { name: "Kyoto",   nights: 5, iataNear: "ITM", bookingQuery: "Kyoto", gygQuery: "Kyoto", taFoodUrl: "https://www.tripadvisor.it/Restaurants-g298564-Kyoto_Kyoto_Prefecture_Kinki.html" },
+      { name: "Nara",    nights: 1, iataNear: "ITM", bookingQuery: "Nara",  gygQuery: "Nara",  taFoodUrl: "https://www.tripadvisor.it/Restaurants-g298198-Nara_Nara_Prefecture_Kinki.html" },
+      { name: "Osaka",   nights: 3, iataNear: "KIX", bookingQuery: "Osaka", gygQuery: "Osaka", taFoodUrl: "https://www.tripadvisor.it/Restaurants-g298566-Osaka_Osaka_Prefecture_Kinki.html" }
+    ],
+    internalMoves: [
+      // scegli se proporre rail pass in descrizione; qui lasciamo opzione voli interni (non necessari in JP)
+      // Esempio di volo interno facoltativo: Tokyo->Osaka
+      // { from: "HND", to: "ITM", dayOffset: 6 }
+    ],
+    heroImg: "/assets/itinerari/giappone/cover_1200x630.jpg"
+  };
+
+  // // ESEMPIO 2: MESSICO 15 GIORNI (per l’altra pagina)
+  // const DATA = {
+  //   slug: "messico-15-giorni",
+  //   title: "Messico in 15 giorni",
+  //   subtitle: "Città del Messico • Oaxaca • Chiapas • Yucatán — MXP, hotel per tappa, attività e ristoranti",
+  //   mainArrival: "MEX",
+  //   mainDeparture: "CUN",
+  //   cities: [
+  //     { name: "Città del Messico", nights: 4, iataNear: "MEX", bookingQuery: "Mexico City", gygQuery: "Mexico City", taFoodUrl: "https://www.tripadvisor.it/Restaurants-g150800-Mexico_City_Central_Mexico_and_Gulf_Coast.html" },
+  //     { name: "Oaxaca",            nights: 3, iataNear: "OAX", bookingQuery: "Oaxaca",      gygQuery: "Oaxaca",      taFoodUrl: "https://www.tripadvisor.it/Restaurants-g150801-Oaxaca_Southern_Mexico.html" },
+  //     { name: "San Cristóbal (Chiapas)", nights: 3, iataNear: "TGZ", bookingQuery: "San Cristobal de las Casas", gygQuery: "Chiapas", taFoodUrl: "https://www.tripadvisor.it/Restaurants-g150802-San_Cristobal_de_las_Casas_Southern_Mexico.html" },
+  //     { name: "Yucatán (Tulum/Playa/Cancún)", nights: 5, iataNear: "CUN", bookingQuery: "Tulum", gygQuery: "Tulum", taFoodUrl: "https://www.tripadvisor.it/Restaurants-g150813-Tulum_Yucatan_Peninsula.html" }
+  //   ],
+  //   internalMoves: [
+  //     { from: "MEX", to: "OAX", dayOffset: 4 },
+  //     { from: "OAX", to: "TGZ", dayOffset: 7 }, // volo può partire da OAX (via MEX) o bus notturno — qui CTA volo
+  //     { from: "TGZ", to: "CUN", dayOffset: 10 }
+  //   ],
+  //   heroImg: "/assets/itinerari/messico/cover_1200x630.jpg"
+  // };
+
+  // ========= RENDER =========
+  function render(startISO){
+    document.getElementById('title').textContent = DATA.title;
+    document.getElementById('subtitle').textContent = DATA.subtitle;
+    document.querySelector('meta[property="og:image"]').setAttribute('content', DATA.heroImg);
+
+    // calcolo calendario per ogni città
+    let dayCursor = 0;
+    const citySpans = DATA.cities.map(c => {
+      const checkin = addDays(startISO, dayCursor);
+      const checkout = addDays(startISO, dayCursor + c.nights);
+      dayCursor += c.nights;
+      return {...c, checkin, checkout};
+    });
+    const endISO = addDays(startISO, dayCursor);
+
+    // voli principali (A/R o open-jaw)
+    const flightsWrap = document.getElementById('flights');
+    flightsWrap.innerHTML = "";
+
+    const mainAR = document.createElement('a');
+    mainAR.className = "block p-4 rounded-2xl border hover:border-black";
+    mainAR.target="_blank";
+    mainAR.textContent = (DATA.mainDeparture && DATA.mainDeparture !== DATA.mainArrival)
+      ? `Volo multi-tratta MXP → ${DATA.mainArrival} / ${DATA.mainDeparture} → MXP`
+      : `Volo A/R MXP ↔ ${DATA.mainArrival}`;
+    const mainURL = (DATA.mainDeparture && DATA.mainDeparture !== DATA.mainArrival)
+      ? // multi-tratta: usa due one-way per semplicità di SERP
+        mkSkyscannerOneWay(ORIGIN_IATA, DATA.mainArrival, startISO)
+      : mkSkyscannerRoundtrip(ORIGIN_IATA, DATA.mainArrival, startISO, endISO);
+    mainAR.href = mainURL;
+    flightsWrap.appendChild(mainAR);
+
+    if (DATA.mainDeparture && DATA.mainDeparture !== DATA.mainArrival){
+      const ret = document.createElement('a');
+      ret.className = "block p-4 rounded-2xl border hover:border-black";
+      ret.target="_blank";
+      ret.textContent = `Ritorno ${DATA.mainDeparture} → MXP`;
+      ret.href = mkSkyscannerOneWay(DATA.mainDeparture, ORIGIN_IATA, endISO);
+      flightsWrap.appendChild(ret);
+    }
+
+    // eventuali voli interni
+    (DATA.internalMoves||[]).forEach(m => {
+      const a = document.createElement('a');
+      a.className = "block p-4 rounded-2xl border hover:border-black";
+      a.target="_blank";
+      const date = addDays(startISO, m.dayOffset);
+      a.textContent = `Volo interno ${m.from} → ${m.to} (${date})`;
+      a.href = mkSkyscannerOneWay(m.from, m.to, date);
+      flightsWrap.appendChild(a);
+    });
+
+    // blocco soggiorni città (hotel + mini-CTA attività/food)
+    const stays = document.getElementById('stays');
+    stays.innerHTML = "";
+    citySpans.forEach(c => {
+      const wrap = document.createElement('div');
+      wrap.className = "p-4 rounded-2xl border space-y-3";
+      wrap.innerHTML = `
+        <div class="flex items-center justify-between gap-2">
+          <h3 class="font-semibold text-lg">${c.name}</h3>
+          <span class="text-sm bg-gray-100 rounded-full px-2 py-1">${c.checkin} → ${c.checkout} (${c.nights} notti)</span>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <a class="px-3 py-2 rounded-xl bg-black text-white" target="_blank" href="${mkBookingCity(c.bookingQuery, c.checkin, c.checkout)}">Hotel su Booking</a>
+          <a class="px-3 py-2 rounded-xl bg-gray-900 text-white" target="_blank" href="${mkGYG(c.gygQuery, c.checkin, DATA.slug)}">Attività GYG</a>
+          <a class="px-3 py-2 rounded-xl bg-gray-200" target="_blank" href="${mkTripAdvisorCity(c.taFoodUrl)}">Dove mangiare (TripAdvisor)</a>
+        </div>
+      `;
+      stays.appendChild(wrap);
+    });
+
+    // attività “macro” (2 esempi top per il viaggio)
+    const acts = document.getElementById('activities');
+    acts.innerHTML = "";
+    // es.: due SERP generali legate a prime due tappe
+    [citySpans[0], citySpans[2]].forEach(c => {
+      const a = document.createElement('a');
+      a.className = "block p-4 rounded-2xl border hover:border-black";
+      a.target="_blank";
+      a.textContent = `Top attività a ${c.name}`;
+      a.href = mkGYG(c.gygQuery, c.checkin, DATA.slug);
+      acts.appendChild(a);
+    });
+
+    // “food” ampliato (prime 2 città)
+    const food = document.getElementById('food');
+    food.innerHTML = "";
+    [citySpans[0], citySpans[2]].forEach(c => {
+      const a = document.createElement('a');
+      a.className = "block p-4 rounded-2xl border hover:border-black";
+      a.target="_blank";
+      a.textContent = `Ristoranti consigliati a ${c.name} (TripAdvisor)`;
+      a.href = mkTripAdvisorCity(c.taFoodUrl);
+      food.appendChild(a);
+    });
+  }
+
+  // Buttons date
+  const btnWrap = document.getElementById('dateButtons');
+  PARTENZE_SUGGERITE.forEach(opt => {
+    const b = document.createElement('button');
+    b.className = "px-3 py-2 rounded-xl bg-white border hover:border-black";
+    b.textContent = `${opt.start} • ${opt.length}g`;
+    b.onclick = () => render(opt.start);
+    btnWrap.appendChild(b);
+  });
+  // render default
+  render(PARTENZE_SUGGERITE[0].start);
+</script>
+
+<!-- JSON-LD base area (TouristTrip + BreadcrumbList + WebPage) -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"WebPage",
+      "@id":"https://www.globalglide360.com/itinerari/SLUG.html",
+      "url":"https://www.globalglide360.com/itinerari/SLUG.html",
+      "name":"TITOLO DINAMICO | GlobalGlide360",
+      "description":"Itinerario reale di 15 giorni con voli da MXP, hotel per tappa, attività e ristoranti.",
+      "breadcrumb":{"@id":"https://www.globalglide360.com/#breadcrumb-SLUG"},
+      "publisher":{"@id":"https://www.globalglide360.com/#org"},
+      "isPartOf":{"@id":"https://www.globalglide360.com/#website"}
+    },
+    {
+      "@type":"BreadcrumbList",
+      "@id":"https://www.globalglide360.com/#breadcrumb-SLUG",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://www.globalglide360.com/"},
+        {"@type":"ListItem","position":2,"name":"Itinerari pronti","item":"https://www.globalglide360.com/#itinerari-pronti"},
+        {"@type":"ListItem","position":3,"name":"AREA/PAESE – 15 giorni","item":"https://www.globalglide360.com/itinerari/SLUG.html"}
+      ]
+    },
+    {
+      "@type":"TouristTrip",
+      "@id":"https://www.globalglide360.com/itinerari/SLUG.html#trip",
+      "name":"AREA/PAESE – 15 giorni",
+      "description":"Itinerario di 15 giorni con tappe multiple, hotel per città e attività prenotabili.",
+      "touristType":"Famiglie | Coppie | Amici",
+      "itinerary":{
+        "@type":"ItemList",
+        "itemListElement":[
+          {"@type":"ListItem","position":1,"name":"Città 1 – X notti"},
+          {"@type":"ListItem","position":2,"name":"Città 2 – X notti"},
+          {"@type":"ListItem","position":3,"name":"Città 3 – X notti"}
+        ]
+      },
+      "departureStation":{"@type":"Airport","name":"Milano Malpensa","iataCode":"MXP"},
+      "arrivalStation":{"@type":"Airport","name":"Aeroporto principale","iataCode":"IATA1"},
+      "provider":{"@id":"https://www.globalglide360.com/#org"},
+      "image":["https://www.globalglide360.com/assets/itinerari/SLUG/cover_1200x630.jpg"]
+    },
+    {
+      "@type":"Organization",
+      "@id":"https://www.globalglide360.com/#org",
+      "name":"GlobalGlide360",
+      "url":"https://www.globalglide360.com/",
+      "logo":{"@type":"ImageObject","url":"https://www.globalglide360.com/assets/logo-gg360.png"}
+    },
+    {
+      "@type":"WebSite",
+      "@id":"https://www.globalglide360.com/#website",
+      "url":"https://www.globalglide360.com/","name":"GlobalGlide360"
+    }
+  ]
+}
+</script>
+</body>
+</html>
