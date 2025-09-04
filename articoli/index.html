@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Articoli | GlobalGlide360</title>
+  <meta name="description" content="Guide pratiche, consigli e costi reali per organizzare viaggi. Articoli originali di GlobalGlide360." />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Articoli | GlobalGlide360">
+  <meta property="og:description" content="Guide pratiche, consigli e costi reali per i tuoi viaggi.">
+  <meta property="og:image" content="/assets/og/articles.jpg">
+  <meta property="og:url" content="https://www.globalglide360.com/articoli/">
+
+  <!-- JSON-LD Blog / Collection -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Blog",
+    "name":"Articoli | GlobalGlide360",
+    "url":"https://www.globalglide360.com/articoli/",
+    "blogPost":[
+      {
+        "@type":"BlogPosting",
+        "headline":"Quanto costa 7 giorni a Tokyo nel 2026",
+        "url":"https://www.globalglide360.com/articoli/tokyo-7-giorni-costi-2026.html",
+        "image":"https://www.globalglide360.com/img/tokyo.png",
+        "datePublished":"2025-09-04"
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    a:focus,button:focus,input:focus{outline:2px solid #1D4ED8;outline-offset:2px}
+  </style>
+</head>
+<body class="bg-blue-50 text-gray-800">
+  <!-- Header -->
+  <div id="include-header"></div>
+
+  <main class="container mx-auto px-4 py-10">
+    <header class="text-center mb-8">
+      <h1 class="text-3xl md:text-4xl font-extrabold text-blue-900">Articoli</h1>
+      <p class="mt-2 text-gray-700">Guide pratiche, costi reali, consigli per viaggiare meglio.</p>
+    </header>
+
+    <!-- Griglia articoli -->
+    <section class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <!-- Card: Tokyo costi -->
+      <article class="bg-white rounded-2xl shadow overflow-hidden hover:shadow-lg transition">
+        <a href="/articoli/tokyo-7-giorni-costi-2026.html" class="block">
+          <img src="/img/tokyo.png" alt="Tokyo 7 giorni costi" class="w-full h-40 object-cover">
+          <div class="p-4">
+            <h2 class="text-lg font-semibold text-blue-900">Quanto costa 7 giorni a Tokyo nel 2026</h2>
+            <p class="text-sm text-gray-600 mt-1">Voli, hotel, trasporti, cibo e attrazioni — con link per verificare i prezzi aggiornati.</p>
+            <p class="text-xs text-gray-500 mt-2">04 settembre 2025</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- Aggiungi qui nuove card quando pubblichi altri articoli -->
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <div id="include-footer"></div>
+
+  <!-- Partials loader -->
+  <script>
+    const HEADER_PATH="/partials/header.html";
+    const FOOTER_PATH="/partials/footer.html";
+    async function loadPartials(){
+      try{
+        const [h,f]=await Promise.all([fetch(HEADER_PATH),fetch(FOOTER_PATH)]);
+        if(h.ok) document.getElementById("include-header").innerHTML=await h.text();
+        if(f.ok) document.getElementById("include-footer").innerHTML=await f.text();
+      }catch(e){console.error("Errore caricando i partials:",e);}
+    }
+    if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",loadPartials);} else {loadPartials();}
+  </script>
+</body>
+</html>
