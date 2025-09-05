@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <!-- ======= HEAD BASE ======= -->
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{{TITOLO}} | GlobalGlide360</title>
+  <meta name="description" content="{{META_DESCRIPTION}}"/>
+
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+
+  <!-- Travelpayouts LinkSwitcher (se usi TP) -->
+  <script data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
+    (function(){var s=document.createElement("script");s.async=1;s.src="https://tpembars.com/NDU0MTUz.js?t=454153";document.head.appendChild(s);})();
+  </script>
+
+  <style>
+    a:focus,button:focus,input:focus{outline:2px solid #1D4ED8;outline-offset:2px}
+    .prose h2 { scroll-margin-top: 100px; }
+    .toc a { text-decoration: none; }
+  </style>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{TITOLO}}">
+  <meta property="og:description" content="{{OG_DESCRIPTION}}">
+  <meta property="og:image" content="{{OG_IMAGE}}">
+  <meta property="og:url" content="{{CANONICAL_URL}}">
+
+  <!-- JSON-LD Article -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"{{TITOLO}}",
+    "image":["{{OG_IMAGE}}"],
+    "author":{"@type":"Organization","name":"GlobalGlide360"},
+    "publisher":{"@type":"Organization","name":"GlobalGlide360","logo":{"@type":"ImageObject","url":"https://www.globalglide360.com/assets/logo.png"}},
+    "datePublished":"{{PUBLISHED_ISO}}",
+    "dateModified":"{{MODIFIED_ISO}}",
+    "mainEntityOfPage":"{{CANONICAL_URL}}",
+    "description":"{{META_DESCRIPTION}}"
+  }
+  </script>
+
+  <!-- JSON-LD Breadcrumb -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://www.globalglide360.com/"},
+      {"@type":"ListItem","position":2,"name":"Articoli","item":"https://www.globalglide360.com/articoli/"},
+      {"@type":"ListItem","position":3,"name":"{{BREADCRUMB_TITOLO}}","item":"{{CANONICAL_URL}}"}
+    ]
+  }
+  </script>
+</head>
+<body class="bg-blue-50 text-gray-800">
+  <!-- ======= HEADER (partials) ======= -->
+  <div id="include-header"></div>
+
+  <!-- ======= HERO con overlay ======= -->
+  <section class="relative h-72 md:h-96">
+    <img src="{{HERO_IMAGE}}" alt="{{HERO_ALT}}" class="absolute inset-0 w-full h-full object-cover">
+    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-black/20"></div>
+    <div class="relative container mx-auto px-4 h-full flex flex-col justify-end pb-8">
+      <h1 class="text-white text-3xl md:text-5xl font-extrabold drop-shadow">{{TITOLO}}</h1>
+      <p class="text-white/90 text-lg md:text-xl mt-2 max-w-3xl">{{HERO_SUBTITLE}}</p>
+    </div>
+  </section>
+
+  <main class="container mx-auto px-4 py-10">
+    <!-- ======= BREADCRUMB VISIBILE ======= -->
+    <nav class="text-sm text-gray-600 mb-6">
+      <a href="/" class="hover:underline">Home</a>
+      <span class="mx-2">/</span>
+      <a href="/articoli/" class="hover:underline">Articoli</a>
+      <span class="mx-2">/</span>
+      <span class="text-gray-800 font-semibold">{{BREADCRUMB_TITOLO}}</span>
+    </nav>
+
+    <!-- ======= CTA LEAD MAGNET ======= -->
+    <div class="bg-white rounded-2xl shadow p-5 md:p-6 mb-8 flex items-center justify-between flex-col md:flex-row gap-4">
+      <div>
+        <h2 class="text-xl font-semibold text-blue-900">{{CTA_TITOLO}}</h2>
+        <p class="text-gray-700">{{CTA_SOTTOTITOLO}}</p>
+      </div>
+      <a href="{{CTA_URL}}" class="bg-blue-700 text-white px-5 py-2 rounded hover:bg-blue-800 whitespace-nowrap">Ottieni il PDF</a>
+    </div>
+
+    <!-- ======= INDICE CONTENUTI (TOC) ======= -->
+    <aside class="bg-white rounded-2xl shadow p-5 mb-8">
+      <h3 class="font-semibold text-blue-900 mb-3">Indice dei contenuti</h3>
+      <ol class="toc list-decimal ml-5 space-y-1 text-blue-800">
+        <li><a href="#costi">Sommario costi</a></li>
+        <li><a href="#quartieri">Quartieri consigliati (pro/contro)</a></li>
+        <li><a href="#itinerario">Itinerario giorno per giorno</a></li>
+        <li><a href="#attivita">Attività consigliate</a></li>
+        <li><a href="#consigli-local">Consigli locali</a></li>
+        <li><a href="#mappa">Mappa luoghi citati</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </aside>
+
+    <!-- ======= SOMMARIO COSTI ======= -->
+    <section id="costi" class="mb-10">
+      <div class="bg-white rounded-2xl shadow overflow-hidden">
+        <div class="p-5 border-b">
+          <h2 class="text-2xl font-bold text-blue-900">Sommario costi (per persona)</h2>
+          <p class="text-sm text-gray-600">Stime indicative: verifica i prezzi live dai link.</p>
+        </div>
+        <div class="p-5 grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-800">
+          <!-- Esempio voci -->
+          <div class="flex justify-between"><span>Volo A/R {{DA}}–{{A}}</span><strong>{{€_VOLO_RANGE}}</strong></div>
+          <div class="flex justify-between"><span>Hotel 3★ ({{NOTTI}} notti)</span><strong>{{€_HOTEL3_RANGE}}</strong></div>
+          <div class="flex justify-between"><span>Hotel 4★ ({{NOTTI}} notti)</span><strong>{{€_HOTEL4_RANGE}}</strong></div>
+          <div class="flex justify-between"><span>Trasporti locali</span><strong>{{€_TRASPORTI_RANGE}}</strong></div>
+          <div class="flex justify-between"><span>Cibo ({{GIORNI}} giorni)</span><strong>{{€_CIBO_RANGE}}</strong></div>
+          <div class="flex justify-between"><span>Attrazioni/attività</span><strong>{{€_ATTIVITA_RANGE}}</strong></div>
+        </div>
+        <div class="p-5 bg-gray-50">
+          <p class="text-gray-700"><strong>Totale indicativo</strong>: <strong>{{€_TOTALE_RANGE}}</strong> a persona.</p>
+        </div>
+      </div>
+      <!-- Link utili rapidi -->
+      <div class="mt-4 flex flex-wrap gap-3">
+        <a href="{{URL_VOLI}}" target="_blank" rel="nofollow noopener" class="text-sm bg-blue-700 text-white px-3 py-1.5 rounded hover:bg-blue-800">Controlla voli</a>
+        <a href="{{URL_HOTEL}}" target="_blank" rel="nofollow noopener" class="text-sm bg-blue-700 text-white px-3 py-1.5 rounded hover:bg-blue-800">Vedi hotel</a>
+        <a href="{{URL_ATTIVITA}}" target="_blank" rel="nofollow noopener" class="text-sm bg-blue-700 text-white px-3 py-1.5 rounded hover:bg-blue-800">Attività e tour</a>
+      </div>
+    </section>
+
+    <!-- ======= QUARTIERI: PRO/CONTRO ======= -->
+    <section id="quartieri" class="mb-12">
+      <h2 class="text-2xl font-bold text-blue-900 mb-4">Quartieri consigliati (pro/contro)</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Card quartiere 1 -->
+        <div class="bg-white rounded-2xl shadow p-5">
+          <h3 class="font-semibold text-blue-900">{{QUARTIERE_1}}</h3>
+          <ul class="text-sm text-gray-700 mt-2 list-disc ml-5">
+            <li><strong>Pro:</strong> {{Q1_PRO}}</li>
+            <li><strong>Contro:</strong> {{Q1_CONTRO}}</li>
+          </ul>
+        </div>
+        <!-- Card quartiere 2 -->
+        <div class="bg-white rounded-2xl shadow p-5">
+          <h3 class="font-semibold text-blue-900">{{QUARTIERE_2}}</h3>
+          <ul class="text-sm text-gray-700 mt-2 list-disc ml-5">
+            <li><strong>Pro:</strong> {{Q2_PRO}}</li>
+            <li><strong>Contro:</strong> {{Q2_CONTRO}}</li>
+          </ul>
+        </div>
+        <!-- Card quartiere 3 -->
+        <div class="bg-white rounded-2xl shadow p-5">
+          <h3 class="font-semibold text-blue-900">{{QUARTIERE_3}}</h3>
+          <ul class="text-sm text-gray-700 mt-2 list-disc ml-5">
+            <li><strong>Pro:</strong> {{Q3_PRO}}</li>
+            <li><strong>Contro:</strong> {{Q3_CONTRO}}</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= ITINERARIO GIORNO-PER-GIORNO (TIMELINE) ======= -->
+    <section id="itinerario" class="mb-12">
+      <h2 class="text-2xl font-bold text-blue-900 mb-4">Itinerario: {{GIORNI}} giorni</h2>
+      <ol class="relative border-l-2 border-blue-200 ml-3">
+        <!-- Giorno 1 -->
+        <li class="mb-8 ml-4">
+          <div class="absolute w-4 h-4 bg-blue-600 rounded-full -left-2 top-1.5"></div>
+          <h3 class="text-lg font-semibold text-blue-900">Giorno 1 — {{G1_TITOLO}}</h3>
+          <p class="text-gray-700">{{G1_TESTO}}</p>
+        </li>
+        <!-- Giorno 2 -->
+        <li class="mb-8 ml-4">
+          <div class="absolute w-4 h-4 bg-blue-600 rounded-full -left-2 top-1.5"></div>
+          <h3 class="text-lg font-semibold text-blue-900">Giorno 2 — {{G2_TITOLO}}</h3>
+          <p class="text-gray-700">{{G2_TESTO}}</p>
+        </li>
+        <!-- Aggiungi altri giorni... -->
+      </ol>
+    </section>
+
+    <!-- ======= ATTIVITÀ CONSIGLIATE (CARD) ======= -->
+    <section id="attivita" class="mb-12">
+      <h2 class="text-2xl font-bold text-blue-900 mb-4">Attività consigliate</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-xl shadow hover:shadow-lg transition">
+          <img src="{{ATT1_IMG}}" alt="{{ATT1_ALT}}" class="rounded-t-xl h-40 w-full object-cover">
+          <div class="p-4">
+            <h4 class="font-semibold text-blue-900">{{ATT1_TITOLO}}</h4>
+            <p class="text-sm text-gray-600">{{ATT1_DESC}}</p>
+            <a href="{{ATT1_URL}}" target="_blank" rel="nofollow noopener" class="inline-block mt-2 bg-blue-700 text-white px-3 py-1 rounded text-sm hover:bg-blue-800">Scopri</a>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl shadow hover:shadow-lg transition">
+          <img src="{{ATT2_IMG}}" alt="{{ATT2_ALT}}" class="rounded-t-xl h-40 w-full object-cover">
+          <div class="p-4">
+            <h4 class="font-semibold text-blue-900">{{ATT2_TITOLO}}</h4>
+            <p class="text-sm text-gray-600">{{ATT2_DESC}}</p>
+            <a href="{{ATT2_URL}}" target="_blank" rel="
