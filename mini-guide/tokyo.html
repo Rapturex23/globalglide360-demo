@@ -1,224 +1,293 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Tokyo – Mini-guida (5 giorni) | GlobalGlide360</title>
-<meta name="description" content="Mini-guida di Tokyo: itinerario reale 5 giorni con link a disponibilità aggiornate per voli, hotel e attività.">
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- META -->
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tokyo – Mini-guida completa (quando andare, dove dormire, top 10, trasporti, cibo) | GlobalGlide360</title>
+  <meta name="description" content="Mini-guida di Tokyo: quando andare, come arrivare, dove dormire (pro/contro), trasporti, top 10 attrazioni, cibo tipico, budget medio e link rapidi a voli/hotel/attività."/>
 
-<!-- Travelpayouts LinkSwitcher -->
-<script data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
-  (function () {
-      var script = document.createElement("script");
-      script.async = 1;
-      script.src = 'https://tpembars.com/NDU0MTUz.js?t=454153';
-      document.head.appendChild(script);
-  })();
-</script>
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.globalglide360.com/mini-guide/tokyo.html"/>
+
+  <!-- Tailwind -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+
+  <!-- Travelpayouts LinkSwitcher (necessario per tracking affiliati sui redirect partner) -->
+  <script data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
+    (function(){var s=document.createElement("script");s.async=1;s.src="https://tpembars.com/NDU0MTUz.js?t=454153";document.head.appendChild(s);})();
+  </script>
+
+  <style>
+    a:focus,button:focus,input:focus{outline:2px solid #1D4ED8;outline-offset:2px}
+    .card{background:#fff;border-radius:1rem;box-shadow:0 10px 16px -12px rgba(0,0,0,.25)}
+    .glass{background:rgba(255,255,255,.12);backdrop-filter:blur(6px)}
+    .sticky-toc{position:sticky;top:88px}
+    .chip{font-size:.75rem;padding:.25rem .5rem;border-radius:9999px;background:#eff6ff;color:#1e40af;border:1px solid #bfdbfe}
+  </style>
+
+  <!-- JSON-LD (TouristDestination) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TouristDestination",
+    "name": "Tokyo",
+    "description": "Mini-guida di Tokyo: quando andare, come arrivare, dove dormire, trasporti, attrazioni, cibo e budget.",
+    "touristType": "Coppie, famiglie, viaggiatori indipendenti",
+    "url": "https://www.globalglide360.com/mini-guide/tokyo.html",
+    "geo": {"@type":"GeoCoordinates","latitude":"35.682839","longitude":"139.759455"},
+    "image": "https://www.globalglide360.com/img/tokyo.png"
+  }
+  </script>
 </head>
 <body class="bg-blue-50 text-gray-800">
-<script>
-  window.GG_CFG = window.GG_CFG || {};
-  window.GG_CFG.gyg_partner = "HWU00MZ"; // il tuo partner ID
+  <!-- HEADER -->
+  <div id="include-header"></div>
 
-  // sub_id automatico (così sai da quale pagina arrivano i click)
-  (function(){
-    const path=(location.pathname||"/").toLowerCase();
-    let slug="home"; 
-    const m=path.match(/([a-z0-9\-]+)\.html$/);
-    if(m&&m[1]) slug=m[1];
-    else if(path.includes('/mini-guide/')){
-      const parts=path.split('/').filter(Boolean);
-      slug=(parts[parts.length-1]||'mini-guide').replace('.html','');
-    }
-    window.GG_SUBID = slug;
-  })();
-</script>
-
-<!-- HEADER -->
-<header class="bg-white shadow py-6 px-6">
-  <div class="max-w-6xl mx-auto flex items-center justify-between">
-    <a href="/" class="flex items-center">
-      <img src="/img/logo.png" alt="GlobalGlide360" class="h-14 w-auto">
-      <span class="ml-3 text-2xl font-bold text-blue-800">GlobalGlide360</span>
-    </a>
-    <nav class="hidden md:flex items-center space-x-6 text-blue-800">
-      <a href="/mini-guide/" class="hover:underline">Mini-guide</a>
-      <a href="/chi-siamo.html" class="hover:underline">Chi siamo</a>
-      <a href="/contatti.html" class="hover:underline">Contatti</a>
-    </nav>
-  </div>
-</header>
-
-<main class="max-w-5xl mx-auto p-6">
-  <h1 class="text-3xl font-bold text-blue-900 mb-2">Tokyo — 5 giorni</h1>
-  <p class="text-gray-700 mb-6">Itinerario reale con link a disponibilità aggiornate (voli, hotel, esperienze).</p>
-
-  <!-- Parametri rapidi -->
-  <div class="bg-white rounded shadow p-4 mb-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-    <label class="block text-sm">Origine (IATA)
-      <input id="from" class="w-full border rounded px-3 py-2 mt-1" placeholder="ROM/MXP/FCO" value="ROM">
-    </label>
-    <label class="block text-sm">Destinazione
-      <input id="dest" class="w-full border rounded px-3 py-2 mt-1" placeholder="Tokyo / NRT" value="Tokyo">
-    </label>
-    <label class="block text-sm">Check-in
-      <input id="checkin" type="date" class="w-full border rounded px-3 py-2 mt-1">
-    </label>
-    <label class="block text-sm">Check-out
-      <input id="checkout" type="date" class="w-full border rounded px-3 py-2 mt-1">
-    </label>
-    <label class="block text-sm">Adulti
-      <input id="adults" type="number" min="1" value="2" class="w-full border rounded px-3 py-2 mt-1">
-    </label>
-    <label class="block text-sm">Bambini
-      <input id="children" type="number" min="0" value="0" class="w-full border rounded px-3 py-2 mt-1">
-    </label>
-  </div>
-
-  <!-- CTA -->
-  <div class="bg-white rounded shadow p-4 mb-8 space-y-2">
-    <h2 class="text-xl font-semibold text-blue-800">Prenotazioni rapide</h2>
-    <div class="flex flex-wrap gap-3">
-      <a id="cta-volo"  class="inline-block bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800" target="_blank" rel="noopener">Vedi disponibilità volo</a>
-      <a id="cta-hotel" class="inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700" target="_blank" rel="noopener">Vedi disponibilità alloggi</a>
-      <a id="cta-exp"   class="inline-block bg-yellow-500 text-gray-900 px-4 py-2 rounded hover:bg-yellow-600" target="_blank" rel="noopener">Esplora attività</a>
+  <!-- HERO -->
+  <section class="relative h-80 md:h-96">
+    <img src="/img/tokyo.png" alt="Tokyo skyline" class="absolute inset-0 w-full h-full object-cover">
+    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10"></div>
+    <div class="relative container mx-auto px-4 h-full flex flex-col justify-end pb-8">
+      <div class="glass inline-flex items-center space-x-2 text-white text-xs md:text-sm px-3 py-1 rounded-full mb-3">
+        <span>🏙️ Città</span><span>•</span><span>🚇 Metro-friendly</span><span>•</span><span>🍣 Food lovers</span>
+      </div>
+      <h1 class="text-white text-3xl md:text-5xl font-extrabold drop-shadow">Tokyo — Mini-guida</h1>
+      <p class="text-white/90 text-base md:text-xl mt-2 max-w-3xl">Quando andare, come arrivare, dove dormire, cosa vedere e mangiare, come muoversi, budget e link rapidi.</p>
     </div>
-    <p class="text-xs text-gray-500">I link aprono le pagine ufficiali con i campi già impostati (risultati reali).</p>
-  </div>
-
-  <!-- Itinerario -->
-  <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    <article class="bg-white rounded shadow p-4"><h3 class="font-semibold text-blue-800 mb-1">Giorno 1 – Shibuya & Shinjuku</h3><p class="text-sm text-gray-700">Arrivo, check-in, Shibuya Crossing, Hachikō, serata a Shinjuku.</p></article>
-    <article class="bg-white rounded shadow p-4"><h3 class="font-semibold text-blue-800 mb-1">Giorno 2 – Asakusa & Ueno</h3><p class="text-sm text-gray-700">Sensō-ji, Nakamise-dori, parco di Ueno e musei.</p></article>
-    <article class="bg-white rounded shadow p-4"><h3 class="font-semibold text-blue-800 mb-1">Giorno 3 – Akihabara & Odaiba</h3><p class="text-sm text-gray-700">Akihabara tech/anime, teamLab a Odaiba, Rainbow Bridge.</p></article>
-    <article class="bg-white rounded shadow p-4"><h3 class="font-semibold text-blue-800 mb-1">Giorno 4 – Meiji & Harajuku</h3><p class="text-sm text-gray-700">Santuario Meiji, Takeshita-dori, Omotesandō.</p></article>
-    <article class="bg-white rounded shadow p-4"><h3 class="font-semibold text-blue-800 mb-1">Giorno 5 – Nikko/Kamakura (opz.)</h3><p class="text-sm text-gray-700">Escursione fuori città o shopping a Ginza.</p></article>
   </section>
-</main>
 
-<!-- FOOTER -->
-<footer class="bg-white text-center py-6 mt-8 border-t">
-  <p class="text-sm text-gray-500">&copy; 2025 GlobalGlide360</p>
-</footer>
+  <main class="container mx-auto px-4 py-10">
+    <!-- BREADCRUMB -->
+    <nav class="text-sm text-gray-600 mb-6">
+      <a href="/" class="hover:underline">Home</a>
+      <span class="mx-2">/</span>
+      <a href="/mini-guide/" class="hover:underline">Mini-guide</a>
+      <span class="mx-2">/</span>
+      <span class="text-gray-800 font-semibold">Tokyo</span>
+    </nav>
 
-<!-- ================= GG CORE INLINE + SCRIPT STABILE ================= -->
-<script>
-/* === GG core inline === */
-window.GG_CFG = window.GG_CFG || { sky_partner:"", bkg_aid:"", gyg_partner:"" };
-const pad = n => n.toString().padStart(2,'0');
-const localISO = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
-const addDays = (dateStr, days) => {
-  if(!dateStr) return "";
-  const [y,m,dd] = dateStr.split('-').map(Number);
-  const d = new Date(y, m-1, dd);
-  d.setDate(d.getDate()+days);
-  return localISO(d);
-};
-const cleanIATA = v => (v||"").trim().toUpperCase().slice(0,3);
+    <!-- CTA “Passa all’itinerario” -->
+    <div class="card p-5 md:p-6 mb-8 flex items-center justify-between flex-col md:flex-row gap-4">
+      <div>
+        <h2 class="text-xl font-semibold text-blue-900">Vuoi un itinerario giorno-per-giorno?</h2>
+        <p class="text-gray-700">Leggi l’articolo “Tokyo in 7 giorni (2026)” con timeline e costi reali.</p>
+      </div>
+      <a href="/articoli/tokyo-7-giorni-migliorato.html" class="bg-blue-700 text-white px-5 py-2 rounded hover:bg-blue-800 whitespace-nowrap">Vai all’itinerario</a>
+    </div>
 
-window.ggBuildFlight = ({from, to, dep, ret, adults=2, cabin='economy'})=>{
-  const base = `https://www.skyscanner.net/transport/flights/${cleanIATA(from)}/${cleanIATA(to)}/${dep}${ret?`/${ret}`:""}/`;
-  const qs = new URLSearchParams({adults, cabinclass:cabin, locale:'it-IT', currency:'EUR'});
-  if (window.GG_CFG.sky_partner) qs.set('associateid', window.GG_CFG.sky_partner);
-  return `${base}?${qs.toString()}`;
-};
-window.ggBuildHotel = ({dest, checkin, checkout, adults=2, children=0, rooms=1})=>{
-  const u = new URL('https://www.booking.com/searchresults.html');
-  u.searchParams.set('ss', dest);
-  u.searchParams.set('checkin', checkin);
-  u.searchParams.set('checkout', checkout || addDays(checkin,3));
-  u.searchParams.set('group_adults', adults);
-  u.searchParams.set('group_children', children);
-  u.searchParams.set('no_rooms', rooms);
-  if (window.GG_CFG.bkg_aid) u.searchParams.set('aid', window.GG_CFG.bkg_aid);
-  return u.toString();
-};
-window.ggBuildExp = ({city, fromDate, toDate, pax})=>{
-  const u = new URL('https://www.getyourguide.com/s/');
-  u.searchParams.set('q', city);
-  if (fromDate) u.searchParams.set('date_from', fromDate);
-  if (toDate)   u.searchParams.set('date_to', toDate);
-  if (pax)      u.searchParams.set('number_of_participants', pax);
-  if (window.GG_CFG.gyg_partner) u.searchParams.set('partner_id', window.GG_CFG.gyg_partner);
-  return u.toString();
-};
+    <!-- Layout 2 colonne: TOC + contenuto evergreen -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <!-- TOC -->
+      <aside class="lg:col-span-4">
+        <div class="card p-5 sticky-toc">
+          <h3 class="font-semibold text-blue-900 mb-3">Indice mini-guida</h3>
+          <ol class="list-decimal ml-5 space-y-1 text-blue-800">
+            <li><a href="#quando" class="hover:underline">Quando andare</a></li>
+            <li><a href="#arrivare" class="hover:underline">Come arrivare</a></li>
+            <li><a href="#dormire" class="hover:underline">Dove dormire (pro/contro)</a></li>
+            <li><a href="#trasporti" class="hover:underline">Trasporti locali</a></li>
+            <li><a href="#top10" class="hover:underline">Top 10 attrazioni</a></li>
+            <li><a href="#cibo" class="hover:underline">Cosa mangiare & zone food</a></li>
+            <li><a href="#budget" class="hover:underline">Budget medio</a></li>
+            <li><a href="#link" class="hover:underline">Link rapidi</a></li>
+            <li><a href="#mappa" class="hover:underline">Mappa</a></li>
+            <li><a href="#faq" class="hover:underline">FAQ</a></li>
+          </ol>
+        </div>
+      </aside>
 
-/* === Script pagina “stabile” === */
-document.addEventListener('DOMContentLoaded', function () {
-  const $ = id => document.getElementById(id);
+      <!-- CONTENUTO -->
+      <div class="lg:col-span-8 space-y-12">
+        <!-- QUANDO ANDARE -->
+        <section id="quando">
+          <h2 class="text-2xl font-bold text-blue-900 mb-3">Quando andare</h2>
+          <div class="card p-5">
+            <ul class="grid md:grid-cols-2 gap-4 text-gray-700">
+              <li><span class="chip mr-2">🌸 Mar–Apr</span> Ciliegi in fiore (alta stagione, prezzi su).</li>
+              <li><span class="chip mr-2">🍁 Ott–Nov</span> Momijigari (fogliame rosso, clima ideale).</li>
+              <li><span class="chip mr-2">☀️ Mag–Giu</span> Mite, poi stagione delle piogge (giugno).</li>
+              <li><span class="chip mr-2">❄️ Dic–Feb</span> Freddo ma tariffe più basse; luci invernali.</li>
+            </ul>
+          </div>
+        </section>
 
-  // 1) Imposta date di default e CONGELA in memoria
-  const today=new Date(), in7=new Date(today), in12=new Date(today);
-  in7.setDate(today.getDate()+7); in12.setDate(today.getDate()+12);
-  const defaultCheckin  = localISO(in7);
-  const defaultCheckout = localISO(in12);
+        <!-- COME ARRIVARE -->
+        <section id="arrivare">
+          <h2 class="text-2xl font-bold text-blue-900 mb-3">Come arrivare</h2>
+          <div class="card p-5 space-y-2 text-gray-700">
+            <p><strong>Aeroporti</strong>: <em>Haneda (HND)</em> più vicino al centro; <em>Narita (NRT)</em> collegato con Narita Express e bus rapidi.</p>
+            <p><strong>Trasferimenti</strong>: da HND metro/monorotaia in 20–30′; da NRT treno o bus 40–60′+</p>
+            <p class="text-sm text-gray-600">Suggerimento: valuta arrivo su HND se il differenziale prezzo è contenuto.</p>
+          </div>
+        </section>
 
-  if ($('#checkin')  && !$('#checkin').value)  $('#checkin').value  = defaultCheckin;
-  if ($('#checkout') && !$('#checkout').value) $('#checkout').value = defaultCheckout;
+        <!-- DOVE DORMIRE -->
+        <section id="dormire">
+          <h2 class="text-2xl font-bold text-blue-900 mb-4">Dove dormire (pro/contro)</h2>
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="card p-5">
+              <h3 class="font-semibold text-blue-900">Shinjuku</h3>
+              <ul class="list-disc ml-5 text-gray-700 text-sm mt-2">
+                <li><strong>Pro:</strong> hub trasporti, ristoranti, nightlife.</li>
+                <li><strong>Contro:</strong> più caotico e caro in media.</li>
+              </ul>
+            </div>
+            <div class="card p-5">
+              <h3 class="font-semibold text-blue-900">Ueno / Asakusa</h3>
+              <ul class="list-disc ml-5 text-gray-700 text-sm mt-2">
+                <li><strong>Pro:</strong> atmosfera tradizionale, prezzi più dolci.</li>
+                <li><strong>Contro:</strong> serate più tranquille, spostamenti leggermente più lunghi verso ovest.</li>
+              </ul>
+            </div>
+            <div class="card p-5">
+              <h3 class="font-semibold text-blue-900">Shibuya</h3>
+              <ul class="list-disc ml-5 text-gray-700 text-sm mt-2">
+                <li><strong>Pro:</strong> giovane, collegamenti top, shopping.</li>
+                <li><strong>Contro:</strong> hotel mediamente più costosi.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
 
-  // Stato "toccato dall'utente"
-  const touched = { checkin:false, checkout:false, from:false, dest:false, adults:false, children:false };
+        <!-- TRASPORTI LOCALI -->
+        <section id="trasporti">
+          <h2 class="text-2xl font-bold text-blue-900 mb-3">Trasporti locali</h2>
+          <div class="card p-5 space-y-3 text-gray-700">
+            <p><strong>IC Card</strong>: <em>Suica</em> / <em>PASMO</em> contactless per metro, bus e convenience store.</p>
+            <p><strong>Pass metro</strong>: 24/48/72h utili nei giorni intensi (musei/attrazioni concentrate).</p>
+            <p><strong>JR Pass</strong>: non serve se resti solo a Tokyo; utile per tratte intercity (es. Tokyo-Kyoto-Osaka).</p>
+          </div>
+        </section>
 
-  // 2) Funzione che legge i valori "stabili"
-  function getParams(){
-    const from  = ($('#from') && (touched.from ? $('#from').value : ($('#from').value || 'ROM'))) || 'ROM';
-    const dest  = ($('#dest') && (touched.dest ? $('#dest').value : ($('#dest').value || document.title.split('–')[0].trim()))) || 'Tokyo';
+        <!-- TOP 10 ATTRAZIONI (sintetiche, evergreen) -->
+        <section id="top10">
+          <h2 class="text-2xl font-bold text-blue-900 mb-3">Top 10 attrazioni</h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Sensō-ji (Asakusa)</h3><p class="text-gray-700 text-sm mt-2">Tempio simbolo, portale Kaminarimon e via Nakamise.</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Shibuya Crossing & Sky</h3><p class="text-gray-700 text-sm mt-2">Incrocio iconico + terrazza panoramica (prenota).</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Meiji Jingu</h3><p class="text-gray-700 text-sm mt-2">Santuario immerso nel verde vicino a Harajuku.</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Ueno Park & musei</h3><p class="text-gray-700 text-sm mt-2">Grandi musei e stagni, perfetto in primavera.</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Akihabara</h3><p class="text-gray-700 text-sm mt-2">Elettronica, manga/anime, sale giochi.</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Ginza</h3><p class="text-gray-700 text-sm mt-2">Department store e rooftop con viste.</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Odaiba</h3><p class="text-gray-700 text-sm mt-2">Baia di Tokyo, musei digitali e passeggiate.</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Yanaka</h3><p class="text-gray-700 text-sm mt-2">Quartiere storico, botteghe e snack su Yanaka Ginza.</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Ameyoko Market</h3><p class="text-gray-700 text-sm mt-2">Street food e bancarelle tra Ueno e Okachimachi.</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Escursione: Nikko o Kamakura</h3><p class="text-gray-700 text-sm mt-2">Templi UNESCO o Buddha gigante sul mare.</p></div>
+          </div>
+        </section>
 
-    // se l'utente NON ha toccato le date, usa i default congelati
-    const ci = $('#checkin')  ? (touched.checkin  ? $('#checkin').value  : ($('#checkin').value  || defaultCheckin))  : defaultCheckin;
-    const co = $('#checkout') ? (touched.checkout ? $('#checkout').value : ($('#checkout').value || defaultCheckout)) : defaultCheckout;
+        <!-- CIBO -->
+        <section id="cibo">
+          <h2 class="text-2xl font-bold text-blue-900 mb-3">Cosa mangiare & zone food</h2>
+          <div class="card p-5 text-gray-700 space-y-3">
+            <p><strong>Piatti</strong>: ramen, tonkatsu, sushi, tempura, curry rice, yakitori, okonomiyaki.</p>
+            <p><strong>Zone</strong>: <em>Omoide Yokocho</em> (Shinjuku) per izakaya; <em>Ameyoko</em> per street food; <em>Tsukiji Outer Market</em> per sushi.</p>
+            <p class="text-sm text-gray-600">Etichetta: niente spray profumati nei locali piccoli, parla a bassa voce nei bar di Golden Gai.</p>
+          </div>
+        </section>
 
-    const ad = $('#adults')   ? (touched.adults   ? parseInt($('#adults').value||'2',10)   : parseInt($('#adults').value||'2',10)) : 2;
-    const ch = $('#children') ? (touched.children ? parseInt($('#children').value||'0',10) : parseInt($('#children').value||'0',10)) : 0;
+        <!-- BUDGET -->
+        <section id="budget">
+          <h2 class="text-2xl font-bold text-blue-900 mb-3">Budget medio (stima giornaliera a persona)</h2>
+          <div class="card p-5 grid md:grid-cols-2 gap-4 text-gray-800">
+            <div class="flex justify-between"><span>Cibo</span><strong>€ 20–40</strong></div>
+            <div class="flex justify-between"><span>Trasporti</span><strong>€ 5–10</strong></div>
+            <div class="flex justify-between"><span>Attrazioni</span><strong>€ 10–25</strong></div>
+            <div class="flex justify-between"><span>Caffè/snack</span><strong>€ 3–8</strong></div>
+          </div>
+          <p class="text-xs text-gray-500 mt-2">Volo e hotel dipendono da stagione e anticipo. Per stime complete vedi l’articolo itinerario.</p>
+        </section>
 
-    // IATA default per la pagina
-    const path = (location.pathname||'').toLowerCase();
-    let defaultIATA = 'PAR';
-    if (path.includes('tokyo')) defaultIATA='NRT';
-    else if (path.includes('bali')) defaultIATA='DPS';
-    else if (path.includes('newyork')) defaultIATA='NYC';
-    else if (path.includes('parigi')) defaultIATA='PAR';
+        <!-- LINK RAPIDI (verso /risultati.html) -->
+        <section id="link">
+          <h2 class="text-2xl font-bold text-blue-900 mb-3">Link rapidi</h2>
+          <div class="card p-5 grid sm:grid-cols-2 gap-4">
+            <a href="/risultati.html?origin=MXP&destination=Tokyo&start=2026-04-10&end=2026-04-17&adults=2&children=0"
+               class="block bg-blue-700 text-white text-center px-4 py-2 rounded hover:bg-blue-800">Voli + Hotel + Attività (mar/apr)</a>
+            <a href="/risultati.html?origin=MXP&destination=Tokyo&start=2026-11-05&end=2026-11-12&adults=2&children=0"
+               class="block bg-white border text-center px-4 py-2 rounded hover:bg-gray-50">Voli + Hotel + Attività (ott/nov)</a>
+          </div>
+          <p class="text-xs text-gray-500 mt-2">Apriremo ricerche reali su portali partner; prenoti sempre sui siti ufficiali.</p>
+        </section>
 
-    const toIata = dest.length===3 ? dest.toUpperCase() : defaultIATA;
-    const cityForListings = dest.length===3
-      ? (path.includes('tokyo') ? 'Tokyo' : path.includes('bali') ? 'Bali' : path.includes('newyork') ? 'New York' : 'Paris')
-      : dest;
+        <!-- MAPPA -->
+        <section id="mappa">
+          <h2 class="text-2xl font-bold text-blue-900 mb-3">Mappa (luoghi principali)</h2>
+          <div class="rounded-2xl overflow-hidden shadow">
+            <!-- Sostituisci l’ID con la tua MyMap reale domani -->
+            <iframe class="w-full h-96" src="https://www.google.com/maps/d/u/0/embed?mid=1q_demo_tokyo_map_example" loading="lazy"></iframe>
+          </div>
+        </section>
 
-    return { from, dest, ci, co, ad, ch, toIata, cityForListings };
-  }
+        <!-- FAQ (diverse dall’articolo) -->
+        <section id="faq">
+          <div class="card p-5">
+            <h2 class="text-xl font-bold text-blue-900">FAQ</h2>
+            <details class="mt-3">
+              <summary class="font-semibold cursor-pointer">È meglio atterrare a Haneda o Narita?</summary>
+              <p class="mt-2 text-gray-700">Haneda è più vicino al centro (20–30′). Narita è più lontano ma ben collegato con treno/bus.</p>
+            </details>
+            <details class="mt-3">
+              <summary class="font-semibold cursor-pointer">Serve contante?</summary>
+              <p class="mt-2 text-gray-700">Carte diffuse, ma porta contante per piccoli bar/izakaya e templi. Bancomat ATM nelle 7-Eleven.</p>
+            </details>
+            <details class="mt-3">
+              <summary class="font-semibold cursor-pointer">Quale quartiere scegliere con bambini?</summary>
+              <p class="mt-2 text-gray-700">Ueno/Asakusa sono più tranquilli ed economici; Shinjuku/Shibuya sono comodi ma più vivaci.</p>
+            </details>
+          </div>
+        </section>
+      </div>
+    </div>
 
-  // 3) Applica href UNA VOLTA e poi SOLO su input utente
-  function applyCTAs(){
-    const {from,ci,co,ad,ch,toIata,cityForListings} = getParams();
-    const hrefFlight = ggBuildFlight({from, to: toIata, dep: ci, ret: co, adults: ad, cabin:'economy'});
-    const hrefHotel  = ggBuildHotel({dest: cityForListings, checkin: ci, checkout: co, adults: ad, children: ch, rooms: 1});
-    const hrefExp    = ggBuildExp({city: cityForListings, fromDate: ci, toDate: co, pax: ad+ch});
+    <!-- Cross-link finale verso articoli -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold text-blue-900 mb-4">Continua con i nostri articoli</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="/articoli/tokyo-7-giorni-migliorato.html" class="block bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden transition">
+          <img src="/img/tokyo.png" alt="Tokyo 7 giorni — guida migliorata" class="w-full h-40 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold text-blue-900">Tokyo in 7 giorni — guida migliorata</h3>
+            <p class="text-sm text-gray-600 mt-1">Timeline completa e costi reali.</p>
+          </div>
+        </a>
+        <a href="/articoli/parigi-5-giorni-migliorato.html" class="block bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden transition">
+          <img src="/img/parigi.png" alt="Parigi 5 giorni — guida migliorata" class="w-full h-40 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold text-blue-900">Parigi in 5 giorni — guida migliorata</h3>
+            <p class="text-sm text-gray-600 mt-1">Quartieri, timeline e crociera.</p>
+          </div>
+        </a>
+        <a href="/articoli/bali-con-bambini-migliorato.html" class="block bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden transition">
+          <img src="/img/bali.png" alt="Bali con bambini — guida migliorata" class="w-full h-40 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold text-blue-900">Bali con bambini — guida migliorata</h3>
+            <p class="text-sm text-gray-600 mt-1">Zone family, spiagge e attività.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
 
-    const aF = document.getElementById('cta-volo');
-    const aH = document.getElementById('cta-hotel');
-    const aE = document.getElementById('cta-exp');
+  <!-- FOOTER -->
+  <div id="include-footer"></div>
 
-    if (aF) aF.href = hrefFlight || '#';
-    if (aH) aH.href = hrefHotel  || '#';
-    if (aE) aE.href = hrefExp    || '#';
+  <!-- Partials loader (root) + subid -->
+  <script>
+    const HEADER_PATH="/partials/header.html";
+    const FOOTER_PATH="/partials/footer.html";
+    async function loadPartials(){
+      try{
+        const [h,f]=await Promise.all([fetch(HEADER_PATH),fetch(FOOTER_PATH)]);
+        if(h.ok) document.getElementById("include-header").innerHTML=await h.text();
+        if(f.ok) document.getElementById("include-footer").innerHTML=await f.text();
+      }catch(e){console.error("Errore caricando i partials:",e);}
+    }
+    if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",loadPartials);} else {loadPartials();}
 
-    console.log('[GG] href volo:', hrefFlight);
-    console.log('[GG] href hotel:', hrefHotel);
-    console.log('[GG] href exp:', hrefExp);
-  }
-
-  // Bind SOLO su eventi utente (non su mutazioni DOM)
-  [['from','from'],['dest','dest'],['checkin','checkin'],['checkout','checkout'],['adults','adults'],['children','children']]
-  .forEach(([id,key])=>{
-    const el = $('#'+id);
-    if (!el) return;
-    el.addEventListener('input', ()=>{ touched[key]=true; applyCTAs(); });
-    el.addEventListener('change', ()=>{ touched[key]=true; applyCTAs(); });
-  });
-
-  // Prima applicazione: calcola una volta e basta
-  applyCTAs();
-});
-</script>
-
+    // sub_id per pagina
+    (function(){ window.GG_SUBID = "mini-guida-tokyo"; })();
+  </script>
+</body>
+</html>
