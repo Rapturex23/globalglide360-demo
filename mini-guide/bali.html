@@ -1,142 +1,268 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Bali – Mini-guida (5 giorni) | GlobalGlide360</title>
-<meta name="description" content="Mini-guida di Bali: itinerario reale 5 giorni con link a disponibilità aggiornate per voli, hotel e attività.">
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bali – Mini-guida completa (quando andare, dove dormire, spiagge, trasporti, cibo) | GlobalGlide360</title>
+  <meta name="description" content="Mini-guida di Bali: quando andare, come arrivare, dove dormire (pro/contro), spiagge adatte, trasporti locali, top 10 esperienze, cibo, budget e link rapidi."/>
+  <link rel="canonical" href="https://www.globalglide360.com/mini-guide/bali.html"/>
 
-<!-- Travelpayouts LinkSwitcher -->
-<script data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
-  (function () {
-      var script = document.createElement("script");
-      script.async = 1;
-      script.src = 'https://tpembars.com/NDU0MTUz.js?t=454153';
-      document.head.appendChild(script);
-  })();
-</script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+  <script data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
+    (function(){var s=document.createElement("script");s.async=1;s.src="https://tpembars.com/NDU0MTUz.js?t=454153";document.head.appendChild(s);})();
+  </script>
+  <style>
+    a:focus,button:focus,input:focus{outline:2px solid #1D4ED8;outline-offset:2px}
+    .card{background:#fff;border-radius:1rem;box-shadow:0 10px 16px -12px rgba(0,0,0,.25)}
+    .glass{background:rgba(255,255,255,.12);backdrop-filter:blur(6px)}
+    .sticky-toc{position:sticky;top:88px}
+    .chip{font-size:.75rem;padding:.25rem .5rem;border-radius:9999px;background:#ecfeff;color:#155e75;border:1px solid #a5f3fc}
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TouristDestination",
+    "name":"Bali",
+    "description":"Mini-guida di Bali: quando andare, come arrivare, dove dormire, trasporti, attrazioni, cibo e budget.",
+    "touristType":"Famiglie, coppie, natura/mare",
+    "url":"https://www.globalglide360.com/mini-guide/bali.html",
+    "geo":{"@type":"GeoCoordinates","latitude":"-8.3405","longitude":"115.0920"},
+    "image":"https://www.globalglide360.com/img/bali.png"
+  }
+  </script>
 </head>
 <body class="bg-blue-50 text-gray-800">
-<script>
-  window.GG_CFG = window.GG_CFG || {};
-  window.GG_CFG.gyg_partner = "HWU00MZ"; // il tuo partner ID
+  <div id="include-header"></div>
 
-  // sub_id automatico (così sai da quale pagina arrivano i click)
-  (function(){
-    const path=(location.pathname||"/").toLowerCase();
-    let slug="home"; 
-    const m=path.match(/([a-z0-9\-]+)\.html$/);
-    if(m&&m[1]) slug=m[1];
-    else if(path.includes('/mini-guide/')){
-      const parts=path.split('/').filter(Boolean);
-      slug=(parts[parts.length-1]||'mini-guide').replace('.html','');
-    }
-    window.GG_SUBID = slug;
-  })();
-</script>
-
-<header class="bg-white shadow py-6 px-6">
-  <div class="max-w-6xl mx-auto flex items-center justify-between">
-    <a href="/" class="flex items-center">
-      <img src="/img/logo.png" alt="GlobalGlide360" class="h-14 w-auto">
-      <span class="ml-3 text-2xl font-bold text-blue-800">GlobalGlide360</span>
-    </a>
-  </div>
-</header>
-
-<main class="max-w-5xl mx-auto p-6">
-  <h1 class="text-3xl font-bold text-blue-900 mb-2">Bali — 5 giorni</h1>
-  <p class="text-gray-700 mb-6">Itinerario reale con link a disponibilità aggiornate (voli, hotel, esperienze).</p>
-
-  <!-- Parametri -->
-  <div class="bg-white rounded shadow p-4 mb-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-    <input id="from" placeholder="ROM/MXP/FCO" value="ROM" class="border px-3 py-2 rounded">
-    <input id="dest" placeholder="Bali / DPS" value="Bali" class="border px-3 py-2 rounded">
-    <input id="checkin" type="date" class="border px-3 py-2 rounded">
-    <input id="checkout" type="date" class="border px-3 py-2 rounded">
-    <input id="adults" type="number" value="2" class="border px-3 py-2 rounded">
-    <input id="children" type="number" value="0" class="border px-3 py-2 rounded">
-  </div>
-
-  <!-- CTA -->
-  <div class="bg-white rounded shadow p-4 mb-8">
-    <h2 class="text-xl font-semibold text-blue-800 mb-2">Prenotazioni rapide</h2>
-    <a id="cta-volo"  class="block bg-blue-700 text-white px-4 py-2 rounded mb-2" target="_blank">Vedi disponibilità volo</a>
-    <a id="cta-hotel" class="block bg-green-600 text-white px-4 py-2 rounded mb-2" target="_blank">Vedi disponibilità alloggi</a>
-    <a id="cta-exp"   class="block bg-yellow-500 text-gray-900 px-4 py-2 rounded" target="_blank">Esplora attività</a>
-  </div>
-
-  <!-- Itinerario -->
-  <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    <article class="bg-white rounded shadow p-4"><h3>Giorno 1</h3><p>Arrivo a Denpasar e trasferimento a Ubud.</p></article>
-    <article class="bg-white rounded shadow p-4"><h3>Giorno 2</h3><p>Foresta delle Scimmie e templi di Ubud.</p></article>
-    <article class="bg-white rounded shadow p-4"><h3>Giorno 3</h3><p>Escursione a Tanah Lot e risaie.</p></article>
-    <article class="bg-white rounded shadow p-4"><h3>Giorno 4</h3><p>Spiagge di Seminyak o Nusa Dua.</p></article>
-    <article class="bg-white rounded shadow p-4"><h3>Giorno 5</h3><p>Relax e rientro.</p></article>
+  <!-- HERO -->
+  <section class="relative h-80 md:h-96">
+    <img src="/img/bali.png" alt="Bali risaie" class="absolute inset-0 w-full h-full object-cover">
+    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10"></div>
+    <div class="relative container mx-auto px-4 h-full flex flex-col justify-end pb-8">
+      <div class="glass inline-flex items-center space-x-2 text-white text-xs md:text-sm px-3 py-1 rounded-full mb-3">
+        <span>🌴 Tropici</span><span>•</span><span>🏖️ Mare & natura</span><span>•</span><span>👨‍👩‍👧‍👦 Family-friendly</span>
+      </div>
+      <h1 class="text-white text-3xl md:text-5xl font-extrabold drop-shadow">Bali — Mini-guida</h1>
+      <p class="text-white/90 text-base md:text-xl mt-2 max-w-3xl">Stagioni, arrivi, zone dove dormire, spiagge adatte, trasporti, esperienze top, cibo, budget e link rapidi.</p>
+    </div>
   </section>
-</main>
 
-<footer class="bg-white text-center py-6 mt-8 border-t"><p>&copy; 2025 GlobalGlide360</p></footer>
+  <main class="container mx-auto px-4 py-10">
+    <nav class="text-sm text-gray-600 mb-6">
+      <a href="/" class="hover:underline">Home</a><span class="mx-2">/</span>
+      <a href="/mini-guide/" class="hover:underline">Mini-guide</a><span class="mx-2">/</span>
+      <span class="text-gray-800 font-semibold">Bali</span>
+    </nav>
 
-<!-- GG CORE INLINE + SCRIPT STABILE -->
-<script>
-window.GG_CFG = window.GG_CFG || { sky_partner:"", bkg_aid:"", gyg_partner:"" };
-const pad=n=>n.toString().padStart(2,'0');
-const localISO=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
-const addDays=(dateStr,days)=>{if(!dateStr)return"";const[y,m,dd]=dateStr.split('-').map(Number);const d=new Date(y,m-1,dd);d.setDate(d.getDate()+days);return localISO(d);};
-const cleanIATA=v=>(v||"").trim().toUpperCase().slice(0,3);
+    <!-- CTA verso articolo family -->
+    <div class="card p-5 md:p-6 mb-8 flex items-center justify-between flex-col md:flex-row gap-4">
+      <div>
+        <h2 class="text-xl font-semibold text-blue-900">Viaggi con bambini?</h2>
+        <p class="text-gray-700">Leggi “Bali con bambini (2026)” con consigli locali e attività family.</p>
+      </div>
+      <a href="/articoli/bali-con-bambini-migliorato.html" class="bg-blue-700 text-white px-5 py-2 rounded hover:bg-blue-800 whitespace-nowrap">Vai all’articolo</a>
+    </div>
 
-window.ggBuildFlight=({from,to,dep,ret,adults=2,cabin='economy'})=>{
-  const base=`https://www.skyscanner.net/transport/flights/${cleanIATA(from)}/${cleanIATA(to)}/${dep}${ret?`/${ret}`:""}/`;
-  const qs=new URLSearchParams({adults,cabinclass:cabin,locale:'it-IT',currency:'EUR'});
-  return `${base}?${qs.toString()}`;
-};
-window.ggBuildHotel=({dest,checkin,checkout,adults=2,children=0,rooms=1})=>{
-  const u=new URL('https://www.booking.com/searchresults.html');
-  u.searchParams.set('ss',dest);
-  u.searchParams.set('checkin',checkin);
-  u.searchParams.set('checkout',checkout||addDays(checkin,3));
-  u.searchParams.set('group_adults',adults);
-  u.searchParams.set('group_children',children);
-  u.searchParams.set('no_rooms',rooms);
-  return u.toString();
-};
-window.ggBuildExp=({city,fromDate,toDate,pax})=>{
-  const u=new URL('https://www.getyourguide.com/s/');
-  u.searchParams.set('q',city);
-  if(fromDate)u.searchParams.set('date_from',fromDate);
-  if(toDate)u.searchParams.set('date_to',toDate);
-  if(pax)u.searchParams.set('number_of_participants',pax);
-  return u.toString();
-};
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <!-- TOC -->
+      <aside class="lg:col-span-4">
+        <div class="card p-5 sticky-toc">
+          <h3 class="font-semibold text-blue-900 mb-3">Indice mini-guida</h3>
+          <ol class="list-decimal ml-5 space-y-1 text-blue-800">
+            <li><a href="#quando" class="hover:underline">Quando andare</a></li>
+            <li><a href="#arrivare" class="hover:underline">Come arrivare</a></li>
+            <li><a href="#dormire" class="hover:underline">Dove dormire</a></li>
+            <li><a href="#spiagge" class="hover:underline">Spiagge adatte</a></li>
+            <li><a href="#trasporti" class="hover:underline">Trasporti locali</a></li>
+            <li><a href="#top10" class="hover:underline">Top 10 esperienze</a></li>
+            <li><a href="#cibo" class="hover:underline">Cosa mangiare</a></li>
+            <li><a href="#budget" class="hover:underline">Budget medio</a></li>
+            <li><a href="#link" class="hover:underline">Link rapidi</a></li>
+            <li><a href="#mappa" class="hover:underline">Mappa</a></li>
+            <li><a href="#faq" class="hover:underline">FAQ</a></li>
+          </ol>
+        </div>
+      </aside>
 
-document.addEventListener('DOMContentLoaded',function(){
-  const $=id=>document.getElementById(id);
-  const today=new Date(),in7=new Date(today),in12=new Date(today);
-  in7.setDate(today.getDate()+7);in12.setDate(today.getDate()+12);
-  const defaultCheckin=localISO(in7),defaultCheckout=localISO(in12);
-  if($('#checkin')&&!$('#checkin').value)$('#checkin').value=defaultCheckin;
-  if($('#checkout')&&!$('#checkout').value)$('#checkout').value=defaultCheckout;
+      <!-- CONTENUTO -->
+      <div class="lg:col-span-8 space-y-12">
+        <section id="quando">
+          <h2 class="text-2xl font-bold text-blue-900 mb-3">Quando andare</h2>
+          <div class="card p-5 text-gray-700 space-y-2">
+            <p><span class="chip">☀️ Mag–Set</span> Stagione secca: mare più stabile, ottimo meteo.</p>
+            <p><span class="chip">🌧️ Nov–Mar</span> Piogge, ma prezzi più bassi e risaie verdissime.</p>
+            <p><span class="chip">🌀</span> Controlla meteo/mare per snorkeling con bambini.</p>
+          </div>
+        </section>
 
-  function applyCTAs(){
-    const from=$('#from').value||'ROM';
-    const ci=$('#checkin').value||defaultCheckin;
-    const co=$('#checkout').value||defaultCheckout;
-    const ad=parseInt($('#adults').value||'2',10);
-    const ch=parseInt($('#children').value||'0',10);
-    const hrefFlight=ggBuildFlight({from,to:'DPS',dep:ci,ret:co,adults:ad});
-    const hrefHotel=ggBuildHotel({dest:'Bali',checkin:ci,checkout:co,adults:ad,children:ch});
-    const hrefExp=ggBuildExp({city:'Bali',fromDate:ci,toDate:co,pax:ad+ch});
-    $('#cta-volo').href=hrefFlight;$('#cta-hotel').href=hrefHotel;$('#cta-exp').href=hrefExp;
-    console.log('[GG] Bali:',hrefFlight,hrefHotel,hrefExp);
-  }
+        <section id="arrivare">
+          <h2 class="text-2xl font-bold text-blue-900 mb-3">Come arrivare</h2>
+          <div class="card p-5 text-gray-700 space-y-2">
+            <p><strong>Aeroporto</strong>: Denpasar (DPS).</p>
+            <p><strong>Collegamenti</strong>: auto privata/driver, taxi ufficiali; tempi variabili per traffico.</p>
+            <p class="text-sm text-gray-600">Richiedi seggiolino al driver in anticipo, se serve.</p>
+          </div>
+        </section>
 
-  ['from','checkin','checkout','adults','children'].forEach(id=>{
-    const el=$('#'+id);if(el){el.addEventListener('input',applyCTAs);el.addEventListener('change',applyCTAs);}});
-  applyCTAs();
-});
-</script>
-  <script src="/assets/js/gyg-resolver.js"></script>
+        <section id="dormire">
+          <h2 class="text-2xl font-bold text-blue-900 mb-4">Dove dormire (pro/contro)</h2>
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="card p-5">
+              <h3 class="font-semibold text-blue-900">Sanur</h3>
+              <ul class="list-disc ml-5 text-sm text-gray-700 mt-2">
+                <li><strong>Pro:</strong> mare spesso calmo, promenade, family-friendly.</li>
+                <li><strong>Contro:</strong> meno movida; alghe occasionali.</li>
+              </ul>
+            </div>
+            <div class="card p-5">
+              <h3 class="font-semibold text-blue-900">Nusa Dua</h3>
+              <ul class="list-disc ml-5 text-sm text-gray-700 mt-2">
+                <li><strong>Pro:</strong> resort, spiagge curate, kids club.</li>
+                <li><strong>Contro:</strong> atmosfera “resort”, prezzi più alti.</li>
+              </ul>
+            </div>
+            <div class="card p-5">
+              <h3 class="font-semibold text-blue-900">Ubud</h3>
+              <ul class="list-disc ml-5 text-sm text-gray-700 mt-2">
+                <li><strong>Pro:</strong> risaie/templi, laboratori artigianato.</li>
+                <li><strong>Contro:</strong> niente mare, centro trafficato.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="spiagge">
+          <h2 class="text-2xl font-bold text-blue-900 mb-3">Spiagge adatte ai bambini</h2>
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Sanur</h3><p class="text-sm text-gray-700 mt-2">Fondali bassi; mattino presto più calmo.</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Nusa Dua</h3><p class="text-sm text-gray-700 mt-2">Baie riparate e sabbia fine.</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Jimbaran</h3><p class="text-sm text-gray-700 mt-2">Tramonti + ristoranti sulla sabbia.</p></div>
+          </div>
+        </section>
+
+        <section id="trasporti">
+          <h2 class="text-2xl font-bold text-blue-900 mb-3">Trasporti locali</h2>
+          <div class="card p-5 text-gray-700 space-y-2">
+            <p><strong>Driver privato</strong>: soluzione più comoda e flessibile (giornata/mezza giornata).</p>
+            <p><strong>Taxi/app</strong>: presenti nelle zone turistiche principali.</p>
+            <p><strong>Scooter</strong>: sconsigliato con bambini o se non esperti.</p>
+          </div>
+        </section>
+
+        <section id="top10">
+          <h2 class="text-2xl font-bold text-blue-900 mb-3">Top 10 esperienze</h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Tegallalang Rice Terraces</h3><p class="text-sm text-gray-700 mt-2">Passeggiate tra risaie a terrazza.</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Uluwatu Temple (tramonto)</h3><p class="text-sm text-gray-700 mt-2">Scogliere e danza Kecak.</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Tirta Empul</h3><p class="text-sm text-gray-700 mt-2">Tempio delle purificazioni (rispetto delle regole).</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Blue Lagoon/Padang Bai</h3><p class="text-sm text-gray-700 mt-2">Snorkeling “soft”.</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Waterbom Bali</h3><p class="text-sm text-gray-700 mt-2">Parco acquatico top.</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Campuhan Ridge Walk</h3><p class="text-sm text-gray-700 mt-2">Passeggiata panoramica a Ubud.</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Tegenungan Waterfall</h3><p class="text-sm text-gray-700 mt-2">Cascata accessibile (meglio al mattino).</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Nusa Penida (escursione)</h3><p class="text-sm text-gray-700 mt-2">Scogliere e acque turchesi.</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Mercati locali</h3><p class="text-sm text-gray-700 mt-2">Artigianato e street food.</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Lezioni di cucina</h3><p class="text-sm text-gray-700 mt-2">Cucina balinese in famiglia.</p></div>
+          </div>
+        </section>
+
+        <section id="cibo">
+          <h2 class="text-2xl font-bold text-blue-900 mb-3">Cosa mangiare & warung</h2>
+          <div class="card p-5 text-gray-700 space-y-2">
+            <p><strong>Piatti</strong>: nasi goreng, mie goreng, satay, babi guling (maiale), lawar, pepes ikan (pesce).</p>
+            <p><strong>Warung</strong>: piccoli ristoranti familiari fuori dalle vie principali: sapori autentici e prezzi gentili.</p>
+          </div>
+        </section>
+
+        <section id="budget">
+          <h2 class="text-2xl font-bold text-blue-900 mb-3">Budget medio (stima giornaliera a persona)</h2>
+          <div class="card p-5 grid md:grid-cols-2 gap-4 text-gray-800">
+            <div class="flex justify-between"><span>Cibo</span><strong>€ 12–25</strong></div>
+            <div class="flex justify-between"><span>Trasporti</span><strong>€ 5–15</strong></div>
+            <div class="flex justify-between"><span>Attività</span><strong>€ 8–20</strong></div>
+            <div class="flex justify-between"><span>Caffè/snack</span><strong>€ 2–6</strong></div>
+          </div>
+          <p class="text-xs text-gray-500 mt-2">Volo e hotel dipendono da stagione e anticipo. Per stime complete vedi gli articoli dedicati.</p>
+        </section>
+
+        <section id="link">
+          <h2 class="text-2xl font-bold text-blue-900 mb-3">Link rapidi</h2>
+          <div class="card p-5 grid sm:grid-cols-2 gap-4">
+            <a href="/risultati.html?origin=MXP&destination=Bali&start=2026-07-06&end=2026-07-13&adults=2&children=0"
+               class="block bg-blue-700 text-white text-center px-4 py-2 rounded hover:bg-blue-800">Estate secca</a>
+            <a href="/risultati.html?origin=MXP&destination=Bali&start=2026-11-10&end=2026-11-17&adults=2&children=0"
+               class="block bg-white border text-center px-4 py-2 rounded hover:bg-gray-50">Novembre (più verde)</a>
+          </div>
+        </section>
+
+        <section id="mappa">
+          <h2 class="text-2xl font-bold text-blue-900 mb-3">Mappa (luoghi principali)</h2>
+          <div class="rounded-2xl overflow-hidden shadow">
+            <iframe class="w-full h-96" src="https://www.google.com/maps/d/u/0/embed?mid=1q_demo_bali_map_example" loading="lazy"></iframe>
+          </div>
+        </section>
+
+        <section id="faq">
+          <div class="card p-5">
+            <h2 class="text-xl font-bold text-blue-900">FAQ</h2>
+            <details class="mt-3">
+              <summary class="font-semibold cursor-pointer">Meglio Sanur o Nusa Dua?</summary>
+              <p class="mt-2 text-gray-700">Sanur per atmosfera locale e fondali bassi; Nusa Dua per comfort da resort e kids club.</p>
+            </details>
+            <details class="mt-3">
+              <summary class="font-semibold cursor-pointer">Serve patente internazionale?</summary>
+              <p class="mt-2 text-gray-700">Sì per guidare; in ogni caso lo scooter è sconsigliato con bambini. Meglio driver.</p>
+            </details>
+            <details class="mt-3">
+              <summary class="font-semibold cursor-pointer">L’acqua è potabile?</summary>
+              <p class="mt-2 text-gray-700">No, usa bottiglie sigillate o borracce con filtro.</p>
+            </details>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold text-blue-900 mb-4">Continua con i nostri articoli</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="/articoli/bali-con-bambini-migliorato.html" class="block bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden transition">
+          <img src="/img/bali.png" alt="Bali con bambini — guida migliorata" class="w-full h-40 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold text-blue-900">Bali con bambini — guida migliorata</h3>
+            <p class="text-sm text-gray-600 mt-1">Zone family, spiagge e attività.</p>
+          </div>
+        </a>
+        <a href="/articoli/tokyo-7-giorni-migliorato.html" class="block bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden transition">
+          <img src="/img/tokyo.png" alt="Tokyo in 7 giorni — guida migliorata" class="w-full h-40 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold text-blue-900">Tokyo in 7 giorni — guida migliorata</h3>
+            <p class="text-sm text-gray-600 mt-1">Timeline completa e costi reali.</p>
+          </div>
+        </a>
+        <a href="/articoli/parigi-5-giorni-migliorato.html" class="block bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden transition">
+          <img src="/img/parigi.png" alt="Parigi 5 giorni — guida migliorata" class="w-full h-40 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold text-blue-900">Parigi in 5 giorni — guida migliorata</h3>
+            <p class="text-sm text-gray-600 mt-1">Quartieri, timeline e crociera.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <div id="include-footer"></div>
+  <script>
+    const HEADER_PATH="/partials/header.html";
+    const FOOTER_PATH="/partials/footer.html";
+    async function loadPartials(){
+      try{
+        const [h,f]=await Promise.all([fetch(HEADER_PATH),fetch(FOOTER_PATH)]);
+        if(h.ok) document.getElementById("include-header").innerHTML=await h.text();
+        if(f.ok) document.getElementById("include-footer").innerHTML=await f.text();
+      }catch(e){console.error("Errore caricando i partials:",e);}
+    }
+    if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",loadPartials);} else {loadPartials();}
+    (function(){ window.GG_SUBID = "mini-guida-bali"; })();
+  </script>
 </body>
 </html>
-
