@@ -1,141 +1,295 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Parigi – Mini-guida (5 giorni) | GlobalGlide360</title>
-<meta name="description" content="Mini-guida di Parigi: itinerario reale 5 giorni con link a disponibilità aggiornate per voli, hotel e attività.">
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- META -->
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Parigi – Mini-guida completa (quando andare, dove dormire, top 10, trasporti, cibo) | GlobalGlide360</title>
+  <meta name="description" content="Mini-guida di Parigi: quando andare, come arrivare, dove dormire (pro/contro), trasporti, top 10 attrazioni, cibo tipico, budget medio e link rapidi a voli/hotel/attività."/>
 
-<!-- Travelpayouts LinkSwitcher -->
-<script data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
-  (function () {
-      var script = document.createElement("script");
-      script.async = 1;
-      script.src = 'https://tpembars.com/NDU0MTUz.js?t=454153';
-      document.head.appendChild(script);
-  })();
-</script>
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.globalglide360.com/mini-guide/parigi.html"/>
+
+  <!-- Tailwind -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+
+  <!-- Travelpayouts LinkSwitcher -->
+  <script data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
+    (function(){var s=document.createElement("script");s.async=1;s.src="https://tpembars.com/NDU0MTUz.js?t=454153";document.head.appendChild(s);})();
+  </script>
+
+  <style>
+    a:focus,button:focus,input:focus{outline:2px solid #1D4ED8;outline-offset:2px}
+    .card{background:#fff;border-radius:1rem;box-shadow:0 10px 16px -12px rgba(0,0,0,.25)}
+    .glass{background:rgba(255,255,255,.12);backdrop-filter:blur(6px)}
+    .sticky-toc{position:sticky;top:88px}
+    .chip{font-size:.75rem;padding:.25rem .5rem;border-radius:9999px;background:#fef3c7;color:#92400e;border:1px solid #fcd34d}
+  </style>
+
+  <!-- JSON-LD (TouristDestination) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TouristDestination",
+    "name": "Parigi",
+    "description": "Mini-guida di Parigi: quando andare, come arrivare, dove dormire, trasporti, attrazioni, cibo e budget.",
+    "touristType": "Coppie, famiglie, city break",
+    "url": "https://www.globalglide360.com/mini-guide/parigi.html",
+    "geo": {"@type":"GeoCoordinates","latitude":"48.8566","longitude":"2.3522"},
+    "image": "https://www.globalglide360.com/img/parigi.png"
+  }
+  </script>
 </head>
 <body class="bg-blue-50 text-gray-800">
-<script>
-  window.GG_CFG = window.GG_CFG || {};
-  window.GG_CFG.gyg_partner = "HWU00MZ"; // il tuo partner ID
+  <!-- HEADER -->
+  <div id="include-header"></div>
 
-  // sub_id automatico (così sai da quale pagina arrivano i click)
-  (function(){
-    const path=(location.pathname||"/").toLowerCase();
-    let slug="home"; 
-    const m=path.match(/([a-z0-9\-]+)\.html$/);
-    if(m&&m[1]) slug=m[1];
-    else if(path.includes('/mini-guide/')){
-      const parts=path.split('/').filter(Boolean);
-      slug=(parts[parts.length-1]||'mini-guide').replace('.html','');
-    }
-    window.GG_SUBID = slug;
-  })();
-</script>
-
-<header class="bg-white shadow py-6 px-6">
-  <div class="max-w-6xl mx-auto flex items-center justify-between">
-    <a href="/" class="flex items-center">
-      <img src="/img/logo.png" alt="GlobalGlide360" class="h-14 w-auto">
-      <span class="ml-3 text-2xl font-bold text-blue-800">GlobalGlide360</span>
-    </a>
-  </div>
-</header>
-
-<main class="max-w-5xl mx-auto p-6">
-  <h1 class="text-3xl font-bold text-blue-900 mb-2">Parigi — 5 giorni</h1>
-  <p class="text-gray-700 mb-6">Itinerario reale con link a disponibilità aggiornate (voli, hotel, esperienze).</p>
-
-  <!-- Parametri -->
-  <div class="bg-white rounded shadow p-4 mb-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-    <input id="from" placeholder="ROM/MXP/FCO" value="ROM" class="border px-3 py-2 rounded">
-    <input id="dest" placeholder="Parigi / PAR" value="Parigi" class="border px-3 py-2 rounded">
-    <input id="checkin" type="date" class="border px-3 py-2 rounded">
-    <input id="checkout" type="date" class="border px-3 py-2 rounded">
-    <input id="adults" type="number" value="2" class="border px-3 py-2 rounded">
-    <input id="children" type="number" value="0" class="border px-3 py-2 rounded">
-  </div>
-
-  <!-- CTA -->
-  <div class="bg-white rounded shadow p-4 mb-8">
-    <h2 class="text-xl font-semibold text-blue-800 mb-2">Prenotazioni rapide</h2>
-    <a id="cta-volo"  class="block bg-blue-700 text-white px-4 py-2 rounded mb-2" target="_blank">Vedi disponibilità volo</a>
-    <a id="cta-hotel" class="block bg-green-600 text-white px-4 py-2 rounded mb-2" target="_blank">Vedi disponibilità alloggi</a>
-    <a id="cta-exp"   class="block bg-yellow-500 text-gray-900 px-4 py-2 rounded" target="_blank">Esplora attività</a>
-  </div>
-
-  <!-- Itinerario -->
-  <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    <article class="bg-white rounded shadow p-4"><h3>Giorno 1</h3><p>Île de la Cité e Marais.</p></article>
-    <article class="bg-white rounded shadow p-4"><h3>Giorno 2</h3><p>Louvre e Giardini delle Tuileries.</p></article>
-    <article class="bg-white rounded shadow p-4"><h3>Giorno 3</h3><p>Torre Eiffel e Senna.</p></article>
-    <article class="bg-white rounded shadow p-4"><h3>Giorno 4</h3><p>Montmartre.</p></article>
-    <article class="bg-white rounded shadow p-4"><h3>Giorno 5</h3><p>Musei e shopping.</p></article>
+  <!-- HERO -->
+  <section class="relative h-80 md:h-96">
+    <img src="/img/parigi.png" alt="Parigi Torre Eiffel" class="absolute inset-0 w-full h-full object-cover">
+    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10"></div>
+    <div class="relative container mx-auto px-4 h-full flex flex-col justify-end pb-8">
+      <div class="glass inline-flex items-center space-x-2 text-white text-xs md:text-sm px-3 py-1 rounded-full mb-3">
+        <span>🇫🇷 Europa</span><span>•</span><span>🎨 Arte & cultura</span><span>•</span><span>🍷 Gourmet</span>
+      </div>
+      <h1 class="text-white text-3xl md:text-5xl font-extrabold drop-shadow">Parigi — Mini-guida</h1>
+      <p class="text-white/90 text-base md:text-xl mt-2 max-w-3xl">Quando andare, come arrivare, dove dormire, cosa vedere e mangiare, come muoversi, budget e link rapidi.</p>
+    </div>
   </section>
-</main>
 
-<footer class="bg-white text-center py-6 mt-8 border-t"><p>&copy; 2025 GlobalGlide360</p></footer>
+  <main class="container mx-auto px-4 py-10">
+    <!-- BREADCRUMB -->
+    <nav class="text-sm text-gray-600 mb-6">
+      <a href="/" class="hover:underline">Home</a>
+      <span class="mx-2">/</span>
+      <a href="/mini-guide/" class="hover:underline">Mini-guide</a>
+      <span class="mx-2">/</span>
+      <span class="text-gray-800 font-semibold">Parigi</span>
+    </nav>
 
-<!-- GG CORE INLINE + SCRIPT STABILE -->
-<script>
-window.GG_CFG = window.GG_CFG || { };
-const pad=n=>n.toString().padStart(2,'0');
-const localISO=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
-const addDays=(dateStr,days)=>{if(!dateStr)return"";const[y,m,dd]=dateStr.split('-').map(Number);const d=new Date(y,m-1,dd);d.setDate(d.getDate()+days);return localISO(d);};
-const cleanIATA=v=>(v||"").trim().toUpperCase().slice(0,3);
+    <!-- CTA verso articolo itinerario -->
+    <div class="card p-5 md:p-6 mb-8 flex items-center justify-between flex-col md:flex-row gap-4">
+      <div>
+        <h2 class="text-xl font-semibold text-blue-900">Vuoi un itinerario giorno-per-giorno?</h2>
+        <p class="text-gray-700">Leggi l’articolo “Parigi in 5 giorni (2026)” con timeline e costi reali.</p>
+      </div>
+      <a href="/articoli/parigi-5-giorni-migliorato.html" class="bg-blue-700 text-white px-5 py-2 rounded hover:bg-blue-800 whitespace-nowrap">Vai all’itinerario</a>
+    </div>
 
-window.ggBuildFlight=({from,to,dep,ret,adults=2,cabin='economy'})=>{
-  const base=`https://www.skyscanner.net/transport/flights/${cleanIATA(from)}/${cleanIATA(to)}/${dep}${ret?`/${ret}`:""}/`;
-  const qs=new URLSearchParams({adults,cabinclass:cabin,locale:'it-IT',currency:'EUR'});
-  return `${base}?${qs.toString()}`;
-};
-window.ggBuildHotel=({dest,checkin,checkout,adults=2,children=0,rooms=1})=>{
-  const u=new URL('https://www.booking.com/searchresults.html');
-  u.searchParams.set('ss',dest);
-  u.searchParams.set('checkin',checkin);
-  u.searchParams.set('checkout',checkout||addDays(checkin,3));
-  u.searchParams.set('group_adults',adults);
-  u.searchParams.set('group_children',children);
-  u.searchParams.set('no_rooms',rooms);
-  return u.toString();
-};
-window.ggBuildExp=({city,fromDate,toDate,pax})=>{
-  const u=new URL('https://www.getyourguide.com/s/');
-  u.searchParams.set('q',city);
-  if(fromDate)u.searchParams.set('date_from',fromDate);
-  if(toDate)u.searchParams.set('date_to',toDate);
-  if(pax)u.searchParams.set('number_of_participants',pax);
-  return u.toString();
-};
+    <!-- Layout TOC + contenuto -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <!-- TOC -->
+      <aside class="lg:col-span-4">
+        <div class="card p-5 sticky-toc">
+          <h3 class="font-semibold text-blue-900 mb-3">Indice mini-guida</h3>
+          <ol class="list-decimal ml-5 space-y-1 text-blue-800">
+            <li><a href="#quando" class="hover:underline">Quando andare</a></li>
+            <li><a href="#arrivare" class="hover:underline">Come arrivare</a></li>
+            <li><a href="#dormire" class="hover:underline">Dove dormire</a></li>
+            <li><a href="#trasporti" class="hover:underline">Trasporti locali</a></li>
+            <li><a href="#top10" class="hover:underline">Top 10 attrazioni</a></li>
+            <li><a href="#cibo" class="hover:underline">Cosa mangiare</a></li>
+            <li><a href="#budget" class="hover:underline">Budget medio</a></li>
+            <li><a href="#link" class="hover:underline">Link rapidi</a></li>
+            <li><a href="#mappa" class="hover:underline">Mappa</a></li>
+            <li><a href="#faq" class="hover:underline">FAQ</a></li>
+          </ol>
+        </div>
+      </aside>
 
-document.addEventListener('DOMContentLoaded',function(){
-  const $=id=>document.getElementById(id);
-  const today=new Date(),in7=new Date(today),in12=new Date(today);
-  in7.setDate(today.getDate()+7);in12.setDate(today.getDate()+12);
-  const defaultCheckin=localISO(in7),defaultCheckout=localISO(in12);
-  if($('#checkin')&&!$('#checkin').value)$('#checkin').value=defaultCheckin;
-  if($('#checkout')&&!$('#checkout').value)$('#checkout').value=defaultCheckout;
+      <!-- CONTENUTO -->
+      <div class="lg:col-span-8 space-y-12">
+        <!-- QUANDO -->
+        <section id="quando">
+          <h2 class="text-2xl font-bold text-blue-900 mb-3">Quando andare</h2>
+          <div class="card p-5 text-gray-700 space-y-2">
+            <p><span class="chip">🌸 Primavera</span> (aprile–giugno): clima mite, giardini in fiore, eventi culturali.</p>
+            <p><span class="chip">☀️ Estate</span> (luglio–agosto): alta stagione turistica, giornate lunghe, prezzi alti.</p>
+            <p><span class="chip">🍂 Autunno</span> (settembre–ottobre): ottimo clima, meno folla, atmosfera romantica.</p>
+            <p><span class="chip">❄️ Inverno</span> (novembre–marzo): mercatini di Natale, musei senza code, hotel più economici.</p>
+          </div>
+        </section>
 
-  function applyCTAs(){
-    const from=$('#from').value||'ROM';
-    const ci=$('#checkin').value||defaultCheckin;
-    const co=$('#checkout').value||defaultCheckout;
-    const ad=parseInt($('#adults').value||'2',10);
-    const ch=parseInt($('#children').value||'0',10);
-    const hrefFlight=ggBuildFlight({from,to:'PAR',dep:ci,ret:co,adults:ad});
-    const hrefHotel=ggBuildHotel({dest:'Paris',checkin:ci,checkout:co,adults:ad,children:ch});
-    const hrefExp=ggBuildExp({city:'Paris',fromDate:ci,toDate:co,pax:ad+ch});
-    $('#cta-volo').href=hrefFlight;$('#cta-hotel').href=hrefHotel;$('#cta-exp').href=hrefExp;
-    console.log('[GG] Paris:',hrefFlight,hrefHotel,hrefExp);
-  }
+        <!-- ARRIVARE -->
+        <section id="arrivare">
+          <h2 class="text-2xl font-bold text-blue-900 mb-3">Come arrivare</h2>
+          <div class="card p-5 text-gray-700 space-y-2">
+            <p><strong>Aeroporti</strong>: Charles de Gaulle (CDG, principale), Orly (ORY, più vicino a sud), Beauvais (BVA, low cost a ~80 km).</p>
+            <p><strong>Collegamenti</strong>: RER B da CDG (40′), Orlyval+RER B da ORY (30–35′), bus/navette da BVA (75–90′).</p>
+            <p><strong>Treni</strong>: TGV/OUIGO collegano Milano e Torino con Gare de Lyon (6–7 ore).</p>
+          </div>
+        </section>
 
-  ['from','checkin','checkout','adults','children'].forEach(id=>{
-    const el=$('#'+id);if(el){el.addEventListener('input',applyCTAs);el.addEventListener('change',applyCTAs);}});
-  applyCTAs();
-});
-</script>
-  <script src="/assets/js/gyg-resolver.js"></script>
+        <!-- DORMIRE -->
+        <section id="dormire">
+          <h2 class="text-2xl font-bold text-blue-900 mb-4">Dove dormire</h2>
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="card p-5">
+              <h3 class="font-semibold text-blue-900">Le Marais</h3>
+              <ul class="list-disc ml-5 text-sm text-gray-700 mt-2">
+                <li><strong>Pro:</strong> centrale, boutique, atmosfera vivace.</li>
+                <li><strong>Contro:</strong> prezzi medio-alti, hotel piccoli.</li>
+              </ul>
+            </div>
+            <div class="card p-5">
+              <h3 class="font-semibold text-blue-900">Montmartre</h3>
+              <ul class="list-disc ml-5 text-sm text-gray-700 mt-2">
+                <li><strong>Pro:</strong> romantico, Sacré-Cœur, ristorantini.</li>
+                <li><strong>Contro:</strong> molte scale, meno metro dirette.</li>
+              </ul>
+            </div>
+            <div class="card p-5">
+              <h3 class="font-semibold text-blue-900">10ᵃ–12ᵃ arr.</h3>
+              <ul class="list-disc ml-5 text-sm text-gray-700 mt-2">
+                <li><strong>Pro:</strong> prezzi più accessibili, zone emergenti.</li>
+                <li><strong>Contro:</strong> atmosfera meno turistica la sera.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- TRASPORTI -->
+        <section id="trasporti">
+          <h2 class="text-2xl font-bold text-blue-900 mb-3">Trasporti locali</h2>
+          <div class="card p-5 text-gray-700 space-y-2">
+            <p><strong>Metro</strong>: 16 linee, molto capillare; carnet da 10 o Navigo Découverte (settimanale, lun–dom).</p>
+            <p><strong>Bus</strong>: panoramici; stesso ticket della metro.</p>
+            <p><strong>Bici</strong>: sistema Vélib’ diffuso; piste lungo la Senna.</p>
+            <p><strong>Escursioni</strong>: RER C per Versailles, treni per Giverny/Reims/Disneyland.</p>
+          </div>
+        </section>
+
+        <!-- TOP 10 -->
+        <section id="top10">
+          <h2 class="text-2xl font-bold text-blue-900 mb-3">Top 10 attrazioni</h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Torre Eiffel</h3><p class="text-sm text-gray-700 mt-2">Meglio al tramonto; prenota slot.</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Louvre</h3><p class="text-sm text-gray-700 mt-2">Immenso: scegli 2–3 sezioni.</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Notre-Dame & Île de la Cité</h3><p class="text-sm text-gray-700 mt-2">Centro storico e Sainte-Chapelle.</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Montmartre & Sacré-Cœur</h3><p class="text-sm text-gray-700 mt-2">Bohémien, vista top sulla città.</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Musée d’Orsay</h3><p class="text-sm text-gray-700 mt-2">Capolavori impressionisti.</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Champs-Élysées & Arco</h3><p class="text-sm text-gray-700 mt-2">Viale iconico, vista dall’Arco.</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Quartiere Latino</h3><p class="text-sm text-gray-700 mt-2">Bistrot e librerie storiche.</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Versailles</h3><p class="text-sm text-gray-700 mt-2">Reggia + giardini (mezza giornata).</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Sainte-Chapelle</h3><p class="text-sm text-gray-700 mt-2">Vetrate mozzafiato.</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Crociera sulla Senna</h3><p class="text-sm text-gray-700 mt-2">Serale per la città illuminata.</p></div>
+          </div>
+        </section>
+
+        <!-- CIBO -->
+        <section id="cibo">
+          <h2 class="text-2xl font-bold text-blue-900 mb-3">Cosa mangiare</h2>
+          <div class="card p-5 text-gray-700 space-y-2">
+            <p><strong>Piatti</strong>: croissant, soupe à l’oignon, quiche, boeuf bourguignon, crêpes dolci/salate, formaggi AOC.</p>
+            <p><strong>Zone</strong>: Quartiere Latino per bistrot; Marais per locali trendy; Saint-Germain per brasserie storiche.</p>
+          </div>
+        </section>
+
+        <!-- BUDGET -->
+        <section id="budget">
+          <h2 class="text-2xl font-bold text-blue-900 mb-3">Budget medio (stima giornaliera a persona)</h2>
+          <div class="card p-5 grid md:grid-cols-2 gap-4 text-gray-800">
+            <div class="flex justify-between"><span>Cibo</span><strong>€ 25–45</strong></div>
+            <div class="flex justify-between"><span>Trasporti</span><strong>€ 5–10</strong></div>
+            <div class="flex justify-between"><span>Attrazioni</span><strong>€ 15–30</strong></div>
+            <div class="flex justify-between"><span>Caffè/snack</span><strong>€ 3–8</strong></div>
+          </div>
+          <p class="text-xs text-gray-500 mt-2">Volo e hotel dipendono da stagione e anticipo. Per stime complete vedi l’articolo itinerario.</p>
+        </section>
+
+        <!-- LINK RAPIDI -->
+        <section id="link">
+          <h2 class="text-2xl font-bold text-blue-900 mb-3">Link rapidi</h2>
+          <div class="card p-5 grid sm:grid-cols-2 gap-4">
+            <a href="/risultati.html?origin=MXP&destination=Parigi&start=2026-05-01&end=2026-05-05&adults=2&children=0"
+               class="block bg-blue-700 text-white text-center px-4 py-2 rounded hover:bg-blue-800">Ponte 1° maggio</a>
+            <a href="/risultati.html?origin=MXP&destination=Parigi&start=2026-09-10&end=2026-09-15&adults=2&children=0"
+               class="block bg-white border text-center px-4 py-2 rounded hover:bg-gray-50">Settembre romantico</a>
+          </div>
+          <p class="text-xs text-gray-500 mt-2">Apriremo ricerche reali su portali partner; prenoti sempre sui siti ufficiali.</p>
+        </section>
+
+        <!-- MAPPA -->
+        <section id="mappa">
+          <h2 class="text-2xl font-bold text-blue-900 mb-3">Mappa (luoghi principali)</h2>
+          <div class="rounded-2xl overflow-hidden shadow">
+            <!-- Sostituisci domani con la tua MyMap reale -->
+            <iframe class="w-full h-96" src="https://www.google.com/maps/d/u/0/embed?mid=1q_demo_paris_map_example" loading="lazy"></iframe>
+          </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq">
+          <div class="card p-5">
+            <h2 class="text-xl font-bold text-blue-900">FAQ</h2>
+            <details class="mt-3">
+              <summary class="font-semibold cursor-pointer">Quanti giorni servono per visitare Parigi?</summary>
+              <p class="mt-2 text-gray-700">Almeno 4–5 giorni per un assaggio completo; 2–3 giorni per highlights veloci.</p>
+            </details>
+            <details class="mt-3">
+              <summary class="font-semibold cursor-pointer">Conviene il Paris Museum Pass?</summary>
+              <p class="mt-2 text-gray-700">Se prevedi 2–3 ingressi importanti, sì. In alternativa acquista biglietti singoli salta-coda.</p>
+            </details>
+            <details class="mt-3">
+              <summary class="font-semibold cursor-pointer">Qual è la zona migliore per dormire?</summary>
+              <p class="mt-2 text-gray-700">Per risparmiare: 10ᵃ–12ᵃ arr.; per essere centrali: 1ᵃ–7ᵃ o Le Marais. Sempre vicino a una fermata metro.</p>
+            </details>
+            <details class="mt-3">
+              <summary class="font-semibold cursor-pointer">Meglio CDG o ORY?</summary>
+              <p class="mt-2 text-gray-700">CDG ha più voli internazionali; ORY è più vicino al centro sud. Scegli in base a prezzo e orari.</p>
+            </details>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Cross-link finale verso articoli -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold text-blue-900 mb-4">Continua con i nostri articoli</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="/articoli/parigi-5-giorni-migliorato.html" class="block bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden transition">
+          <img src="/img/parigi.png" alt="Parigi 5 giorni — guida migliorata" class="w-full h-40 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold text-blue-900">Parigi in 5 giorni — guida migliorata</h3>
+            <p class="text-sm text-gray-600 mt-1">Quartieri, timeline e crociera.</p>
+          </div>
+        </a>
+        <a href="/articoli/tokyo-7-giorni-migliorato.html" class="block bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden transition">
+          <img src="/img/tokyo.png" alt="Tokyo 7 giorni — guida migliorata" class="w-full h-40 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold text-blue-900">Tokyo in 7 giorni — guida migliorata</h3>
+            <p class="text-sm text-gray-600 mt-1">Timeline completa e costi reali.</p>
+          </div>
+        </a>
+        <a href="/articoli/bali-con-bambini-migliorato.html" class="block bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden transition">
+          <img src="/img/bali.png" alt="Bali con bambini — guida migliorata" class="w-full h-40 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold text-blue-900">Bali con bambini — guida migliorata</h3>
+            <p class="text-sm text-gray-600 mt-1">Zone family, spiagge e attività.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <div id="include-footer"></div>
+
+  <!-- Partials loader (root) + subid -->
+  <script>
+    const HEADER_PATH="/partials/header.html";
+    const FOOTER_PATH="/partials/footer.html";
+    async function loadPartials(){
+      try{
+        const [h,f]=await Promise.all([fetch(HEADER_PATH),fetch(FOOTER_PATH)]);
+        if(h.ok) document.getElementById("include-header").innerHTML=await h.text();
+        if(f.ok) document.getElementById("include-footer").innerHTML=await f.text();
+      }catch(e){console.error("Errore caricando i partials:",e);}
+    }
+    if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",loadPartials);} else {loadPartials();}
+
+    // sub_id per pagina
+    (function(){ window.GG_SUBID = "mini-guida-parigi"; })();
+  </script>
 </body>
 </html>
