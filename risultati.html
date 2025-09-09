@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Risultati ricerca | GlobalGlide360</title>
+  <meta name="description" content="Risultati personalizzati: voli, hotel e attività con disponibilità aggiornata, più articoli e mini-guide pertinenti."/>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+
+  <!-- Travelpayouts LinkSwitcher -->
+  <script data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
+    (function(){var s=document.createElement("script");s.async=1;s.src="https://tpembars.com/NDU0MTUz.js?t=454153";document.head.appendChild(s);})();
+  </script>
+
+  <style>
+    a:focus,button:focus,input:focus{outline:2px solid #1D4ED8;outline-offset:2px}
+    .card{ background:#fff; border-radius:1rem; box-shadow:0 10px 16px -12px rgba(0,0,0,.25); }
+  </style>
+</head>
+<body class="bg-blue-50 text-gray-800">
+  <div id="include-header"></div>
+
+  <main class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-extrabold text-blue-900 mb-2">Risultati personalizzati</h1>
+    <p class="text-gray-700 mb-6">Vedi disponibilità reale su portali ufficiali. Prenoti sempre sul sito del partner.</p>
+
+    <!-- Riepilogo ricerca -->
+    <section id="summary" class="card p-5 mb-8">
+      <h2 class="text-xl font-semibold text-blue-900">La tua ricerca</h2>
+      <div id="summaryContent" class="text-gray-700 mt-2"></div>
+    </section>
+
+    <!-- Link partner -->
+    <section class="grid md:grid-cols-3 gap-6 mb-10">
+      <!-- Voli -->
+      <article class="card p-5">
+        <h3 class="text-lg font-semibold text-blue-900">Voli</h3>
+        <p class="text-gray-700 text-sm mb-3">Date e aeroporti pre-impostati quando possibile.</p>
+        <div class="space-y-2" id="flightsLinks">
+          <!-- generati via JS -->
+        </div>
+      </article>
+
+      <!-- Hotel -->
+      <article class="card p-5">
+        <h3 class="text-lg font-semibold text-blue-900">Hotel</h3>
+        <p class="text-gray-700 text-sm mb-3">Zone suggerite e ricerca già avviata.</p>
+        <div class="space-y-2" id="hotelsLinks">
+          <!-- generati via JS -->
+        </div>
+      </article>
+
+      <!-- Attività -->
+      <article class="card p-5">
+        <h3 class="text-lg font-semibold text-blue-900">Attività</h3>
+        <p class="text-gray-700 text-sm mb-3">Tour, biglietti, esperienze salta-fila.</p>
+        <div class="space-y-2" id="activitiesLinks">
+          <!-- generati via JS -->
+        </div>
+      </article>
+    </section>
+
+    <!-- Contenuti correlati -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-blue-900 mb-4">Contenuti correlati</h2>
+      <div id="relatedContent" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- cards generate via JS -->
+      </div>
+    </section>
+
+    <!-- Avvertenze -->
+    <section class="text-xs text-gray-500">
+      I prezzi finali e la disponibilità sono mostrati direttamente sui siti dei partner e possono variare in base a data, orari e regole tariffarie.
+    </section>
+  </main>
+
+  <div id="include-footer"></div>
+
+  <script>
+    // ====== Partials loader (root) ======
+    const HEADER_PATH="/partials/header.html";
+    const FOOTER_PATH="/partials/footer.html";
+    async function loadPartials(){
+      try{
+        const [h,f]=await Promise.all([fetch(HEADER_PATH),fetch(FOOTER_PATH)]);
+        if(h.ok) document.getElementById("include-header").innerHTML=await h.text();
+        if(f.ok) document.getElementById("include-footer").innerHTML=await f.text();
+      }catch(e){console.error("Errore caricando i partials:",e);}
+    }
+    if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",loadPartials);} else {loadPartials();}
+
+    // ====== Utility ======
+    const PARTNER_ID = "HWU00MZ"; // GYG
+    function fmtDateYYYYMMDD(d){ // -> 2025-09-05
+      if(!d) return "";
+      const dt = new Date(d);
+      const y = dt.getFullYear();
+      const m = String(dt.getMonth()+1).padStart(2,"0");
+      const day = String(dt.getDate()).padStart(2,"0");
+      return `${y}-${m}-${day}`;
+    }
+    function fmtDateCompact(d){ // -> 20250905 per Skyscanner
+      if(!d) return "";
+      const dt = new Date(d);
+      const y = dt.getFullYear();
+      const m = String(dt.getMonth()+1).padStart(2,"0");
+      const day = String(dt.getDate()).padStart(2,"0");
+      return `${y}${m}${day}`;
+    }
+    function sanitize(str){ return (str||"").trim().toLowerCase(); }
+
+    // Mappature basilari per codici (estendibile)
+    const CITY_MAP = {
+      // Origini/Hub IT
+      "mxp":"MXP","malpensa":"MXP","milano":"MXP","linate":"LIN","lin":"LIN",
+      "fco":"FCO","roma":"FCO","cia":"CIA",
+      // Destinazioni comuni
+      "tokyo":"TYO","tyo":"TYO","nrt":"NRT","hnd":"HND",
+      "parigi":"PAR","paris":"PAR","par":"PAR","cdg":"CDG","ory":"ORY","bva":"BVA",
+      "new york":"NYC","nyc":"NYC","jfk":"JFK","ewr":"EWR","lga":"LGA",
+      "bali":"DPS","denpasar":"DPS","dps":"DPS",
+      "londra":"LON","lon":"LON","lhr":"LHR","lgw":"LGW","ltn":"LTN","stn":"STN","lcy":"LCY",
+      "barcellona":"BCN","bcn":"BCN",
+      "roma":"ROM","rom":"ROM",
+    };
+
+    // Suggerimenti zone hotel per alcune città (per link testuali)
+    const HOTEL_ZONES = {
+      "TYO": ["Shinjuku","Shibuya","Ueno/Asakusa"],
+      "PAR": ["Le Marais","Montmartre","10ᵃ–12ᵃ arr."],
+      "NYC": ["Midtown","Long Island City","Downtown Brooklyn"],
+      "DPS": ["Sanur","Nusa Dua","Ubud"]
+    };
+
+    // Mappatura destinazione -> slug articolo/mini-guida correlati
+    const RELATED = {
+      "TYO": {
+        articoli: [
+          {href:"/articoli/tokyo-7-giorni-migliorato.html", title:"Tokyo in 7 giorni — guida migliorata", img:"/img/tokyo.png"},
+          {href:"/articoli/tokyo-7-giorni-costi-2026.html", title:"Tokyo 7 giorni: costi 2026", img:"/img/tokyo.png"}
+        ],
+        guide: [{href:"/mini-guide/tokyo.html", title:"Mini-guida: Tokyo", img:"/img/tokyo.png"}]
+      },
+      "PAR": {
+        articoli: [
+          {href:"/articoli/parigi-5-giorni-migliorato.html", title:"Parigi 5 giorni — guida migliorata", img:"/img/parigi.png"},
+          {href:"/articoli/parigi-5-giorni-weekend-2026.html", title:"Parigi 5 giorni (weekend)", img:"/img/parigi.png"}
+        ],
+        guide: [{href:"/mini-guide/parigi.html", title:"Mini-guida: Parigi", img:"/img/parigi.png"}]
+      },
+      "NYC": {
+        articoli: [
+          {href:"/articoli/newyork-5-giorni-migliorato.html", title:"New York 5 giorni — guida migliorata", img:"/img/newyork.png"},
+          {href:"/articoli/newyork-5-giorni-costi-2026.html", title:"New York 5 giorni: costi 2026", img:"/img/newyork.png"}
+        ],
+        guide: [{href:"/mini-guide/newyork.html", title:"Mini-guida: New York", img:"/img/newyork.png"}]
+      },
+      "DPS": {
+        articoli: [
+          {href:"/articoli/bali-con-bambini-migliorato.html", title:"Bali con bambini — guida migliorata", img:"/img/bali.png"},
+          {href:"/articoli/bali-con-bambini-consigli.html", title:"Bali con bambini: 7 consigli", img:"/img/bali.png"}
+        ],
+        guide: [{href:"/mini-guide/bali.html", title:"Mini-guida: Bali", img:"/img/bali.png"}]
+      }
+    };
+
+    // ====== Costruzione pagina ======
+    (function build(){
+      const p = new URLSearchParams(location.search);
+      const rawOrigin = sanitize(p.get("origin"));
+      const rawDest   = sanitize(p.get("destination"));
+      const start     = p.get("start");
+      const end       = p.get("end");
+      const adults    = Math.max(1, parseInt(p.get("adults")||"1",10));
+      const children  = Math.max(0, parseInt(p.get("children")||"0",10));
+      const budget    = (p.get("budget")||"").trim();
+      const prefs     = p.getAll("prefs");
+
+      // Codici normalizzati
+      const ORI = CITY_MAP[rawOrigin] || (rawOrigin?rawOrigin.toUpperCase():"");
+      const DES = CITY_MAP[rawDest]   || (rawDest?rawDest.toUpperCase():"");
+
+      // SubID generico pagina risultati (per tracciamento interno)
+      window.GG_SUBID = "risultati";
+
+      // Riepilogo
+      const sum = [];
+      if(ORI) sum.push(`<strong>P.:</strong> ${ORI}`);
+      if(DES) sum.push(`<strong>Dest.:</strong> ${DES}`);
+      if(start) sum.push(`<strong>Partenza:</strong> ${fmtDateYYYYMMDD(start)}`);
+      if(end)   sum.push(`<strong>Ritorno:</strong> ${fmtDateYYYYMMDD(end)}`);
+      sum.push(`<strong>Occupanti:</strong> ${adults} adulti${children>0? " + "+children+" bambini":""}`);
+      if(budget) sum.push(`<strong>Budget:</strong> ${budget}`);
+      if(prefs.length) sum.push(`<strong>Preferenze:</strong> ${prefs.join(", ")}`);
+      document.getElementById("summaryContent").innerHTML = sum.join(" &nbsp;•&nbsp; ");
+
+      // ====== Link Voli (Skyscanner SERP) ======
+      const flights = document.getElementById("flightsLinks");
+      const dep = fmtDateCompact(start);
+      const ret = fmtDateCompact(end);
+      // fallback se mancano codici/date: usa homepage Skyscanner
+      const skyBase = "https://www.skyscanner.it";
+      let skyUrl = skyBase;
+      if(ORI && DES && dep && ret){
+        // Formato light (Skyscanner accetta anche pattern con querystring generica)
+        skyUrl = `${skyBase}/trasporti/voli/${ORI.toLowerCase()}/${DES.toLowerCase()}/${dep}/${ret}/?adults=${adults}`;
+      }
+      flights.innerHTML = `
+        <a href="${skyUrl}" target="_blank" rel="nofollow noopener"
+           class="inline-block bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800">Apri risultati voli</a>
+        <p class="text-xs text-gray-500">Se i codici non sono riconosciuti, modifica la destinazione direttamente su Skyscanner.</p>
+      `;
+
+      // ====== Link Hotel (Agoda città) ======
+      const hotels = document.getElementById("hotelsLinks");
+      // mappa destinazione -> url agoda città
+      const agodaMap = {
+        "TYO":"https://www.agoda.com/ja-jp/city/tokyo-jp.html",
+        "PAR":"https://www.agoda.com/it-it/city/paris-fr.html",
+        "NYC":"https://www.agoda.com/it-it/city/new-york-ny-us.html",
+        "DPS":"https://www.agoda.com/it-it/city/bali-id.html"
+      };
+      const agodaUrl = agodaMap[DES] || "https://www.agoda.com/";
+      const dateMsg  = (start&&end) ? `date: ${fmtDateYYYYMMDD(start)} → ${fmtDateYYYYMMDD(end)}` : "imposta date in pagina";
+      const zones    = (HOTEL_ZONES[DES]||[]).map(z=>`<span class="text-xs bg-gray-100 px-2 py-1 rounded">${z}</span>`).join(" ");
+      hotels.innerHTML = `
+        <a href="${agodaUrl}" target="_blank" rel="nofollow noopener"
+           class="inline-block bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800">Apri risultati hotel</a>
+        <p class="text-xs text-gray-500 mt-2">${dateMsg}</p>
+        ${zones? `<div class="mt-2 flex flex-wrap gap-2">${zones}</div>` : ""}
+      `;
+
+      // ====== Link Attività (GetYourGuide con partner_id + cmp) ======
+      const gygMap = {
+        "TYO":"https://www.getyourguide.com/-l193/",
+        "PAR":"https://www.getyourguide.com/-l16/",
+        "NYC":"https://www.getyourguide.com/-l59/",
+        "DPS":"https://www.getyourguide.com/-l347/"
+      };
+      const gygBase = gygMap[DES] || "https://www.getyourguide.com/";
+      const cmp = `cmp=sub_risultati-${(DES||'GEN').toLowerCase()}`;
+      const gygUrl = `${gygBase}?partner_id=${encodeURIComponent(PARTNER_ID)}&${cmp}`;
+      const activities = document.getElementById("activitiesLinks");
+      activities.innerHTML = `
+        <a href="${gygUrl}" target="_blank" rel="nofollow noopener"
+           class="inline-block bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800">Apri attività e tour</a>
+        <p class="text-xs text-gray-500 mt-2">Link tracciato con partner_id <code>${PARTNER_ID}</code>.</p>
+      `;
+
+      // ====== Contenuti correlati (Articoli + Mini-guide) ======
+      const relatedWrap = document.getElementById("relatedContent");
+      const rel = RELATED[DES];
+      if(rel){
+        const all = []
+          .concat(rel.articoli||[])
+          .concat(rel.guide||[]);
+        relatedWrap.innerHTML = all.map(card => `
+          <a href="${card.href}" class="block bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden transition">
+            <img src="${card.img}" alt="${card.title}" class="w-full h-40 object-cover">
+            <div class="p-4">
+              <h3 class="font-semibold text-blue-900">${card.title}</h3>
+              <p class="text-sm text-gray-600 mt-1">Approfondisci prima di prenotare.</p>
+            </div>
+          </a>
+        `).join("");
+      } else {
+        relatedWrap.innerHTML = `
+          <div class="text-gray-600">Nessun contenuto correlato per questa destinazione. Prova con Tokyo, Parigi, New York o Bali.</div>
+        `;
+      }
+    })();
+  </script>
+</body>
+</html>
