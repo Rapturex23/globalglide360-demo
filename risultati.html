@@ -35,7 +35,7 @@
       <!-- Voli -->
       <article class="card p-5">
         <h3 class="text-lg font-semibold text-blue-900">Voli</h3>
-        <p class="text-gray-700 text-sm mb-3">Date e aeroporti pre-impostati quando possibile.</p>
+        <p class="text-gray-700 text-sm mb-3">Date e aeroporti preimpostati quando possibile.</p>
         <div class="space-y-2" id="flightsLinks"></div>
       </article>
 
@@ -67,8 +67,9 @@
 
   <div id="include-footer"></div>
 
+  <!-- ====== JS UNICO: tutto dentro a <script> ====== -->
   <script>
-    // ====== Partials loader (root) ======
+    // Partials (root)
     const HEADER_PATH="/partials/header.html";
     const FOOTER_PATH="/partials/footer.html";
     async function loadPartials(){
@@ -82,22 +83,29 @@
 
     // ====== Utility ======
     const PARTNER_ID = "HWU00MZ"; // GYG
-    function fmtDateISO(d){ // 2025-09-05
+    const TP_MARKER  = "454153";   // Travelpayouts / Aviasales marker
+
+    function fmtDateISO(d){
       if(!d) return "";
       const dt = new Date(d);
       const y = dt.getFullYear();
       const m = String(dt.getMonth()+1).padStart(2,"0");
       const day = String(dt.getDate()).padStart(2,"0");
-      return `${y}-${m}-${day}`;
+      return y+"-"+m+"-"+day;
+    }
+    function ddmm(d){
+      if(!d) return "";
+      const dt = new Date(d);
+      const dd = String(dt.getDate()).padStart(2,"0");
+      const mm = String(dt.getMonth()+1).padStart(2,"0");
+      return dd+mm;
     }
     function sanitize(str){ return (str||"").trim().toLowerCase(); }
 
-    // Mappature basilari per codici (estendibile)
+    // Codici città
     const CITY_MAP = {
-      // Origini IT
       "mxp":"MXP","malpensa":"MXP","milano":"MXP","linate":"LIN","lin":"LIN",
       "fco":"FCO","roma":"FCO","cia":"CIA",
-      // Destinazioni
       "tokyo":"TYO","tyo":"TYO","nrt":"NRT","hnd":"HND",
       "parigi":"PAR","paris":"PAR","par":"PAR","cdg":"CDG","ory":"ORY","bva":"BVA",
       "new york":"NYC","nyc":"NYC","jfk":"JFK","ewr":"EWR","lga":"LGA",
@@ -107,7 +115,6 @@
       "roma":"ROM","rom":"ROM"
     };
 
-    // Suggerimenti zone hotel (badge)
     const HOTEL_ZONES = {
       "TYO": ["Shinjuku","Shibuya","Ueno/Asakusa"],
       "PAR": ["Le Marais","Montmartre","10ᵃ–12ᵃ arr."],
@@ -115,7 +122,6 @@
       "DPS": ["Sanur","Nusa Dua","Ubud"]
     };
 
-    // Contenuti correlati
     const RELATED = {
       "TYO": {
         articoli: [
@@ -147,7 +153,7 @@
       }
     };
 
-    // ====== Build pagina ======
+    // ====== BUILD PAGINA ======
     (function build(){
       const p = new URLSearchParams(location.search);
       const rawOrigin = sanitize(p.get("origin"));
@@ -159,161 +165,89 @@
       const budget    = (p.get("budget")||"").trim();
       const prefs     = p.getAll("prefs");
 
-      // Codici normalizzati
       const ORI = CITY_MAP[rawOrigin] || (rawOrigin?rawOrigin.toUpperCase():"");
       const DES = CITY_MAP[rawDest]   || (rawDest?rawDest.toUpperCase():"");
 
-      // SubID per tracciamento
       window.GG_SUBID = "risultati";
 
       // Riepilogo
       const fmtStart = fmtDateISO(start);
       const fmtEnd   = fmtDateISO(end);
-      const sum = [];
-      if(ORI) sum.push(`<strong>P.:</strong> ${ORI}`);
-      if(DES) sum.push(`<strong>Dest.:</strong> ${DES}`);
-      if(fmtStart) sum.push(`<strong>Partenza:</strong> ${fmtStart}`);
-      if(fmtEnd)   sum.push(`<strong>Ritorno:</strong> ${fmtEnd}`);
-      sum.push(`<strong>Occupanti:</strong> ${adults} adulti${children>0? " + "+children+" bambini":""}`);
-      if(budget) sum.push(`<strong>Budget:</strong> ${budget}`);
-      if(prefs.length) sum.push(`<strong>Preferenze:</strong> ${prefs.join(", ")}`);
+      var sum = [];
+      if(ORI) sum.push("<strong>P.:</strong> "+ORI);
+      if(DES) sum.push("<strong>Dest.:</strong> "+DES);
+      if(fmtStart) sum.push("<strong>Partenza:</strong> "+fmtStart);
+      if(fmtEnd)   sum.push("<strong>Ritorno:</strong> "+fmtEnd);
+      sum.push("<strong>Occupanti:</strong> "+adults+" adulti"+(children>0?(" + "+children+" bambini"):""));
+      if(budget) sum.push("<strong>Budget:</strong> "+budget);
+      if(prefs.length) sum.push("<strong>Preferenze:</strong> "+prefs.join(", "));
       document.getElementById("summaryContent").innerHTML = sum.join(" &nbsp;•&nbsp; ");
 
-      // ====== VOLI (Skyscanner con date ISO nel path) ======
-     <!-- ====== VOLI (Aviasales / Travelpayouts) ====== -->
-<script>
-  (function buildFlights(){
-    const flights = document.getElementById("flightsLinks");
-    if (!flights) return;
-
-    // Leggo parametri già calcolati nella build principale
-    const p = new URLSearchParams(location.search);
-    const rawOrigin = (p.get("origin")||"").trim().toLowerCase();
-    const rawDest   = (p.get("destination")||"").trim().toLowerCase();
-    const start     = p.get("start");
-    const end       = p.get("end");
-    const adults    = Math.max(1, parseInt(p.get("adults")||"2",10));
-    const children  = Math.max(0, parseInt(p.get("children")||"0",10));
-
-    // Stesse mappe della pagina (se hai le variabili globali CITY_MAP, usale)
-    const CITY_MAP_LOCAL = {
-      "mxp":"MXP","malpensa":"MXP","milano":"MXP","linate":"LIN","lin":"LIN",
-      "fco":"FCO","roma":"FCO","cia":"CIA",
-      "tokyo":"TYO","tyo":"TYO","nrt":"NRT","hnd":"HND",
-      "parigi":"PAR","paris":"PAR","par":"PAR","cdg":"CDG","ory":"ORY","bva":"BVA",
-      "new york":"NYC","nyc":"NYC","jfk":"JFK","ewr":"EWR","lga":"LGA",
-      "bali":"DPS","denpasar":"DPS","dps":"DPS",
-      "londra":"LON","lon":"LON","lhr":"LHR","lgw":"LGW","ltn":"LTN","stn":"STN","lcy":"LCY",
-      "barcellona":"BCN","bcn":"BCN",
-      "roma":"ROM","rom":"ROM"
-    };
-
-    const ORI = (window.CITY_MAP ? (window.CITY_MAP[rawOrigin] || (rawOrigin?rawOrigin.toUpperCase():""))
-                                 : (CITY_MAP_LOCAL[rawOrigin] || (rawOrigin?rawOrigin.toUpperCase():"")));
-    const DES = (window.CITY_MAP ? (window.CITY_MAP[rawDest]   || (rawDest?rawDest.toUpperCase():""))
-                                 : (CITY_MAP_LOCAL[rawDest]   || (rawDest?rawDest.toUpperCase():"")));
-
-    function ddmm(d){
-      if(!d) return "";
-      const dt=new Date(d);
-      const dd=String(dt.getDate()).padStart(2,"0");
-      const mm=String(dt.getMonth()+1).padStart(2,"0");
-      return dd+mm; // formato richiesto nel path di Aviasales
-    }
-
-    // Travelpayouts marker (se usi LinkSwitcher, resta valido)
-    const MARKER = "454153"; // sostituisci se il tuo marker è diverso
-
-    // 1) Link con date (quando possibile)
-    let deepLink = "https://www.aviasales.com/";
-    if (ORI && DES && start && end){
-      // Pattern: https://www.aviasales.com/search/MXP1209TYO1809?adults=2&children=1&marker=454153
-      const seg = `${ORI}${ddmm(start)}${DES}${ddmm(end)}`;
-      const qs  = `adults=${adults}` + (children>0?`&children=${children}`:"") + `&marker=${encodeURIComponent(MARKER)}`;
-      deepLink  = `https://www.aviasales.com/search/${seg}?${qs}`;
-    }
-
-    // 2) Fallback: rotta senza date (l’utente imposta le date in pagina)
-    let routeOnly = "https://www.aviasales.com/";
-    if (ORI && DES){
-      // Pattern senza date: https://www.aviasales.com/search/MXP0TYO0?adults=2...
-      const seg2 = `${ORI}0${DES}0`;
-      const qs2  = `adults=${adults}` + (children>0?`&children=${children}`:"") + `&marker=${encodeURIComponent(MARKER)}`;
-      routeOnly  = `https://www.aviasales.com/search/${seg2}?${qs2}`;
-    }
-
-    flights.innerHTML = `
-      <a href="${deepLink}" target="_blank" rel="nofollow noopener"
-         class="inline-block bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800 mb-2">
-        Voli (date preimpostate)
-      </a>
-      <div class="text-xs text-gray-500 -mt-1 mb-3">
-        Se il link non mostra subito i risultati, usa anche il fallback qui sotto.
-      </div>
-      <a href="${routeOnly}" target="_blank" rel="nofollow noopener"
-         class="inline-block bg-white border px-4 py-2 rounded hover:bg-gray-50">
-        Voli (apri ricerca con rotta, inserisci date)
-      </a>
-    `;
-  })();
-</script>
-
-
-      // ====== HOTEL (Booking con parametri checkin/checkout/adulti/bambini) ======
-      const hotels = document.getElementById("hotelsLinks");
-      // testo destinazione per Booking (se non mappiamo una città precisa)
-      const destText = rawDest ? encodeURIComponent(rawDest) : "";
-      // Booking accetta: ss=Tokyo&checkin=YYYY-MM-DD&checkout=YYYY-MM-DD&group_adults=2&group_children=1&no_rooms=1
-      let bookingUrl = `https://www.booking.com/searchresults.html?ss=${destText}`;
-      if(fmtStart && fmtEnd){
-        bookingUrl += `&checkin=${fmtStart}&checkout=${fmtEnd}`;
+      // ====== VOLI (Aviasales / Travelpayouts) ======
+      var flights = document.getElementById("flightsLinks");
+      var deepLink = "https://www.aviasales.com/";
+      if (ORI && DES && start && end){
+        // Esempio: /search/MXP1209TYO1809?adults=2&children=1&marker=454153
+        var seg = ORI + ddmm(start) + DES + ddmm(end);
+        var qs  = "adults=" + adults + (children>0?("&children="+children):"") + "&marker=" + encodeURIComponent(TP_MARKER);
+        deepLink = "https://www.aviasales.com/search/" + seg + "?" + qs;
       }
-      bookingUrl += `&group_adults=${adults}&group_children=${children}&no_rooms=1`;
-      const zones = (HOTEL_ZONES[DES]||[]).map(z=>`<span class="text-xs bg-gray-100 px-2 py-1 rounded">${z}</span>`).join(" ");
-      hotels.innerHTML = `
-        <a href="${bookingUrl}" target="_blank" rel="nofollow noopener"
-           class="inline-block bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800">Apri risultati hotel</a>
-        <p class="text-xs text-gray-500 mt-2">${fmtStart&&fmtEnd?`date: ${fmtStart} → ${fmtEnd}`:'imposta le date in pagina'}</p>
-        ${zones? `<div class="mt-2 flex flex-wrap gap-2">${zones}</div>` : ""}
-      `;
+      var routeOnly = "https://www.aviasales.com/";
+      if (ORI && DES){
+        var seg2 = ORI + "0" + DES + "0";
+        var qs2  = "adults=" + adults + (children>0?("&children="+children):"") + "&marker=" + encodeURIComponent(TP_MARKER);
+        routeOnly = "https://www.aviasales.com/search/" + seg2 + "?" + qs2;
+      }
+      flights.innerHTML =
+        '<a href="'+deepLink+'" target="_blank" rel="nofollow noopener" class="inline-block bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800 mb-2">Voli (date preimpostate)</a>'
+        + '<div class="text-xs text-gray-500 -mt-1 mb-3">Se il link non mostra subito i risultati, usa anche il fallback qui sotto.</div>'
+        + '<a href="'+routeOnly+'" target="_blank" rel="nofollow noopener" class="inline-block bg-white border px-4 py-2 rounded hover:bg-gray-50">Voli (rotta senza date)</a>';
 
-      // ====== ATTIVITÀ (GetYourGuide con partner_id) ======
-      const gygMap = {
+      // ====== HOTEL (Booking) ======
+      var hotels = document.getElementById("hotelsLinks");
+      var destText = rawDest ? encodeURIComponent(rawDest) : "";
+      var bookingUrl = "https://www.booking.com/searchresults.html?ss="+destText;
+      if(fmtStart && fmtEnd){
+        bookingUrl += "&checkin="+fmtStart+"&checkout="+fmtEnd;
+      }
+      bookingUrl += "&group_adults="+adults+"&group_children="+children+"&no_rooms=1";
+      var zones = (HOTEL_ZONES[DES]||[]).map(function(z){
+        return '<span class="text-xs bg-gray-100 px-2 py-1 rounded">'+z+'</span>';
+      }).join(" ");
+      hotels.innerHTML =
+        '<a href="'+bookingUrl+'" target="_blank" rel="nofollow noopener" class="inline-block bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800">Apri risultati hotel</a>'
+        + '<p class="text-xs text-gray-500 mt-2">'+(fmtStart&&fmtEnd ? ("date: "+fmtStart+" → "+fmtEnd) : "imposta le date in pagina")+'</p>'
+        + (zones? ('<div class="mt-2 flex flex-wrap gap-2">'+zones+'</div>') : '');
+
+      // ====== ATTIVITÀ (GetYourGuide) ======
+      var gygMap = {
         "TYO":"https://www.getyourguide.com/-l193/",
         "PAR":"https://www.getyourguide.com/-l16/",
         "NYC":"https://www.getyourguide.com/-l59/",
         "DPS":"https://www.getyourguide.com/-l347/"
       };
-      const gygBase = gygMap[DES] || "https://www.getyourguide.com/";
-      const cmp = `cmp=sub_risultati-${(DES||'GEN').toLowerCase()}`;
-      const gygUrl = `${gygBase}?partner_id=${encodeURIComponent(PARTNER_ID)}&${cmp}`;
-      const activities = document.getElementById("activitiesLinks");
-      activities.innerHTML = `
-        <a href="${gygUrl}" target="_blank" rel="nofollow noopener"
-           class="inline-block bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800">Apri attività e tour</a>
-        <p class="text-xs text-gray-500 mt-2">Link tracciato (partner_id <code>${PARTNER_ID}</code>).</p>
-      `;
+      var gygBase = gygMap[DES] || "https://www.getyourguide.com/";
+      var cmp = "cmp=sub_risultati-"+(DES||"GEN").toLowerCase();
+      var gygUrl = gygBase + "?partner_id=" + encodeURIComponent(PARTNER_ID) + "&" + cmp;
+      var activities = document.getElementById("activitiesLinks");
+      activities.innerHTML =
+        '<a href="'+gygUrl+'" target="_blank" rel="nofollow noopener" class="inline-block bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800">Apri attività e tour</a>'
+        + '<p class="text-xs text-gray-500 mt-2">Link tracciato (partner_id <code>'+PARTNER_ID+'</code>).</p>';
 
-      // ====== Contenuti correlati ======
-      const relatedWrap = document.getElementById("relatedContent");
-      const rel = RELATED[DES];
+      // ====== CONTENUTI CORRELATI ======
+      var relatedWrap = document.getElementById("relatedContent");
+      var rel = RELATED[DES];
       if(rel){
-        const all = []
-          .concat(rel.articoli||[])
-          .concat(rel.guide||[]);
-        relatedWrap.innerHTML = all.map(card => `
-          <a href="${card.href}" class="block bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden transition">
-            <img src="${card.img}" alt="${card.title}" class="w-full h-40 object-cover">
-            <div class="p-4">
-              <h3 class="font-semibold text-blue-900">${card.title}</h3>
-              <p class="text-sm text-gray-600 mt-1">Approfondisci prima di prenotare.</p>
-            </div>
-          </a>
-        `).join("");
+        var all = [].concat(rel.articoli||[]).concat(rel.guide||[]);
+        relatedWrap.innerHTML = all.map(function(card){
+          return '<a href="'+card.href+'" class="block bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden transition">'
+                   + '<img src="'+card.img+'" alt="'+card.title+'" class="w-full h-40 object-cover">'
+                   + '<div class="p-4"><h3 class="font-semibold text-blue-900">'+card.title+'</h3>'
+                   + '<p class="text-sm text-gray-600 mt-1">Approfondisci prima di prenotare.</p></div>'
+                 + '</a>';
+        }).join("");
       } else {
-        relatedWrap.innerHTML = `
-          <div class="text-gray-600">Nessun contenuto correlato per questa destinazione. Prova con Tokyo, Parigi, New York o Bali.</div>
-        `;
+        relatedWrap.innerHTML = '<div class="text-gray-600">Nessun contenuto correlato per questa destinazione. Prova con Tokyo, Parigi, New York o Bali.</div>';
       }
     })();
   </script>
