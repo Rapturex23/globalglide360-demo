@@ -117,32 +117,33 @@
       </div>
     </section>
 
-    <!-- Form semplice (redir alle mini-guide) -->
+    <!-- Form -->
     <section class="py-10">
-      <form class="bg-white max-w-3xl mx-auto p-6 rounded-2xl shadow" onsubmit="event.preventDefault(); window.location.href='/mini-guide/';">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          <input type="text" placeholder="Città di partenza (es. MXP)" class="border px-4 py-2 rounded">
-          <input type="text" placeholder="Destinazione (es. Tokyo / NYC / PAR)" class="border px-4 py-2 rounded">
-          <input type="date" class="border px-4 py-2 rounded">
-          <input type="date" class="border px-4 py-2 rounded">
-          <input type="number" placeholder="Adulti" class="border px-4 py-2 rounded">
-          <input type="number" placeholder="Bambini" class="border px-4 py-2 rounded">
-          <input type="text" placeholder="Budget indicativo (es. 1500€)" class="border px-4 py-2 rounded md:col-span-2">
-        </div>
+     <form class="bg-white max-w-3xl mx-auto p-6 rounded-2xl shadow" action="/risultati.html" method="GET">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+    <input type="text" name="origin" placeholder="Città di partenza (es. MXP)" class="border px-4 py-2 rounded" required>
+    <input type="text" name="destination" placeholder="Destinazione (es. Tokyo / NYC / PAR)" class="border px-4 py-2 rounded" required>
+    <input type="date" name="start" class="border px-4 py-2 rounded" required>
+    <input type="date" name="end" class="border px-4 py-2 rounded" required>
+    <input type="number" name="adults" placeholder="Adulti" class="border px-4 py-2 rounded" min="1" value="2">
+    <input type="number" name="children" placeholder="Bambini" class="border px-4 py-2 rounded" min="0" value="0">
+    <input type="text" name="budget" placeholder="Budget indicativo (es. 1500€)" class="border px-4 py-2 rounded md:col-span-2">
+  </div>
 
-        <h3 class="text-lg font-semibold mb-2">Preferenze di viaggio</h3>
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-2 mb-4">
-          <label><input type="checkbox" class="mr-2"> Natura</label>
-          <label><input type="checkbox" class="mr-2"> Città</label>
-          <label><input type="checkbox" class="mr-2"> Cultura</label>
-          <label><input type="checkbox" class="mr-2"> Mare</label>
-          <label><input type="checkbox" class="mr-2"> Montagna</label>
-          <label><input type="checkbox" class="mr-2"> Famiglia</label>
-        </div>
+  <h3 class="text-lg font-semibold mb-2">Preferenze di viaggio</h3>
+  <div class="grid grid-cols-2 md:grid-cols-3 gap-2 mb-4">
+    <label><input type="checkbox" name="prefs" value="natura" class="mr-2"> Natura</label>
+    <label><input type="checkbox" name="prefs" value="citta" class="mr-2"> Città</label>
+    <label><input type="checkbox" name="prefs" value="cultura" class="mr-2"> Cultura</label>
+    <label><input type="checkbox" name="prefs" value="mare" class="mr-2"> Mare</label>
+    <label><input type="checkbox" name="prefs" value="montagna" class="mr-2"> Montagna</label>
+    <label><input type="checkbox" name="prefs" value="famiglia" class="mr-2"> Famiglia</label>
+  </div>
 
-        <button class="bg-blue-700 text-white px-6 py-2 rounded hover:bg-blue-800">Crea il tuo itinerario</button>
-        <p class="text-xs text-gray-500 mt-2">Verrai reindirizzato alle mini-guide con risultati reali tramite i partner ufficiali.</p>
-      </form>
+  <button class="bg-blue-700 text-white px-6 py-2 rounded hover:bg-blue-800">Crea il tuo itinerario</button>
+  <p class="text-xs text-gray-500 mt-2">Apriremo risultati reali su portali ufficiali tramite i nostri partner.</p>
+</form>
+
     </section>
 
     <!-- Destinazioni popolari (link alle mini-guide) -->
