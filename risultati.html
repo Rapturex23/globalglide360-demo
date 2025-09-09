@@ -36,41 +36,32 @@
       <article class="card p-5">
         <h3 class="text-lg font-semibold text-blue-900">Voli</h3>
         <p class="text-gray-700 text-sm mb-3">Date e aeroporti pre-impostati quando possibile.</p>
-        <div class="space-y-2" id="flightsLinks">
-          <!-- generati via JS -->
-        </div>
+        <div class="space-y-2" id="flightsLinks"></div>
       </article>
 
       <!-- Hotel -->
       <article class="card p-5">
         <h3 class="text-lg font-semibold text-blue-900">Hotel</h3>
-        <p class="text-gray-700 text-sm mb-3">Zone suggerite e ricerca già avviata.</p>
-        <div class="space-y-2" id="hotelsLinks">
-          <!-- generati via JS -->
-        </div>
+        <p class="text-gray-700 text-sm mb-3">Ricerca con check-in/check-out e occupanti già impostati.</p>
+        <div class="space-y-2" id="hotelsLinks"></div>
       </article>
 
       <!-- Attività -->
       <article class="card p-5">
         <h3 class="text-lg font-semibold text-blue-900">Attività</h3>
-        <p class="text-gray-700 text-sm mb-3">Tour, biglietti, esperienze salta-fila.</p>
-        <div class="space-y-2" id="activitiesLinks">
-          <!-- generati via JS -->
-        </div>
+        <p class="text-gray-700 text-sm mb-3">Tour, biglietti e pass.</p>
+        <div class="space-y-2" id="activitiesLinks"></div>
       </article>
     </section>
 
     <!-- Contenuti correlati -->
     <section class="mb-12">
       <h2 class="text-2xl font-bold text-blue-900 mb-4">Contenuti correlati</h2>
-      <div id="relatedContent" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- cards generate via JS -->
-      </div>
+      <div id="relatedContent" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
     </section>
 
-    <!-- Avvertenze -->
     <section class="text-xs text-gray-500">
-      I prezzi finali e la disponibilità sono mostrati direttamente sui siti dei partner e possono variare in base a data, orari e regole tariffarie.
+      I prezzi finali e la disponibilità sono mostrati direttamente sui siti dei partner e possono variare.
     </section>
   </main>
 
@@ -91,7 +82,7 @@
 
     // ====== Utility ======
     const PARTNER_ID = "HWU00MZ"; // GYG
-    function fmtDateYYYYMMDD(d){ // -> 2025-09-05
+    function fmtDateISO(d){ // 2025-09-05
       if(!d) return "";
       const dt = new Date(d);
       const y = dt.getFullYear();
@@ -99,32 +90,24 @@
       const day = String(dt.getDate()).padStart(2,"0");
       return `${y}-${m}-${day}`;
     }
-    function fmtDateCompact(d){ // -> 20250905 per Skyscanner
-      if(!d) return "";
-      const dt = new Date(d);
-      const y = dt.getFullYear();
-      const m = String(dt.getMonth()+1).padStart(2,"0");
-      const day = String(dt.getDate()).padStart(2,"0");
-      return `${y}${m}${day}`;
-    }
     function sanitize(str){ return (str||"").trim().toLowerCase(); }
 
     // Mappature basilari per codici (estendibile)
     const CITY_MAP = {
-      // Origini/Hub IT
+      // Origini IT
       "mxp":"MXP","malpensa":"MXP","milano":"MXP","linate":"LIN","lin":"LIN",
       "fco":"FCO","roma":"FCO","cia":"CIA",
-      // Destinazioni comuni
+      // Destinazioni
       "tokyo":"TYO","tyo":"TYO","nrt":"NRT","hnd":"HND",
       "parigi":"PAR","paris":"PAR","par":"PAR","cdg":"CDG","ory":"ORY","bva":"BVA",
       "new york":"NYC","nyc":"NYC","jfk":"JFK","ewr":"EWR","lga":"LGA",
       "bali":"DPS","denpasar":"DPS","dps":"DPS",
       "londra":"LON","lon":"LON","lhr":"LHR","lgw":"LGW","ltn":"LTN","stn":"STN","lcy":"LCY",
       "barcellona":"BCN","bcn":"BCN",
-      "roma":"ROM","rom":"ROM",
+      "roma":"ROM","rom":"ROM"
     };
 
-    // Suggerimenti zone hotel per alcune città (per link testuali)
+    // Suggerimenti zone hotel (badge)
     const HOTEL_ZONES = {
       "TYO": ["Shinjuku","Shibuya","Ueno/Asakusa"],
       "PAR": ["Le Marais","Montmartre","10ᵃ–12ᵃ arr."],
@@ -132,7 +115,7 @@
       "DPS": ["Sanur","Nusa Dua","Ubud"]
     };
 
-    // Mappatura destinazione -> slug articolo/mini-guida correlati
+    // Contenuti correlati
     const RELATED = {
       "TYO": {
         articoli: [
@@ -164,14 +147,14 @@
       }
     };
 
-    // ====== Costruzione pagina ======
+    // ====== Build pagina ======
     (function build(){
       const p = new URLSearchParams(location.search);
       const rawOrigin = sanitize(p.get("origin"));
       const rawDest   = sanitize(p.get("destination"));
       const start     = p.get("start");
       const end       = p.get("end");
-      const adults    = Math.max(1, parseInt(p.get("adults")||"1",10));
+      const adults    = Math.max(1, parseInt(p.get("adults")||"2",10));
       const children  = Math.max(0, parseInt(p.get("children")||"0",10));
       const budget    = (p.get("budget")||"").trim();
       const prefs     = p.getAll("prefs");
@@ -180,57 +163,56 @@
       const ORI = CITY_MAP[rawOrigin] || (rawOrigin?rawOrigin.toUpperCase():"");
       const DES = CITY_MAP[rawDest]   || (rawDest?rawDest.toUpperCase():"");
 
-      // SubID generico pagina risultati (per tracciamento interno)
+      // SubID per tracciamento
       window.GG_SUBID = "risultati";
 
       // Riepilogo
+      const fmtStart = fmtDateISO(start);
+      const fmtEnd   = fmtDateISO(end);
       const sum = [];
       if(ORI) sum.push(`<strong>P.:</strong> ${ORI}`);
       if(DES) sum.push(`<strong>Dest.:</strong> ${DES}`);
-      if(start) sum.push(`<strong>Partenza:</strong> ${fmtDateYYYYMMDD(start)}`);
-      if(end)   sum.push(`<strong>Ritorno:</strong> ${fmtDateYYYYMMDD(end)}`);
+      if(fmtStart) sum.push(`<strong>Partenza:</strong> ${fmtStart}`);
+      if(fmtEnd)   sum.push(`<strong>Ritorno:</strong> ${fmtEnd}`);
       sum.push(`<strong>Occupanti:</strong> ${adults} adulti${children>0? " + "+children+" bambini":""}`);
       if(budget) sum.push(`<strong>Budget:</strong> ${budget}`);
       if(prefs.length) sum.push(`<strong>Preferenze:</strong> ${prefs.join(", ")}`);
       document.getElementById("summaryContent").innerHTML = sum.join(" &nbsp;•&nbsp; ");
 
-      // ====== Link Voli (Skyscanner SERP) ======
+      // ====== VOLI (Skyscanner con date ISO nel path) ======
       const flights = document.getElementById("flightsLinks");
-      const dep = fmtDateCompact(start);
-      const ret = fmtDateCompact(end);
-      // fallback se mancano codici/date: usa homepage Skyscanner
-      const skyBase = "https://www.skyscanner.it";
-      let skyUrl = skyBase;
-      if(ORI && DES && dep && ret){
-        // Formato light (Skyscanner accetta anche pattern con querystring generica)
-        skyUrl = `${skyBase}/trasporti/voli/${ORI.toLowerCase()}/${DES.toLowerCase()}/${dep}/${ret}/?adults=${adults}`;
+      const skyBase = "https://www.skyscanner.it/trasporti/voli";
+      let skyUrl = "https://www.skyscanner.it";
+      if(ORI && DES && fmtStart && fmtEnd){
+        // Path: /trasporti/voli/mxp/tyo/2025-09-12/2025-09-18/?adults=2
+        skyUrl = `${skyBase}/${ORI.toLowerCase()}/${DES.toLowerCase()}/${fmtStart}/${fmtEnd}/?adults=${adults}`;
       }
       flights.innerHTML = `
         <a href="${skyUrl}" target="_blank" rel="nofollow noopener"
            class="inline-block bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800">Apri risultati voli</a>
-        <p class="text-xs text-gray-500">Se i codici non sono riconosciuti, modifica la destinazione direttamente su Skyscanner.</p>
+        ${!(ORI&&DES&&fmtStart&&fmtEnd)?'<p class="text-xs text-red-600 mt-1">Compila origine, destinazione e date per aprire la ricerca direttamente filtrata.</p>':''}
+        <p class="text-xs text-gray-500">Se necessario, modifica i parametri direttamente su Skyscanner.</p>
       `;
 
-      // ====== Link Hotel (Agoda città) ======
+      // ====== HOTEL (Booking con parametri checkin/checkout/adulti/bambini) ======
       const hotels = document.getElementById("hotelsLinks");
-      // mappa destinazione -> url agoda città
-      const agodaMap = {
-        "TYO":"https://www.agoda.com/ja-jp/city/tokyo-jp.html",
-        "PAR":"https://www.agoda.com/it-it/city/paris-fr.html",
-        "NYC":"https://www.agoda.com/it-it/city/new-york-ny-us.html",
-        "DPS":"https://www.agoda.com/it-it/city/bali-id.html"
-      };
-      const agodaUrl = agodaMap[DES] || "https://www.agoda.com/";
-      const dateMsg  = (start&&end) ? `date: ${fmtDateYYYYMMDD(start)} → ${fmtDateYYYYMMDD(end)}` : "imposta date in pagina";
-      const zones    = (HOTEL_ZONES[DES]||[]).map(z=>`<span class="text-xs bg-gray-100 px-2 py-1 rounded">${z}</span>`).join(" ");
+      // testo destinazione per Booking (se non mappiamo una città precisa)
+      const destText = rawDest ? encodeURIComponent(rawDest) : "";
+      // Booking accetta: ss=Tokyo&checkin=YYYY-MM-DD&checkout=YYYY-MM-DD&group_adults=2&group_children=1&no_rooms=1
+      let bookingUrl = `https://www.booking.com/searchresults.html?ss=${destText}`;
+      if(fmtStart && fmtEnd){
+        bookingUrl += `&checkin=${fmtStart}&checkout=${fmtEnd}`;
+      }
+      bookingUrl += `&group_adults=${adults}&group_children=${children}&no_rooms=1`;
+      const zones = (HOTEL_ZONES[DES]||[]).map(z=>`<span class="text-xs bg-gray-100 px-2 py-1 rounded">${z}</span>`).join(" ");
       hotels.innerHTML = `
-        <a href="${agodaUrl}" target="_blank" rel="nofollow noopener"
+        <a href="${bookingUrl}" target="_blank" rel="nofollow noopener"
            class="inline-block bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800">Apri risultati hotel</a>
-        <p class="text-xs text-gray-500 mt-2">${dateMsg}</p>
+        <p class="text-xs text-gray-500 mt-2">${fmtStart&&fmtEnd?`date: ${fmtStart} → ${fmtEnd}`:'imposta le date in pagina'}</p>
         ${zones? `<div class="mt-2 flex flex-wrap gap-2">${zones}</div>` : ""}
       `;
 
-      // ====== Link Attività (GetYourGuide con partner_id + cmp) ======
+      // ====== ATTIVITÀ (GetYourGuide con partner_id) ======
       const gygMap = {
         "TYO":"https://www.getyourguide.com/-l193/",
         "PAR":"https://www.getyourguide.com/-l16/",
@@ -244,10 +226,10 @@
       activities.innerHTML = `
         <a href="${gygUrl}" target="_blank" rel="nofollow noopener"
            class="inline-block bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800">Apri attività e tour</a>
-        <p class="text-xs text-gray-500 mt-2">Link tracciato con partner_id <code>${PARTNER_ID}</code>.</p>
+        <p class="text-xs text-gray-500 mt-2">Link tracciato (partner_id <code>${PARTNER_ID}</code>).</p>
       `;
 
-      // ====== Contenuti correlati (Articoli + Mini-guide) ======
+      // ====== Contenuti correlati ======
       const relatedWrap = document.getElementById("relatedContent");
       const rel = RELATED[DES];
       if(rel){
