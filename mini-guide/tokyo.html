@@ -46,7 +46,15 @@
 
   <!-- HERO -->
   <section class="relative h-80 md:h-96">
-    <img src="/img/tokyo.png" alt="Tokyo skyline" class="absolute inset-0 w-full h-full object-cover">
+    <img
+      src="/mini-guide/assets/tokyo-hero-2.webp"
+      srcset="/mini-guide/assets/tokyo-hero-2-800.webp 800w, /mini-guide/assets/tokyo-hero-2.webp 1200w"
+      sizes="100vw"
+      alt="Tempio Sensō-ji ad Asakusa con il portale Kaminarimon"
+      class="absolute inset-0 w-full h-full object-cover"
+      loading="eager"
+      decoding="async"
+    >
     <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10"></div>
     <div class="relative container mx-auto px-4 h-full flex flex-col justify-end pb-8">
       <div class="glass inline-flex items-center space-x-2 text-white text-xs md:text-sm px-3 py-1 rounded-full mb-3">
@@ -88,6 +96,7 @@
             <li><a href="#dormire" class="hover:underline">Dove dormire (pro/contro)</a></li>
             <li><a href="#trasporti" class="hover:underline">Trasporti locali</a></li>
             <li><a href="#top10" class="hover:underline">Top 10 attrazioni</a></li>
+            <li><a href="#attivita" class="hover:underline">Attività consigliate</a></li>
             <li><a href="#cibo" class="hover:underline">Cosa mangiare & zone food</a></li>
             <li><a href="#budget" class="hover:underline">Budget medio</a></li>
             <li><a href="#link" class="hover:underline">Link rapidi</a></li>
@@ -160,7 +169,7 @@
           </div>
         </section>
 
-        <!-- TOP 10 ATTRAZIONI (sintetiche, evergreen) -->
+        <!-- TOP 10 ATTRAZIONI -->
         <section id="top10">
           <h2 class="text-2xl font-bold text-blue-900 mb-3">Top 10 attrazioni</h2>
           <div class="grid md:grid-cols-2 gap-6">
@@ -175,6 +184,55 @@
             <div class="card p-5"><h3 class="font-semibold text-blue-900">Ameyoko Market</h3><p class="text-gray-700 text-sm mt-2">Street food e bancarelle tra Ueno e Okachimachi.</p></div>
             <div class="card p-5"><h3 class="font-semibold text-blue-900">Escursione: Nikko o Kamakura</h3><p class="text-gray-700 text-sm mt-2">Templi UNESCO o Buddha gigante sul mare.</p></div>
           </div>
+        </section>
+
+        <!-- ATTIVITÀ CONSIGLIATE (GetYourGuide) -->
+        <section id="attivita">
+          <h2 class="text-2xl font-bold text-blue-900 mb-3">Attività consigliate (prenota ora)</h2>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
+               href="https://www.getyourguide.com/-l193/?partner_id=HWU00MZ&cmp=mg-tokyo-shibuyasky&q=Shibuya%20Sky">
+              <h3 class="font-semibold text-blue-900">Shibuya Sky — biglietto orario</h3>
+              <p class="text-sm text-gray-700 mt-2">Terrazza 360° sul crossing: prenota la fascia oraria.</p>
+              <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+            </a>
+
+            <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
+               href="https://www.getyourguide.com/-l193/?partner_id=HWU00MZ&cmp=mg-tokyo-teamlab&q=teamlab%20planets">
+              <h3 class="font-semibold text-blue-900">teamLab Planets — ingresso</h3>
+              <p class="text-sm text-gray-700 mt-2">Museo immersivo a Odaiba: posti limitati, meglio in anticipo.</p>
+              <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+            </a>
+
+            <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
+               href="https://www.getyourguide.com/-l193/?partner_id=HWU00MZ&cmp=mg-tokyo-food&q=Tsukiji%20food%20tour">
+              <h3 class="font-semibold text-blue-900">Tsukiji — food tour guidato</h3>
+              <p class="text-sm text-gray-700 mt-2">Degustazioni nel mercato esterno con guida locale.</p>
+              <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+            </a>
+
+            <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
+               href="https://www.getyourguide.com/-l193/?partner_id=HWU00MZ&cmp=mg-tokyo-nikko&q=Nikko%20day%20trip">
+              <h3 class="font-semibold text-blue-900">Escursione a Nikko (1 giorno)</h3>
+              <p class="text-sm text-gray-700 mt-2">Santuari UNESCO e natura: tour organizzato comodo.</p>
+              <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+            </a>
+
+            <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
+               href="https://www.getyourguide.com/-l193/?partner_id=HWU00MZ&cmp=mg-tokyo-kamakura&q=Kamakura%20day%20trip">
+              <h3 class="font-semibold text-blue-900">Escursione a Kamakura</h3>
+              <p class="text-sm text-gray-700 mt-2">Grande Buddha, templi e mare: perfetta in giornata.</p>
+              <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+            </a>
+
+            <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
+               href="https://www.getyourguide.com/-l193/?partner_id=HWU00MZ&cmp=mg-tokyo-sumo&q=Sumo%20practice%20Tokyo">
+              <h3 class="font-semibold text-blue-900">Sumo — allenamento/esperienza</h3>
+              <p class="text-sm text-gray-700 mt-2">Sessioni nelle stalle o introduzioni guidate.</p>
+              <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+            </a>
+          </div>
+          <p class="text-xs text-gray-500 mt-2">Link tracciati: <code>partner_id=HWU00MZ</code> e <code>cmp</code> per etichettare la pagina.</p>
         </section>
 
         <!-- CIBO -->
@@ -215,7 +273,7 @@
         <section id="mappa">
           <h2 class="text-2xl font-bold text-blue-900 mb-3">Mappa (luoghi principali)</h2>
           <div class="rounded-2xl overflow-hidden shadow">
-            <!-- Sostituisci l’ID con la tua MyMap reale domani -->
+            <!-- Sostituisci l’ID con la tua MyMap reale -->
             <iframe class="w-full h-96" src="https://www.google.com/maps/d/u/0/embed?mid=1q_demo_tokyo_map_example" loading="lazy"></iframe>
           </div>
         </section>
@@ -246,21 +304,21 @@
       <h2 class="text-2xl font-bold text-blue-900 mb-4">Continua con i nostri articoli</h2>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <a href="/articoli/tokyo-7-giorni-migliorato.html" class="block bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden transition">
-          <img src="/img/tokyo.png" alt="Tokyo 7 giorni — guida migliorata" class="w-full h-40 object-cover">
+          <img src="/mini-guide/assets/q-shibuya.webp" alt="Tokyo 7 giorni — guida migliorata" class="w-full h-40 object-cover" loading="lazy" decoding="async">
           <div class="p-4">
             <h3 class="font-semibold text-blue-900">Tokyo in 7 giorni — guida migliorata</h3>
             <p class="text-sm text-gray-600 mt-1">Timeline completa e costi reali.</p>
           </div>
         </a>
         <a href="/articoli/parigi-5-giorni-migliorato.html" class="block bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden transition">
-          <img src="/img/parigi.png" alt="Parigi 5 giorni — guida migliorata" class="w-full h-40 object-cover">
+          <img src="/img/parigi.png" alt="Parigi 5 giorni — guida migliorata" class="w-full h-40 object-cover" loading="lazy" decoding="async">
           <div class="p-4">
             <h3 class="font-semibold text-blue-900">Parigi in 5 giorni — guida migliorata</h3>
             <p class="text-sm text-gray-600 mt-1">Quartieri, timeline e crociera.</p>
           </div>
         </a>
         <a href="/articoli/bali-con-bambini-migliorato.html" class="block bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden transition">
-          <img src="/img/bali.png" alt="Bali con bambini — guida migliorata" class="w-full h-40 object-cover">
+          <img src="/img/bali.png" alt="Bali con bambini — guida migliorata" class="w-full h-40 object-cover" loading="lazy" decoding="async">
           <div class="p-4">
             <h3 class="font-semibold text-blue-900">Bali con bambini — guida migliorata</h3>
             <p class="text-sm text-gray-600 mt-1">Zone family, spiagge e attività.</p>
