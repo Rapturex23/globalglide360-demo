@@ -1,69 +1,88 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+  <!-- META -->
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>New York – Mini-guida completa (quando andare, dove dormire, top 10, trasporti, cibo) | GlobalGlide360</title>
+  <title>New York – Mini-guida completa (quando andare, come arrivare, dove dormire, top 10, trasporti, cibo) | GlobalGlide360</title>
   <meta name="description" content="Mini-guida di New York: quando andare, come arrivare, dove dormire (pro/contro), trasporti, top 10 attrazioni, cibo tipico, budget medio e link rapidi a voli/hotel/attività."/>
-  <link rel="canonical" href="https://www.globalglide360.com/mini-guide/newyork.html"/>
 
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.globalglide360.com/mini-guide/new-york.html"/>
+
+  <!-- Tailwind -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+
+  <!-- Travelpayouts LinkSwitcher -->
   <script data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
     (function(){var s=document.createElement("script");s.async=1;s.src="https://tpembars.com/NDU0MTUz.js?t=454153";document.head.appendChild(s);})();
   </script>
+
   <style>
     a:focus,button:focus,input:focus{outline:2px solid #1D4ED8;outline-offset:2px}
     .card{background:#fff;border-radius:1rem;box-shadow:0 10px 16px -12px rgba(0,0,0,.25)}
     .glass{background:rgba(255,255,255,.12);backdrop-filter:blur(6px)}
     .sticky-toc{position:sticky;top:88px}
-    .chip{font-size:.75rem;padding:.25rem .5rem;border-radius:9999px;background:#eef2ff;color:#3730a3;border:1px solid #c7d2fe}
+    .chip{font-size:.75rem;padding:.25rem .5rem;border-radius:9999px;background:#eff6ff;color:#1e40af;border:1px solid #bfdbfe}
   </style>
 
+  <!-- JSON-LD -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"TouristDestination",
-    "name":"New York City",
+    "name":"New York",
     "description":"Mini-guida di New York: quando andare, come arrivare, dove dormire, trasporti, attrazioni, cibo e budget.",
-    "touristType":"Coppie, famiglie, city break",
-    "url":"https://www.globalglide360.com/mini-guide/newyork.html",
+    "touristType":"Coppie, famiglie, viaggiatori indipendenti",
+    "url":"https://www.globalglide360.com/mini-guide/new-york.html",
     "geo":{"@type":"GeoCoordinates","latitude":"40.7128","longitude":"-74.0060"},
-    "image":"https://www.globalglide360.com/img/newyork.png"
+    "image":"https://www.globalglide360.com/img/nyc.png"
   }
   </script>
 </head>
 <body class="bg-blue-50 text-gray-800">
+  <!-- HEADER -->
   <div id="include-header"></div>
 
   <!-- HERO -->
   <section class="relative h-80 md:h-96">
-    <img src="/img/newyork.png" alt="New York skyline" class="absolute inset-0 w-full h-full object-cover">
+    <img
+      src="/mini-guide/assets/nyc-hero-2.webp"
+      srcset="/mini-guide/assets/nyc-hero-2-800.webp 800w, /mini-guide/assets/nyc-hero-2.webp 1200w"
+      sizes="100vw"
+      alt="Skyline di Manhattan con Empire State Building"
+      class="absolute inset-0 w-full h-full object-cover"
+      loading="eager" decoding="async">
     <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10"></div>
     <div class="relative container mx-auto px-4 h-full flex flex-col justify-end pb-8">
       <div class="glass inline-flex items-center space-x-2 text-white text-xs md:text-sm px-3 py-1 rounded-full mb-3">
-        <span>🇺🇸 USA</span><span>•</span><span>🏙️ City vibes</span><span>•</span><span>🍕 Food scene</span>
+        <span>🏙️ Metropoli</span><span>•</span><span>🚇 Subway</span><span>•</span><span>🗽 Icone & viste</span>
       </div>
       <h1 class="text-white text-3xl md:text-5xl font-extrabold drop-shadow">New York — Mini-guida</h1>
-      <p class="text-white/90 text-base md:text-xl mt-2 max-w-3xl">Quando andare, come arrivare, dormire, muoversi, top 10 da vedere e mangiare, budget e link rapidi.</p>
+      <p class="text-white/90 text-base md:text-xl mt-2 max-w-3xl">Quando andare, come arrivare, dove dormire, cosa vedere e mangiare, come muoversi, budget e link rapidi.</p>
     </div>
   </section>
 
   <main class="container mx-auto px-4 py-10">
+    <!-- BREADCRUMB -->
     <nav class="text-sm text-gray-600 mb-6">
-      <a href="/" class="hover:underline">Home</a><span class="mx-2">/</span>
-      <a href="/mini-guide/" class="hover:underline">Mini-guide</a><span class="mx-2">/</span>
+      <a href="/" class="hover:underline">Home</a>
+      <span class="mx-2">/</span>
+      <a href="/mini-guide/" class="hover:underline">Mini-guide</a>
+      <span class="mx-2">/</span>
       <span class="text-gray-800 font-semibold">New York</span>
     </nav>
 
-    <!-- CTA verso articolo itinerario -->
+    <!-- CTA itinerario -->
     <div class="card p-5 md:p-6 mb-8 flex items-center justify-between flex-col md:flex-row gap-4">
       <div>
         <h2 class="text-xl font-semibold text-blue-900">Vuoi un itinerario giorno-per-giorno?</h2>
-        <p class="text-gray-700">Leggi “New York in 5 giorni (2026)” con timeline e costi reali.</p>
+        <p class="text-gray-700">Leggi l’articolo “New York in 7 giorni (2026)” con timeline e costi reali.</p>
       </div>
-      <a href="/articoli/newyork-5-giorni-migliorato.html" class="bg-blue-700 text-white px-5 py-2 rounded hover:bg-blue-800 whitespace-nowrap">Vai all’itinerario</a>
+      <a href="/articoli/new-york-7-giorni-migliorato.html" class="bg-blue-700 text-white px-5 py-2 rounded hover:bg-blue-800 whitespace-nowrap">Vai all’itinerario</a>
     </div>
 
+    <!-- Layout 2 colonne -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
       <!-- TOC -->
       <aside class="lg:col-span-4">
@@ -72,10 +91,11 @@
           <ol class="list-decimal ml-5 space-y-1 text-blue-800">
             <li><a href="#quando" class="hover:underline">Quando andare</a></li>
             <li><a href="#arrivare" class="hover:underline">Come arrivare</a></li>
-            <li><a href="#dormire" class="hover:underline">Dove dormire</a></li>
+            <li><a href="#dormire" class="hover:underline">Dove dormire (pro/contro)</a></li>
             <li><a href="#trasporti" class="hover:underline">Trasporti locali</a></li>
             <li><a href="#top10" class="hover:underline">Top 10 attrazioni</a></li>
-            <li><a href="#cibo" class="hover:underline">Cosa mangiare</a></li>
+            <li><a href="#attivita" class="hover:underline">Attività consigliate</a></li>
+            <li><a href="#cibo" class="hover:underline">Cosa mangiare & zone food</a></li>
             <li><a href="#budget" class="hover:underline">Budget medio</a></li>
             <li><a href="#link" class="hover:underline">Link rapidi</a></li>
             <li><a href="#mappa" class="hover:underline">Mappa</a></li>
@@ -86,106 +106,168 @@
 
       <!-- CONTENUTO -->
       <div class="lg:col-span-8 space-y-12">
+        <!-- QUANDO ANDARE -->
         <section id="quando">
           <h2 class="text-2xl font-bold text-blue-900 mb-3">Quando andare</h2>
-          <div class="card p-5 text-gray-700 space-y-2">
-            <p><span class="chip">🌸 Apr–Giu</span> Clima gradevole, parchi in fiore.</p>
-            <p><span class="chip">☀️ Set–Ott</span> Giornate limpide, foliage a Central Park.</p>
-            <p><span class="chip">❄️ Dic</span> Atmosfera natalizia, mercatini e luci (freddo).</p>
-            <p><span class="chip">🧊 Gen–Feb</span> Più economica ma molto fredda.</p>
+          <div class="card p-5">
+            <ul class="grid md:grid-cols-2 gap-4 text-gray-700">
+              <li><span class="chip mr-2">🌸 Apr–Giu</span> Temperature miti e parchi in fiore.</li>
+              <li><span class="chip mr-2">🍂 Set–Ott</span> Clima stabile e foliage a Central Park.</li>
+              <li><span class="chip mr-2">❄️ Dic</span> Luci natalizie e mercatini (fa freddo).</li>
+              <li><span class="chip mr-2">☀️ Lug–Ago</span> Caldo/umidità, ma tanti eventi outdoor.</li>
+            </ul>
           </div>
         </section>
 
+        <!-- COME ARRIVARE -->
         <section id="arrivare">
           <h2 class="text-2xl font-bold text-blue-900 mb-3">Come arrivare</h2>
-          <div class="card p-5 text-gray-700 space-y-2">
-            <p><strong>Aeroporti</strong>: JFK (principale, AirTrain+metro), EWR (comodo da alcune compagnie, AirTrain+NJ Transit), LGA (domestici, ora collegato meglio a Manhattan con bus+metro).</p>
-            <p><strong>Trasferimenti</strong>: metro/commuter, taxi, rideshare; il traffico può incidere molto.</p>
-            <p class="text-sm text-gray-600">Controlla l’ESTA per l’ingresso negli USA.</p>
+          <div class="card p-5 space-y-2 text-gray-700">
+            <p><strong>Aeroporti</strong>: <em>JFK</em>, <em>EWR</em> (Newark) e <em>LGA</em> (domestico).</p>
+            <p><strong>Trasferimenti</strong>: AirTrain + metro/LIRR da JFK; NJ Transit/Amtrak da EWR; taxi/ride-hailing ovunque.</p>
+            <p class="text-sm text-gray-600">Suggerimento: valuta un hotel vicino a una linea metro 24/7.</p>
           </div>
         </section>
 
+        <!-- DOVE DORMIRE -->
         <section id="dormire">
           <h2 class="text-2xl font-bold text-blue-900 mb-4">Dove dormire (pro/contro)</h2>
           <div class="grid md:grid-cols-3 gap-6">
             <div class="card p-5">
-              <h3 class="font-semibold text-blue-900">Midtown Manhattan</h3>
-              <ul class="list-disc ml-5 text-sm text-gray-700 mt-2">
-                <li><strong>Pro:</strong> posizione centrale, iconici luoghi a piedi.</li>
-                <li><strong>Contro:</strong> prezzi alti e tanta folla.</li>
+              <h3 class="font-semibold text-blue-900">Midtown</h3>
+              <ul class="list-disc ml-5 text-gray-700 text-sm mt-2">
+                <li><strong>Pro:</strong> centrale per attrazioni/metro.</li>
+                <li><strong>Contro:</strong> prezzi e traffico alti.</li>
               </ul>
             </div>
             <div class="card p-5">
-              <h3 class="font-semibold text-blue-900">Long Island City (Queens)</h3>
-              <ul class="list-disc ml-5 text-sm text-gray-700 mt-2">
-                <li><strong>Pro:</strong> ottimo rapporto qualità/prezzo, 1–2 fermate da Manhattan.</li>
-                <li><strong>Contro:</strong> meno “atmosfera NYC” di sera.</li>
+              <h3 class="font-semibold text-blue-900">Lower Manhattan</h3>
+              <ul class="list-disc ml-5 text-gray-700 text-sm mt-2">
+                <li><strong>Pro:</strong> vicino a SoHo, Village, Battery Park.</li>
+                <li><strong>Contro:</strong> nightlife meno intensa in settimana.</li>
               </ul>
             </div>
             <div class="card p-5">
-              <h3 class="font-semibold text-blue-900">Downtown Brooklyn</h3>
-              <ul class="list-disc ml-5 text-sm text-gray-700 mt-2">
-                <li><strong>Pro:</strong> linee metro molteplici, prezzi medi.</li>
-                <li><strong>Contro:</strong> più business/residenziale.</li>
+              <h3 class="font-semibold text-blue-900">Brooklyn (Williamsburg/DUMBO)</h3>
+              <ul class="list-disc ml-5 text-gray-700 text-sm mt-2">
+                <li><strong>Pro:</strong> vibe locale, viste skyline.</li>
+                <li><strong>Contro:</strong> spostamenti leggermente più lunghi.</li>
               </ul>
             </div>
           </div>
         </section>
 
+        <!-- TRASPORTI LOCALI -->
         <section id="trasporti">
           <h2 class="text-2xl font-bold text-blue-900 mb-3">Trasporti locali</h2>
-          <div class="card p-5 text-gray-700 space-y-2">
-            <p><strong>MetroCard / OMNY</strong>: pagamento contactless ai tornelli; weekly pass utile oltre 3–4 corse/die.</p>
-            <p><strong>Pass attrazioni</strong>: valutali solo se fai molti ingressi; altrimenti biglietti singoli.</p>
-            <p><strong>Camminare</strong>: spesso il modo più rapido in Midtown/Downtown.</p>
+          <div class="card p-5 space-y-3 text-gray-700">
+            <p><strong>Metro/Bus</strong>: MetroCard/OMNY pay-as-you-go o weekly unlimited.</p>
+            <p><strong>Traghetti</strong>: NYC Ferry utile per spostamenti panoramici.</p>
+            <p><strong>Piedi/bici</strong>: Citi Bike per brevi tragitti (cinture/bike lanes).</p>
           </div>
         </section>
 
+        <!-- TOP 10 ATTRAZIONI -->
         <section id="top10">
           <h2 class="text-2xl font-bold text-blue-900 mb-3">Top 10 attrazioni</h2>
           <div class="grid md:grid-cols-2 gap-6">
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">Central Park</h3><p class="text-sm text-gray-700 mt-2">Polmone verde; ponti, laghi, Belvedere Castle.</p></div>
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">Statua della Libertà & Ellis Island</h3><p class="text-sm text-gray-700 mt-2">Prenota traghetto e, se vuoi, il piedistallo.</p></div>
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">Top of the Rock / Edge / Summit</h3><p class="text-sm text-gray-700 mt-2">Panorami diversi, scegli 1 osservatorio.</p></div>
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">Times Square</h3><p class="text-sm text-gray-700 mt-2">Iconica, meglio la sera (molto affollata).</p></div>
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">Brooklyn Bridge & DUMBO</h3><p class="text-sm text-gray-700 mt-2">Passeggiata e foto sul waterfront.</p></div>
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">9/11 Memorial & Museum</h3><p class="text-sm text-gray-700 mt-2">Commovente; prenota online.</p></div>
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">Met / MoMA</h3><p class="text-sm text-gray-700 mt-2">Giganti dell’arte, seleziona le sezioni.</p></div>
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">High Line & Hudson Yards</h3><p class="text-sm text-gray-700 mt-2">Parco sopraelevato con viste.</p></div>
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">Greenwich Village</h3><p class="text-sm text-gray-700 mt-2">Caffè e live music; Bleecker St.</p></div>
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">Staten Island Ferry (free)</h3><p class="text-sm text-gray-700 mt-2">Vista su skyline e Lady Liberty.</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Statue of Liberty & Ellis Island</h3><p class="text-gray-700 text-sm mt-2">Ferry da Battery Park; prenota pedestal/crown.</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Empire State Building</h3><p class="text-gray-700 text-sm mt-2">Osservatorio classico, meglio in orario blu.</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Top of the Rock</h3><p class="text-gray-700 text-sm mt-2">Vista perfetta su Central Park e Empire.</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">SUMMIT One Vanderbilt</h3><p class="text-gray-700 text-sm mt-2">Esperienza specchi/vetro + osservatorio.</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Central Park</h3><p class="text-gray-700 text-sm mt-2">Passeggiate, laghi e ponti iconici.</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Brooklyn Bridge & DUMBO</h3><p class="text-gray-700 text-sm mt-2">Tramonto su skyline e foto a Washington St.</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">The Met / MoMA</h3><p class="text-gray-700 text-sm mt-2">Capolavori da non perdere (prenota slot).</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">9/11 Memorial & Museum</h3><p class="text-gray-700 text-sm mt-2">Luogo di memoria; prenota in anticipo.</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">High Line & Hudson Yards</h3><p class="text-gray-700 text-sm mt-2">Passeggiata sopraelevata e The Vessel.</p></div>
+            <div class="card p-5"><h3 class="font-semibold text-blue-900">Times Square & Broadway</h3><p class="text-gray-700 text-sm mt-2">Spettacoli e luci (valuta TKTS per sconti).</p></div>
           </div>
         </section>
 
+        <!-- ATTIVITÀ (GetYourGuide, q= + partner_id + cmp) -->
+        <section id="attivita">
+          <h2 class="text-2xl font-bold text-blue-900 mb-3">Attività consigliate (prenota ora)</h2>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
+               href="https://www.getyourguide.com/new-york-city-l59/?partner_id=HWU00MZ&cmp=mg-nyc-liberty&q=Statue%20of%20Liberty%20ferry%20ticket">
+              <h3 class="font-semibold text-blue-900">Statua della Libertà — ferry ticket</h3>
+              <p class="text-sm text-gray-700 mt-2">Liberty Island + Ellis Island (opzione pedestal).</p>
+              <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+            </a>
+
+            <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
+               href="https://www.getyourguide.com/new-york-city-l59/?partner_id=HWU00MZ&cmp=mg-nyc-empire&q=Empire%20State%20Building%20ticket">
+              <h3 class="font-semibold text-blue-900">Empire State Building — ticket</h3>
+              <p class="text-sm text-gray-700 mt-2">Osservatorio 86°/102°; opzioni fast track.</p>
+              <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+            </a>
+
+            <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
+               href="https://www.getyourguide.com/new-york-city-l59/?partner_id=HWU00MZ&cmp=mg-nyc-summit&q=SUMMIT%20One%20Vanderbilt%20ticket">
+              <h3 class="font-semibold text-blue-900">SUMMIT One Vanderbilt — ingresso</h3>
+              <p class="text-sm text-gray-700 mt-2">Esperienza immersiva + skydeck.</p>
+              <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+            </a>
+
+            <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
+               href="https://www.getyourguide.com/new-york-city-l59/?partner_id=HWU00MZ&cmp=mg-nyc-moma&q=MoMA%20ticket">
+              <h3 class="font-semibold text-blue-900">MoMA — biglietto</h3>
+              <p class="text-sm text-gray-700 mt-2">Capolavori moderni e contemporanei.</p>
+              <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+            </a>
+
+            <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
+               href="https://www.getyourguide.com/new-york-city-l59/?partner_id=HWU00MZ&cmp=mg-nyc-brooklyn&q=Brooklyn%20walking%20tour">
+              <h3 class="font-semibold text-blue-900">Brooklyn Bridge & DUMBO — walking tour</h3>
+              <p class="text-sm text-gray-700 mt-2">Guida locale e spot foto iconici.</p>
+              <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+            </a>
+
+            <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
+               href="https://www.getyourguide.com/new-york-city-l59/?partner_id=HWU00MZ&cmp=mg-nyc-niagara&q=Niagara%20Falls%20day%20trip%20from%20New%20York">
+              <h3 class="font-semibold text-blue-900">Cascate del Niagara — tour in giornata</h3>
+              <p class="text-sm text-gray-700 mt-2">Bus/volo + tempo libero; opz. Maid of the Mist.</p>
+              <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+            </a>
+          </div>
+          <p class="text-xs text-gray-500 mt-2">Link tracciati: <code>partner_id=HWU00MZ</code> + <code>cmp</code> coerente per card.</p>
+        </section>
+
+        <!-- CIBO -->
         <section id="cibo">
           <h2 class="text-2xl font-bold text-blue-900 mb-3">Cosa mangiare & zone food</h2>
-          <div class="card p-5 text-gray-700 space-y-2">
-            <p><strong>Must</strong>: slice pizza, bagel & lox, pastrami sandwich, cheesecake, dumplings a Chinatown.</p>
-            <p><strong>Food halls</strong>: Chelsea Market, Time Out Market, Urbanspace Vanderbilt.</p>
+          <div class="card p-5 text-gray-700 space-y-3">
+            <p><strong>Must</strong>: bagel & lox, slice pizza, pastrami sandwich, cheesecake, ramen/k-bbq.</p>
+            <p><strong>Zone</strong>: <em>West Village</em> (bistrot), <em>Lower East Side</em> (delis), <em>Flushing</em> (asiatico), <em>Williamsburg</em> (nuova scena).</p>
+            <p class="text-sm text-gray-600">Mancia 18–22% nei ristoranti; POS la calcola automaticamente.</p>
           </div>
         </section>
 
+        <!-- BUDGET -->
         <section id="budget">
           <h2 class="text-2xl font-bold text-blue-900 mb-3">Budget medio (stima giornaliera a persona)</h2>
           <div class="card p-5 grid md:grid-cols-2 gap-4 text-gray-800">
-            <div class="flex justify-between"><span>Cibo</span><strong>€ 25–50</strong></div>
+            <div class="flex justify-between"><span>Cibo</span><strong>€ 30–55</strong></div>
             <div class="flex justify-between"><span>Trasporti</span><strong>€ 6–12</strong></div>
-            <div class="flex justify-between"><span>Attrazioni</span><strong>€ 20–40</strong></div>
-            <div class="flex justify-between"><span>Caffè/snack</span><strong>€ 4–10</strong></div>
+            <div class="flex justify-between"><span>Attrazioni</span><strong>€ 25–50</strong></div>
+            <div class="flex justify-between"><span>Caffè/snack</span><strong>€ 5–10</strong></div>
           </div>
-          <p class="text-xs text-gray-500 mt-2">Volo e hotel variano per stagione e anticipo. Per stime complete vedi l’articolo itinerario.</p>
+          <p class="text-xs text-gray-500 mt-2">Hotel/volo molto variabili per stagione/eventi.</p>
         </section>
 
+        <!-- LINK RAPIDI -->
         <section id="link">
           <h2 class="text-2xl font-bold text-blue-900 mb-3">Link rapidi</h2>
           <div class="card p-5 grid sm:grid-cols-2 gap-4">
-            <a href="/risultati.html?origin=MXP&destination=New%20York&start=2026-06-10&end=2026-06-15&adults=2&children=0"
-               class="block bg-blue-700 text-white text-center px-4 py-2 rounded hover:bg-blue-800">Giugno in città</a>
-            <a href="/risultati.html?origin=MXP&destination=New%20York&start=2026-10-05&end=2026-10-12&adults=2&children=0"
-               class="block bg-white border text-center px-4 py-2 rounded hover:bg-gray-50">Ottobre foliage</a>
+            <a href="/risultati.html?origin=MXP&destination=New%20York&start=2026-05-12&end=2026-05-19&adults=2&children=0"
+               class="block bg-blue-700 text-white text-center px-4 py-2 rounded hover:bg-blue-800">Voli + Hotel + Attività (mag/giu)</a>
+            <a href="/risultati.html?origin=MXP&destination=New%20York&start=2026-10-10&end=2026-10-17&adults=2&children=0"
+               class="block bg-white border text-center px-4 py-2 rounded hover:bg-gray-50">Voli + Hotel + Attività (ott)</a>
           </div>
+          <p class="text-xs text-gray-500 mt-2">Apriremo ricerche su portali partner; prenoti sui siti ufficiali.</p>
         </section>
 
+        <!-- MAPPA -->
         <section id="mappa">
           <h2 class="text-2xl font-bold text-blue-900 mb-3">Mappa (luoghi principali)</h2>
           <div class="rounded-2xl overflow-hidden shadow">
@@ -193,55 +275,51 @@
           </div>
         </section>
 
+        <!-- FAQ -->
         <section id="faq">
           <div class="card p-5">
             <h2 class="text-xl font-bold text-blue-900">FAQ</h2>
             <details class="mt-3">
-              <summary class="font-semibold cursor-pointer">Quanti giorni servono?</summary>
-              <p class="mt-2 text-gray-700">4–5 giorni per highlights; 6–7 per quartieri e musei con calma.</p>
+              <summary class="font-semibold cursor-pointer">Quale osservatorio scegliere?</summary>
+              <p class="mt-2 text-gray-700">Empire classico, Top of the Rock vista su Empire, SUMMIT esperienza immersiva.</p>
             </details>
             <details class="mt-3">
-              <summary class="font-semibold cursor-pointer">Serve il pass attrazioni?</summary>
-              <p class="mt-2 text-gray-700">Conviene solo se fai molti ingressi a pagamento in pochi giorni.</p>
+              <summary class="font-semibold cursor-pointer">Conviene un city pass?</summary>
+              <p class="mt-2 text-gray-700">Sì se pianifichi 2–3 attrazioni a pagamento al giorno (GoCity/CityPASS).</p>
             </details>
             <details class="mt-3">
-              <summary class="font-semibold cursor-pointer">Dove alloggiare per risparmiare?</summary>
-              <p class="mt-2 text-gray-700">LIC (Queens) o Downtown Brooklyn: metro rapida per Manhattan e prezzi migliori.</p>
+              <summary class="font-semibold cursor-pointer">Dove alloggiare con famiglia?</summary>
+              <p class="mt-2 text-gray-700">Upper West/East per tranquillità; Midtown per praticità ma più caro.</p>
             </details>
           </div>
         </section>
       </div>
     </div>
 
+    <!-- Cross-link finale -->
     <section class="mt-12">
       <h2 class="text-2xl font-bold text-blue-900 mb-4">Continua con i nostri articoli</h2>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <a href="/articoli/newyork-5-giorni-migliorato.html" class="block bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden transition">
-          <img src="/img/newyork.png" alt="New York 5 giorni — guida migliorata" class="w-full h-40 object-cover">
-          <div class="p-4">
-            <h3 class="font-semibold text-blue-900">New York in 5 giorni — guida migliorata</h3>
-            <p class="text-sm text-gray-600 mt-1">Timeline completa e costi reali.</p>
-          </div>
+        <a href="/articoli/new-york-7-giorni-migliorato.html" class="block bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden transition">
+          <img src="/img/nyc.png" alt="New York 7 giorni — guida migliorata" class="w-full h-40 object-cover" loading="lazy" decoding="async">
+          <div class="p-4"><h3 class="font-semibold text-blue-900">New York in 7 giorni — guida migliorata</h3><p class="text-sm text-gray-600 mt-1">Pass, skyline e quartieri.</p></div>
         </a>
         <a href="/articoli/parigi-5-giorni-migliorato.html" class="block bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden transition">
-          <img src="/img/parigi.png" alt="Parigi 5 giorni — guida migliorata" class="w-full h-40 object-cover">
-          <div class="p-4">
-            <h3 class="font-semibold text-blue-900">Parigi in 5 giorni — guida migliorata</h3>
-            <p class="text-sm text-gray-600 mt-1">Quartieri, timeline e crociera.</p>
-          </div>
+          <img src="/img/parigi.png" alt="Parigi 5 giorni — guida migliorata" class="w-full h-40 object-cover" loading="lazy" decoding="async">
+          <div class="p-4"><h3 class="font-semibold text-blue-900">Parigi in 5 giorni — guida migliorata</h3><p class="text-sm text-gray-600 mt-1">Quartieri, timeline e crociera.</p></div>
         </a>
-        <a href="/articoli/bali-con-bambini-migliorato.html" class="block bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden transition">
-          <img src="/img/bali.png" alt="Bali con bambini — guida migliorata" class="w-full h-40 object-cover">
-          <div class="p-4">
-            <h3 class="font-semibold text-blue-900">Bali con bambini — guida migliorata</h3>
-            <p class="text-sm text-gray-600 mt-1">Zone family, spiagge e attività.</p>
-          </div>
+        <a href="/articoli/tokyo-7-giorni-migliorato.html" class="block bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden transition">
+          <img src="/mini-guide/assets/q-shibuya.webp" alt="Tokyo 7 giorni — guida migliorata" class="w-full h-40 object-cover" loading="lazy" decoding="async">
+          <div class="p-4"><h3 class="font-semibold text-blue-900">Tokyo in 7 giorni — guida migliorata</h3><p class="text-sm text-gray-600 mt-1">Timeline completa e costi reali.</p></div>
         </a>
       </div>
     </section>
   </main>
 
+  <!-- FOOTER -->
   <div id="include-footer"></div>
+
+  <!-- Partials loader + subid -->
   <script>
     const HEADER_PATH="/partials/header.html";
     const FOOTER_PATH="/partials/footer.html";
@@ -253,7 +331,7 @@
       }catch(e){console.error("Errore caricando i partials:",e);}
     }
     if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",loadPartials);} else {loadPartials();}
-    (function(){ window.GG_SUBID = "mini-guida-nyc"; })();
+    (function(){ window.GG_SUBID = "mini-guida-new-york"; })();
   </script>
 </body>
 </html>
