@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Bali – Mini-guida completa | GlobalGlide360</title>
-  <meta name="description" content="Mini-guida di Bali: quando andare, dove dormire, top attrazioni con immagini, trasporti, cibo e attività prenotabili.">
+  <meta name="description" content="Mini-guida di Bali: quando andare, dove dormire, top 12 attrazioni con immagini, trasporti, cibo e attività prenotabili.">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
   <style>
     .card{background:#fff;border-radius:1rem;box-shadow:0 10px 16px -12px rgba(0,0,0,.25)}
@@ -14,7 +14,7 @@
     .ratio-3x2>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   </style>
 
-  <!-- JSON-LD base -->
+  <!-- JSON-LD base (uguale a Tokyo v3, adattato a Bali) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -39,8 +39,11 @@
   </script>
 </head>
 <body class="bg-gray-50 text-gray-800">
+  <!-- HEADER (hero identico) -->
   <header class="relative">
-    <div class="ratio-16x9"><img src="/img/bali/hero.webp" alt="Bali — risaie a terrazze" loading="eager"></div>
+    <div class="ratio-16x9">
+      <img src="/img/bali/hero.webp" alt="Bali — risaie a terrazze" loading="eager">
+    </div>
     <div class="absolute inset-0 bg-black bg-opacity-30 flex items-end">
       <div class="container mx-auto px-4 pb-6">
         <h1 class="text-white text-3xl md:text-5xl font-extrabold">Bali — Mini-guida</h1>
@@ -50,13 +53,13 @@
 
   <main class="container mx-auto px-4 py-10">
 
-    <!-- Quando andare -->
+    <!-- QUANDO ANDARE (ID e struttura uguali) -->
     <section id="quando-andare" class="mb-10">
       <h2 class="text-2xl font-bold text-blue-900 mb-3">Quando andare</h2>
       <p class="text-gray-700">Stagione secca: maggio–settembre (ideale per mare e trekking). Stagione umida: novembre–marzo (piogge, ma prezzi più bassi). Aprile e ottobre sono mesi di spalla spesso favorevoli.</p>
     </section>
 
-    <!-- Dove dormire -->
+    <!-- DOVE DORMIRE -->
     <section id="dove-dormire" class="mb-10">
       <h2 class="text-2xl font-bold text-blue-900 mb-3">Dove dormire</h2>
       <ul class="list-disc list-inside text-gray-700 space-y-1">
@@ -66,7 +69,7 @@
       </ul>
     </section>
 
-    <!-- Top 12 con immagini -->
+    <!-- TOP 12 (griglia identica a Tokyo v3) -->
     <section id="top-12" class="mb-12">
       <h2 class="text-2xl font-bold text-blue-900 mb-5">Top 12 da non perdere</h2>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -86,54 +89,95 @@
       <p class="text-xs text-gray-500 mt-3">Carica immagini WebP ~1600×1067 (≤180 KB) con i nomi indicati.</p>
     </section>
 
-    <!-- Trasporti -->
+    <!-- TRASPORTI -->
     <section id="trasporti" class="mb-10">
       <h2 class="text-2xl font-bold text-blue-900 mb-3">Trasporti</h2>
       <p class="text-gray-700">Driver privato/ride-hailing (Grab/Gojek) per spostamenti; scooter per brevi tragitti (attenzione sicurezza). Traghetto/veloci per Nusa Penida/Lembongan.</p>
     </section>
 
-    <!-- Cibo -->
+    <!-- CIBO -->
     <section id="cibo" class="mb-10">
       <h2 class="text-2xl font-bold text-blue-900 mb-3">Cibo e ristoranti</h2>
       <p class="text-gray-700">Piatti tipici: nasi goreng, mie goreng, babi guling, sate. Ottime opzioni veg-friendly a Ubud e Canggu.</p>
     </section>
 
-    <!-- Attività prenotabili (shortlink gyg.link) -->
+    <!-- ATTIVITÀ (stessa struttura/attributi di Tokyo v3, con shortlink placeholder) -->
     <section id="attivita" class="mb-12">
       <h2 class="text-2xl font-bold text-blue-900 mb-5">Attività consigliate (prenota ora)</h2>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Sostituisci gli href con i tuoi shortlink gyg.link -->
-        <a class="card overflow-hidden group hover:shadow-lg transition block" target="_blank" rel="sponsored noopener noreferrer nofollow" data-gyg href="https://gyg.link/BAL-PENIDA-DAY">
+        <a class="card overflow-hidden group hover:shadow-lg transition block"
+           target="_blank" rel="sponsored noopener noreferrer nofollow" data-gyg
+           href="https://gyg.link/BAL-PENIDA-DAY">
           <div class="ratio-3x2"><img src="/img/bali/penida-kelingking.webp" alt="Nusa Penida — tour in giornata" loading="lazy"></div>
-          <div class="p-5"><h3 class="font-semibold text-blue-900">Nusa Penida — tour in giornata</h3><p class="text-sm text-gray-700 mt-2">West/East highlights con trasporti e pranzo.</p></div>
+          <div class="p-5">
+            <h3 class="font-semibold text-blue-900">Nusa Penida — tour in giornata</h3>
+            <p class="text-sm text-gray-700 mt-2">West/East highlights con trasporti e pranzo.</p>
+            <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+          </div>
         </a>
-        <a class="card overflow-hidden group hover:shadow-lg transition block" target="_blank" rel="sponsored noopener noreferrer nofollow" data-gyg href="https://gyg.link/BAL-BATUR-SUNRISE">
+
+        <a class="card overflow-hidden group hover:shadow-lg transition block"
+           target="_blank" rel="sponsored noopener noreferrer nofollow" data-gyg
+           href="https://gyg.link/BAL-BATUR-SUNRISE">
           <div class="ratio-3x2"><img src="/img/bali/mt-batur.webp" alt="Monte Batur — trekking all’alba" loading="lazy"></div>
-          <div class="p-5"><h3 class="font-semibold text-blue-900">Monte Batur — trekking all’alba</h3><p class="text-sm text-gray-700 mt-2">Guida locale + colazione post-vetta.</p></div>
+          <div class="p-5">
+            <h3 class="font-semibold text-blue-900">Monte Batur — trekking all’alba</h3>
+            <p class="text-sm text-gray-700 mt-2">Guida locale + colazione post-vetta.</p>
+            <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+          </div>
         </a>
-        <a class="card overflow-hidden group hover:shadow-lg transition block" target="_blank" rel="sponsored noopener noreferrer nofollow" data-gyg href="https://gyg.link/BAL-UBUD-CLASSICS">
+
+        <a class="card overflow-hidden group hover:shadow-lg transition block"
+           target="_blank" rel="sponsored noopener noreferrer nofollow" data-gyg
+           href="https://gyg.link/BAL-UBUD-CLASSICS">
           <div class="ratio-3x2"><img src="/img/bali/tegalalang.webp" alt="Ubud classico: risaie, cascate, templi" loading="lazy"></div>
-          <div class="p-5"><h3 class="font-semibold text-blue-900">Ubud classico — risaie, cascate, templi</h3><p class="text-sm text-gray-700 mt-2">Itinerario personalizzabile con driver/guida.</p></div>
+          <div class="p-5">
+            <h3 class="font-semibold text-blue-900">Ubud classico — risaie, cascate, templi</h3>
+            <p class="text-sm text-gray-700 mt-2">Itinerario personalizzabile con driver/guida.</p>
+            <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+          </div>
         </a>
-        <a class="card overflow-hidden group hover:shadow-lg transition block" target="_blank" rel="sponsored noopener noreferrer nofollow" data-gyg href="https://gyg.link/BAL-LEMPUYANG-TEMPLE">
+
+        <a class="card overflow-hidden group hover:shadow-lg transition block"
+           target="_blank" rel="sponsored noopener noreferrer nofollow" data-gyg
+           href="https://gyg.link/BAL-LEMPUYANG-TEMPLE">
           <div class="ratio-3x2"><img src="/img/bali/lempuyang-gates.webp" alt="Lempuyang & Tirta Gangga" loading="lazy"></div>
-          <div class="p-5"><h3 class="font-semibold text-blue-900">Lempuyang & Tirta Gangga</h3><p class="text-sm text-gray-700 mt-2">Gates of Heaven + palazzo sull’acqua.</p></div>
+          <div class="p-5">
+            <h3 class="font-semibold text-blue-900">Lempuyang & Tirta Gangga</h3>
+            <p class="text-sm text-gray-700 mt-2">Gates of Heaven + palazzo sull’acqua.</p>
+            <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+          </div>
         </a>
-        <a class="card overflow-hidden group hover:shadow-lg transition block" target="_blank" rel="sponsored noopener noreferrer nofollow" data-gyg href="https://gyg.link/BAL-SNORKELING-PENIDA">
+
+        <a class="card overflow-hidden group hover:shadow-lg transition block"
+           target="_blank" rel="sponsored noopener noreferrer nofollow" data-gyg
+           href="https://gyg.link/BAL-SNORKELING-PENIDA">
           <div class="ratio-3x2"><img src="/img/bali/snorkeling.webp" alt="Snorkeling Penida/Lembongan" loading="lazy"></div>
-          <div class="p-5"><h3 class="font-semibold text-blue-900">Snorkeling Penida/Lembongan</h3><p class="text-sm text-gray-700 mt-2">Manta Point, Crystal Bay o Mangrove.</p></div>
+          <div class="p-5">
+            <h3 class="font-semibold text-blue-900">Snorkeling Penida/Lembongan</h3>
+            <p class="text-sm text-gray-700 mt-2">Manta Point, Crystal Bay o Mangrove.</p>
+            <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+          </div>
         </a>
-        <a class="card overflow-hidden group hover:shadow-lg transition block" target="_blank" rel="sponsored noopener noreferrer nofollow" data-gyg href="https://gyg.link/BAL-ULUWATU-KECAK">
+
+        <a class="card overflow-hidden group hover:shadow-lg transition block"
+           target="_blank" rel="sponsored noopener noreferrer nofollow" data-gyg
+           href="https://gyg.link/BAL-ULUWATU-KECAK">
           <div class="ratio-3x2"><img src="/img/bali/uluwatu-temple.webp" alt="Uluwatu — Kecak al tramonto" loading="lazy"></div>
-          <div class="p-5"><h3 class="font-semibold text-blue-900">Uluwatu — Kecak al tramonto</h3><p class="text-sm text-gray-700 mt-2">Danza tradizionale sullo sfondo dell’oceano.</p></div>
+          <div class="p-5">
+            <h3 class="font-semibold text-blue-900">Uluwatu — Kecak al tramonto</h3>
+            <p class="text-sm text-gray-700 mt-2">Danza tradizionale sullo sfondo dell’oceano.</p>
+            <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+          </div>
         </a>
       </div>
-      <p class="text-xs text-gray-500 mt-4">Sostituisci i placeholder `gyg.link/…` con i tuoi shortlink ufficiali. Mantieni WebP leggere.</p>
+      <p class="text-xs text-gray-500 mt-4">Sostituisci i placeholder `gyg.link/…` con i tuoi shortlink ufficiali quando pronti.</p>
     </section>
 
   </main>
 
-  <!-- Script guardia anti-riscrittura -->
+  <!-- SCRIPT GUARDIA (identico a Tokyo v3) -->
   <script>
   (function(){
     document.addEventListener('click', function(e){
