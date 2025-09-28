@@ -45,23 +45,28 @@
   <div id="include-header"></div>
 
   <!-- HERO -->
-  <section class="relative h-80 md:h-96">
-    <img
-      src="/mini-guide/assets/barcellona-hero-2.webp"
-      srcset="/mini-guide/assets/barcellona-hero-2-800.webp 800w, /mini-guide/assets/barcellona-hero-2.webp 1200w"
-      sizes="100vw"
-      alt="Barcellona: vista della Sagrada Família e del centro città"
-      class="absolute inset-0 w-full h-full object-cover"
-      loading="eager" decoding="async">
-    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10"></div>
-    <div class="relative container mx-auto px-4 h-full flex flex-col justify-end pb-8">
-      <div class="glass inline-flex items-center space-x-2 text-white text-xs md:text-sm px-3 py-1 rounded-full mb-3">
-        <span>🏙️ Città</span><span>•</span><span>🌊 Mare</span><span>•</span><span>🎨 Gaudí & tapas</span>
-      </div>
-      <h1 class="text-white text-3xl md:text-5xl font-extrabold drop-shadow">Barcellona — Mini-guida</h1>
-      <p class="text-white/90 text-base md:text-xl mt-2 max-w-3xl">Quando andare, come arrivare, dove dormire, cosa vedere e mangiare, come muoversi, budget e link rapidi.</p>
+<section class="relative h-80 md:h-96">
+  <img
+    src="/mini-guide/assets/barcelona-hero-2.webp"
+    srcset="/mini-guide/assets/barcelona-hero-2-800.webp 800w, /mini-guide/assets/barcelona-hero-2.webp 1200w"
+    sizes="100vw"
+    alt="Barcellona: skyline, mare e capolavori di Gaudí"
+    class="absolute inset-0 w-full h-full object-cover"
+    loading="eager"
+    decoding="async"
+  >
+  <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10"></div>
+  <div class="relative container mx-auto px-4 h-full flex flex-col justify-end pb-8">
+    <div class="glass inline-flex items-center space-x-2 text-white text-xs md:text-sm px-3 py-1 rounded-full mb-3">
+      <span>🏛️ Gaudí</span><span>•</span><span>🏖️ Mare</span><span>•</span><span>🍷 Tapas</span>
     </div>
-  </section>
+    <h1 class="text-white text-3xl md:text-5xl font-extrabold drop-shadow">Barcellona — Mini-guida</h1>
+    <p class="text-white/90 text-base md:text-xl mt-2 max-w-3xl">
+      Quando andare, come arrivare, dove dormire, cosa vedere e mangiare, come muoversi, budget e link rapidi.
+    </p>
+  </div>
+</section>
+
 
   <main class="container mx-auto px-4 py-10">
     <!-- BREADCRUMB -->
@@ -168,70 +173,134 @@
         </section>
 
         <!-- TOP 10 ATTRAZIONI -->
-        <section id="top10">
-          <h2 class="text-2xl font-bold text-blue-900 mb-3">Top 10 attrazioni</h2>
-          <div class="grid md:grid-cols-2 gap-6">
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">Sagrada Família</h3><p class="text-gray-700 text-sm mt-2">Capolavoro di Gaudí (prenota orario).</p></div>
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">Park Güell</h3><p class="text-gray-700 text-sm mt-2">Mosaici e vista sulla città.</p></div>
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">Casa Batlló & La Pedrera</h3><p class="text-gray-700 text-sm mt-2">Architettura modernista su Passeig de Gràcia.</p></div>
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">Barri Gòtic</h3><p class="text-gray-700 text-sm mt-2">Cattedrale e vicoli medievali.</p></div>
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">La Rambla & Boqueria</h3><p class="text-gray-700 text-sm mt-2">Mercato storico e passeggiata iconica.</p></div>
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">Montjuïc</h3><p class="text-gray-700 text-sm mt-2">Castello, fontane e musei (MNAC/Miró).</p></div>
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">El Born & Ciutadella</h3><p class="text-gray-700 text-sm mt-2">Parco e musei tra cui il Picasso.</p></div>
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">Camp Nou/Spotify Camp Nou</h3><p class="text-gray-700 text-sm mt-2">Tour stadio e museo del Barça.</p></div>
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">Tibidabo & Bunkers del Carmel</h3><p class="text-gray-700 text-sm mt-2">Punti panoramici sulla città.</p></div>
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">Spiagge di Barceloneta/Mar Bella</h3><p class="text-gray-700 text-sm mt-2">Mare e chiringuitos.</p></div>
-          </div>
-        </section>
+        <!-- TOP 10 ATTRAZIONI (Barcellona, con immagini) -->
+<section id="top10">
+  <h2 class="text-2xl font-bold text-blue-900 mb-3">Top 10 attrazioni</h2>
+  <div class="grid md:grid-cols-2 gap-6">
+    <div class="card overflow-hidden">
+      <img src="/mini-guide/assets/bcn-sagrada-familia.webp" alt="Sagrada Família, interno e facciate" class="w-full h-40 object-cover" loading="lazy" decoding="async">
+      <div class="p-5"><h3 class="font-semibold text-blue-900">Sagrada Família</h3><p class="text-gray-700 text-sm mt-2">Capolavoro di Gaudí, ingresso a orario consigliato.</p></div>
+    </div>
+    <div class="card overflow-hidden">
+      <img src="/mini-guide/assets/bcn-park-guell.webp" alt="Park Güell: mosaici e terrazze" class="w-full h-40 object-cover" loading="lazy" decoding="async">
+      <div class="p-5"><h3 class="font-semibold text-blue-900">Park Güell</h3><p class="text-gray-700 text-sm mt-2">Mosaici e viste sulla città; zona monumentale a pagamento.</p></div>
+    </div>
+    <div class="card overflow-hidden">
+      <img src="/mini-guide/assets/bcn-casa-batllo.webp" alt="Casa Batlló di Antoni Gaudí" class="w-full h-40 object-cover" loading="lazy" decoding="async">
+      <div class="p-5"><h3 class="font-semibold text-blue-900">Casa Batlló</h3><p class="text-gray-700 text-sm mt-2">Immersiva, con audioguida/tablet AR.</p></div>
+    </div>
+    <div class="card overflow-hidden">
+      <img src="/mini-guide/assets/bcn-la-pedrera.webp" alt="Casa Milà (La Pedrera) e i camini sul tetto" class="w-full h-40 object-cover" loading="lazy" decoding="async">
+      <div class="p-5"><h3 class="font-semibold text-blue-900">La Pedrera (Casa Milà)</h3><p class="text-gray-700 text-sm mt-2">Tetto scenografico; disponibile visita notturna.</p></div>
+    </div>
+    <div class="card overflow-hidden">
+      <img src="/mini-guide/assets/bcn-gothic-quarter.webp" alt="Quartiere Gotico: vicoli e piazze storiche" class="w-full h-40 object-cover" loading="lazy" decoding="async">
+      <div class="p-5"><h3 class="font-semibold text-blue-900">Quartiere Gotico</h3><p class="text-gray-700 text-sm mt-2">Vicoli medievali, Cattedrale e Plaça del Rei.</p></div>
+    </div>
+    <div class="card overflow-hidden">
+      <img src="/mini-guide/assets/bcn-montjuic.webp" alt="Montjuïc: funivia e castello" class="w-full h-40 object-cover" loading="lazy" decoding="async">
+      <div class="p-5"><h3 class="font-semibold text-blue-900">Montjuïc & Castello</h3><p class="text-gray-700 text-sm mt-2">Salita in funivia, viste sul porto e musei.</p></div>
+    </div>
+    <div class="card overflow-hidden">
+      <img src="/mini-guide/assets/bcn-santa-monica-uh-no.webp" alt="Barceloneta e lungomare" class="w-full h-40 object-cover" loading="lazy" decoding="async">
+      <div class="p-5"><h3 class="font-semibold text-blue-900">Barceloneta & lungomare</h3><p class="text-gray-700 text-sm mt-2">Spiaggia urbana, promenade e ristorantini.</p></div>
+    </div>
+    <div class="card overflow-hidden">
+      <img src="/mini-guide/assets/bcn-palau-musica.webp" alt="Palau de la Música Catalana, interno" class="w-full h-40 object-cover" loading="lazy" decoding="async">
+      <div class="p-5"><h3 class="font-semibold text-blue-900">Palau de la Música</h3><p class="text-gray-700 text-sm mt-2">Modernista UNESCO; tour o concerto.</p></div>
+    </div>
+    <div class="card overflow-hidden">
+      <img src="/mini-guide/assets/bcn-montserrat.webp" alt="Montserrat: montagne e monastero" class="w-full h-40 object-cover" loading="lazy" decoding="async">
+      <div class="p-5"><h3 class="font-semibold text-blue-900">Escursione a Montserrat</h3><p class="text-gray-700 text-sm mt-2">Monastero, creste rocciose e funicolari.</p></div>
+    </div>
+    <div class="card overflow-hidden">
+      <img src="/mini-guide/assets/bcn-flamenco.webp" alt="Flamenco a La Rambla - Tablao Cordobés" class="w-full h-40 object-cover" loading="lazy" decoding="async">
+      <div class="p-5"><h3 class="font-semibold text-blue-900">Spettacolo Flamenco</h3><p class="text-gray-700 text-sm mt-2">Tablao tradizionale su La Rambla.</p></div>
+    </div>
+  </div>
+</section>
 
-        <!-- ATTIVITÀ CONSIGLIATE (GetYourGuide) -->
-        <section id="attivita">
-          <h2 class="text-2xl font-bold text-blue-900 mb-3">Attività consigliate (prenota ora)</h2>
-          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
-               href="https://www.getyourguide.com/barcelona-l45/?partner_id=HWU00MZ&cmp=mg-barcellona-sagrada&q=Sagrada%20Familia%20ticket">
-              <h3 class="font-semibold text-blue-900">Sagrada Família — biglietto</h3>
-              <p class="text-sm text-gray-700 mt-2">Ingresso a orario; opz. torri/guida.</p>
-              <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
-            </a>
 
-            <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
-               href="https://www.getyourguide.com/barcelona-l45/?partner_id=HWU00MZ&cmp=mg-barcellona-parkguell&q=Park%20Guell%20ticket">
-              <h3 class="font-semibold text-blue-900">Park Güell — ingresso</h3>
-              <p class="text-sm text-gray-700 mt-2">Area Monumentale con slot prenotato.</p>
-              <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
-            </a>
+       <!-- ATTIVITÀ CONSIGLIATE (GetYourGuide - Barcellona, deeplink diretti) -->
+<section id="attivita">
+  <h2 class="text-2xl font-bold text-blue-900 mb-3">Attività consigliate (prenota ora)</h2>
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-            <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
-               href="https://www.getyourguide.com/barcelona-l45/?partner_id=HWU00MZ&cmp=mg-barcellona-gaudi&q=Gaudi%20walking%20tour%20Casa%20Batllo%20La%20Pedrera">
-              <h3 class="font-semibold text-blue-900">Gaudí highlights — walking tour</h3>
-              <p class="text-sm text-gray-700 mt-2">Casa Batlló, La Pedrera e Passeig de Gràcia.</p>
-              <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
-            </a>
+    <!-- Sagrada Família: biglietto con audio -->
+    <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
+       href="https://www.getyourguide.com/barcelona-l45/sagrada-familia-skip-the-line-ticket-t50027/?partner_id=HWU00MZ&cmp=mg-bcn-sagrada">
+      <h3 class="font-semibold text-blue-900">Sagrada Família — biglietto con audioguida</h3>
+      <p class="text-sm text-gray-700 mt-2">Ingresso a orario, audioguida inclusa.</p>
+      <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+    </a>
 
-            <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
-               href="https://www.getyourguide.com/barcelona-l45/?partner_id=HWU00MZ&cmp=mg-barcellona-bike&q=Barcelona%20bike%20tour">
-              <h3 class="font-semibold text-blue-900">Barcellona — bike tour</h3>
-              <p class="text-sm text-gray-700 mt-2">Gotic, Born, Barceloneta in mezza giornata.</p>
-              <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
-            </a>
+    <!-- Park Güell: ingresso a orario -->
+    <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
+       href="https://www.getyourguide.com/barcelona-l45/skip-the-line-park-guell-entrance-ticket-t53791/?partner_id=HWU00MZ&cmp=mg-bcn-parkguell">
+      <h3 class="font-semibold text-blue-900">Park Güell — ingresso a orario</h3>
+      <p class="text-sm text-gray-700 mt-2">Zona monumentale e terrazza dei mosaici.</p>
+      <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+    </a>
 
-            <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
-               href="https://www.getyourguide.com/barcelona-l45/?partner_id=HWU00MZ&cmp=mg-barcellona-montserrat&q=Montserrat%20day%20trip%20from%20Barcelona">
-              <h3 class="font-semibold text-blue-900">Montserrat — escursione in giornata</h3>
-              <p class="text-sm text-gray-700 mt-2">Monastero, funicolari e trekking panoramici.</p>
-              <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
-            </a>
+    <!-- Casa Batlló: 10D Experience -->
+    <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
+       href="https://www.getyourguide.com/barcelona-l45/barcelona-casa-batllo-10d-experience-t398519/?partner_id=HWU00MZ&cmp=mg-bcn-batllo">
+      <h3 class="font-semibold text-blue-900">Casa Batlló — 10D Experience</h3>
+      <p class="text-sm text-gray-700 mt-2">Visita immersiva con audioguida/tablet.</p>
+      <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+    </a>
 
-            <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
-               href="https://www.getyourguide.com/barcelona-l45/?partner_id=HWU00MZ&cmp=mg-barcellona-tapas&q=Barcelona%20tapas%20flamenco%20tour">
-              <h3 class="font-semibold text-blue-900">Tapas & Flamenco — serata</h3>
-              <p class="text-sm text-gray-700 mt-2">Spettacolo + degustazioni in quartieri storici.</p>
-              <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
-            </a>
-          </div>
-          <p class="text-xs text-gray-500 mt-2">Link tracciati: <code>partner_id=HWU00MZ</code> e <code>cmp</code> coerente per card.</p>
-        </section>
+    <!-- La Pedrera: ticket + audioguida -->
+    <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
+       href="https://www.getyourguide.com/en-gb/casa-mila-la-pedrera-l3038/barcelona-la-pedrera-casa-mila-ticket-audio-guide-option-barcelona-la-pedrera-casa-mila-ticket-audio-guide-option-t913286/?partner_id=HWU00MZ&cmp=mg-bcn-pedrera">
+      <h3 class="font-semibold text-blue-900">La Pedrera — biglietto con audioguida</h3>
+      <p class="text-sm text-gray-700 mt-2">Salta la coda e visita il rooftop iconico.</p>
+      <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+    </a>
+
+    <!-- Montjuïc Cable Car: A/R -->
+    <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
+       href="https://www.getyourguide.com/barcelona-l45/barcelona-montjuic-cable-car-roundtrip-ticket-t23477/?partner_id=HWU00MZ&cmp=mg-bcn-montjuic">
+      <h3 class="font-semibold text-blue-900">Funivia di Montjuïc — biglietto A/R</h3>
+      <p class="text-sm text-gray-700 mt-2">Salita panoramica fino al Castello.</p>
+      <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+    </a>
+
+    <!-- Escursione a Montserrat -->
+    <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
+       href="https://www.getyourguide.com/barcelona-l45/from-barcelona-montserrat-day-trip-with-optional-tickets-t243552/?partner_id=HWU00MZ&cmp=mg-bcn-montserrat">
+      <h3 class="font-semibold text-blue-900">Montserrat — gita in giornata</h3>
+      <p class="text-sm text-gray-700 mt-2">Abbazia, creste rocciose e cremagliera.</p>
+      <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+    </a>
+
+    <!-- Quartiere Gotico: walking tour -->
+    <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
+       href="https://www.getyourguide.com/barcelona-l45/barcelona-old-town-and-gothic-quarter-walking-tour-t61664/?partner_id=HWU00MZ&cmp=mg-bcn-gotico">
+      <h3 class="font-semibold text-blue-900">Quartiere Gotico — tour a piedi</h3>
+      <p class="text-sm text-gray-700 mt-2">Cattedrale, Ramblas e piazze medievali.</p>
+      <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+    </a>
+
+    <!-- Flamenco Tablao Cordobés (La Rambla) -->
+    <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
+       href="https://www.getyourguide.com/barcelona-l45/flamenco-show-at-tablao-flamenco-cordobes-barcelona-t67263/?partner_id=HWU00MZ&cmp=mg-bcn-flamenco">
+      <h3 class="font-semibold text-blue-900">Flamenco — Tablao Cordobés</h3>
+      <p class="text-sm text-gray-700 mt-2">Spettacolo con drink; opzioni tapas/cena.</p>
+      <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+    </a>
+
+    <!-- Crociera al tramonto (Port Vell) -->
+    <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
+       href="https://www.getyourguide.com/barcelona-l45/2-hour-sunset-sailing-tour-of-barcelona-from-port-vell-t108412/?partner_id=HWU00MZ&cmp=mg-bcn-sunset-sail">
+      <h3 class="font-semibold text-blue-900">Crociera al tramonto — Port Vell</h3>
+      <p class="text-sm text-gray-700 mt-2">Open bar leggero e skyline dal mare.</p>
+      <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+    </a>
+
+  </div>
+  <p class="text-xs text-gray-500 mt-2">Link tracciati con <code>partner_id=HWU00MZ</code> e <code>cmp</code> univoco per card.</p>
+</section>
 
         <!-- CIBO -->
         <section id="cibo">
