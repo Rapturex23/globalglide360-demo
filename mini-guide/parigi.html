@@ -44,24 +44,25 @@
   <!-- HEADER -->
   <div id="include-header"></div>
 
-  <!-- HERO -->
-  <section class="relative h-80 md:h-96">
-    <img
-      src="/mini-guide/assets/parigi-hero-2.webp"
-      srcset="/mini-guide/assets/parigi-hero-2-800.webp 800w, /mini-guide/assets/parigi-hero-2.webp 1200w"
-      sizes="100vw"
-      alt="Parigi al tramonto con la Torre Eiffel e la Senna"
-      class="absolute inset-0 w-full h-full object-cover"
-      loading="eager" decoding="async">
-    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10"></div>
-    <div class="relative container mx-auto px-4 h-full flex flex-col justify-end pb-8">
-      <div class="glass inline-flex items-center space-x-2 text-white text-xs md:text-sm px-3 py-1 rounded-full mb-3">
-        <span>🏙️ Città</span><span>•</span><span>🚇 Metro-friendly</span><span>•</span><span>🥐 Arte & cucina</span>
-      </div>
-      <h1 class="text-white text-3xl md:text-5xl font-extrabold drop-shadow">Parigi — Mini-guida</h1>
-      <p class="text-white/90 text-base md:text-xl mt-2 max-w-3xl">Quando andare, come arrivare, dove dormire, cosa vedere e mangiare, come muoversi, budget e link rapidi.</p>
+ <!-- HERO -->
+<section class="relative h-80 md:h-96">
+  <img
+    src="/mini-guide/assets/paris-hero-2.webp"
+    srcset="/mini-guide/assets/paris-hero-2-800.webp 800w, /mini-guide/assets/paris-hero-2.webp 1200w"
+    sizes="100vw"
+    alt="Parigi: Torre Eiffel e Senna al tramonto"
+    class="absolute inset-0 w-full h-full object-cover"
+    loading="eager" decoding="async">
+  <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10"></div>
+  <div class="relative container mx-auto px-4 h-full flex flex-col justify-end pb-8">
+    <div class="glass inline-flex items-center space-x-2 text-white text-xs md:text-sm px-3 py-1 rounded-full mb-3">
+      <span>🗼 Icone</span><span>•</span><span>🖼️ Musei</span><span>•</span><span>🥐 Bistrot</span>
     </div>
-  </section>
+    <h1 class="text-white text-3xl md:text-5xl font-extrabold drop-shadow">Parigi — Mini-guida</h1>
+    <p class="text-white/90 text-base md:text-xl mt-2 max-w-3xl">Quando andare, come arrivare, dove dormire, cosa vedere e mangiare, come muoversi, budget e link rapidi.</p>
+  </div>
+</section>
+
 
   <main class="container mx-auto px-4 py-10">
     <!-- BREADCRUMB -->
@@ -167,71 +168,122 @@
           </div>
         </section>
 
-        <!-- TOP 10 ATTRAZIONI -->
-        <section id="top10">
-          <h2 class="text-2xl font-bold text-blue-900 mb-3">Top 10 attrazioni</h2>
-          <div class="grid md:grid-cols-2 gap-6">
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">Torre Eiffel</h3><p class="text-gray-700 text-sm mt-2">Icona di Parigi: meglio al tramonto/notte.</p></div>
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">Louvre</h3><p class="text-gray-700 text-sm mt-2">Monna Lisa, Grande Galleria, Piramide.</p></div>
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">Cattedrale di Notre-Dame</h3><p class="text-gray-700 text-sm mt-2">Île de la Cité; area circostante già visitabile.</p></div>
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">Montmartre & Sacré-Cœur</h3><p class="text-gray-700 text-sm mt-2">Quartiere artistico e panorami.</p></div>
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">Musée d’Orsay</h3><p class="text-gray-700 text-sm mt-2">Impressionisti nella ex stazione.</p></div>
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">Arco di Trionfo & Champs-Élysées</h3><p class="text-gray-700 text-sm mt-2">Vista dall’alto spettacolare.</p></div>
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">Sainte-Chapelle</h3><p class="text-gray-700 text-sm mt-2">Vetrate medievali mozzafiato.</p></div>
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">Reggia di Versailles</h3><p class="text-gray-700 text-sm mt-2">Giornata tra palazzo e giardini.</p></div>
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">Quartiere Latino</h3><p class="text-gray-700 text-sm mt-2">Atmosfera universitaria, librerie.</p></div>
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">Crociera sulla Senna</h3><p class="text-gray-700 text-sm mt-2">Punti salienti in 1h comoda.</p></div>
-          </div>
-        </section>
+       <!-- TOP 10 ATTRAZIONI (Parigi, con immagini) -->
+<section id="top10">
+  <h2 class="text-2xl font-bold text-blue-900 mb-3">Top 10 attrazioni</h2>
+  <div class="grid md:grid-cols-2 gap-6">
 
-        <!-- ATTIVITÀ (GetYourGuide, schema con q= + partner_id + cmp) -->
-        <section id="attivita">
-          <h2 class="text-2xl font-bold text-blue-900 mb-3">Attività consigliate (prenota ora)</h2>
-          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
-               href="https://www.getyourguide.com/paris-l16/?partner_id=HWU00MZ&cmp=mg-parigi-eiffel&q=Eiffel%20Tower%20ticket">
-              <h3 class="font-semibold text-blue-900">Torre Eiffel — biglietto</h3>
-              <p class="text-sm text-gray-700 mt-2">Accesso con o senza ascensore; opzione summit.</p>
-              <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
-            </a>
+    <div class="card overflow-hidden">
+      <img src="/mini-guide/assets/paris-eiffel.webp" alt="Torre Eiffel e Champ de Mars" class="w-full h-40 object-cover" loading="lazy" decoding="async">
+      <div class="p-5"><h3 class="font-semibold text-blue-900">Torre Eiffel</h3><p class="text-gray-700 text-sm mt-2">Secondo piano o Summit, prenota in anticipo.</p></div>
+    </div>
 
-            <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
-               href="https://www.getyourguide.com/paris-l16/?partner_id=HWU00MZ&cmp=mg-parigi-louvre&q=Louvre%20timed%20entry">
-              <h3 class="font-semibold text-blue-900">Louvre — ingresso a orario</h3>
-              <p class="text-sm text-gray-700 mt-2">Salta-coda con fascia oraria riservata.</p>
-              <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
-            </a>
+    <div class="card overflow-hidden">
+      <img src="/mini-guide/assets/paris-louvre.webp" alt="Museo del Louvre, piramide e cortile" class="w-full h-40 object-cover" loading="lazy" decoding="async">
+      <div class="p-5"><h3 class="font-semibold text-blue-900">Louvre</h3><p class="text-gray-700 text-sm mt-2">Ingresso a orario, capolavori imperdibili.</p></div>
+    </div>
 
-            <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
-               href="https://www.getyourguide.com/paris-l16/?partner_id=HWU00MZ&cmp=mg-parigi-senna&q=Seine%20river%20cruise">
-              <h3 class="font-semibold text-blue-900">Crociera sulla Senna</h3>
-              <p class="text-sm text-gray-700 mt-2">1h con commento; opzione serale.</p>
-              <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
-            </a>
+    <div class="card overflow-hidden">
+      <img src="/mini-guide/assets/paris-seine-cruise.webp" alt="Crociera sulla Senna al tramonto" class="w-full h-40 object-cover" loading="lazy" decoding="async">
+      <div class="p-5"><h3 class="font-semibold text-blue-900">Crociera sulla Senna</h3><p class="text-gray-700 text-sm mt-2">Partenze vicino Tour Eiffel/Louvre.</p></div>
+    </div>
 
-            <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
-               href="https://www.getyourguide.com/paris-l16/?partner_id=HWU00MZ&cmp=mg-parigi-versailles&q=Versailles%20day%20trip">
-              <h3 class="font-semibold text-blue-900">Versailles — tour in giornata</h3>
-              <p class="text-sm text-gray-700 mt-2">Palazzo, Trianon e giardini con guida.</p>
-              <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
-            </a>
+    <div class="card overflow-hidden">
+      <img src="/mini-guide/assets/paris-versailles.webp" alt="Reggia di Versailles e Giardini" class="w-full h-40 object-cover" loading="lazy" decoding="async">
+      <div class="p-5"><h3 class="font-semibold text-blue-900">Versailles</h3><p class="text-gray-700 text-sm mt-2">Palazzo, Giardini e Sala degli Specchi.</p></div>
+    </div>
 
-            <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
-               href="https://www.getyourguide.com/paris-l16/?partner_id=HWU00MZ&cmp=mg-parigi-montmartre&q=Montmartre%20food%20tour">
-              <h3 class="font-semibold text-blue-900">Montmartre — food tour</h3>
-              <p class="text-sm text-gray-700 mt-2">Assaggi tra boulangerie e fromagerie.</p>
-              <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
-            </a>
+    <div class="card overflow-hidden">
+      <img src="/mini-guide/assets/paris-arc-triomphe.webp" alt="Arc de Triomphe con vista su Champs-Élysées" class="w-full h-40 object-cover" loading="lazy" decoding="async">
+      <div class="p-5"><h3 class="font-semibold text-blue-900">Arc de Triomphe (terrazza)</h3><p class="text-gray-700 text-sm mt-2">Panorama top su Parigi, fiamma del Milite Ignoto.</p></div>
+    </div>
 
-            <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
-               href="https://www.getyourguide.com/paris-l16/?partner_id=HWU00MZ&cmp=mg-parigi-catacombs&q=Paris%20Catacombs%20ticket">
-              <h3 class="font-semibold text-blue-900">Catacombe di Parigi — ticket</h3>
-              <p class="text-sm text-gray-700 mt-2">Accesso cronometrato, posti limitati.</p>
-              <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
-            </a>
-          </div>
-          <p class="text-xs text-gray-500 mt-2">Link tracciati: <code>partner_id=HWU00MZ</code> e <code>cmp</code> coerente per card.</p>
-        </section>
+    <div class="card overflow-hidden">
+      <img src="/mini-guide/assets/paris-sainte-chapelle.webp" alt="Sainte-Chapelle vetrate gotiche" class="w-full h-40 object-cover" loading="lazy" decoding="async">
+      <div class="p-5"><h3 class="font-semibold text-blue-900">Sainte-Chapelle</h3><p class="text-gray-700 text-sm mt-2">Vetrate spettacolari sull’Île de la Cité.</p></div>
+    </div>
+
+    <div class="card overflow-hidden">
+      <img src="/mini-guide/assets/paris-montmartre.webp" alt="Montmartre e Basilica del Sacré-Cœur" class="w-full h-40 object-cover" loading="lazy" decoding="async">
+      <div class="p-5"><h3 class="font-semibold text-blue-900">Montmartre & Sacré-Cœur</h3><p class="text-gray-700 text-sm mt-2">Quartiere bohemien, viste sulla città.</p></div>
+    </div>
+
+    <div class="card overflow-hidden">
+      <img src="/mini-guide/assets/paris-orsay.webp" alt="Museo d'Orsay nell’ex stazione ferroviaria" class="w-full h-40 object-cover" loading="lazy" decoding="async">
+      <div class="p-5"><h3 class="font-semibold text-blue-900">Musée d’Orsay</h3><p class="text-gray-700 text-sm mt-2">Impressionisti in location iconica.</p></div>
+    </div>
+
+    <div class="card overflow-hidden">
+      <img src="/mini-guide/assets/paris-le-marais.webp" alt="Le Marais vie storiche e boutique" class="w-full h-40 object-cover" loading="lazy" decoding="async">
+      <div class="p-5"><h3 class="font-semibold text-blue-900">Le Marais</h3><p class="text-gray-700 text-sm mt-2">Boutique, gallerie e Place des Vosges.</p></div>
+    </div>
+
+    <div class="card overflow-hidden">
+      <img src="/mini-guide/assets/paris-notre-dame.webp" alt="Cattedrale di Notre-Dame (esterni e area Île de la Cité)" class="w-full h-40 object-cover" loading="lazy" decoding="async">
+      <div class="p-5"><h3 class="font-semibold text-blue-900">Notre-Dame (esterni)</h3><p class="text-gray-700 text-sm mt-2">Passeggiata su Île de la Cité e ponti.</p></div>
+    </div>
+
+  </div>
+</section>
+
+
+        <!-- ATTIVITÀ CONSIGLIATE (GetYourGuide - Parigi, deeplink diretti) -->
+<section id="attivita">
+  <h2 class="text-2xl font-bold text-blue-900 mb-3">Attività consigliate (prenota ora)</h2>
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+    <!-- Torre Eiffel: visita guidata con summit (opzione) -->
+    <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
+       href="https://www.getyourguide.com/paris-l16/eiffel-tower-tour-to-the-summit-t123608/?partner_id=HWU00MZ&cmp=mg-paris-eiffel-summit">
+      <h3 class="font-semibold text-blue-900">Torre Eiffel — tour guidato (summit)</h3>
+      <p class="text-sm text-gray-700 mt-2">Guida + opzione cima, ingressi a orario.</p>
+      <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+    </a>
+
+    <!-- Louvre: biglietto a orario -->
+    <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
+       href="https://www.getyourguide.com/paris-l16/louvre-museum-skip-the-line-entrance-ticket-t145779/?partner_id=HWU00MZ&cmp=mg-paris-louvre-ticket">
+      <h3 class="font-semibold text-blue-900">Louvre — ingresso a orario</h3>
+      <p class="text-sm text-gray-700 mt-2">Accesso cronometrato; Mona Lisa & co.</p>
+      <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+    </a>
+
+    <!-- Crociera sulla Senna (partenza Tour Eiffel) -->
+    <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
+       href="https://www.getyourguide.com/paris-l16/paris-fast-access-seine-river-cruise-from-eiffel-tower-t15928/?partner_id=HWU00MZ&cmp=mg-paris-seine">
+      <h3 class="font-semibold text-blue-900">Crociera sulla Senna</h3>
+      <p class="text-sm text-gray-700 mt-2">1h, commento dal vivo o audioguida.</p>
+      <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+    </a>
+
+    <!-- Versailles: tour guidato da Parigi (treno) -->
+    <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
+       href="https://www.getyourguide.com/paris-l16/skip-the-line-half-day-versailles-palace-tour-by-train-t123596/?partner_id=HWU00MZ&cmp=mg-paris-versailles-tour">
+      <h3 class="font-semibold text-blue-900">Versailles — tour guidato (mezza giornata)</h3>
+      <p class="text-sm text-gray-700 mt-2">Accesso Salta-fila + guida ufficiale.</p>
+      <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+    </a>
+
+    <!-- Arc de Triomphe: terrazza panoramica -->
+    <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
+       href="https://www.getyourguide.com/paris-l16/paris-arc-de-triomphe-rooftop-tickets-t66157/?partner_id=HWU00MZ&cmp=mg-paris-arc">
+      <h3 class="font-semibold text-blue-900">Arc de Triomphe — rooftop</h3>
+      <p class="text-sm text-gray-700 mt-2">Vista a raggiera sui boulevard di Parigi.</p>
+      <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+    </a>
+
+    <!-- Sainte-Chapelle: ingresso -->
+    <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
+       href="https://www.getyourguide.com/sainte-chapelle-l3229/sainte-chapelle-self-guided-tour-t70689/?partner_id=HWU00MZ&cmp=mg-paris-saintechapelle">
+      <h3 class="font-semibold text-blue-900">Sainte-Chapelle — ingresso</h3>
+      <p class="text-sm text-gray-700 mt-2">Vetrate gotiche: biglietto a orario.</p>
+      <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+    </a>
+
+  </div>
+  <p class="text-xs text-gray-500 mt-2">Link tracciati con <code>partner_id=HWU00MZ</code> e <code>cmp</code> univoco per card.</p>
+</section>
+
 
         <!-- CIBO -->
         <section id="cibo">
