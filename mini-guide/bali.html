@@ -44,26 +44,25 @@
   <!-- HEADER -->
   <div id="include-header"></div>
 
-  <!-- HERO (stessa struttura/overlay/testi) -->
-  <section class="relative h-80 md:h-96">
-    <img
-      src="/mini-guide/assets/bali-hero-2.webp"
-      srcset="/mini-guide/assets/bali-hero-2-800.webp 800w, /mini-guide/assets/bali-hero-2.webp 1200w"
-      sizes="100vw"
-      alt="Risaie a terrazze a Bali (Tegalalang) al tramonto"
-      class="absolute inset-0 w-full h-full object-cover"
-      loading="eager"
-      decoding="async"
-    >
-    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10"></div>
-    <div class="relative container mx-auto px-4 h-full flex flex-col justify-end pb-8">
-      <div class="glass inline-flex items-center space-x-2 text-white text-xs md:text-sm px-3 py-1 rounded-full mb-3">
-        <span>🏝️ Isola</span><span>•</span><span>🌿 Natura</span><span>•</span><span>🌊 Spiagge & templi</span>
-      </div>
-      <h1 class="text-white text-3xl md:text-5xl font-extrabold drop-shadow">Bali — Mini-guida</h1>
-      <p class="text-white/90 text-base md:text-xl mt-2 max-w-3xl">Quando andare, come arrivare, dove dormire, cosa vedere e mangiare, come muoversi, budget e link rapidi.</p>
+  <!-- HERO -->
+<section class="relative h-80 md:h-96">
+  <img
+    src="/mini-guide/assets/bali-hero-2.webp"
+    srcset="/mini-guide/assets/bali-hero-2-800.webp 800w, /mini-guide/assets/bali-hero-2.webp 1200w"
+    sizes="100vw"
+    alt="Bali: risaie di Tegalalang e templi sull’oceano"
+    class="absolute inset-0 w-full h-full object-cover"
+    loading="eager" decoding="async">
+  <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10"></div>
+  <div class="relative container mx-auto px-4 h-full flex flex-col justify-end pb-8">
+    <div class="glass inline-flex items-center space-x-2 text-white text-xs md:text-sm px-3 py-1 rounded-full mb-3">
+      <span>🌿 Risaie</span><span>•</span><span>🏄‍♀️ Oceano</span><span>•</span><span>🛕 Templi</span>
     </div>
-  </section>
+    <h1 class="text-white text-3xl md:text-5xl font-extrabold drop-shadow">Bali — Mini-guida</h1>
+    <p class="text-white/90 text-base md:text-xl mt-2 max-w-3xl">Quando andare, come arrivare, dove dormire, cosa vedere e mangiare, come muoversi, budget e link rapidi.</p>
+  </div>
+</section>
+
 
   <main class="container mx-auto px-4 py-10">
     <!-- BREADCRUMB (identico) -->
@@ -169,71 +168,126 @@
           </div>
         </section>
 
-        <!-- TOP 10 ATTRAZIONI (stessa struttura card) -->
-        <section id="top10">
-          <h2 class="text-2xl font-bold text-blue-900 mb-3">Top 10 attrazioni</h2>
-          <div class="grid md:grid-cols-2 gap-6">
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">Risaie di Tegalalang (Ubud)</h3><p class="text-gray-700 text-sm mt-2">Iconiche terrazze verdi, al mattino luce perfetta.</p></div>
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">Tempio di Uluwatu</h3><p class="text-gray-700 text-sm mt-2">Scogliere a picco sull’oceano, tramonti incredibili.</p></div>
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">Tanah Lot</h3><p class="text-gray-700 text-sm mt-2">Tempio sul mare, scenografico con bassa/alta marea.</p></div>
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">Ulun Danu Beratan</h3><p class="text-gray-700 text-sm mt-2">Tempio sul lago tra le montagne del centro isola.</p></div>
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">Cascate Tegenungan</h3><p class="text-gray-700 text-sm mt-2">Facili da raggiungere; spot fotografico.</p></div>
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">Lempuyang (Gates of Heaven)</h3><p class="text-gray-700 text-sm mt-2">Portale panoramico verso il Gunung Agung.</p></div>
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">Nusa Penida — Kelingking</h3><p class="text-gray-700 text-sm mt-2">Spiaggia e falesie spettacolari (tour in barca).</p></div>
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">Ubud Monkey Forest</h3><p class="text-gray-700 text-sm mt-2">Foresta sacra con macachi (attenzione oggetti).</p></div>
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">Risaie di Jatiluwih (UNESCO)</h3><p class="text-gray-700 text-sm mt-2">Paesaggi rurali e trekking tra i campi.</p></div>
-            <div class="card p-5"><h3 class="font-semibold text-blue-900">Spiagge di Nusa Dua / Sanur</h3><p class="text-gray-700 text-sm mt-2">Mare più calmo e servizi family.</p></div>
-          </div>
-        </section>
+       <!-- TOP 10 ATTRAZIONI (Bali, con immagini) -->
+<section id="top10">
+  <h2 class="text-2xl font-bold text-blue-900 mb-3">Top 10 attrazioni</h2>
+  <div class="grid md:grid-cols-2 gap-6">
+    <div class="card overflow-hidden">
+      <img src="/mini-guide/assets/bali-tegalalang.webp" alt="Risaie di Tegalalang (Ubud)" class="w-full h-40 object-cover" loading="lazy">
+      <div class="p-5"><h3 class="font-semibold text-blue-900">Risaie di Tegalalang</h3><p class="text-gray-700 text-sm mt-2">Terrazze iconiche a nord di Ubud.</p></div>
+    </div>
+    <div class="card overflow-hidden">
+      <img src="/mini-guide/assets/bali-monkey-forest.webp" alt="Sacred Monkey Forest Sanctuary (Ubud)" class="w-full h-40 object-cover" loading="lazy">
+      <div class="p-5"><h3 class="font-semibold text-blue-900">Ubud Monkey Forest</h3><p class="text-gray-700 text-sm mt-2">Santuario sacro con macachi e templi.</p></div>
+    </div>
+    <div class="card overflow-hidden">
+      <img src="/mini-guide/assets/bali-tanah-lot.webp" alt="Tempio di Tanah Lot al tramonto" class="w-full h-40 object-cover" loading="lazy">
+      <div class="p-5"><h3 class="font-semibold text-blue-900">Tanah Lot</h3><p class="text-gray-700 text-sm mt-2">Tempio sull’oceano, tramonti spettacolari.</p></div>
+    </div>
+    <div class="card overflow-hidden">
+      <img src="/mini-guide/assets/bali-uluwatu.webp" alt="Uluwatu Temple sulle scogliere" class="w-full h-40 object-cover" loading="lazy">
+      <div class="p-5"><h3 class="font-semibold text-blue-900">Uluwatu Temple</h3><p class="text-gray-700 text-sm mt-2">Scogliere e danza Kecak al tramonto.</p></div>
+    </div>
+    <div class="card overflow-hidden">
+      <img src="/mini-guide/assets/bali-nusa-penida.webp" alt="Nusa Penida: scogliere e spiagge turchesi" class="w-full h-40 object-cover" loading="lazy">
+      <div class="p-5"><h3 class="font-semibold text-blue-900">Nusa Penida</h3><p class="text-gray-700 text-sm mt-2">Gita in barca: baie, snorkeling e manta rays.</p></div>
+    </div>
+    <div class="card overflow-hidden">
+      <img src="/mini-guide/assets/bali-mt-batur.webp" alt="Trekking all’alba sul Monte Batur" class="w-full h-40 object-cover" loading="lazy">
+      <div class="p-5"><h3 class="font-semibold text-blue-900">Monte Batur</h3><p class="text-gray-700 text-sm mt-2">Trekking all’alba con colazione in cima.</p></div>
+    </div>
+    <div class="card overflow-hidden">
+      <img src="/mini-guide/assets/bali-tirta-empul.webp" alt="Tirta Empul: vasche di purificazione" class="w-full h-40 object-cover" loading="lazy">
+      <div class="p-5"><h3 class="font-semibold text-blue-900">Tirta Empul</h3><p class="text-gray-700 text-sm mt-2">Tempio e rito di purificazione.</p></div>
+    </div>
+    <div class="card overflow-hidden">
+      <img src="/mini-guide/assets/bali-bali-swing.webp" alt="Bali Swing nella giungla vicino Ubud" class="w-full h-40 object-cover" loading="lazy">
+      <div class="p-5"><h3 class="font-semibold text-blue-900">Bali Swing</h3><p class="text-gray-700 text-sm mt-2">Altalene panoramiche nella giungla.</p></div>
+    </div>
+    <div class="card overflow-hidden">
+      <img src="/mini-guide/assets/bali-ayung-rafting.webp" alt="Rafting sul fiume Ayung (Ubud)" class="w-full h-40 object-cover" loading="lazy">
+      <div class="p-5"><h3 class="font-semibold text-blue-900">Rafting sull’Ayung</h3><p class="text-gray-700 text-sm mt-2">Rapide facili, pareti scolpite e cascatelle.</p></div>
+    </div>
+    <div class="card overflow-hidden">
+      <img src="/mini-guide/assets/bali-cooking-class.webp" alt="Cooking class balinese in villaggio locale" class="w-full h-40 object-cover" loading="lazy">
+      <div class="p-5"><h3 class="font-semibold text-blue-900">Cooking class balinese</h3><p class="text-gray-700 text-sm mt-2">Mercato + lezione di cucina tradizionale.</p></div>
+    </div>
+  </div>
+</section>
 
-        <!-- ATTIVITÀ CONSIGLIATE (GetYourGuide) -->
-        <section id="attivita">
-          <h2 class="text-2xl font-bold text-blue-900 mb-3">Attività consigliate (prenota ora)</h2>
-          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
-               href="https://www.getyourguide.com/bali-l347/?partner_id=HWU00MZ&cmp=mg-bali-penida&q=Nusa%20Penida%20tour">
-              <h3 class="font-semibold text-blue-900">Nusa Penida — tour in giornata</h3>
-              <p class="text-sm text-gray-700 mt-2">West/East highlights con trasporti inclusi.</p>
-              <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
-            </a>
 
-            <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
-               href="https://www.getyourguide.com/bali-l347/?partner_id=HWU00MZ&cmp=mg-bali-batur&q=Mount%20Batur%20sunrise%20trek">
-              <h3 class="font-semibold text-blue-900">Monte Batur — trekking all’alba</h3>
-              <p class="text-sm text-gray-700 mt-2">Guida locale + colazione post-vetta.</p>
-              <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
-            </a>
+        <!-- ATTIVITÀ CONSIGLIATE (GetYourGuide - Bali, deeplink diretti) -->
+<section id="attivita">
+  <h2 class="text-2xl font-bold text-blue-900 mb-3">Attività consigliate (prenota ora)</h2>
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-            <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
-               href="https://www.getyourguide.com/bali-l347/?partner_id=HWU00MZ&cmp=mg-bali-ubud&q=Ubud%20tour%20rice%20terraces%20waterfalls%20temples">
-              <h3 class="font-semibold text-blue-900">Ubud classico — risaie, cascate, templi</h3>
-              <p class="text-sm text-gray-700 mt-2">Itinerario personalizzabile con driver/guida.</p>
-              <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
-            </a>
+    <!-- Nusa Penida: snorkeling con mante -->
+    <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
+       href="https://www.getyourguide.com/manta-bay-l147593/?partner_id=HWU00MZ&cmp=mg-bali-penida-snorkel">
+      <h3 class="font-semibold text-blue-900">Nusa Penida — snorkeling con mante</h3>
+      <p class="text-sm text-gray-700 mt-2">Manta Bay/Point + 2–3 spot, pranzo/trasferimenti opz.</p>
+      <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+    </a>
 
-            <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
-               href="https://www.getyourguide.com/bali-l347/?partner_id=HWU00MZ&cmp=mg-bali-lempuyang&q=Lempuyang%20%26%20Tirta%20Gangga%20tour">
-              <h3 class="font-semibold text-blue-900">Lempuyang & Tirta Gangga</h3>
-              <p class="text-sm text-gray-700 mt-2">Gates of Heaven + palazzo sull’acqua.</p>
-              <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
-            </a>
+    <!-- Monte Batur: alba trekking/jeep -->
+    <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
+       href="https://www.getyourguide.com/bali-l347/bali-mount-batur-sunrise-trek-with-entrance-ticket-t401391/?partner_id=HWU00MZ&cmp=mg-bali-batur">
+      <h3 class="font-semibold text-blue-900">Monte Batur — alba trekking/jeep</h3>
+      <p class="text-sm text-gray-700 mt-2">Ingresso incluso, guida e opzioni hot spring.</p>
+      <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+    </a>
 
-            <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
-               href="https://www.getyourguide.com/bali-l347/?partner_id=HWU00MZ&cmp=mg-bali-snorkel&q=Snorkeling%20Nusa%20Penida%20Manta%20Point">
-              <h3 class="font-semibold text-blue-900">Snorkeling — Nusa Penida/Lembongan</h3>
-              <p class="text-sm text-gray-700 mt-2">Manta Point, Crystal Bay o Mangrove.</p>
-              <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
-            </a>
+    <!-- Uluwatu Kecak: ticket al tramonto -->
+    <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
+       href="https://www.getyourguide.com/uluwatu-l105742/bali-uluwatu-kecak-and-fire-dance-show-entry-ticket-t432437/?partner_id=HWU00MZ&cmp=mg-bali-kecak">
+      <h3 class="font-semibold text-blue-900">Uluwatu — Kecak & Fire Dance</h3>
+      <p class="text-sm text-gray-700 mt-2">Ingresso serale al tempio/scogliera.</p>
+      <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+    </a>
 
-            <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
-               href="https://www.getyourguide.com/bali-l347/?partner_id=HWU00MZ&cmp=mg-bali-uluwatu&q=Uluwatu%20Kecak%20dance%20sunset">
-              <h3 class="font-semibold text-blue-900">Uluwatu — Kecak al tramonto</h3>
-              <p class="text-sm text-gray-700 mt-2">Danza tradizionale sullo sfondo dell’oceano.</p>
-              <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
-            </a>
-          </div>
-          <p class="text-xs text-gray-500 mt-2">Link tracciati: <code>partner_id=HWU00MZ</code> e <code>cmp</code> per etichettare la pagina.</p>
-        </section>
+    <!-- Tanah Lot: tour tramonto (mezza giornata) -->
+    <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
+       href="https://www.getyourguide.com/bali-l347/bali-tanah-lot-temple-half-day-sunset-tour-t277277/?partner_id=HWU00MZ&cmp=mg-bali-tanahlot">
+      <h3 class="font-semibold text-blue-900">Tanah Lot — tramonto</h3>
+      <p class="text-sm text-gray-700 mt-2">Mezza giornata con guida e transfer.</p>
+      <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+    </a>
+
+    <!-- Rafting Ayung (Ubud) -->
+    <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
+       href="https://www.getyourguide.com/ubud-l32246/rafting-in-ayung-river-ubud-t621951/?partner_id=HWU00MZ&cmp=mg-bali-ayung">
+      <h3 class="font-semibold text-blue-900">Rafting sul fiume Ayung</h3>
+      <p class="text-sm text-gray-700 mt-2">10 km di rapide sceniche, guida inclusa.</p>
+      <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+    </a>
+
+    <!-- Bali Swing: biglietto ufficiale -->
+    <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
+       href="https://www.getyourguide.com/ubud-l32246/ubud-bali-swing-ticket-t654439/?partner_id=HWU00MZ&cmp=mg-bali-swing">
+      <h3 class="font-semibold text-blue-900">Bali Swing — biglietto</h3>
+      <p class="text-sm text-gray-700 mt-2">Pacchetto Premium con altalene e nidi.</p>
+      <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+    </a>
+
+    <!-- Tirta Empul: tempio/abluzioni (tour con opzione rito) -->
+    <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
+       href="https://www.getyourguide.com/ubud-l32246/tirta-empul-temple-tour-with-optional-spiritual-cleansing-t444832/?partner_id=HWU00MZ&cmp=mg-bali-tirta">
+      <h3 class="font-semibold text-blue-900">Tirta Empul — tempio & abluzioni</h3>
+      <p class="text-sm text-gray-700 mt-2">Tour guidato con possibilità di purificazione.</p>
+      <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+    </a>
+
+    <!-- Ubud Cooking Class (villaggio locale) -->
+    <a class="card p-5 hover:shadow-lg transition block" target="_blank" rel="nofollow noopener"
+       href="https://www.getyourguide.com/bali-l347/ubud-authentic-cooking-experience-in-balinese-village-t164277/?partner_id=HWU00MZ&cmp=mg-bali-cooking">
+      <h3 class="font-semibold text-blue-900">Ubud — cooking class</h3>
+      <p class="text-sm text-gray-700 mt-2">Mercato, orto e ricette balinesi.</p>
+      <span class="inline-block text-xs mt-3 bg-blue-50 text-blue-800 px-2 py-1 rounded">GetYourGuide</span>
+    </a>
+
+  </div>
+  <p class="text-xs text-gray-500 mt-2">Link tracciati con <code>partner_id=HWU00MZ</code> e <code>cmp</code> univoco per card.</p>
+</section>
 
         <!-- CIBO -->
         <section id="cibo">
