@@ -1,20 +1,80 @@
-<header class="bg-white shadow">
-  <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-    <!-- Logo + nome -->
-    <a href="/" class="flex items-center space-x-2">
-      <img src="/img/logo.png" alt="GlobalGlide360 logo" class="h-10 w-auto">
-      <span class="text-xl font-bold text-blue-900">GlobalGlide360</span>
+<!-- /partials/header.html -->
+<header class="bg-white/90 backdrop-blur sticky top-0 z-50 border-b">
+  <div class="max-w-6xl mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="/" class="flex items-center group">
+      <img src="/img/logo.png" alt="GlobalGlide360" class="h-9 w-auto">
+      <span class="ml-3 text-xl font-bold text-blue-900 group-hover:text-blue-800 transition">
+        GlobalGlide360
+      </span>
     </a>
 
-    <!-- Menu -->
-    <nav class="space-x-6 text-gray-700 font-medium">
-      <a href="/#itinerari-pronti" class="hover:text-blue-800">Itinerari</a>
-      <a href="/mini-guide/" class="hover:text-blue-800">Mini-guide</a>
-      <a href="/blog/" class="hover:text-blue-800">Blog</a>
-      <a href="/#chi-siamo" class="hover:text-blue-700">Chi siamo</a>
-      <a href="/contatti.html" class="hover:text-blue-800">Contatti</a>
-      <a href="/articoli/index.html" class="hover:text-blue-800">Articoli</a>
+    <!-- Desktop nav -->
+    <nav class="hidden md:flex items-center gap-6 text-blue-900">
+      <a href="/mini-guide/" data-nav="mini" class="hover:text-blue-700">Mini-guide</a>
+      <a href="/itinerari/" data-nav="iti" class="hover:text-blue-700">Itinerari</a>
+      <a href="/articoli/" data-nav="blog" class="hover:text-blue-700">Articoli</a>
+      <a href="/chi-siamo.html" class="text-gray-700 hover:text-blue-700">Chi siamo</a>
+      <a href="/contatti.html" class="text-gray-700 hover:text-blue-700">Contatti</a>
+      <a href="https://www.instagram.com/globalglide360" target="_blank" rel="noopener" aria-label="Instagram" class="ml-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-pink-600 hover:text-pink-700" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm0 2h10c1.654 0 3 1.346 3 3v10c0 1.654-1.346 3-3 3H7c-1.654 0-3-1.346-3-3V7c0-1.654 1.346-3 3-3zm11 1a1 1 0 100 2 1 1 0 000-2zM12 7c-2.757 0-5 2.243-5 5s2.243 5 5 5c2.757 0 5-2.243 5-5s-2.243-5-5-5zm0 2c1.654 0 3 1.346 3 3s-1.346 3-3 3-3-1.346-3-3 1.346-3 3-3z"/>
+        </svg>
+      </a>
     </nav>
+
+    <!-- Mobile toggle -->
+    <button id="gg-menu-btn" class="md:hidden inline-flex items-center justify-center p-2 rounded-lg border text-blue-900 hover:bg-blue-50" aria-expanded="false" aria-controls="gg-mobile-nav" aria-label="Apri menu">
+      <svg id="gg-icon-open" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+      <svg id="gg-icon-close" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
   </div>
+
+  <!-- Mobile nav -->
+  <nav id="gg-mobile-nav" class="md:hidden hidden border-t bg-white">
+    <div class="px-4 py-3 flex flex-col">
+      <a href="/mini-guide/" data-nav="mini" class="py-2 text-blue-900 hover:bg-blue-50 rounded">Mini-guide</a>
+      <a href="/itinerari/" data-nav="iti" class="py-2 text-blue-900 hover:bg-blue-50 rounded">Itinerari</a>
+      <a href="/articoli/" data-nav="blog" class="py-2 text-blue-900 hover:bg-blue-50 rounded">Articoli</a>
+      <a href="/chi-siamo.html" class="py-2 text-gray-800 hover:bg-blue-50 rounded">Chi siamo</a>
+      <a href="/contatti.html" class="py-2 text-gray-800 hover:bg-blue-50 rounded">Contatti</a>
+      <a href="https://www.instagram.com/globalglide360" target="_blank" rel="noopener" class="py-2 text-pink-600 hover:bg-pink-50 rounded">Instagram</a>
+    </div>
+  </nav>
 </header>
 
+<script>
+  (function(){
+    // Toggle mobile menu
+    const btn = document.getElementById('gg-menu-btn');
+    const nav = document.getElementById('gg-mobile-nav');
+    const icoOpen = document.getElementById('gg-icon-open');
+    const icoClose = document.getElementById('gg-icon-close');
+    if(btn && nav){
+      btn.addEventListener('click', () => {
+        const open = nav.classList.toggle('hidden');
+        btn.setAttribute('aria-expanded', String(!open));
+        icoOpen.classList.toggle('hidden');
+        icoClose.classList.toggle('hidden');
+      });
+    }
+
+    // Active state by path
+    const p = (location.pathname || '/').toLowerCase();
+    const map = [
+      { key: 'mini',  match: ['/mini-guide/'] },
+      { key: 'iti',   match: ['/itinerari/'] },
+      { key: 'blog',  match: ['/articoli/'] },
+    ];
+    const activeKey = (map.find(m => m.match.some(x => p.startsWith(x))) || {}).key;
+    if(activeKey){
+      document.querySelectorAll('[data-nav="'+activeKey+'"]').forEach(a => {
+        a.classList.add('text-blue-700','font-semibold');
+      });
+    }
+  })();
+</script>
