@@ -1,57 +1,73 @@
 <html lang="it">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Itinerari reali | GlobalGlide360</title>
-<meta name="description" content="Raccolta di itinerari reali con prezzi e dettagli aggiornati." />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0b0c10;--card:#111318;--muted:#a0a7b4;--text:#eaeef5;--accent:#4fb3ff;--ring:#2a2f3a}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
-header{position:sticky;top:0;background:linear-gradient(180deg,rgba(11,12,16,.9),rgba(11,12,16,.6));backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid var(--ring);z-index:10}
-.wrap{max-width:1100px;margin:0 auto;padding:20px}
-h1{font-size:clamp(24px,3vw,34px);margin:0 0 6px}
-.muted{color:var(--muted)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
-.card{background:var(--card);border:1px solid var(--ring);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
-.card a{color:inherit;text-decoration:none}
-.thumb{aspect-ratio:16/9;background:linear-gradient(135deg,rgba(79,179,255,.25),rgba(99,102,241,.25));display:flex;align-items:center;justify-content:center;font-weight:700}
-.pad{padding:14px}
-.title{font-weight:700;font-size:1.05rem;margin:0 0 6px}
-.meta{font-size:.9rem;color:var(--muted)}
-.toolbar{display:flex;gap:10px;align-items:center;margin:14px 0 8px}
-input[type="search"], select{background:#0e1015;border:1px solid var(--ring);color:var(--text);padding:10px 12px;border-radius:12px;outline:none}
-input[type="search"]{flex:1}
-.chip{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border:1px solid var(--ring);border-radius:999px;color:var(--muted);font-size:.85rem}
-.empty{padding:40px;text-align:center;color:var(--muted);border:1px dashed var(--ring);border-radius:16px}
-footer{border-top:1px solid var(--ring);margin-top:28px}
-.back{display:inline-block;margin-top:8px;color:var(--accent)}
+.wrap{max-width:920px;margin:0 auto;padding:24px}
+header{border-bottom:1px solid var(--ring);margin-bottom:16px}
+h1{margin:0 0 6px;font-size:clamp(24px,3vw,34px)}
+p.muted{color:var(--muted);margin:0 0 18px}
+ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+li{background:var(--card);border:1px solid var(--ring);border-radius:14px}
+a{display:block;padding:14px 16px;color:inherit;text-decoration:none}
+a:hover{outline:2px solid var(--accent);outline-offset:-2px}
+.title{font-weight:700;margin:0 0 6px}
+.meta{color:var(--muted);font-size:.95rem}
+footer{border-top:1px solid var(--ring);margin-top:22px;padding-top:12px}
+.back{color:var(--accent)}
 </style>
 </head>
 <body>
-<header>
 <div class="wrap">
+<header>
 <h1>Itinerari reali</h1>
-<p class="muted">Selezione aggiornata degli itinerari pubblicati. Usa la ricerca per filtrare.</p>
-<div class="toolbar">
-<input id="q" type="search" placeholder="Cerca città, paese o durata… (es. '5 giorni', 'Giappone')" aria-label="Cerca itinerari" />
-<select id="durata" aria-label="Filtra per durata">
-<option value="">Durata</option>
-<option>5 giorni</option>
-<option>15 giorni</option>
-</select>
-</div>
-<div class="chips">
-<span class="chip">Aggiornato <span id="today"></span></span>
-<span class="chip">Fonte: cartella <code>/itinerari</code></span>
-</div>
-</div>
+<p class="muted">Pagina statica senza JavaScript. Seleziona un itinerario.</p>
 </header>
 
 
-<main class="wrap">
-<section id="list" class="grid" role="list"></section>
+<ul>
+<li>
+<a href="./bali-5-giorni.html">
+<div class="title">Bali — 5 giorni</div>
+<div class="meta">Bali, Indonesia · 5 giorni</div>
+</a>
+</li>
+<li>
+<a href="./giappone-15-giorni.html">
+<div class="title">Giappone — 15 giorni</div>
+<div class="meta">Giappone · 15 giorni</div>
+</a>
+</li>
+<li>
+<a href="./messico-15-giorni.html">
+<div class="title">Messico — 15 giorni</div>
+<div class="meta">Messico · 15 giorni</div>
+</a>
+</li>
+<li>
+<a href="./newyork-5-giorni.html">
+<div class="title">New York — 5 giorni</div>
+<div class="meta">Stati Uniti · 5 giorni</div>
+</a>
+</li>
+<li>
+<a href="./parigi-5-giorni.html">
+<div class="title">Parigi — 5 giorni</div>
+<div class="meta">Francia · 5 giorni</div>
+</a>
+</li>
+<li>
+<a href="./tokyo-5-giorni.html">
+<div class="title">Tokyo — 5 giorni</div>
+<div class="meta">Giappone · 5 giorni</div>
+</a>
+</li>
+</ul>
+
+
+<footer>
+<a class="back" href="../">← Torna alla home</a>
+</footer>
+</div>
+</body>
 </html>
