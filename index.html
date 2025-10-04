@@ -52,27 +52,29 @@
         <div class="mt-6 flex flex-col sm:flex-row gap-3">
           <a href="/mini-guide/" class="bg-white text-blue-900 font-semibold px-5 py-3 rounded-xl hover:bg-blue-50 text-center">Scopri le Mini-guide</a>
       <a id="btn-itinerari-reali"
-class="btn btn-primary"
-href="itinerari/"
-aria-label="Leggi gli itinerari reali">
-Leggi gli itinerari reali
+   href="itinerari/"
+   class="btn-itinerari">
+  🌍 Leggi gli itinerari reali
 </a>
-     <style>
-.btn-itinerari {
+
+<style>
+/* Specificità alta per evitare override dei tuoi stili globali */
+a.btn-itinerari {
   display:inline-block;
-  background:#4fb3ff;
+  background:#4fb3ff; /* blu acceso */
   color:#fff;
-  font-weight:600;
-  padding:12px 24px;
+  font-weight:700;
+  padding:12px 20px;
   border-radius:12px;
   text-decoration:none;
-  transition:background .25s ease, transform .25s ease;
-  box-shadow:0 2px 6px rgba(0,0,0,.25);
+  box-shadow:0 2px 6px rgba(0,0,0,.2);
+  transition:transform .2s ease, background .2s ease;
 }
-.btn-itinerari:hover {
-  background:#3da1ec;
-  transform:translateY(-2px);
-}
+a.btn-itinerari:hover { background:#3da1ec; transform:translateY(-2px); }
+a.btn-itinerari:focus { outline:3px solid rgba(79,179,255,.4); outline-offset:2px; }
+
+/* Fallback estremo se qualche tema forza button trasparente */
+.btn-itinerari { background:#4fb3ff !important; color:#fff !important; }
 </style>
         </div>
       </div>
