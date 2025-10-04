@@ -1,57 +1,57 @@
-<!--
-if(!res.ok) throw new Error(`Impossibile leggere ${url} (${res.status})`);
-return res.json();
-}
-
-
-function render(items){
-list.innerHTML = '';
-if(!items.length){ empty.hidden = false; return; }
-empty.hidden = true;
-for(const it of items){
-const a = document.createElement('a');
-a.href = `./${it.slug}.html`;
-a.setAttribute('role','listitem');
-a.innerHTML = `
-<article class="card" tabindex="0">
-<div class="thumb">${it.titolo}</div>
-<div class="pad">
-<h2 class="title">${it.titolo}</h2>
-<div class="meta">${it.luogo || ''} ${it.luogo && it.durata ? '·' : ''} ${it.durata || ''}</div>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Itinerari reali | GlobalGlide360</title>
+<meta name="description" content="Raccolta di itinerari reali con prezzi e dettagli aggiornati." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0c10;--card:#111318;--muted:#a0a7b4;--text:#eaeef5;--accent:#4fb3ff;--ring:#2a2f3a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+header{position:sticky;top:0;background:linear-gradient(180deg,rgba(11,12,16,.9),rgba(11,12,16,.6));backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid var(--ring);z-index:10}
+.wrap{max-width:1100px;margin:0 auto;padding:20px}
+h1{font-size:clamp(24px,3vw,34px);margin:0 0 6px}
+.muted{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--ring);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.card a{color:inherit;text-decoration:none}
+.thumb{aspect-ratio:16/9;background:linear-gradient(135deg,rgba(79,179,255,.25),rgba(99,102,241,.25));display:flex;align-items:center;justify-content:center;font-weight:700}
+.pad{padding:14px}
+.title{font-weight:700;font-size:1.05rem;margin:0 0 6px}
+.meta{font-size:.9rem;color:var(--muted)}
+.toolbar{display:flex;gap:10px;align-items:center;margin:14px 0 8px}
+input[type="search"], select{background:#0e1015;border:1px solid var(--ring);color:var(--text);padding:10px 12px;border-radius:12px;outline:none}
+input[type="search"]{flex:1}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border:1px solid var(--ring);border-radius:999px;color:var(--muted);font-size:.85rem}
+.empty{padding:40px;text-align:center;color:var(--muted);border:1px dashed var(--ring);border-radius:16px}
+footer{border-top:1px solid var(--ring);margin-top:28px}
+.back{display:inline-block;margin-top:8px;color:var(--accent)}
+</style>
+</head>
+<body>
+<header>
+<div class="wrap">
+<h1>Itinerari reali</h1>
+<p class="muted">Selezione aggiornata degli itinerari pubblicati. Usa la ricerca per filtrare.</p>
+<div class="toolbar">
+<input id="q" type="search" placeholder="Cerca città, paese o durata… (es. '5 giorni', 'Giappone')" aria-label="Cerca itinerari" />
+<select id="durata" aria-label="Filtra per durata">
+<option value="">Durata</option>
+<option>5 giorni</option>
+<option>15 giorni</option>
+</select>
 </div>
-</article>`;
-list.appendChild(a);
-}
-}
+<div class="chips">
+<span class="chip">Aggiornato <span id="today"></span></span>
+<span class="chip">Fonte: cartella <code>/itinerari</code></span>
+</div>
+</div>
+</header>
 
 
-let DATA = [];
-function applyFilters(){
-const term = (q.value||'').toLowerCase().trim();
-const dSel = (durata.value||'').toLowerCase();
-const filtered = DATA.filter(it => {
-const matchesTerm = !term || [it.titolo, it.luogo, it.durata, it.slug].filter(Boolean).join(' ').toLowerCase().includes(term);
-const matchesDurata = !dSel || (it.durata||'').toLowerCase() === dSel;
-return matchesTerm && matchesDurata;
-});
-render(filtered);
-}
-
-
-q.addEventListener('input', applyFilters);
-durata.addEventListener('change', applyFilters);
-
-
-(async () => {
-try{
-DATA = await loadManifest();
-render(DATA);
-}catch(e){
-console.error(e);
-err.hidden = false;
-err.textContent = 'Non riesco a caricare l\'elenco automatico. Verifica la presenza di /itinerari/_manifest.json.';
-}
-})();
-</script>
-</body>
-</html>>
+<main class="wrap">
+<section id="list" class="grid" role="list"></section>
+</html>
