@@ -1,0 +1,58 @@
+<html lang="it">
+const res = await fetch(url, { cache: 'no-store' });
+if(!res.ok) throw new Error(`Impossibile leggere ${url} (${res.status})`);
+return res.json();
+}
+
+
+function render(items){
+list.innerHTML = '';
+if(!items.length){ empty.hidden = false; return; }
+empty.hidden = true;
+for(const it of items){
+const a = document.createElement('a');
+a.href = `./${it.slug}.html`;
+a.setAttribute('role','listitem');
+a.innerHTML = `
+<article class="card" tabindex="0">
+<div class="thumb">${it.titolo}</div>
+<div class="pad">
+<h2 class="title">${it.titolo}</h2>
+<div class="meta">${it.luogo || ''} ${it.luogo && it.durata ? '·' : ''} ${it.durata || ''}</div>
+</div>
+</article>`;
+list.appendChild(a);
+}
+}
+
+
+let DATA = [];
+function applyFilters(){
+const term = (q.value||'').toLowerCase().trim();
+const dSel = (durata.value||'').toLowerCase();
+const filtered = DATA.filter(it => {
+const matchesTerm = !term || [it.titolo, it.luogo, it.durata, it.slug].filter(Boolean).join(' ').toLowerCase().includes(term);
+const matchesDurata = !dSel || (it.durata||'').toLowerCase() === dSel;
+return matchesTerm && matchesDurata;
+});
+render(filtered);
+}
+
+
+q.addEventListener('input', applyFilters);
+durata.addEventListener('change', applyFilters);
+
+
+(async () => {
+try{
+DATA = await loadManifest();
+render(DATA);
+}catch(e){
+console.error(e);
+err.hidden = false;
+err.textContent = 'Non riesco a caricare l\'elenco automatico. Verifica la presenza di /itinerari/_manifest.json.';
+}
+})();
+</script>
+</body>
+</html>
