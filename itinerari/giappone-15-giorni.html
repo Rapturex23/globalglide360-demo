@@ -1,296 +1,624 @@
 <!doctype html>
 <html lang="it">
 <head>
-  <meta charset="utf-8">
-  <title>Giappone in 15 giorni (MXP → HND / KIX → MXP) | GlobalGlide360</title>
-  <meta name="description" content="Itinerario reale di 15 giorni in Giappone: Tokyo, Hakone (Fuji), Kyoto, Nara, Osaka. Voli open-jaw da MXP, hotel per tappa, attività GetYourGuide, dove mangiare (TripAdvisor).">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Giappone — 15 giorni | GlobalGlide360</title>
+  <meta name="description" content="Tour del Giappone in 15 giorni: Tokyo, Hakone, Kyoto, Nara, Osaka, Hiroshima/Miyajima e rientro. Voli, hotel, attività (GYG), ristoranti e mappa.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--accent:#4fb3ff;--accent-2:#8b5cf6;--text:#0e141b;--muted:#596171;--bg:#f7f9fb;--card:#fff;--ring:#dbe3ea}
+    *{box-sizing:border-box} img{max-width:100%;display:block}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text)}
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="article">
-  <meta property="og:title" content="Giappone in 15 giorni (MXP → HND / KIX → MXP)">
-  <meta property="og:description" content="Tokyo • Hakone • Kyoto • Nara • Osaka — voli, hotel city-by-city, attività e ristoranti.">
-  <meta property="og:image" content="https://www.globalglide360.com/assets/itinerari/giappone/cover_1200x630.jpg">
-  <meta property="og:url" content="https://www.globalglide360.com/itinerari/giappone-15-giorni.html">
+    /* HERO */
+    .hero{position:relative;border-bottom:1px solid var(--ring);background:linear-gradient(180deg,#ffffff,#eef4f8)}
+    .hero__wrap{max-width:1100px;margin:0 auto;padding:18px 18px 24px}
+    .crumbs{font-size:.875rem;color:var(--muted);margin-bottom:8px}
+    .crumbs a{color:var(--muted);text-decoration:none}
+    .crumbs a:hover{text-decoration:underline}
+    .hero__grid{display:grid;grid-template-columns:1fr;gap:16px;align-items:center}
+    @media(min-width:900px){.hero__grid{grid-template-columns:1.3fr .7fr}}
+    .cover{border-radius:16px;overflow:hidden;border:1px solid var(--ring);box-shadow:0 10px 30px rgba(0,0,0,.05)}
+    .hero h1{margin:4px 0 6px;font-weight:800;font-size:clamp(24px,4vw,40px)}
+    .hero p.sub{margin:0;color:var(--muted)}
+    .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-top:14px}
+    .kpi{background:var(--card);border:1px solid var(--ring);border-radius:12px;padding:10px 12px}
+    .kpi .lbl{font-size:.78rem;color:var(--muted)} .kpi .val{font-weight:800}
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Giappone in 15 giorni (MXP → HND / KIX → MXP)">
-  <meta name="twitter:description" content="Tokyo • Hakone • Kyoto • Nara • Osaka — voli, hotel city-by-city, attività e ristoranti.">
-  <meta name="twitter:image" content="https://www.globalglide360.com/assets/itinerari/giappone/cover_1200x630.jpg">
+    /* QUICKBAR */
+    .quickbar{position:sticky;top:0;z-index:30;background:#ffffffc7;backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid var(--ring)}
+    .quickbar__inner{max-width:1100px;margin:0 auto;display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:10px 18px}
+    .chip{display:inline-flex;gap:8px;align-items:center;background:#fff;border:1px solid var(--ring);border-radius:999px;padding:8px 12px;font-weight:600}
+    .chip a{text-decoration:none;color:var(--text)}
+    .chip--cta{background:var(--accent);border-color:var(--accent)}
+    .chip--alt{background:var(--accent-2);border-color:var(--accent-2);color:#fff}
+    .chip--cta a{color:#fff}
 
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
+    /* LAYOUT */
+    .wrap{max-width:1100px;margin:0 auto;padding:22px 18px}
+    .grid{display:grid;grid-template-columns:1fr;gap:18px}
+    @media(min-width:980px){.grid{grid-template-columns:minmax(0,1fr) 320px}}
 
-  <!-- Config affiliazioni base -->
-  <script>
-    // Partner GYG + sub_id pagina (usati dal resolver)
-    window.GG_CFG = window.GG_CFG || {};
-    window.GG_CFG.gyg_partner = "HWU00MZ";
-    window.GG_SUBID = "giappone-15-giorni";
-  </script>
+    /* SIDEBAR */
+    .side{position:sticky;top:70px;align-self:start}
+    .side .card{background:#fff;border:1px solid var(--ring);border-radius:14px;padding:14px 16px;margin-bottom:12px}
+    .side h3{margin:0 0 8px;font-size:1rem}
+    .side .btn{display:block;text-align:center;background:var(--accent);color:#fff;text-decoration:none;font-weight:800;border-radius:10px;padding:10px 14px;margin-top:8px}
+    .side .btn--ghost{background:#fff;color:#0e141b;border:1px solid var(--ring)}
+    .list-clean{list-style:none;margin:0;padding:0}
+    .list-clean li{display:flex;justify-content:space-between;color:var(--muted);padding:6px 0;border-bottom:1px dashed var(--ring)}
+    .list-clean li:last-child{border-bottom:0}
+
+    /* CONTENT */
+    h2.sec{margin:18px 0 12px;font-size:1.2rem}
+    .panel{background:#fff;border:1px solid var(--ring);border-radius:14px;padding:14px 16px}
+    .grid-2{display:grid;grid-template-columns:1fr;gap:12px}
+    @media(min-width:780px){.grid-2{grid-template-columns:1fr 1fr}}
+
+    /* TIMELINE */
+    .day{position:relative;padding-left:30px}
+    .day:before{content:'';position:absolute;left:10px;top:8px;bottom:-8px;width:2px;background:linear-gradient(#cfe6ff,#dbe3ea)}
+    .dot{position:absolute;left:3px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--accent)}
+    .card{background:#fff;border:1px solid var(--ring);border-radius:14px;padding:14px 16px;margin:10px 0}
+    .meta{color:var(--muted);font-size:.9rem;margin-bottom:6px}
+    .badge{display:inline-block;background:#eef7ff;color:#0e141b;border:1px solid var(--ring);border-radius:999px;padding:3px 8px;font-size:.8rem;margin-right:6px}
+    .badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+    .act{display:grid;grid-template-columns:1fr;gap:8px;margin-top:10px}
+    @media(min-width:620px){.act{grid-template-columns:1fr auto}}
+    .act .btn{align-self:center;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;border-radius:10px;padding:10px 14px;white-space:nowrap}
+    .act .btn:hover{background:#3da1ec}
+    .food{background:#fff;border:1px dashed var(--ring);border-radius:12px;padding:12px 14px;margin-top:10px}
+    .food h4{margin:0 0 6px;font-size:1rem}
+    .food a{color:#2563eb;text-decoration:none}
+    .food a:hover{text-decoration:underline}
+    .toc{background:#fff;border:1px solid var(--ring);border-radius:12px;padding:10px 12px}
+    .toc a{display:inline-block;margin:4px 8px 0 0;color:#2563eb;text-decoration:none}
+    .toc a:hover{text-decoration:underline}
+
+    /* MAP */
+    .map-wrap{background:#fff;border:1px solid var(--ring);border-radius:14px;padding:0;overflow:hidden}
+    .map-iframe{width:100%;height:420px;border:0}
+
+    .backtop{position:fixed;right:16px;bottom:16px;background:#111827;color:#fff;border:none;border-radius:999px;padding:10px 12px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.2);display:none}
+    .backtop.show{display:block}
+  </style>
 </head>
-<body class="antialiased bg-white text-gray-800">
-
-  <!-- Header dinamico -->
-  <div id="include-header"></div>
-
-  <main class="container mx-auto px-4 py-8 max-w-5xl">
-    <header class="mb-6">
-      <img src="/assets/itinerari/giappone/cover_1200x630.jpg" alt="Giappone 15 giorni" class="w-full rounded-2xl mb-4">
-      <h1 class="text-3xl font-bold mb-2">Giappone in 15 giorni</h1>
-      <p class="text-gray-600">Tokyo • Hakone (Fuji) • Kyoto • Nara • Osaka — voli da MXP, hotel per tappa, attività e ristoranti</p>
-    </header>
-
-    <!-- Switch date -->
-    <div class="bg-gray-50 rounded-2xl p-4 mb-6 flex flex-wrap gap-2 items-center">
-      <span class="text-sm">Partenza da <strong>MXP</strong>:</span>
-      <div id="dateButtons" class="flex flex-wrap gap-2"></div>
+<body>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero__wrap">
+      <nav class="crumbs"><a href="/">Home</a> › <a href="/itinerari/">Itinerari</a> › Giappone — 15 giorni</nav>
+      <div class="hero__grid">
+        <div>
+          <h1>Giappone — 15 giorni</h1>
+          <p class="sub">Tokyo, Hakone (Monte Fuji), Kyoto, Nara, Osaka, Hiroshima & Miyajima. Itinerario adatto a coppie e famiglie, con attività prenotabili singolarmente.</p>
+          <div class="kpis">
+            <div class="kpi"><div class="lbl">Durata</div><div class="val">15 giorni / 14 notti</div></div>
+            <div class="kpi"><div class="lbl">Tappe</div><div class="val">Tokyo · Hakone · Kyoto · Nara · Osaka · Hiroshima/Miyajima</div></div>
+            <div class="kpi"><div class="lbl">Periodo ideale</div><div class="val">Ottobre (foliage) · Aprile (sakura)</div></div>
+          </div>
+        </div>
+        <figure class="cover"><img src="../assets/itinerari/giappone.jpg" alt="Kyoto, torii e foliage d’autunno"></figure>
+      </div>
     </div>
+  </header>
 
-    <!-- Voli -->
-    <section class="mb-8">
-      <h2 class="text-xl font-semibold mb-3">Voli</h2>
-      <p class="text-sm text-gray-600 mb-3">Open-jaw consigliato: MXP → Tokyo (HND) / Osaka (KIX) → MXP. In alternativa, A/R su Tokyo.</p>
-      <div id="flights" class="grid md:grid-cols-2 gap-4"></div>
-    </section>
+  <!-- QUICKBAR -->
+  <div class="quickbar">
+    <div class="quickbar__inner" role="navigation" aria-label="Azioni rapide">
+      <span class="chip"><a href="#voli">✈️ Voli</a></span>
+      <span class="chip"><a href="#hotel">🏨 Hotel</a></span>
+      <span class="chip"><a href="#in-breve">🧭 In breve</a></span><!-- NUOVO -->
+      <span class="chip"><a href="#programma">🗺️ Programma</a></span>
+      <span class="chip"><a href="#mappa">🗺️ Mappa</a></span>
+      <span class="chip"><a href="#faq">❓ FAQ</a></span>
+      <span class="chip chip--cta"><a href="#attivita">🎟️ Prenota attività</a></span>
+    </div>
+  </div>
 
-    <!-- Soggiorni -->
-    <section class="mb-8">
-      <h2 class="text-xl font-semibold mb-3">Dove dormire (notte per notte)</h2>
-      <div id="stays" class="space-y-4"></div>
-    </section>
+  <main class="wrap grid">
+    <!-- CONTENT -->
+    <article id="content">
+      <!-- Indice -->
+      <section class="toc" aria-labelledby="toc-title">
+        <h2 id="toc-title" class="sec" style="margin-top:0">Indice</h2>
+        <p class="meta">Salta al giorno:</p>
+        <p>
+          <a href="#g1">1</a> <a href="#g2">2</a> <a href="#g3">3</a> <a href="#g4">4</a> <a href="#g5">5</a>
+          <a href="#g6">6</a> <a href="#g7">7</a> <a href="#g8">8</a> <a href="#g9">9</a> <a href="#g10">10</a>
+          <a href="#g11">11</a> <a href="#g12">12</a> <a href="#g13">13</a> <a href="#g14">14</a> <a href="#g15">15</a>
+        </p>
+      </section>
 
-    <!-- Attività -->
-    <section class="mb-8">
-      <h2 class="text-xl font-semibold mb-3">Attività suggerite</h2>
-      <div id="activities" class="grid md:grid-cols-2 gap-4"></div>
-    </section>
+      <!-- VOLI -->
+      <section id="voli" aria-labelledby="sec-voli">
+        <h2 id="sec-voli" class="sec">Voli (MXP ⇄ Tokyo) — 5–19 ottobre 2026</h2>
+        <div class="panel grid-2">
+          <div>
+            <div class="meta">Andata — 5 Ott 2026</div>
+            <p>Milano Malpensa (MXP) → Tokyo Haneda (HND) / Narita (NRT)</p>
+            <a class="chip chip--cta" target="_blank" rel="noopener"
+               href="https://www.skyscanner.net/transport/flights-from/?adults=2#/?searchparamstype=flights&flightsearch=1&itinerary=itineraries!oneway!legs!origin:MXP,destination:HND,date:2026-10-05T00:00:00&cabin=economy">Cerca andata su Skyscanner</a>
+          </div>
+          <div>
+            <div class="meta">Ritorno — 19 Ott 2026</div>
+            <p>Tokyo HND/NRT → Milano Malpensa (MXP)</p>
+            <a class="chip chip--cta" target="_blank" rel="noopener"
+               href="https://www.skyscanner.net/transport/flights-from/hnd/?adults=2#/?searchparamstype=flights&flightsearch=1&itinerary=itineraries!oneway!legs!origin:HND,destination:MXP,date:2026-10-19T00:00:00&cabin=economy">Cerca ritorno su Skyscanner</a>
+          </div>
+        </div>
+        <p class="meta" style="margin-top:10px">Aggiungeremo i parametri affiliati Skyscanner quando disponibili.</p>
+      </section>
 
-    <!-- Food -->
-    <section class="mb-12">
-      <h2 class="text-xl font-semibold mb-3">Dove mangiare</h2>
-      <div id="food" class="grid md:grid-cols-2 gap-4"></div>
-    </section>
+      <!-- HOTEL -->
+      <section id="hotel" aria-labelledby="sec-hotel">
+        <h2 id="sec-hotel" class="sec">Hotel suggeriti (prenotabili)</h2>
+        <div class="panel grid-2">
+          <div>
+            <div class="meta">Tokyo · 5 notti (5–10 Ott)</div>
+            <p>Zone: Shinjuku / Shibuya (comode) o Asakusa (tradizionale).</p>
+            <a class="chip chip--cta" target="_blank" rel="noopener" href="https://www.booking.com/searchresults.html?ss=Tokyo&checkin=2026-10-05&checkout=2026-10-10&aid=AFFID_BOOKING">Tokyo — Booking</a>
+          </div>
+          <div>
+            <div class="meta">Hakone · 1 notte (10–11 Ott)</div>
+            <p>Ryokan con onsen (vista Fuji se meteo favorevole).</p>
+            <a class="chip chip--alt" target="_blank" rel="noopener" href="https://www.booking.com/searchresults.html?ss=Hakone&checkin=2026-10-10&checkout=2026-10-11&aid=AFFID_BOOKING">Hakone — Booking</a>
+          </div>
+          <div>
+            <div class="meta">Kyoto · 4 notti (11–15 Ott)</div>
+            <p>Gion / Higashiyama per atmosfera; vicino a stazioni metro/Keihan.</p>
+            <a class="chip chip--cta" target="_blank" rel="noopener" href="https://www.booking.com/searchresults.html?ss=Kyoto&checkin=2026-10-11&checkout=2026-10-15&aid=AFFID_BOOKING">Kyoto — Booking</a>
+          </div>
+          <div>
+            <div class="meta">Osaka · 3 notti (15–18 Ott)</div>
+            <p>Namba o Umeda per collegamenti e vita notturna/food.</p>
+            <a class="chip chip--alt" target="_blank" rel="noopener" href="https://www.booking.com/searchresults.html?ss=Osaka&checkin=2026-10-15&checkout=2026-10-18&aid=AFFID_BOOKING">Osaka — Booking</a>
+          </div>
+          <div>
+            <div class="meta">Tokyo (o Osaka) · 1 notte finale (18–19 Ott)</div>
+            <p>Notte comoda vicino all’aeroporto di partenza.</p>
+            <a class="chip" target="_blank" rel="noopener" href="https://www.booking.com/searchresults.html?ss=Tokyo%20Haneda&checkin=2026-10-18&checkout=2026-10-19&aid=AFFID_BOOKING">Aeroporto HND — Booking</a>
+          </div>
+        </div>
+        <p class="meta" style="margin-top:10px">Sostituisci <code>aid=AFFID_BOOKING</code> con il tuo ID affiliato Booking quando lo avrai.</p>
+      </section>
 
-    <!-- Trasparenza & FAQ (puoi riusare il blocco dell'index) -->
-    <section id="trasparenza" class="max-w-3xl">
-      <!-- incolla qui il blocco “Trasparenza & FAQ” se vuoi mostrarlo anche nella pagina -->
-    </section>
+      <!-- IN BREVE -->
+      <section id="in-breve" aria-labelledby="sec-brief">
+        <h2 id="sec-brief" class="sec">Itinerario in breve</h2>
+        <div class="panel">
+          <div class="grid-2">
+            <div>
+              <h3 style="margin:0 0 6px;font-size:1rem">Distribuzione notti</h3>
+              <ul class="list-clean" style="margin-top:4px">
+                <li><span>Tokyo</span><strong>5 notti (5–10 Ott)</strong></li>
+                <li><span>Hakone</span><strong>1 notte (10–11 Ott)</strong></li>
+                <li><span>Kyoto</span><strong>4 notti (11–15 Ott)</strong></li>
+                <li><span>Osaka</span><strong>3 notti (15–18 Ott)</strong></li>
+                <li><span>Notte finale</span><strong>1 notte (18–19 Ott)</strong></li>
+              </ul>
+              <div class="badges" style="margin-top:8px">
+                <span class="badge">Totale: 14 notti</span>
+                <span class="badge">Periodo ideale: Ottobre</span>
+              </div>
+            </div>
+            <div>
+              <h3 style="margin:0 0 6px;font-size:1rem">Trasferimenti chiave</h3>
+              <ul class="list-clean" style="margin-top:4px">
+                <li><span>Tokyo → Hakone</span><strong>JR/romancecar</strong></li>
+                <li><span>Hakone → Kyoto</span><strong>Shinkansen</strong></li>
+                <li><span>Kyoto → Nara (A/R)</span><strong>JR/Nara Line</strong></li>
+                <li><span>Kyoto → Osaka</span><strong>JR/limited express</strong></li>
+                <li><span>Osaka → Hiroshima/Miyajima</span><strong>Shinkansen + ferry</strong></li>
+              </ul>
+              <div class="badges" style="margin-top:8px">
+                <span class="badge">JR Pass consigliato</span>
+                <span class="badge">IC card (Suica/ICOCA)</span>
+              </div>
+            </div>
+          </div>
+
+          <hr style="border:none;border-top:1px dashed var(--ring);margin:14px 0">
+
+          <div class="grid-2">
+            <div>
+              <h3 style="margin:0 0 6px;font-size:1rem">Highlight per famiglie</h3>
+              <ul style="margin:0 0 0 18px;line-height:1.6">
+                <li>Onsen a Hakone (stanze family-friendly).</li>
+                <li>Parchi di Kyoto (Arashiyama) e cervi di Nara.</li>
+                <li>Osservatori scenografici (Shibuya Sky, Umeda Sky).</li>
+              </ul>
+            </div>
+            <div>
+              <h3 style="margin:0 0 6px;font-size:1rem">Per coppie</h3>
+              <ul style="margin:0 0 0 18px;line-height:1.6">
+                <li>Serate a Gion e a Dotonbori sul canale.</li>
+                <li>Kimono experience + photo walk a Kyoto.</li>
+                <li>Onsen privati/riservati in ryokan.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="badges" style="margin-top:10px">
+            <span class="badge">Ritmo: medio</span>
+            <span class="badge">Adatto: coppie & famiglie</span>
+            <span class="badge">Foliage: metà Ottobre</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROGRAMMA — LINEARE GIORNO PER GIORNO -->
+      <section id="programma" aria-labelledby="sec-prog">
+        <h2 id="sec-prog" class="sec">Programma giorno per giorno</h2>
+
+        <!-- G1 -->
+        <div id="g1" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 1 — Arrivo a Tokyo, Asakusa & Skytree</h3>
+          <div class="card">
+            <div class="meta">Base: Tokyo · Ritmo: leggero</div>
+            <div class="badges"><span class="badge">Asakusa</span><span class="badge">Senso-ji</span><span class="badge">Skytree</span></div>
+            <p>Arrivo e check-in. Passeggiata ad <strong>Asakusa</strong> tra Senso-ji e Nakamise-dori. Al tramonto, <strong>Tokyo Skytree</strong>.</p>
+            <div class="act">
+              <div><strong>Tokyo Skytree — biglietto</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Tokyo%20Skytree%20ticket&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+            <div class="food">
+              <h4>Dove mangiare</h4><p>Izakaya in zona Asakusa/Kappabashi.</p>
+              <a target="_blank" rel="noopener" href="https://www.tripadvisor.com/Search?q=Asakusa%20restaurants">Tripadvisor</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G2 -->
+        <div id="g2" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 2 — Meiji, Harajuku & Shibuya Sky</h3>
+          <div class="card">
+            <div class="meta">Ritmo: moderato</div>
+            <div class="badges"><span class="badge">Meiji</span><span class="badge">Harajuku</span><span class="badge">Shibuya Sky</span></div>
+            <p>Santuario <strong>Meiji Jingu</strong>, moda e caffè di <strong>Harajuku</strong>, tramonto a <strong>Shibuya Sky</strong>.</p>
+            <div class="act">
+              <div><strong>Shibuya Sky — biglietto orario</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Shibuya%20Sky%20ticket&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+            <div class="act">
+              <div><strong>Tour quartiere Harajuku</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Harajuku%20walking%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+            <div class="food"><h4>Dove mangiare</h4><p>Ramen a Shibuya; dolci “kawaii” a Takeshita-dori.</p>
+              <a target="_blank" rel="noopener" href="https://www.tripadvisor.com/Search?q=Shibuya%20ramen">Tripadvisor</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G3 -->
+        <div id="g3" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 3 — Tsukiji, Ginza & Akihabara</h3>
+          <div class="card">
+            <div class="meta">Ritmo: moderato</div>
+            <div class="badges"><span class="badge">Tsukiji</span><span class="badge">Ginza</span><span class="badge">Akihabara</span></div>
+            <p>Street food al <strong>Tsukiji Outer Market</strong>, shopping/architettura a <strong>Ginza</strong>, pomeriggio tech ad <strong>Akihabara</strong>.</p>
+            <div class="act">
+              <div><strong>Tsukiji food tour</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Tsukiji%20food%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+            <div class="act">
+              <div><strong>Tour Akihabara (retro gaming & anime)</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Akihabara%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+            <div class="food"><h4>Dove mangiare</h4><p>Sushi a Tsukiji; rooftop a Ginza.</p>
+              <a target="_blank" rel="noopener" href="https://www.tripadvisor.com/Search?q=Tsukiji%20sushi">Tripadvisor</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G4 -->
+        <div id="g4" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 4 — Shinjuku Gyoen, Omoide & Golden Gai</h3>
+          <div class="card">
+            <div class="meta">Ritmo: moderato</div>
+            <div class="badges"><span class="badge">Gyoen</span><span class="badge">Omoide</span><span class="badge">Golden Gai</span></div>
+            <p>Parco <strong>Shinjuku Gyoen</strong>, sera tra <strong>Omoide Yokocho</strong> e <strong>Golden Gai</strong>. Osservatorio metropolitano (gratuito).</p>
+            <div class="act">
+              <div><strong>Night food tour Shinjuku</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Shinjuku%20bar%20hopping&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+            <div class="food"><h4>Dove mangiare</h4><p>Yakitori e izakaya; opzioni family nei centri commerciali.</p>
+              <a target="_blank" rel="noopener" href="https://www.tripadvisor.com/Search?q=Omoide%20Yokocho%20restaurants">Tripadvisor</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G5 -->
+        <div id="g5" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 5 — Nikko / Kamakura (escursione)</h3>
+          <div class="card">
+            <div class="meta">Ritmo: libero · Opzione a scelta</div>
+            <div class="badges"><span class="badge">Nikkō</span><span class="badge">Kamakura</span></div>
+            <p><strong>Nikkō</strong>: santuari nel bosco (UNESCO). <strong>Kamakura</strong>: Grande Buddha e templi sul mare.</p>
+            <div class="act">
+              <div><strong>Gita a Nikkō da Tokyo</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Nikko%20day%20trip%20from%20Tokyo&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+            <div class="act">
+              <div><strong>Kamakura & Enoshima — day trip</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Kamakura%20day%20trip%20from%20Tokyo&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G6 -->
+        <div id="g6" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 6 — Tokyo → Hakone (onsen & Fuji)</h3>
+          <div class="card">
+            <div class="meta">Trasferimento: JR/romancecar · 1 notte</div>
+            <div class="badges"><span class="badge">Hakone</span><span class="badge">Onsen</span><span class="badge">Fuji views*</span></div>
+            <p>Trasferimento a <strong>Hakone</strong>. Hakone loop: funivia/Owakudani, crociera sul lago Ashi, ryokan con <strong>onsen</strong>. (*Vista Fuji meteo permettendo.)</p>
+            <div class="act">
+              <div><strong>Hakone Free Pass (trasporti locali)</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Hakone%20Free%20Pass&partner_id=HWU00MZ&cmp=GlobalGlide360">Info/Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G7 -->
+        <div id="g7" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 7 — Hakone → Kyoto (Gion by night)</h3>
+          <div class="card">
+            <div class="meta">Trasferimento: Shinkansen · 4 notti</div>
+            <div class="badges"><span class="badge">Kyoto</span><span class="badge">Gion</span></div>
+            <p>Shinkansen verso <strong>Kyoto</strong>. Check-in e passeggiata serale a <strong>Gion</strong> e Shirakawa Minami-dori.</p>
+            <div class="act">
+              <div><strong>Tour serale Gion (storie di geisha/maiko)</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Gion%20evening%20walking%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G8 -->
+        <div id="g8" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 8 — Higashiyama, Kiyomizu-dera & Ninenzaka</h3>
+          <div class="card">
+            <div class="meta">Ritmo: moderato</div>
+            <div class="badges"><span class="badge">Kiyomizu</span><span class="badge">Sannen/Ninenzaka</span></div>
+            <p>Visita al <strong>Kiyomizu-dera</strong>, poi vicoli storici <strong>Sannen-zaka</strong> e <strong>Ninen-zaka</strong>, santuario Yasaka.</p>
+            <div class="act">
+              <div><strong>Kimono experience + photo walk (Kyoto)</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Kyoto%20kimono%20experience&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+            <div class="food"><h4>Dove mangiare</h4><p>Yudofu, soba e dolci matcha in Higashiyama.</p>
+              <a target="_blank" rel="noopener" href="https://www.tripadvisor.com/Search?q=Higashiyama%20restaurants">Tripadvisor</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G9 -->
+        <div id="g9" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 9 — Fushimi Inari & Uji (matcha)</h3>
+          <div class="card">
+            <div class="meta">Ritmo: moderato</div>
+            <div class="badges"><span class="badge">Fushimi Inari</span><span class="badge">Uji</span></div>
+            <p>Mattina tra i torii di <strong>Fushimi Inari</strong>. Pomeriggio a <strong>Uji</strong> per Byodo-in e degustazioni di matcha.</p>
+            <div class="act">
+              <div><strong>Fushimi Inari trekking guidato</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Fushimi%20Inari%20guided%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G10 -->
+        <div id="g10" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 10 — Arashiyama & Kinkaku-ji</h3>
+          <div class="card">
+            <div class="meta">Ritmo: moderato</div>
+            <div class="badges"><span class="badge">Bamboo Grove</span><span class="badge">Tenryu-ji</span><span class="badge">Kinkaku-ji</span></div>
+            <p>Foresta di bambù e <strong>Tenryu-ji</strong> con giardini zen. Pomeriggio al <strong>Padiglione d’Oro</strong>.</p>
+            <div class="act">
+              <div><strong>Rickshaw experience Arashiyama</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Arashiyama%20rickshaw&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G11 -->
+        <div id="g11" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 11 — Nara (escursione)</h3>
+          <div class="card">
+            <div class="meta">Ritmo: leggero</div>
+            <div class="badges"><span class="badge">Todai-ji</span><span class="badge">Deer Park</span></div>
+            <p>Treno per <strong>Nara</strong>: <strong>Todai-ji</strong>, cervi del parco, santuario Kasuga Taisha.</p>
+            <div class="act">
+              <div><strong>Tour guidato Nara da Kyoto</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Nara%20day%20trip%20from%20Kyoto&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G12 -->
+        <div id="g12" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 12 — Kyoto → Osaka (Dotonbori & Umeda)</h3>
+          <div class="card">
+            <div class="meta">Trasferimento: JR · 3 notti a Osaka</div>
+            <div class="badges"><span class="badge">Dotonbori</span><span class="badge">Umeda Sky</span></div>
+            <p>Arrivo a <strong>Osaka</strong>, giro a <strong>Dotonbori</strong>. Tramonto all’osservatorio <strong>Umeda Sky</strong>.</p>
+            <div class="act">
+              <div><strong>Umeda Sky Building — biglietto</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Umeda%20Sky%20Building%20ticket&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+            <div class="food"><h4>Dove mangiare</h4><p>Takoyaki e okonomiyaki a Dotonbori.</p>
+              <a target="_blank" rel="noopener" href="https://www.tripadvisor.com/Search?q=Dotonbori%20restaurants">Tripadvisor</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G13 -->
+        <div id="g13" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 13 — Osaka: Castello & Kuromon</h3>
+          <div class="card">
+            <div class="meta">Ritmo: moderato</div>
+            <div class="badges"><span class="badge">Castello</span><span class="badge">Kuromon Ichiba</span></div>
+            <p>Visita al <strong>Castello di Osaka</strong> e mercato <strong>Kuromon Ichiba</strong>. Serata a Shinsekai.</p>
+            <div class="act">
+              <div><strong>Tour street food Osaka</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Osaka%20street%20food%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G14 -->
+        <div id="g14" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 14 — Hiroshima & Miyajima (escursione)</h3>
+          <div class="card">
+            <div class="meta">Ritmo: pieno · JR Pass consigliato</div>
+            <div class="badges"><span class="badge">Peace Memorial</span><span class="badge">Isola di Miyajima</span></div>
+            <p>Shinkansen per <strong>Hiroshima</strong>: Parco della Pace e cupola Genbaku. Traghetto per <strong>Miyajima</strong> (santuario Itsukushima e torii “sull’acqua”).</p>
+            <div class="act">
+              <div><strong>Hiroshima & Miyajima — tour guidato</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Hiroshima%20and%20Miyajima%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G15 -->
+        <div id="g15" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 15 — Osaka/Tokyo → Partenza</h3>
+          <div class="card">
+            <div class="meta">Fine tour</div>
+            <div class="badges"><span class="badge">Transfer aeroporto</span></div>
+            <p>Trasferimento verso l’aeroporto (Itami/KIX o Haneda/Narita) e rientro in Italia.</p>
+            <div class="act">
+              <div><strong>Limousine Bus / Transfer privato aeroporto</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Tokyo%20airport%20transfer%20bus&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MAPPA -->
+      <section id="mappa" aria-labelledby="sec-map">
+        <h2 id="sec-map" class="sec">Mappa interattiva — principali tappe del tour</h2>
+        <div class="map-wrap">
+          <iframe class="map-iframe"
+            src="https://www.google.com/maps?q=Japan%20Tokyo%2C%20Hakone%2C%20Kyoto%2C%20Nara%2C%20Osaka%2C%20Hiroshima%2C%20Miyajima&z=5&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade" aria-label="Mappa del Giappone con principali città del tour"></iframe>
+        </div>
+        <p class="meta" style="margin-top:8px">Suggerimento: usa i livelli satellite/terreno e zooma su Kyoto (Higashiyama/Arashiyama) e Tokyo (Asakusa/Shibuya/Shinjuku).</p>
+      </section>
+
+      <!-- ATTIVITÀ (riepilogo) -->
+      <section id="attivita" aria-labelledby="sec-att">
+        <h2 id="sec-att" class="sec">Riepilogo attività prenotabili</h2>
+        <div class="panel">
+          <ul class="list-clean">
+            <li><span>Tokyo Skytree</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Tokyo%20Skytree%20ticket&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Shibuya Sky</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Shibuya%20Sky%20ticket&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Tsukiji food tour</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Tsukiji%20food%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Nikkō / Kamakura day trip</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Nikko%20day%20trip%20from%20Tokyo&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Hakone Free Pass / attività</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Hakone%20Free%20Pass&partner_id=HWU00MZ&cmp=GlobalGlide360">Info</a></li>
+            <li><span>Kyoto kimono/photo</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Kyoto%20kimono%20experience&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Nara tour</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Nara%20day%20trip%20from%20Kyoto&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Umeda Sky Building</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Umeda%20Sky%20Building%20ticket&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Osaka street food tour</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Osaka%20street%20food%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Hiroshima & Miyajima tour</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Hiroshima%20and%20Miyajima%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Transfer aeroporti (bus/privato)</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Tokyo%20airport%20transfer%20bus&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+          </ul>
+          <p class="meta" style="margin-top:8px">Suggerimento: valuta il <strong>Japan Rail Pass</strong> per tratte lunghe (Kyoto–Osaka–Hiroshima). Lo aggiungeremo quando disponibile su partner affiliato.</p>
+        </div>
+      </section>
+
+      <!-- CONSIGLI PRATICI -->
+      <section id="faq" aria-labelledby="sec-faq">
+        <h2 id="sec-faq" class="sec">Info pratiche & FAQ</h2>
+        <div class="panel">
+          <dl style="margin:0;line-height:1.6em;">
+            <dt style="font-weight:600;margin-top:12px;">🚄 Trasporti</dt>
+            <dd>IC card (Suica/PASMO/ICOCA) + Shinkansen per lunghe distanze. Considera JR Pass 7–14 giorni in base al numero di tratte.</dd>
+
+            <dt style="font-weight:600;margin-top:12px;">🔌 Elettricità</dt>
+            <dd>Prese tipo A/B (110 V). Adattatore europeo necessario.</dd>
+
+            <dt style="font-weight:600;margin-top:12px;">💳 Pagamenti</dt>
+            <dd>Carte contactless diffuse; contanti ancora utili in piccoli negozi/templi.</dd>
+
+            <dt style="font-weight:600;margin-top:12px;">👨‍👩‍👧‍👦 Family tips</dt>
+            <dd>Parchi, acquari e musei interattivi in molte città. Noleggio pocket-WiFi/eSIM consigliato.</dd>
+
+            <dt style="font-weight:600;margin-top:12px;">🍁 Periodo migliore</dt>
+            <dd>Ottobre–novembre per foliage; marzo–aprile per sakura (maggiore affluenza).</dd>
+          </dl>
+        </div>
+      </section>
+
+      <button class="backtop" id="backtop" aria-label="Torna su">↑</button>
+    </article>
+
+    <!-- SIDEBAR -->
+    <aside class="side" aria-label="Riepilogo e prenotazioni rapide">
+      <div class="card">
+        <h3>Riepilogo viaggio</h3>
+        <ul class="list-clean">
+          <li><span>Durata</span><strong>15g / 14n</strong></li>
+          <li><span>Tappe</span><strong>Tokyo · Hakone · Kyoto · Nara · Osaka · Hiroshima/Miyajima</strong></li>
+          <li><span>Ideale</span><strong>Ottobre · Aprile</strong></li>
+        </ul>
+        <a class="btn" href="#voli">Cerca voli</a>
+        <a class="btn btn--ghost" href="#hotel">Trova hotel</a>
+        <a class="btn" href="#attivita">Prenota attività</a>
+      </div>
+
+      <div class="card">
+        <h3>Timeline date</h3>
+        <ul class="list-clean">
+          <li><span>Arrivo Tokyo</span><strong>5 Ott 2026</strong></li>
+          <li><span>Kyoto base</span><strong>11–15 Ott</strong></li>
+          <li><span>Osaka base</span><strong>15–18 Ott</strong></li>
+          <li><span>Rientro</span><strong>19 Ott 2026</strong></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Consigli rapidi</h3>
+        <ul class="list-clean">
+          <li><span>Bagagli</span><span>Usa servizi takkyubin tra tappe per viaggiare leggeri.</span></li>
+          <li><span>Orari</span><span>Templi affollati presto la mattina; prenota osservatori al tramonto.</span></li>
+        </ul>
+      </div>
+    </aside>
   </main>
 
-  <!-- Footer dinamico -->
-  <div id="include-footer"></div>
+  <footer class="wrap" style="border-top:1px solid var(--ring);margin-top:10px;color:#596171">
+    <a href="./" style="text-decoration:none;color:#2563eb">← Torna all’elenco itinerari</a>
+  </footer>
 
-  <!-- Dati pagina + builder link (voli/hotel) -->
   <script>
-    const ORIGIN_IATA = "MXP";
-    const DATA = {
-      slug: "giappone-15-giorni",
-      title: "Giappone in 15 giorni",
-      mainArrival: "HND",
-      mainDeparture: "KIX",
-      cities: [
-        { name:"Tokyo",   nights:5, iataNear:"HND", bookingQuery:"Tokyo",   gygQuery:"Tokyo",   taFoodUrl:"https://www.tripadvisor.it/Restaurants-g298184-Tokyo_Tokyo_Prefecture_Kanto.html" },
-        { name:"Hakone",  nights:1, iataNear:"HND", bookingQuery:"Hakone",  gygQuery:"Hakone",  taFoodUrl:"https://www.tripadvisor.it/Restaurants-g298171-Hakone_machi_Ashigarashimo_gun_Kanagawa_Prefecture_Kanto.html" },
-        { name:"Kyoto",   nights:5, iataNear:"ITM", bookingQuery:"Kyoto",   gygQuery:"Kyoto",   taFoodUrl:"https://www.tripadvisor.it/Restaurants-g298564-Kyoto_Kyoto_Prefecture_Kinki.html" },
-        { name:"Nara",    nights:1, iataNear:"ITM", bookingQuery:"Nara",    gygQuery:"Nara",    taFoodUrl:"https://www.tripadvisor.it/Restaurants-g298198-Nara_Nara_Prefecture_Kinki.html" },
-        { name:"Osaka",   nights:3, iataNear:"KIX", bookingQuery:"Osaka",   gygQuery:"Osaka",   taFoodUrl:"https://www.tripadvisor.it/Restaurants-g298566-Osaka_Osaka_Prefecture_Kinki.html" }
-      ],
-      departures: [
-        { start:"2025-10-24", length:15 },
-        { start:"2025-11-07", length:15 },
-        { start:"2025-11-21", length:15 }
-      ]
-    };
-
-    const fmt = d => d.toISOString().slice(0,10);
-    const addDays = (iso, n) => { const d=new Date(iso+"T12:00:00"); d.setDate(d.getDate()+n); return fmt(d); };
-
-    // ATTENZIONE: questi deep link Skyscanner possono cambiare / rompersi.
-    // Li lasciamo così (come richiesto), poi li migriamo alle "routes" o referral API quando vuoi.
-    const skyRound = (from,to,dep,ret) => `https://www.skyscanner.it/trasporti/voli/${from}/${to}/${dep}/${ret}/`;
-    const skyOne  = (from,to,date)      => `https://www.skyscanner.it/trasporti/voli/${from}/${to}/${date}/`;
-
-    const bookCity= (q,cin,cout) => {
-      const u=new URL("https://www.booking.com/searchresults.it.html");
-      u.searchParams.set("ss", q);
-      u.searchParams.set("checkin", cin);
-      u.searchParams.set("checkout", cout);
-      u.searchParams.set("group_adults","2"); u.searchParams.set("no_rooms","1"); u.searchParams.set("group_children","0");
-      return u.toString();
-    };
-
-    function render(startISO){
-      // calcolo soggiorni
-      let day=0;
-      const spans = DATA.cities.map(c => {
-        const cin = addDays(startISO, day);
-        const cout= addDays(startISO, day + c.nights);
-        day += c.nights;
-        return { ...c, checkin:cin, checkout:cout };
+    // Smooth scroll + Back to top
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href').slice(1);
+        const t = document.getElementById(id);
+        if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'}); }
       });
-      const endISO = addDays(startISO, day);
-
-      // VOLI
-      const flights = document.getElementById('flights'); flights.innerHTML="";
-      const outA = document.createElement('a');
-      outA.className="block p-4 rounded-2xl border hover:border-black";
-      outA.target="_blank"; outA.textContent = `MXP → ${DATA.mainArrival} (${startISO})`;
-      outA.href = skyOne(ORIGIN_IATA, DATA.mainArrival, startISO);
-      flights.appendChild(outA);
-
-      const retA = document.createElement('a');
-      retA.className="block p-4 rounded-2xl border hover:border-black";
-      retA.target="_blank"; retA.textContent = `${DATA.mainDeparture} → MXP (${endISO})`;
-      retA.href = skyOne(DATA.mainDeparture, ORIGIN_IATA, endISO);
-      flights.appendChild(retA);
-
-      const alt = document.createElement('a');
-      alt.className="block p-4 rounded-2xl border hover:border-black";
-      alt.target="_blank"; alt.textContent = `Alternativa: A/R MXP ↔ HND`;
-      alt.href = skyRound(ORIGIN_IATA, "HND", startISO, endISO);
-      flights.appendChild(alt);
-
-      // STAYS (hotel + attività + food)
-      const stays = document.getElementById('stays'); stays.innerHTML="";
-      spans.forEach(c=>{
-        const w=document.createElement('div');
-        w.className="p-4 rounded-2xl border space-y-3";
-        w.innerHTML = `
-          <div class="flex items-center justify-between gap-2">
-            <h3 class="font-semibold text-lg">${c.name}</h3>
-            <span class="text-sm bg-gray-100 rounded-full px-2 py-1">${c.checkin} → ${c.checkout} (${c.nights} notti)</span>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <a class="px-3 py-2 rounded-xl bg-black text-white" target="_blank" href="${bookCity(c.bookingQuery,c.checkin,c.checkout)}">Hotel su Booking</a>
-            <a class="px-3 py-2 rounded-xl bg-gray-900 text-white cta-gyg" data-gyg="${c.gygQuery}" href="#">Attività a ${c.name}</a>
-            <a class="px-3 py-2 rounded-xl bg-gray-200" target="_blank" href="${c.taFoodUrl}">Dove mangiare (TripAdvisor)</a>
-          </div>
-        `;
-        stays.appendChild(w);
-      });
-
-      // ATTIVITÀ (macro)
-      const acts = document.getElementById('activities'); acts.innerHTML="";
-      [spans[0], spans[2]].forEach(c=>{
-        const a=document.createElement('a');
-        a.className="block p-4 rounded-2xl border hover:border-black cta-gyg";
-        a.setAttribute("data-gyg", c.gygQuery);
-        a.href = "#";
-        a.textContent = `Top attività a ${c.name}`;
-        acts.appendChild(a);
-      });
-
-      // FOOD (macro)
-      const food = document.getElementById('food'); food.innerHTML="";
-      [spans[0], spans[2]].forEach(c=>{
-        const a=document.createElement('a');
-        a.className="block p-4 rounded-2xl border hover:border-black";
-        a.target="_blank"; a.textContent = `Ristoranti consigliati a ${c.name} (TripAdvisor)`;
-        a.href = c.taFoodUrl;
-        food.appendChild(a);
-      });
-
-      // Collega/aggiorna le CTA GYG appena create
-      if (window.GG_GYG && typeof GG_GYG.wireGygCtas === "function") {
-        GG_GYG.wireGygCtas();
-      }
-    }
-
-    // Date buttons
-    const wrap = document.getElementById('dateButtons');
-    DATA.departures.forEach((opt,i)=>{
-      const b=document.createElement('button');
-      b.className="px-3 py-2 rounded-xl bg-white border hover:border-black";
-      b.textContent = `${opt.start} • ${opt.length}g`;
-      b.onclick = ()=>{
-        // reset stile
-        [...wrap.querySelectorAll('button')].forEach(x=>x.classList.remove('bg-black','text-white'));
-        // selezione
-        b.classList.add('bg-black','text-white');
-        // render
-        render(opt.start);
-      };
-      wrap.appendChild(b);
-      if(i===0) setTimeout(()=>b.click(),0);
     });
+    const bt = document.getElementById('backtop');
+    window.addEventListener('scroll', ()=>{ bt.classList.toggle('show', window.scrollY > 600); });
+    bt.addEventListener('click', ()=>window.scrollTo({top:0, behavior:'smooth'}));
   </script>
-
-  <!-- JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@graph":[
-      {
-        "@type":"WebPage",
-        "@id":"https://www.globalglide360.com/itinerari/giappone-15-giorni.html",
-        "url":"https://www.globalglide360.com/itinerari/giappone-15-giorni.html",
-        "name":"Giappone in 15 giorni | GlobalGlide360",
-        "description":"Itinerario reale: Tokyo, Hakone, Kyoto, Nara, Osaka. Voli da MXP, hotel per tappa, attività e ristoranti.",
-        "breadcrumb":{"@id":"https://www.globalglide360.com/#breadcrumb-giappone15"},
-        "publisher":{"@id":"https://www.globalglide360.com/#org"},
-        "isPartOf":{"@id":"https://www.globalglide360.com/#website"}
-      },
-      {
-        "@type":"BreadcrumbList",
-        "@id":"https://www.globalglide360.com/#breadcrumb-giappone15",
-        "itemListElement":[
-          {"@type":"ListItem","position":1,"name":"Home","item":"https://www.globalglide360.com/"},
-          {"@type":"ListItem","position":2,"name":"Itinerari pronti","item":"https://www.globalglide360.com/#itinerari-pronti"},
-          {"@type":"ListItem","position":3,"name":"Giappone – 15 giorni","item":"https://www.globalglide360.com/itinerari/giappone-15-giorni.html"}
-        ]
-      },
-      {
-        "@type":"TouristTrip",
-        "@id":"https://www.globalglide360.com/itinerari/giappone-15-giorni.html#trip",
-        "name":"Giappone – 15 giorni",
-        "description":"Itinerario di 15 giorni con tappe multiple e attività prenotabili.",
-        "touristType":"Famiglie | Coppie | Amici",
-        "itinerary":{
-          "@type":"ItemList",
-          "itemListElement":[
-            {"@type":"ListItem","position":1,"name":"Tokyo – 5 notti"},
-            {"@type":"ListItem","position":2,"name":"Hakone – 1 notte"},
-            {"@type":"ListItem","position":3,"name":"Kyoto – 5 notti"},
-            {"@type":"ListItem","position":4,"name":"Nara – 1 notte"},
-            {"@type":"ListItem","position":5,"name":"Osaka – 3 notti"}
-          ]
-        },
-        "departureStation":{"@type":"Airport","name":"Milano Malpensa","iataCode":"MXP"},
-        "arrivalStation":{"@type":"Airport","name":"Tokyo Haneda","iataCode":"HND"},
-        "provider":{"@id":"https://www.globalglide360.com/#org"},
-        "image":["https://www.globalglide360.com/assets/itinerari/giappone/cover_1200x630.jpg"]
-      },
-      {
-        "@type":"Organization",
-        "@id":"https://www.globalglide360.com/#org",
-        "name":"GlobalGlide360",
-        "url":"https://www.globalglide360.com/",
-        "logo":{"@type":"ImageObject","url":"https://www.globalglide360.com/assets/logo-gg360.png"}
-      },
-      {
-        "@type":"WebSite",
-        "@id":"https://www.globalglide360.com/#website",
-        "url":"https://www.globalglide360.com/","name":"GlobalGlide360"
-      }
-    ]
-  }
-  </script>
-
-  <!-- Loader partials header/footer (root) -->
-  <script>
-    const HEADER_PATH="/partials/header.html", FOOTER_PATH="/partials/footer.html";
-    document.addEventListener("DOMContentLoaded", async () => {
-      try {
-        const [h,f] = await Promise.all([fetch(HEADER_PATH), fetch(FOOTER_PATH)]);
-        if (h.ok) document.getElementById('include-header').innerHTML = await h.text();
-        if (f.ok) document.getElementById('include-footer').innerHTML = await f.text();
-      } catch(e) { console.error("Errore caricando i partials:", e); }
-    });
-  </script>
-
-  <!-- Resolver GYG (necessario per le CTA attività) -->
-  <script src="/assets/js/gyg-resolver.js"></script>
 </body>
 </html>
