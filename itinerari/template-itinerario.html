@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title><!-- TODO: TITOLO --> | GlobalGlide360</title>
+  <meta name="description" content="<!-- TODO: descrizione breve SEO -->">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{ --accent:#4fb3ff; --accent-2:#8b5cf6; --text:#0e141b; --muted:#596171;
+           --bg:#f7f9fb; --card:#fff; --ring:#dbe3ea; }
+    *{box-sizing:border-box} img{max-width:100%;display:block}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text)}
+
+    /* HERO */
+    .hero{position:relative;border-bottom:1px solid var(--ring);background:linear-gradient(180deg,#ffffff,#eef4f8)}
+    .hero__wrap{max-width:1100px;margin:0 auto;padding:18px 18px 24px}
+    .crumbs{font-size:.875rem;color:var(--muted);margin-bottom:8px}
+    .crumbs a{color:var(--muted);text-decoration:none}
+    .crumbs a:hover{text-decoration:underline}
+    .hero__grid{display:grid;grid-template-columns:1fr;gap:16px;align-items:center}
+    @media(min-width:900px){.hero__grid{grid-template-columns:1.3fr .7fr}}
+    .cover{border-radius:16px;overflow:hidden;border:1px solid var(--ring);box-shadow:0 10px 30px rgba(0,0,0,.05)}
+    .hero h1{margin:4px 0 6px;font-weight:800;font-size:clamp(24px,4vw,40px);letter-spacing:-.01em}
+    .hero p.sub{margin:0;color:var(--muted)}
+    .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-top:14px}
+    .kpi{background:var(--card);border:1px solid var(--ring);border-radius:12px;padding:10px 12px}
+    .kpi .lbl{font-size:.78rem;color:var(--muted)} .kpi .val{font-weight:800}
+
+    /* QUICKBAR */
+    .quickbar{position:sticky;top:0;z-index:30;background:#ffffffc7;backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid var(--ring)}
+    .quickbar__inner{max-width:1100px;margin:0 auto;display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:10px 18px}
+    .chip{display:inline-flex;gap:8px;align-items:center;background:#fff;border:1px solid var(--ring);border-radius:999px;padding:8px 12px;font-weight:600}
+    .chip a{text-decoration:none;color:var(--text)}
+    .chip--cta{background:var(--accent);border-color:var(--accent)}
+    .chip--alt{background:var(--accent-2);border-color:var(--accent-2);color:#fff}
+    .chip--cta a{color:#fff}
+
+    /* LAYOUT */
+    .wrap{max-width:1100px;margin:0 auto;padding:22px 18px}
+    .grid{display:grid;grid-template-columns:1fr;gap:18px}
+    @media(min-width:980px){.grid{grid-template-columns:minmax(0,1fr) 320px}}
+
+    /* SIDEBAR */
+    .side{position:sticky;top:70px;align-self:start}
+    .side .card{background:#fff;border:1px solid var(--ring);border-radius:14px;padding:14px 16px;margin-bottom:12px}
+    .side h3{margin:0 0 8px;font-size:1rem}
+    .side .btn{display:block;text-align:center;background:var(--accent);color:#fff;text-decoration:none;font-weight:800;border-radius:10px;padding:10px 14px;margin-top:8px}
+    .side .btn--ghost{background:#fff;color:#0e141b;border:1px solid var(--ring)}
+    .list-clean{list-style:none;margin:0;padding:0}
+    .list-clean li{display:flex;justify-content:space-between;color:var(--muted);padding:6px 0;border-bottom:1px dashed var(--ring)}
+    .list-clean li:last-child{border-bottom:0}
+
+    /* CONTENT */
+    h2.sec{margin:18px 0 12px;font-size:1.2rem}
+    .panel{background:#fff;border:1px solid var(--ring);border-radius:14px;padding:14px 16px}
+    .grid-2{display:grid;grid-template-columns:1fr;gap:12px}
+    @media(min-width:780px){.grid-2{grid-template-columns:1fr 1fr}}
+
+    /* TIMELINE */
+    .day{position:relative;padding-left:30px}
+    .day:before{content:'';position:absolute;left:10px;top:8px;bottom:-8px;width:2px;background:linear-gradient(#cfe6ff,#dbe3ea)}
+    .dot{position:absolute;left:3px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--accent)}
+    .card{background:#fff;border:1px solid var(--ring);border-radius:14px;padding:14px 16px;margin:10px 0}
+    .meta{color:var(--muted);font-size:.9rem;margin-bottom:6px}
+    .badge{display:inline-block;background:#eef7ff;color:#0e141b;border:1px solid var(--ring);border-radius:999px;padding:3px 8px;font-size:.8rem;margin-right:6px}
+    .badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+    .act{display:grid;grid-template-columns:1fr;gap:8px;margin-top:10px}
+    @media(min-width:620px){.act{grid-template-columns:1fr auto}}
+    .act .btn{align-self:center;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;border-radius:10px;padding:10px 14px;white-space:nowrap}
+    .act .btn:hover{background:#3da1ec}
+    .note{background:#fff;border:1px dashed var(--ring);border-radius:12px;padding:10px 12px;color:var(--muted);font-size:.92rem}
+    .food{background:#fff;border:1px dashed var(--ring);border-radius:12px;padding:12px 14px;margin-top:10px}
+    .food h4{margin:0 0 6px;font-size:1rem}
+    .food a{color:#2563eb;text-decoration:none}
+    .food a:hover{text-decoration:underline}
+    .toc{background:#fff;border:1px solid var(--ring);border-radius:12px;padding:10px 12px}
+    .toc a{display:inline-block;margin:4px 8px 0 0;color:#2563eb;text-decoration:none}
+    .toc a:hover{text-decoration:underline}
+    .backtop{position:fixed;right:16px;bottom:16px;background:#111827;color:#fff;border:none;border-radius:999px;padding:10px 12px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.2);display:none}
+    .backtop.show{display:block}
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero__wrap">
+      <nav class="crumbs"><a href="/">Home</a> › <a href="/itinerari/">Itinerari</a> › <!-- TODO: TITOLO --></nav>
+      <div class="hero__grid">
+        <div>
+          <h1><!-- TODO: TITOLO --></h1>
+          <p class="sub"><!-- TODO: sottotitolo sintetico --></p>
+          <div class="kpis">
+            <div class="kpi"><div class="lbl">Durata</div><div class="val"><!-- es. 5 giorni / 4 notti --></div></div>
+            <div class="kpi"><div class="lbl">Tappe</div><div class="val"><!-- es. Città A (2N) · Città B (2N) --></div></div>
+            <div class="kpi"><div class="lbl">Periodo ideale</div><div class="val"><!-- es. Mar–Mag / Ott–Nov --></div></div>
+          </div>
+        </div>
+        <figure class="cover"><img src="<!-- TODO: path cover es. ../assets/itinerari/bali.jpg -->" alt="<!-- TODO: alt -->"></figure>
+      </div>
+    </div>
+  </header>
+
+  <!-- QUICKBAR -->
+  <div class="quickbar">
+    <div class="quickbar__inner">
+      <span class="chip"><a href="#voli">✈️ Voli</a></span>
+      <span class="chip"><a href="#hotel">🏨 Hotel</a></span>
+      <span class="chip"><a href="#programma">🗺️ Programma</a></span>
+      <span class="chip"><a href="#faq">❓ FAQ</a></span>
+      <span class="chip chip--cta"><a href="#attivita">🎟️ Prenota attività</a></span>
+    </div>
+  </div>
+
+  <main class="wrap grid">
+    <article id="content">
+      <!-- Indice giorni -->
+      <section class="toc">
+        <h2 class="sec" style="margin-top:0">Indice</h2>
+        <p class="meta" style="margin:6px 0 10px">Vai direttamente al giorno:</p>
+        <p><!-- TODO: genera ancore G1..Gn in base alla durata --></p>
+      </section>
+
+      <!-- VOLI -->
+      <section id="voli">
+        <h2 class="sec">Voli (con date)</h2>
+        <div class="panel grid-2">
+          <div>
+            <div class="meta">Andata — <!-- es. 10 Giu 2026 --></div>
+            <p><!-- Origine --> → <!-- Destinazione principale --></p>
+            <a class="chip chip--cta" target="_blank" rel="noopener"
+               href="https://www.skyscanner.net/transport/flights-from/?adults=2&ref=home#/?searchparamstype=flights&flightsearch=1&itinerary=itineraries!oneway!legs!origin:MXP,destination:<!-- TODO: IATA destinazione -->,date:2026-06-10T00:00:00&cabin=economy">Cerca andata su Skyscanner</a>
+          </div>
+          <div>
+            <div class="meta">Ritorno — <!-- es. 15 Giu 2026 --></div>
+            <p><!-- Destinazione principale --> → <!-- Origine --></p>
+            <a class="chip chip--cta" target="_blank" rel="noopener"
+               href="https://www.skyscanner.net/transport/flights-from/<!-- TODO: IATA destinazione in minuscolo -->/?adults=2&ref=home#/?searchparamstype=flights&flightsearch=1&itinerary=itineraries!oneway!legs!origin:<!-- TODO: IATA -->,destination:MXP,date:2026-06-15T00:00:00&cabin=economy">Cerca ritorno su Skyscanner</a>
+          </div>
+        </div>
+        <p class="note" style="margin-top:10px">Aggiungeremo i parametri affiliati Skyscanner appena li hai.</p>
+      </section>
+
+      <!-- HOTEL -->
+      <section id="hotel">
+        <h2 class="sec">Hotel suggeriti (prenotabili)</h2>
+        <div class="panel grid-2">
+          <div>
+            <div class="meta"><!-- città A --> · <!-- notti e date --></div>
+            <p><!-- zone comode --></p>
+            <a class="chip chip--cta" target="_blank" rel="noopener"
+               href="https://www.booking.com/searchresults.html?ss=<!-- città A urlencode -->&checkin=2026-06-10&checkout=2026-06-12&aid=AFFID_BOOKING">Cerca hotel</a>
+          </div>
+          <div>
+            <div class="meta"><!-- città B --> · <!-- notti e date --></div>
+            <p><!-- zone comode --></p>
+            <a class="chip chip--alt" target="_blank" rel="noopener"
+               href="https://www.booking.com/searchresults.html?ss=<!-- città B urlencode -->&checkin=2026-06-12&checkout=2026-06-15&aid=AFFID_BOOKING">Cerca hotel</a>
+          </div>
+        </div>
+        <p class="note" style="margin-top:10px">Sostituisci <code>aid=AFFID_BOOKING</code> con il tuo ID affiliato.</p>
+      </section>
+
+      <!-- PROGRAMMA (copiaci i tuoi contenuti giorno per giorno e inserisci attività/food) -->
+      <section id="programma">
+        <h2 class="sec">Programma giorno per giorno</h2>
+
+        <!-- ESEMPIO GIORNO -->
+        <div id="g1" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 1 — <!-- titolo giorno --></h3>
+          <div class="card">
+            <div class="meta"><!-- Area · ritmo --></div>
+            <div class="badges"><span class="badge">Trasporti: <!-- ... --></span><span class="badge">Ideale: <!-- orari --></span></div>
+            <p style="margin-top:10px"><!-- descrizione dettagliata --></p>
+
+            <!-- Attività singola -->
+            <div class="act">
+              <div><strong><!-- nome attività --></strong><br><!-- breve value prop --></div>
+              <a class="btn" target="_blank" rel="noopener" href="<!-- GYG_LINK('query') -->">Prenota</a>
+            </div>
+
+            <!-- Cibo -->
+            <div class="food">
+              <h4>Dove mangiare</h4>
+              <p><!-- suggerimento --></p>
+              <a target="_blank" rel="noopener" href="<!-- TRIP('ricerca') -->">Vedi su Tripadvisor</a>
+            </div>
+          </div>
+        </div>
+        <!-- /ESEMPIO GIORNO -->
+
+        <!-- Aggiungi G2..Gn -->
+      </section>
+
+      <!-- ATTIVITÀ riepilogo -->
+      <section id="attivita">
+        <h2 class="sec">Riepilogo attività prenotabili</h2>
+        <div class="panel">
+          <ul class="list-clean">
+            <!-- replica voci con link singoli -->
+            <li><span><!-- nome attività --></span><a target="_blank" rel="noopener" href="<!-- GYG_LINK('query') -->">Prenota</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq">
+        <h2 class="sec">Info pratiche & FAQ</h2>
+        <div class="panel">
+          <ul class="list-clean">
+            <li><span>Pagamenti</span><span><!-- ... --></span></li>
+            <li><span>Connettività</span><span><!-- ... --></span></li>
+            <li><span>Presa elettrica</span><span><!-- ... --></span></li>
+            <li><span>Trasporti</span><span><!-- ... --></span></li>
+          </ul>
+        </div>
+      </section>
+
+      <button class="backtop" id="backtop" aria-label="Torna su">↑</button>
+    </article>
+
+    <!-- SIDEBAR -->
+    <aside class="side">
+      <div class="card">
+        <h3>Riepilogo viaggio</h3>
+        <ul class="list-clean">
+          <li><span>Durata</span><strong><!-- es. 5g / 4n --></strong></li>
+          <li><span>Tappe</span><strong><!-- es. 2 città --></strong></li>
+          <li><span>Ideale</span><strong><!-- periodo --></strong></li>
+        </ul>
+        <a class="btn" href="#voli">Cerca voli</a>
+        <a class="btn btn--ghost" href="#hotel">Trova hotel</a>
+        <a class="btn" href="#attivita">Prenota attività</a>
+      </div>
+
+      <div class="card">
+        <h3>Date suggerite</h3>
+        <ul class="list-clean">
+          <li><span>Andata</span><strong><!-- data --></strong></li>
+          <li><span>Ritorno</span><strong><!-- data --></strong></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Consigli rapidi</h3>
+        <ul class="list-clean">
+          <li><span>Meteo</span><span><!-- ... --></span></li>
+          <li><span>Safety</span><span><!-- ... --></span></li>
+          <li><span>Budget</span><span><!-- ... --></span></li>
+        </ul>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="wrap" style="border-top:1px solid var(--ring);margin-top:10px;color:var(--muted)">
+    <a href="./" style="text-decoration:none;color:#2563eb">← Torna all’elenco itinerari</a>
+  </footer>
+
+  <!-- Variabili affiliazione + helpers -->
+  <script>
+    const AFF = {
+      GYG_PARTNER: 'HWU00MZ',
+      BOOKING_AID: 'AFFID_BOOKING' // TODO: sostituisci quando lo avrai
+    };
+    function GYG_LINK(q){ return `https://www.getyourguide.com/s/?q=${encodeURIComponent(q)}&partner_id=${AFF.GYG_PARTNER}&cmp=GlobalGlide360`; }
+    function TRIP(q){ return `https://www.tripadvisor.com/Search?q=${encodeURIComponent(q)}`; }
+  </script>
+  <script>
+    // Smooth scroll + Back to top
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href').slice(1);
+        const t = document.getElementById(id);
+        if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+    });
+    const bt = document.getElementById('backtop');
+    window.addEventListener('scroll', ()=>{ bt.classList.toggle('show', window.scrollY > 600); });
+    bt.addEventListener('click', ()=>window.scrollTo({top:0, behavior:'smooth'}));
+  </script>
+</body>
+</html>
