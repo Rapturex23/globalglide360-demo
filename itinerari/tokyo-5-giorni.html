@@ -1,173 +1,413 @@
 <!doctype html>
 <html lang="it">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Tokyo – Itinerario vero 5 giorni (ottobre/novembre) | GlobalGlide360</title>
-<meta name="description" content="Itinerario reale di 5 giorni a Tokyo per 2 adulti con link prenotabili a voli, hotel e attività. Partenza da Milano (MXP), date ottobre/novembre.">
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-<!-- Travelpayouts LinkSwitcher -->
-<script data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
-  (function(){var s=document.createElement("script");s.async=1;s.src='https://tpembars.com/NDU0MTUz.js?t=454153';document.head.appendChild(s);})();
-</script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tokyo — 5 giorni | GlobalGlide360</title>
+  <meta name="description" content="Tokyo in 5 giorni: voli, hotel, attività prenotabili singolarmente (GYG), ristoranti e mappa interattiva. Itinerario adatto a coppie e famiglie.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --accent:#4fb3ff; --accent-2:#8b5cf6;
+      --text:#0e141b; --muted:#596171;
+      --bg:#f7f9fb; --card:#fff; --ring:#dbe3ea;
+    }
+    *{box-sizing:border-box}
+    img{max-width:100%;display:block}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text)}
+
+    /* HERO */
+    .hero{position:relative;border-bottom:1px solid var(--ring);background:linear-gradient(180deg,#ffffff,#eef4f8)}
+    .hero__wrap{max-width:1100px;margin:0 auto;padding:18px 18px 24px}
+    .crumbs{font-size:.875rem;color:var(--muted);margin-bottom:8px}
+    .crumbs a{color:var(--muted);text-decoration:none}
+    .crumbs a:hover{text-decoration:underline}
+    .hero__grid{display:grid;grid-template-columns:1fr;gap:16px;align-items:center}
+    @media(min-width:900px){.hero__grid{grid-template-columns:1.3fr .7fr}}
+    .cover{border-radius:16px;overflow:hidden;border:1px solid var(--ring);box-shadow:0 10px 30px rgba(0,0,0,.05)}
+    .hero h1{margin:4px 0 6px;font-weight:800;font-size:clamp(24px,4vw,40px);letter-spacing:-.01em}
+    .hero p.sub{margin:0;color:var(--muted)}
+    .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-top:14px}
+    .kpi{background:var(--card);border:1px solid var(--ring);border-radius:12px;padding:10px 12px}
+    .kpi .lbl{font-size:.78rem;color:var(--muted)}
+    .kpi .val{font-weight:800}
+
+    /* QUICKBAR */
+    .quickbar{position:sticky;top:0;z-index:30;background:#ffffffc7;backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid var(--ring)}
+    .quickbar__inner{max-width:1100px;margin:0 auto;display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:10px 18px}
+    .chip{display:inline-flex;gap:8px;align-items:center;background:#fff;border:1px solid var(--ring);border-radius:999px;padding:8px 12px;font-weight:600}
+    .chip a{text-decoration:none;color:var(--text)}
+    .chip--cta{background:var(--accent);border-color:var(--accent)}
+    .chip--alt{background:var(--accent-2);border-color:var(--accent-2);color:#fff}
+    .chip--cta a{color:#fff}
+
+    /* LAYOUT */
+    .wrap{max-width:1100px;margin:0 auto;padding:22px 18px}
+    .grid{display:grid;grid-template-columns:1fr;gap:18px}
+    @media(min-width:980px){.grid{grid-template-columns:minmax(0,1fr) 320px}}
+
+    /* SIDEBAR */
+    .side{position:sticky;top:70px;align-self:start}
+    .side .card{background:#fff;border:1px solid var(--ring);border-radius:14px;padding:14px 16px;margin-bottom:12px}
+    .side h3{margin:0 0 8px;font-size:1rem}
+    .side .btn{display:block;text-align:center;background:var(--accent);color:#fff;text-decoration:none;font-weight:800;border-radius:10px;padding:10px 14px;margin-top:8px}
+    .side .btn--ghost{background:#fff;color:#0e141b;border:1px solid var(--ring)}
+    .list-clean{list-style:none;margin:0;padding:0}
+    .list-clean li{display:flex;justify-content:space-between;color:var(--muted);padding:6px 0;border-bottom:1px dashed var(--ring)}
+    .list-clean li:last-child{border-bottom:0}
+
+    /* CONTENT */
+    h2.sec{margin:18px 0 12px;font-size:1.2rem}
+    .panel{background:#fff;border:1px solid var(--ring);border-radius:14px;padding:14px 16px}
+    .grid-2{display:grid;grid-template-columns:1fr;gap:12px}
+    @media(min-width:780px){.grid-2{grid-template-columns:1fr 1fr}}
+
+    /* TIMELINE */
+    .day{position:relative;padding-left:30px}
+    .day:before{content:'';position:absolute;left:10px;top:8px;bottom:-8px;width:2px;background:linear-gradient(#cfe6ff,#dbe3ea)}
+    .dot{position:absolute;left:3px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--accent)}
+    .card{background:#fff;border:1px solid var(--ring);border-radius:14px;padding:14px 16px;margin:10px 0}
+    .meta{color:var(--muted);font-size:.9rem;margin-bottom:6px}
+    .badge{display:inline-block;background:#eef7ff;color:#0e141b;border:1px solid var(--ring);border-radius:999px;padding:3px 8px;font-size:.8rem;margin-right:6px}
+    .badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+    .act{display:grid;grid-template-columns:1fr;gap:8px;margin-top:10px}
+    @media(min-width:620px){.act{grid-template-columns:1fr auto}}
+    .act .btn{align-self:center;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;border-radius:10px;padding:10px 14px;white-space:nowrap}
+    .act .btn:hover{background:#3da1ec}
+    .food{background:#fff;border:1px dashed var(--ring);border-radius:12px;padding:12px 14px;margin-top:10px}
+    .food h4{margin:0 0 6px;font-size:1rem}
+    .food a{color:#2563eb;text-decoration:none}
+    .food a:hover{text-decoration:underline}
+    .toc{background:#fff;border:1px solid var(--ring);border-radius:12px;padding:10px 12px}
+    .toc a{display:inline-block;margin:4px 8px 0 0;color:#2563eb;text-decoration:none}
+    .toc a:hover{text-decoration:underline}
+
+    /* MAP */
+    .map-wrap{background:#fff;border:1px solid var(--ring);border-radius:14px;padding:0;overflow:hidden}
+    .map-iframe{width:100%;height:420px;border:0}
+    .backtop{position:fixed;right:16px;bottom:16px;background:#111827;color:#fff;border:none;border-radius:999px;padding:10px 12px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.2);display:none}
+    .backtop.show{display:block}
+  </style>
 </head>
-<body class="bg-blue-50 text-gray-800">
+<body>
 
-<!-- Config affiliato GYG + subid -->
-<script>
-  window.GG_CFG = window.GG_CFG || {}; 
-  window.GG_CFG.gyg_partner = "HWU00MZ";
-  window.GG_SUBID = "itinerario-tokyo-ott-nov";
-</script>
-
-<header class="bg-white shadow py-6 px-6">
-  <div class="max-w-6xl mx-auto flex items-center justify-between">
-    <a href="/" class="flex items-center">
-      <img src="/img/logo.png" alt="GlobalGlide360" class="h-12 w-auto">
-      <span class="ml-3 text-2xl font-bold text-blue-800">GlobalGlide360</span>
-    </a>
-    <nav class="text-blue-800 space-x-6">
-      <a href="/mini-guide/tokyo.html" class="hover:underline">Mini-guida Tokyo</a>
-      <a href="/itinerario-random.html" class="hover:underline">Itinerario random</a>
-    </nav>
-  </div>
-</header>
-
-<main class="max-w-5xl mx-auto p-6">
-  <h1 class="text-3xl font-bold text-blue-900 mb-2">Tokyo — Itinerario vero 5 giorni</h1>
-  <p class="text-gray-700 mb-4">Esempio per <strong>2 adulti</strong>, partenza da <strong>Milano (MXP)</strong>, con date e link reali per prenotare voli, hotel e attività.</p>
-
-  <!-- Selettore mese -->
-  <div class="bg-white rounded shadow p-4 mb-6 flex flex-wrap items-center gap-3">
-    <div class="text-sm text-gray-700">Scegli periodo:</div>
-    <button id="btn-ott" class="bg-blue-700 text-white px-3 py-1 rounded-full text-sm">Ottobre (24 → 29)</button>
-    <button id="btn-nov" class="bg-gray-200 text-blue-900 hover:bg-gray-300 px-3 py-1 rounded-full text-sm">Novembre (07 → 12)</button>
-  </div>
-
-  <!-- Riepilogo costi -->
-  <section class="bg-white rounded shadow p-4 mb-6">
-    <h2 class="text-xl font-semibold text-blue-800 mb-2">Riepilogo costi stimati (2 adulti)</h2>
-    <ul class="grid grid-cols-1 md:grid-cols-3 gap-4 text-gray-800">
-      <li class="bg-blue-50 rounded p-3"><div class="text-sm text-gray-500">Voli A/R</div><div class="text-2xl font-bold">€1.780</div><div class="text-xs text-gray-500">≈ €890 p.p. (stima)</div></li>
-      <li class="bg-green-50 rounded p-3"><div class="text-sm text-gray-500">Hotel (5 notti)</div><div class="text-2xl font-bold">€600</div><div class="text-xs text-gray-500">≈ €120/notte</div></li>
-      <li class="bg-yellow-50 rounded p-3"><div class="text-sm text-gray-500">Attività</div><div class="text-2xl font-bold">€620</div><div class="text-xs text-gray-500">≈ €310 p.p.</div></li>
-    </ul>
-    <div class="mt-3 text-lg font-bold text-blue-900">Totale stimato: €3.000</div>
-    <p class="text-xs text-gray-500 mt-1">Prezzi indicativi: apri i link per disponibilità e tariffe aggiornate.</p>
-  </section>
-
-  <!-- CTA prenotazione -->
-  <section class="bg-white rounded shadow p-4 mb-8">
-    <h2 class="text-xl font-semibold text-blue-800 mb-3">Prenotazioni rapide</h2>
-    <div class="flex flex-wrap gap-3">
-      <a id="cta-volo"  target="_blank" class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800">Vedi voli su Skyscanner</a>
-      <a id="cta-hotel" target="_blank" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Vedi hotel su Booking</a>
-      <a id="cta-exp"   target="_blank" class="bg-yellow-500 text-gray-900 px-4 py-2 rounded hover:bg-yellow-600">Vedi attività su GetYourGuide</a>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero__wrap">
+      <nav class="crumbs"><a href="/">Home</a> › <a href="/itinerari/">Itinerari</a> › Tokyo — 5 giorni</nav>
+      <div class="hero__grid">
+        <div>
+          <h1>Tokyo — 5 giorni</h1>
+          <p class="sub">Templi, quartieri iconici, osservatori e street food. Itinerario adatto a coppie e famiglie, con attività prenotabili.</p>
+          <div class="kpis">
+            <div class="kpi"><div class="lbl">Durata</div><div class="val">5 giorni / 4 notti</div></div>
+            <div class="kpi"><div class="lbl">Tappe</div><div class="val">Tokyo (4N)</div></div>
+            <div class="kpi"><div class="lbl">Periodo ideale</div><div class="val">Aprile (sakura) · Ottobre</div></div>
+          </div>
+        </div>
+        <figure class="cover"><img src="../assets/itinerari/tokyo.jpg" alt="Tokyo skyline e tempio Senso-ji"></figure>
+      </div>
     </div>
-  </section>
+  </header>
 
-  <!-- Programma giorno per giorno -->
-  <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    <article class="bg-white rounded shadow p-4"><h3 class="font-semibold text-blue-800 mb-1">Giorno 1 – Shibuya & Shinjuku</h3><p class="text-sm text-gray-700">Arrivo, Shibuya Crossing e Hachikō. Serata a Shinjuku (Omoide Yokocho, Golden Gai).</p></article>
-    <article class="bg-white rounded shadow p-4"><h3 class="font-semibold text-blue-800 mb-1">Giorno 2 – Asakusa & Ueno</h3><p class="text-sm text-gray-700">Tempio Sensō-ji, Nakamise-dori, Parco di Ueno e musei.</p></article>
-    <article class="bg-white rounded shadow p-4"><h3 class="font-semibold text-blue-800 mb-1">Giorno 3 – Akihabara & Odaiba</h3><p class="text-sm text-gray-700">Tech/anime e pomeriggio a Odaiba (teamLab Planets, Rainbow Bridge).</p></article>
-    <article class="bg-white rounded shadow p-4"><h3 class="font-semibold text-blue-800 mb-1">Giorno 4 – Meiji & Harajuku</h3><p class="text-sm text-gray-700">Santuario Meiji, Takeshita-dori, Omotesandō. Esperienza di sushi a Tsukiji.</p></article>
-    <article class="bg-white rounded shadow p-4"><h3 class="font-semibold text-blue-800 mb-1">Giorno 5 – Tokyo Skytree & crociera</h3><p class="text-sm text-gray-700">Skytree e crociera sul Sumida; tempo libero a Ginza.</p></article>
-  </section>
-</main>
-<section id="trasparenza" class="container mx-auto max-w-3xl px-4 py-10">
-  <h2 class="text-2xl font-bold mb-4">Trasparenza &amp; FAQ</h2>
-  <p class="mb-4">
-    GlobalGlide360 è un magazine editoriale. Alcuni link ai partner (es. voli, hotel, attività) sono
-    <strong>link di affiliazione</strong>: se acquisti, potremmo ricevere una commissione senza costi extra per te.
-  </p>
-
-  <div class="bg-gray-50 rounded-xl p-5 space-y-4">
-    <details class="group">
-      <summary class="cursor-pointer font-semibold">Come guadagniamo?</summary>
-      <p class="mt-2">Attraverso programmi di affiliazione (es. GetYourGuide, Booking, Skyscanner). I contenuti restano indipendenti e non vendiamo pacchetti viaggio.</p>
-    </details>
-
-    <details class="group">
-      <summary class="cursor-pointer font-semibold">Cosa sono partner_id e sub_id?</summary>
-      <p class="mt-2">Il <code>partner_id</code> identifica GlobalGlide360 presso il partner (es. <code>HWU00MZ</code> su GetYourGuide). Il <code>sub_id</code> è un’etichetta tecnica per attribuire le performance a singole pagine (es. <code>tokyo-5-giorni</code>).</p>
-    </details>
-
-    <details class="group">
-      <summary class="cursor-pointer font-semibold">I prezzi sono in tempo reale?</summary>
-      <p class="mt-2">Mostriamo link verso SERP ufficiali (volo/hotel/attività) con date pre-impostate. I prezzi finali li vedi direttamente sul sito del partner, sempre aggiornati.</p>
-    </details>
-
-    <details class="group">
-      <summary class="cursor-pointer font-semibold">Usate cookie o tracciamenti?</summary>
-      <p class="mt-2">Usiamo solo gli script necessari alla funzionalità dei link affiliati e all’analisi anonima del traffico. Consulta l’Informativa Privacy per i dettagli.</p>
-    </details>
-
-    <details class="group">
-      <summary class="cursor-pointer font-semibold">Posso suggerire correzioni?</summary>
-      <p class="mt-2">Certo! Scrivici a <a href="mailto:info@globalglide360.com">info@globalglide360.com</a>. Aggiorniamo gli itinerari con cadenza regolare.</p>
-    </details>
+  <!-- QUICKBAR -->
+  <div class="quickbar">
+    <div class="quickbar__inner" role="navigation" aria-label="Azioni rapide">
+      <span class="chip"><a href="#voli">✈️ Voli</a></span>
+      <span class="chip"><a href="#hotel">🏨 Hotel</a></span>
+      <span class="chip"><a href="#programma">🗺️ Programma</a></span>
+      <span class="chip"><a href="#mappa">🗺️ Mappa</a></span>
+      <span class="chip"><a href="#faq">❓ FAQ</a></span>
+      <span class="chip chip--cta"><a href="#attivita">🎟️ Prenota attività</a></span>
+    </div>
   </div>
-</section>
 
-<!-- JSON-LD FAQPage -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    { "@type": "Question", "name": "Come guadagniamo?", "acceptedAnswer": { "@type": "Answer", "text": "Attraverso programmi di affiliazione (es. GetYourGuide, Booking, Skyscanner). I contenuti restano indipendenti e non vendiamo pacchetti viaggio." } },
-    { "@type": "Question", "name": "Cosa sono partner_id e sub_id?", "acceptedAnswer": { "@type": "Answer", "text": "Il partner_id identifica GlobalGlide360 presso il partner (es. HWU00MZ su GetYourGuide). Il sub_id è un’etichetta tecnica per attribuire le performance a singole pagine (es. tokyo-5-giorni)." } },
-    { "@type": "Question", "name": "I prezzi sono in tempo reale?", "acceptedAnswer": { "@type": "Answer", "text": "Mostriamo link verso SERP ufficiali (volo/hotel/attività) con date pre-impostate. I prezzi finali li vedi direttamente sul sito del partner, sempre aggiornati." } },
-    { "@type": "Question", "name": "Usate cookie o tracciamenti?", "acceptedAnswer": { "@type": "Answer", "text": "Usiamo solo gli script necessari alla funzionalità dei link affiliati e all’analisi anonima del traffico. Consulta l’Informativa Privacy per i dettagli." } },
-    { "@type": "Question", "name": "Posso suggerire correzioni?", "acceptedAnswer": { "@type": "Answer", "text": "Sì: scrivi a info@globalglide360.com. Aggiorniamo gli itinerari con cadenza regolare." } }
-  ]
-}
-</script>
+  <main class="wrap grid">
+    <!-- CONTENT -->
+    <article id="content">
+      <!-- Indice -->
+      <section class="toc" aria-labelledby="toc-title">
+        <h2 id="toc-title" class="sec" style="margin-top:0">Indice</h2>
+        <p class="meta">Vai direttamente al giorno:</p>
+        <p><a href="#g1">G1</a> <a href="#g2">G2</a> <a href="#g3">G3</a> <a href="#g4">G4</a> <a href="#g5">G5</a></p>
+      </section>
 
-<footer class="bg-white text-center py-6 mt-8 border-t">
-  <p class="text-sm text-gray-500">&copy; 2025 GlobalGlide360 — Alcuni link sono affiliati (GetYourGuide, ecc.).</p>
-</footer>
+      <!-- VOLI -->
+      <section id="voli" aria-labelledby="sec-voli">
+        <h2 id="sec-voli" class="sec">Voli (MXP ⇄ HND) — 10–15 aprile 2026</h2>
+        <div class="panel grid-2">
+          <div>
+            <div class="meta">Andata — 10 Apr 2026</div>
+            <p>Milano Malpensa (MXP) → Tokyo Haneda (HND)</p>
+            <a class="chip chip--cta" target="_blank" rel="noopener"
+               href="https://www.skyscanner.net/transport/flights-from/?adults=2&ref=home#/?searchparamstype=flights&flightsearch=1&itinerary=itineraries!oneway!legs!origin:MXP,destination:HND,date:2026-04-10T00:00:00&cabin=economy">Cerca andata su Skyscanner</a>
+          </div>
+          <div>
+            <div class="meta">Ritorno — 15 Apr 2026</div>
+            <p>Tokyo Haneda (HND) → Milano Malpensa (MXP)</p>
+            <a class="chip chip--cta" target="_blank" rel="noopener"
+               href="https://www.skyscanner.net/transport/flights-from/hnd/?adults=2&ref=home#/?searchparamstype=flights&flightsearch=1&itinerary=itineraries!oneway!legs!origin:HND,destination:MXP,date:2026-04-15T00:00:00&cabin=economy">Cerca ritorno su Skyscanner</a>
+          </div>
+        </div>
+        <p class="note" style="margin-top:10px">Aggiungeremo i parametri affiliati Skyscanner quando disponibili.</p>
+      </section>
 
-<!-- Builders + switch mese -->
-<script>
-const cleanIATA=v=>(v||"").trim().toUpperCase().slice(0,3);
-function buildFlight({from,to='NRT',dep,ret,adults=2,cabin='economy'}){
-  const base=`https://www.skyscanner.net/transport/flights/${cleanIATA(from)}/${to}/${dep}/${ret}/`;
-  const qs=new URLSearchParams({adults,cabinclass:cabin,locale:'it-IT',currency:'EUR'}); return `${base}?${qs.toString()}`;
-}
-function buildHotel({dest='Tokyo',checkin,checkout,adults=2,children=0,rooms=1}){
-  const u=new URL('https://www.booking.com/searchresults.html');u.searchParams.set('ss',dest);
-  u.searchParams.set('checkin',checkin);u.searchParams.set('checkout',checkout);
-  u.searchParams.set('group_adults',adults);u.searchParams.set('group_children',children);u.searchParams.set('no_rooms',rooms);
-  return u.toString();
-}
-function buildExp({city='Tokyo',fromDate,toDate,pax=2}){
-  const u=new URL('https://www.getyourguide.com/s/');u.searchParams.set('q',city);
-  u.searchParams.set('date_from',fromDate);u.searchParams.set('date_to',toDate);u.searchParams.set('number_of_participants',pax);
-  if(window.GG_CFG && window.GG_CFG.gyg_partner) u.searchParams.set('partner_id', window.GG_CFG.gyg_partner);
-  if(window.GG_SUBID) u.searchParams.set('sub_id', window.GG_SUBID);
-  return u.toString();
-}
+      <!-- HOTEL -->
+      <section id="hotel" aria-labelledby="sec-hotel">
+        <h2 id="sec-hotel" class="sec">Hotel suggeriti (prenotabili)</h2>
+        <div class="panel grid-2">
+          <div>
+            <div class="meta">Shinjuku / Shibuya · 4 notti (10–14 Apr)</div>
+            <p>Perfetti per famiglie e coppie; collegamenti JR e metro eccellenti.</p>
+            <a class="chip chip--cta" target="_blank" rel="noopener"
+               href="https://www.booking.com/searchresults.html?ss=Shinjuku%2C%20Tokyo&checkin=2026-04-10&checkout=2026-04-14&aid=AFFID_BOOKING">Cerca hotel a Shinjuku</a>
+          </div>
+          <div>
+            <div class="meta">Asakusa / Ueno · alternativa</div>
+            <p>Atmosfera tradizionale e templi; prezzi spesso più accessibili.</p>
+            <a class="chip chip--alt" target="_blank" rel="noopener"
+               href="https://www.booking.com/searchresults.html?ss=Asakusa%2C%20Tokyo&checkin=2026-04-10&checkout=2026-04-14&aid=AFFID_BOOKING">Cerca hotel ad Asakusa</a>
+          </div>
+        </div>
+        <p class="note" style="margin-top:10px">Sostituisci <code>aid=AFFID_BOOKING</code> con il tuo ID affiliato Booking quando lo avrai.</p>
+      </section>
 
-const DATES = {
-  ott: { dep:'2025-10-24', ret:'2025-10-29' },
-  nov: { dep:'2025-11-07', ret:'2025-11-12' }
-};
+      <!-- PROGRAMMA -->
+      <section id="programma" aria-labelledby="sec-prog">
+        <h2 id="sec-prog" class="sec">Programma giorno per giorno</h2>
 
-function applyDates(key){
-  const from = "MXP"; // partenza fissa Milano
-  const {dep, ret} = DATES[key];
-  document.getElementById('btn-ott').className = (key==='ott' ? 'bg-blue-700 text-white px-3 py-1 rounded-full text-sm' : 'bg-gray-200 text-blue-900 hover:bg-gray-300 px-3 py-1 rounded-full text-sm');
-  document.getElementById('btn-nov').className = (key==='nov' ? 'bg-blue-700 text-white px-3 py-1 rounded-full text-sm' : 'bg-gray-200 text-blue-900 hover:bg-gray-300 px-3 py-1 rounded-full text-sm');
+        <!-- G1 -->
+        <div id="g1" class="day" aria-labelledby="g1-title">
+          <span class="dot" aria-hidden="true"></span>
+          <h3 id="g1-title">Giorno 1 — Asakusa & Ueno</h3>
+          <div class="card">
+            <div class="meta">Ritmo: leggero · Trasporti: Metro + a piedi</div>
+            <div class="badges"><span class="badge">Senso-ji</span><span class="badge">Nakamise-dori</span><span class="badge">Ueno Park</span></div>
+            <p>Arrivo e check-in. Esplora <strong>Asakusa</strong>: <strong>Senso-ji</strong> e i negozietti di <em>Nakamise</em>.
+               Passeggiata al <strong>Parco di Ueno</strong> o lungo il fiume Sumida. Ottimo per prendere confidenza con la città.</p>
 
-  document.getElementById('cta-volo').href  = buildFlight({from, dep, ret, adults:2});
-  document.getElementById('cta-hotel').href = buildHotel({checkin:dep, checkout:ret, adults:2});
-  document.getElementById('cta-exp').href   = buildExp({fromDate:dep, toDate:ret, pax:2});
-}
-document.getElementById('btn-ott').addEventListener('click',()=>applyDates('ott'));
-document.getElementById('btn-nov').addEventListener('click',()=>applyDates('nov'));
-applyDates('ott');
-</script>
-  <script src="/assets/js/gyg-resolver.js"></script>
+            <div class="act">
+              <div><strong>Tour guidato Asakusa & Senso-ji</strong><br>Perfetto per famiglie e prime visite.</div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Asakusa%20guided%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+            <div class="act">
+              <div><strong>Tokyo Skytree — biglietto</strong><br>Vista a 360° su tutta Tokyo (opzionale al tramonto).</div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Tokyo%20Skytree%20ticket&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+
+            <div class="food">
+              <h4>Dove mangiare</h4>
+              <p>Izakaya e street food tra Asakusa e Kappabashi-dori.</p>
+              <a target="_blank" rel="noopener" href="https://www.tripadvisor.com/Search?q=Asakusa%20restaurants">Vedi su Tripadvisor</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G2 -->
+        <div id="g2" class="day" aria-labelledby="g2-title">
+          <span class="dot" aria-hidden="true"></span>
+          <h3 id="g2-title">Giorno 2 — Shibuya, Harajuku & Meiji</h3>
+          <div class="card">
+            <div class="meta">Ritmo: moderato · Trasporti: JR Yamanote + a piedi</div>
+            <div class="badges"><span class="badge">Meiji Jingu</span><span class="badge">Takeshita</span><span class="badge">Shibuya Sky</span></div>
+            <p>Mattina al santuario <strong>Meiji Jingu</strong> (oasi verde). <strong>Harajuku</strong> tra Takeshita e Omotesando.
+               Pomeriggio/sera a <strong>Shibuya</strong>, crossing e <strong>Shibuya Sky</strong> al tramonto.</p>
+
+            <div class="act">
+              <div><strong>Shibuya Sky — biglietto</strong><br>Tramonto spettacolare sullo skyline.</div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Shibuya%20Sky%20ticket&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+            <div class="act">
+              <div><strong>Tour cultura Harajuku</strong><br>Moda, kawaii spot e caffè a tema.</div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Harajuku%20walking%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+
+            <div class="food">
+              <h4>Dove mangiare</h4>
+              <p>Ramen e sushi casual intorno a Shibuya Station; dolci “kawaii” a Takeshita-dori.</p>
+              <a target="_blank" rel="noopener" href="https://www.tripadvisor.com/Search?q=Shibuya%20ramen">Vedi su Tripadvisor</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G3 -->
+        <div id="g3" class="day" aria-labelledby="g3-title">
+          <span class="dot" aria-hidden="true"></span>
+          <h3 id="g3-title">Giorno 3 — Shinjuku & Ovest</h3>
+          <div class="card">
+            <div class="meta">Ritmo: moderato · Trasporti: JR + metro</div>
+            <div class="badges"><span class="badge">Shinjuku Gyoen</span><span class="badge">Omoide Yokocho</span><span class="badge">Golden Gai</span></div>
+            <p>Mattina al parco <strong>Shinjuku Gyoen</strong>. Salita all’osservatorio gratuito del Tokyo Metropolitan Government
+               o ad altri viewpoint. Sera tra <strong>Omoide Yokocho</strong> e <strong>Golden Gai</strong>.</p>
+
+            <div class="act">
+              <div><strong>Tour notturno Shinjuku (bar-hopping)</strong><br>Izakaya e micro-bar storici.</div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Shinjuku%20bar%20hopping&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+            <div class="act">
+              <div><strong>Samurai experience / museo</strong><br>Esperienza culturale adatta anche a famiglie.</div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Tokyo%20samurai%20experience&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+
+            <div class="food">
+              <h4>Dove mangiare</h4>
+              <p>Yakitori e izakaya a Omoide Yokocho; alternative family-friendly in centro commerciale Lumine.</p>
+              <a target="_blank" rel="noopener" href="https://www.tripadvisor.com/Search?q=Omoide%20Yokocho%20restaurants">Vedi su Tripadvisor</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G4 -->
+        <div id="g4" class="day" aria-labelledby="g4-title">
+          <span class="dot" aria-hidden="true"></span>
+          <h3 id="g4-title">Giorno 4 — Akihabara & Ginza (+ Tsukiji)</h3>
+          <div class="card">
+            <div class="meta">Ritmo: moderato · Trasporti: JR/metro</div>
+            <div class="badges"><span class="badge">Akihabara</span><span class="badge">Ginza</span><span class="badge">Tsukiji</span></div>
+            <p>Mattina ad <strong>Akihabara</strong> (tech, anime, retro-gaming). Pomeriggio a <strong>Ginza</strong> (boutique, department store).
+               Food stop al <strong>Tsukiji Outer Market</strong>.</p>
+
+            <div class="act">
+              <div><strong>Akihabara guided tour</strong><br>Gadget e spot nascosti con guida.</div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Akihabara%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+            <div class="act">
+              <div><strong>Tsukiji street food tour</strong><br>Degustazioni per tutti i gusti.</div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Tsukiji%20food%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+
+            <div class="food">
+              <h4>Dove mangiare</h4>
+              <p>Sushi a Tsukiji; ristoranti panoramici a Ginza (family-friendly disponibili).</p>
+              <a target="_blank" rel="noopener" href="https://www.tripadvisor.com/Search?q=Tsukiji%20sushi">Vedi su Tripadvisor</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G5 -->
+        <div id="g5" class="day" aria-labelledby="g5-title">
+          <span class="dot" aria-hidden="true"></span>
+          <h3 id="g5-title">Giorno 5 — Escursione (Nikkō / Kamakura) oppure Odaiba</h3>
+          <div class="card">
+            <div class="meta">Ritmo: libero · Trasporti: JR</div>
+            <div class="badges"><span class="badge">Nikkō</span><span class="badge">Kamakura</span><span class="badge">Odaiba</span></div>
+            <p>Opzione 1: <strong>Nikkō</strong> (santuari UNESCO nel verde). Opzione 2: <strong>Kamakura</strong> (Grande Buddha, templi e mare).
+               In alternativa, <strong>Odaiba</strong> (musei, shopping e passeggiata sulla baia: adatta a famiglie).</p>
+
+            <div class="act">
+              <div><strong>Gita a Nikkō da Tokyo</strong><br>Trasferimenti e guida inclusi.</div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Nikko%20day%20trip%20from%20Tokyo&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+            <div class="act">
+              <div><strong>Gita a Kamakura & Enoshima</strong><br>Grande Buddha, Hase-dera e costa.</div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Kamakura%20day%20trip%20from%20Tokyo&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+
+            <div class="food">
+              <h4>Dove mangiare</h4>
+              <p>Soba/udon tradizionali a Nikkō; pesce fresco a Enoshima (se Kamakura). A Odaiba, food court per famiglie.</p>
+              <a target="_blank" rel="noopener" href="https://www.tripadvisor.com/Search?q=Kamakura%20restaurants">Vedi su Tripadvisor</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MAPPA -->
+      <section id="mappa" aria-labelledby="sec-map">
+        <h2 id="sec-map" class="sec">Mappa interattiva — zone e tappe principali</h2>
+        <div class="map-wrap">
+          <!-- Embed semplice e veloce; in futuro possiamo sostituire con mappa personalizzata con i pin dei luoghi del programma -->
+          <iframe class="map-iframe"
+            src="https://www.google.com/maps?q=Tokyo&z=12&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade" aria-label="Mappa di Tokyo"></iframe>
+        </div>
+        <p class="meta" style="margin-top:8px">Suggerimento: zooma su Asakusa, Shibuya, Shinjuku, Akihabara, Ginza e Odaiba per ritrovare facilmente le tappe dei giorni.</p>
+      </section>
+
+      <!-- ATTIVITÀ (riepilogo) -->
+      <section id="attivita" aria-labelledby="sec-att">
+        <h2 id="sec-att" class="sec">Riepilogo attività prenotabili</h2>
+        <div class="panel">
+          <ul class="list-clean">
+            <li><span>Asakusa walking tour</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Asakusa%20guided%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Tokyo Skytree</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Tokyo%20Skytree%20ticket&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Shibuya Sky</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Shibuya%20Sky%20ticket&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Shinjuku bar-hopping</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Shinjuku%20bar%20hopping&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Akihabara tour</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Akihabara%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Tsukiji food tour</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Tsukiji%20food%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Nikkō day trip</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Nikko%20day%20trip%20from%20Tokyo&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Kamakura day trip</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Kamakura%20day%20trip%20from%20Tokyo&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" aria-labelledby="sec-faq">
+        <h2 id="sec-faq" class="sec">Info pratiche & FAQ</h2>
+        <div class="panel">
+          <ul class="list-clean">
+            <li><span>Pagamenti</span><span>IC card (Suica/PASMO) + carte contactless diffuse.</span></li>
+            <li><span>Connettività</span><span>eSIM/SIM all’arrivo (aeroporto o konbini).</span></li>
+            <li><span>Presa elettrica</span><span>Tipo A/B (110V) — serve adattatore europeo.</span></li>
+            <li><span>Trasporti</span><span>JR Yamanote e metro capillare; bimbi gratis/in riduzione su molte tratte.</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <button class="backtop" id="backtop" aria-label="Torna su">↑</button>
+    </article>
+
+    <!-- SIDEBAR -->
+    <aside class="side" aria-label="Riepilogo e prenotazioni rapide">
+      <div class="card">
+        <h3>Riepilogo viaggio</h3>
+        <ul class="list-clean">
+          <li><span>Durata</span><strong>5g / 4n</strong></li>
+          <li><span>Tappe</span><strong>Tokyo 4N</strong></li>
+          <li><span>Ideale</span><strong>Aprile · Ottobre</strong></li>
+        </ul>
+        <a class="btn" href="#voli">Cerca voli</a>
+        <a class="btn btn--ghost" href="#hotel">Trova hotel</a>
+        <a class="btn" href="#attivita">Prenota attività</a>
+      </div>
+
+      <div class="card">
+        <h3>Date suggerite</h3>
+        <ul class="list-clean">
+          <li><span>Andata</span><strong>10 Apr 2026</strong></li>
+          <li><span>Ritorno</span><strong>15 Apr 2026</strong></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Consigli rapidi</h3>
+        <ul class="list-clean">
+          <li><span>Meteo</span><span>Primavera mite (possibili piogge brevi).</span></li>
+          <li><span>Family</span><span>Osservatori e parchi sono perfetti con bimbi.</span></li>
+          <li><span>Budget</span><span>Konbini per pranzi smart; IC card per trasporti.</span></li>
+        </ul>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="wrap" style="border-top:1px solid var(--ring);margin-top:10px;color:#596171">
+    <a href="./" style="text-decoration:none;color:#2563eb">← Torna all’elenco itinerari</a>
+  </footer>
+
+  <script>
+    // Smooth scroll + Back to top
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href').slice(1);
+        const t = document.getElementById(id);
+        if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+    });
+    const bt = document.getElementById('backtop');
+    window.addEventListener('scroll', ()=>{ bt.classList.toggle('show', window.scrollY > 600); });
+    bt.addEventListener('click', ()=>window.scrollTo({top:0, behavior:'smooth'}));
+  </script>
 </body>
 </html>
