@@ -4,273 +4,505 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Hong Kong & Macao — 7 giorni | GlobalGlide360</title>
-  <meta name="description" content="Voli, hotel, attività e dove mangiare: itinerario dettagliato di 7 giorni tra Hong Kong e Macao.">
+  <meta name="description" content="Voli, hotel, attività e dove mangiare: itinerario dettagliato e prenotabile di 7 giorni tra Hong Kong e Macao.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --accent:#4fb3ff; --text:#1b1c1e; --muted:#596171;
-      --card:#fff; --bg:#f7f9fb; --ring:#dbe3ea;
+      --accent:#4fb3ff; --accent-2:#8b5cf6;
+      --text:#0e141b; --muted:#596171;
+      --bg:#f7f9fb; --card:#fff; --ring:#dbe3ea;
+      --ok:#10b981; --warn:#f59e0b; --danger:#ef4444;
     }
     *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text)}
-    .wrap{max-width:860px;margin:0 auto;padding:24px}
-    header.hero{background:linear-gradient(180deg,#ffffff,#eef4f8);border-bottom:1px solid var(--ring);padding:28px 24px;border-radius:0 0 20px 20px}
-    header.hero h1{margin:0;font-size:clamp(24px,4vw,36px);color:#0e141b}
-    header.hero p{margin:8px 0 0;color:var(--muted)}
-    .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-top:12px}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text)}
+    img{max-width:100%;display:block}
+
+    /* HERO */
+    .hero{position:relative;border-bottom:1px solid var(--ring);background:linear-gradient(180deg,#ffffff,#eef4f8)}
+    .hero__wrap{max-width:1100px;margin:0 auto;padding:18px 18px 24px}
+    .crumbs{font-size:.875rem;color:var(--muted);margin-bottom:8px}
+    .crumbs a{color:var(--muted);text-decoration:none}
+    .crumbs a:hover{text-decoration:underline}
+    .hero__grid{display:grid;grid-template-columns:1fr;gap:16px;align-items:center}
+    @media(min-width:900px){.hero__grid{grid-template-columns:1.3fr .7fr}}
+    .cover{border-radius:16px;overflow:hidden;border:1px solid var(--ring);box-shadow:0 10px 30px rgba(0,0,0,.05)}
+    .hero h1{margin:4px 0 6px;font-weight:800;font-size:clamp(24px,4vw,40px);letter-spacing:-.01em}
+    .hero p.sub{margin:0;color:var(--muted)}
+    .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-top:14px}
     .kpi{background:var(--card);border:1px solid var(--ring);border-radius:12px;padding:10px 12px}
-    .kpi .lbl{font-size:.8rem;color:var(--muted)}
+    .kpi .lbl{font-size:.78rem;color:var(--muted)}
     .kpi .val{font-weight:800}
 
-    section{margin:24px 0}
-    h2{margin:0 0 10px;color:#0e141b;font-size:1.15rem}
+    /* QUICKBAR */
+    .quickbar{position:sticky;top:0;z-index:30;background:#ffffffc7;backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid var(--ring)}
+    .quickbar__inner{max-width:1100px;margin:0 auto;display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:10px 18px}
+    .chip{display:inline-flex;gap:8px;align-items:center;background:#fff;border:1px solid var(--ring);border-radius:999px;padding:8px 12px;font-weight:600}
+    .chip a{text-decoration:none;color:var(--text)}
+    .chip--cta a{color:#fff}
+    .chip--cta{background:var(--accent);border-color:var(--accent)}
+    .chip--alt{background:var(--accent-2);border-color:var(--accent-2);color:#fff}
+    .chip svg{width:18px;height:18px}
 
-    .panel{background:var(--card);border:1px solid var(--ring);border-radius:14px;padding:14px 16px}
+    /* LAYOUT */
+    .wrap{max-width:1100px;margin:0 auto;padding:22px 18px}
+    .grid{display:grid;grid-template-columns:1fr;gap:18px}
+    @media(min-width:980px){.grid{grid-template-columns:minmax(0,1fr) 320px}}
+
+    /* SIDEBAR */
+    .side{position:sticky;top:70px;align-self:start}
+    .side .card{background:#fff;border:1px solid var(--ring);border-radius:14px;padding:14px 16px;margin-bottom:12px}
+    .side h3{margin:0 0 8px;font-size:1rem}
+    .side .btn{display:block;text-align:center;background:var(--accent);color:#fff;text-decoration:none;font-weight:800;border-radius:10px;padding:10px 14px;margin-top:8px}
+    .side .btn--ghost{background:#fff;color:#0e141b;border:1px solid var(--ring)}
+    .list-clean{list-style:none;margin:0;padding:0}
+    .list-clean li{display:flex;justify-content:space-between;color:var(--muted);padding:6px 0;border-bottom:1px dashed var(--ring)}
+    .list-clean li:last-child{border-bottom:0}
+
+    /* CONTENT */
+    h2.sec{margin:18px 0 12px;font-size:1.2rem}
+    .panel{background:#fff;border:1px solid var(--ring);border-radius:14px;padding:14px 16px}
     .grid-2{display:grid;grid-template-columns:1fr;gap:12px}
-    @media (min-width:768px){ .grid-2{grid-template-columns:1fr 1fr} }
+    @media(min-width:780px){.grid-2{grid-template-columns:1fr 1fr}}
 
-    ul.clean{list-style:none;margin:0;padding:0}
-    ul.clean li{background:var(--card);border:1px solid var(--ring);border-radius:12px;padding:12px 14px;margin-bottom:10px}
+    /* TIMELINE */
+    .day{position:relative;padding-left:30px}
+    .day:before{content:'';position:absolute;left:10px;top:8px;bottom:-8px;width:2px;background:linear-gradient(#cfe6ff,#dbe3ea)}
+    .dot{position:absolute;left:3px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--accent)}
+    .card{background:#fff;border:1px solid var(--ring);border-radius:14px;padding:14px 16px;margin:10px 0}
     .meta{color:var(--muted);font-size:.9rem;margin-bottom:6px}
+    .badge{display:inline-block;background:#eef7ff;color:#0e141b;border:1px solid var(--ring);border-radius:999px;padding:3px 8px;font-size:.8rem;margin-right:6px}
+    .badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 
-    .cta{display:inline-block;background:#4fb3ff;color:#fff;font-weight:700;padding:10px 14px;border-radius:10px;text-decoration:none}
-    .cta:hover{background:#3da1ec}
+    /* ACTIVITY CARD */
+    .act{display:grid;grid-template-columns:1fr;gap:8px;margin-top:10px}
+    @media(min-width:620px){.act{grid-template-columns:1fr auto}}
+    .act .btn{align-self:center;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;border-radius:10px;padding:10px 14px;white-space:nowrap}
+    .act .btn:hover{background:#3da1ec}
+    .note{background:#fff;border:1px dashed var(--ring);border-radius:12px;padding:10px 12px;color:var(--muted);font-size:.92rem}
 
-    .gyg{background:#fff;border:1px dashed var(--ring);border-radius:14px;padding:12px 14px;margin-top:10px}
-    .gyg h3{margin:0 0 6px;font-size:1rem;color:#0e141b}
-    .gyg ul{margin:0 0 6px 18px}
-    .gyg li{border:0;padding:0;margin:6px 0}
-    .gyg a{color:#2563eb;text-decoration:none}
-    .gyg a:hover{text-decoration:underline}
-
-    .food{background:#fff;border:1px dashed var(--ring);border-radius:14px;padding:12px 14px;margin-top:10px}
+    .food{background:#fff;border:1px dashed var(--ring);border-radius:12px;padding:12px 14px;margin-top:10px}
     .food h4{margin:0 0 6px;font-size:1rem}
     .food a{color:#2563eb;text-decoration:none}
     .food a:hover{text-decoration:underline}
 
-    footer{margin:28px 0 6px;text-align:center;color:var(--muted)}
-    footer a{color:#2563eb;text-decoration:none;font-weight:600}
-    footer a:hover{text-decoration:underline}
+    .toc{background:#fff;border:1px solid var(--ring);border-radius:12px;padding:10px 12px}
+    .toc a{display:inline-block;margin:4px 8px 0 0;color:#2563eb;text-decoration:none}
+    .toc a:hover{text-decoration:underline}
+
+    .backtop{position:fixed;right:16px;bottom:16px;background:#111827;color:#fff;border:none;border-radius:999px;padding:10px 12px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.2);display:none}
+    .backtop.show{display:block}
   </style>
 </head>
 <body>
-  <!-- HERO -->
-  <header class="hero">
-    <div class="wrap">
-      <h1>Hong Kong & Macao — 7 giorni</h1>
-      <p>Voli, hotel, attività e dove mangiare: una settimana tra skyline, templi, quartieri storici e spettacoli.</p>
 
-      <div class="kpis">
-        <div class="kpi"><div class="lbl">Durata</div><div class="val">7 giorni / 6 notti</div></div>
-        <div class="kpi"><div class="lbl">Tappe</div><div class="val">Hong Kong (4N) · Macao (2N)</div></div>
-        <div class="kpi"><div class="lbl">Periodo ideale</div><div class="val">Ott–Apr</div></div>
+  <!-- HERO -->
+  <header class="hero" aria-label="Copertina itinerario">
+    <div class="hero__wrap">
+      <nav class="crumbs" aria-label="Percorso">
+        <a href="/">Home</a> › <a href="/itinerari/">Itinerari</a> › Hong Kong & Macao — 7 giorni
+      </nav>
+      <div class="hero__grid">
+        <div>
+          <h1>Hong Kong & Macao — 7 giorni</h1>
+          <p class="sub">Itinerario prenotabile: voli, hotel, attività giorno per giorno e consigli dove mangiare.</p>
+          <div class="kpis">
+            <div class="kpi"><div class="lbl">Durata</div><div class="val">7 giorni / 6 notti</div></div>
+            <div class="kpi"><div class="lbl">Tappe</div><div class="val">Hong Kong (4N) · Macao (2N)</div></div>
+            <div class="kpi"><div class="lbl">Periodo ideale</div><div class="val">Ott–Apr</div></div>
+          </div>
+        </div>
+        <figure class="cover" aria-hidden="true">
+          <img src="../assets/itinerari/hongkong-macao.jpg" alt="Skyline di Hong Kong e Macao">
+        </figure>
       </div>
     </div>
   </header>
 
-  <main class="wrap">
+  <!-- QUICKBAR -->
+  <div class="quickbar">
+    <div class="quickbar__inner" role="navigation" aria-label="Azioni rapide">
+      <span class="chip"><a href="#voli">✈️ Voli</a></span>
+      <span class="chip"><a href="#hotel">🏨 Hotel</a></span>
+      <span class="chip"><a href="#programma">🗺️ Programma</a></span>
+      <span class="chip"><a href="#faq">❓ FAQ</a></span>
+      <span class="chip chip--cta"><a href="#attivita">🎟️ Prenota attività</a></span>
+    </div>
+  </div>
 
-    <!-- VOLI -->
-    <section>
-      <h2>Voli (con date)</h2>
-      <div class="panel grid-2">
-        <div>
-          <div class="meta">Andata — es. 12 Apr 2026</div>
-          <p>Origine (es. Milano) → Hong Kong (HKG)</p>
-          <!-- Skyscanner: quando avrai l’affiliazione, aggiungeremo i parametri di tracciamento -->
-          <a class="cta" target="_blank" rel="noopener"
-             href="https://www.skyscanner.net/transport/flights-from/?adults=2&ref=home#/?searchparamstype=flights&flightsearch=1&itinerary=itineraries!oneway!legs!origin:MXP,destination:HKG,date:2026-04-12T00:00:00&cabin=economy">
-             Cerca voli su Skyscanner
-          </a>
+  <!-- BODY -->
+  <main class="wrap grid">
+    <!-- CONTENT -->
+    <article id="content">
+      <!-- Indice giorni -->
+      <section class="toc" aria-labelledby="toc-title">
+        <h2 id="toc-title" class="sec" style="margin-top:0">Indice</h2>
+        <p class="meta" style="margin:6px 0 10px">Vai direttamente al giorno desiderato:</p>
+        <p>
+          <a href="#g1">G1</a> <a href="#g2">G2</a> <a href="#g3">G3</a>
+          <a href="#g4">G4</a> <a href="#g5">G5</a> <a href="#g6">G6</a> <a href="#g7">G7</a>
+        </p>
+      </section>
+
+      <!-- VOLI -->
+      <section id="voli" aria-labelledby="sec-voli">
+        <h2 id="sec-voli" class="sec">Voli (con date)</h2>
+        <div class="panel grid-2">
+          <div>
+            <div class="meta">Andata — es. 12 Apr 2026</div>
+            <p>Origine (es. Milano) → Hong Kong (HKG)</p>
+            <!-- Affiliazione Skyscanner da aggiungere quando disponibile -->
+            <a class="chip chip--cta" target="_blank" rel="noopener"
+               href="https://www.skyscanner.net/transport/flights-from/?adults=2&ref=home#/?searchparamstype=flights&flightsearch=1&itinerary=itineraries!oneway!legs!origin:MXP,destination:HKG,date:2026-04-12T00:00:00&cabin=economy">Cerca andata su Skyscanner</a>
+          </div>
+          <div>
+            <div class="meta">Ritorno — es. 18 Apr 2026</div>
+            <p>Hong Kong (HKG) → Origine (es. Milano)</p>
+            <a class="chip chip--cta" target="_blank" rel="noopener"
+               href="https://www.skyscanner.net/transport/flights-from/hkg/?adults=2&ref=home#/?searchparamstype=flights&flightsearch=1&itinerary=itineraries!oneway!legs!origin:HKG,destination:MXP,date:2026-04-18T00:00:00&cabin=economy">Cerca ritorno su Skyscanner</a>
+          </div>
         </div>
-        <div>
-          <div class="meta">Ritorno — es. 18 Apr 2026</div>
-          <p>Hong Kong (HKG) → Origine (es. Milano)</p>
-          <a class="cta" target="_blank" rel="noopener"
-             href="https://www.skyscanner.net/transport/flights-from/hkg/?adults=2&ref=home#/?searchparamstype=flights&flightsearch=1&itinerary=itineraries!oneway!legs!origin:HKG,destination:MXP,date:2026-04-18T00:00:00&cabin=economy">
-             Cerca ritorno su Skyscanner
-          </a>
+        <p class="note" style="margin-top:10px">Quando avrai il codice affiliato Skyscanner, aggiorneremo gli URL con i parametri di tracciamento.</p>
+      </section>
+
+      <!-- HOTEL -->
+      <section id="hotel" aria-labelledby="sec-hotel">
+        <h2 id="sec-hotel" class="sec">Hotel suggeriti (prenotabili)</h2>
+        <div class="panel grid-2">
+          <div>
+            <div class="meta">Hong Kong · 4 notti (es. 12–16 Apr)</div>
+            <p>Zone comode: Tsim Sha Tsui (Kowloon) o Central (Hong Kong Island). Connessione MTR ottima.</p>
+            <a class="chip chip--cta" target="_blank" rel="noopener"
+               href="https://www.booking.com/searchresults.html?ss=Hong%20Kong&checkin=2026-04-12&checkout=2026-04-16&aid=AFFID_BOOKING">Cerca hotel a Hong Kong</a>
+          </div>
+          <div>
+            <div class="meta">Macao · 2 notti (es. 16–18 Apr)</div>
+            <p>Centro storico (UNESCO) per atmosfera, Cotai Strip per resort/spettacoli.</p>
+            <a class="chip chip--alt" target="_blank" rel="noopener"
+               href="https://www.booking.com/searchresults.html?ss=Macau&checkin=2026-04-16&checkout=2026-04-18&aid=AFFID_BOOKING">Cerca hotel a Macao</a>
+          </div>
         </div>
-      </div>
-      <p class="meta" style="margin-top:8px">➡️ Quando avrai il codice affiliato Skyscanner, aggiorniamo gli URL con i parametri di tracciamento.</p>
-    </section>
+        <p class="note" style="margin-top:10px">Sostituisci <code>aid=AFFID_BOOKING</code> con il tuo ID affiliato Booking quando lo avrai.</p>
+      </section>
 
-    <!-- HOTEL -->
-    <section>
-      <h2>Hotel suggeriti (prenotabili)</h2>
-      <div class="panel grid-2">
-        <div>
-          <div class="meta">Hong Kong · 4 notti (es. 12–16 Apr)</div>
-          <p>Zone comode: Tsim Sha Tsui (Kowloon) o Central (Hong Kong Island). Ottime connessioni MTR.</p>
-          <a class="cta" target="_blank" rel="noopener"
-             href="https://www.booking.com/searchresults.html?ss=Hong%20Kong&checkin=2026-04-12&checkout=2026-04-16&aid=AFFID_BOOKING">
-             Cerca hotel su Booking
-          </a>
+      <!-- PROGRAMMA -->
+      <section id="programma" aria-labelledby="sec-prog">
+        <h2 id="sec-prog" class="sec">Programma giorno per giorno</h2>
+
+        <!-- G1 -->
+        <div id="g1" class="day" aria-labelledby="g1-title">
+          <span class="dot" aria-hidden="true"></span>
+          <h3 id="g1-title">Giorno 1 — Arrivo, Tsim Sha Tsui & skyline</h3>
+          <div class="card">
+            <div class="meta">Hong Kong · ritmo: <strong>leggero</strong></div>
+            <div class="badges">
+              <span class="badge">Area: Kowloon</span>
+              <span class="badge">Trasporti: MTR + a piedi</span>
+              <span class="badge">Ideale: 12:00–22:00</span>
+            </div>
+            <p style="margin-top:10px">
+              Arrivo a HKG, check-in. Passeggiata sul lungomare di Tsim Sha Tsui: <strong>Avenue of Stars</strong>, Clock Tower e punti
+              panoramici per lo show <em>Symphony of Lights</em> (ore 20:00). Se il cielo è limpido, salita al <strong>Victoria Peak</strong>.
+            </p>
+
+            <div class="act">
+              <div>
+                <strong>Crociera notturna sul Victoria Harbour</strong><br>
+                Skyline by night con commento in inglese.
+              </div>
+              <a class="btn" target="_blank" rel="noopener"
+                 href="https://www.getyourguide.com/s/?q=Victoria%20Harbour%20night%20cruise&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+
+            <div class="act">
+              <div>
+                <strong>Peak Tram + Sky Terrace 428 (fast track)</strong><br>
+                Eviti le code e accedi al miglior viewpoint.
+              </div>
+              <a class="btn" target="_blank" rel="noopener"
+                 href="https://www.getyourguide.com/s/?q=Peak%20Tram%20Hong%20Kong&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+
+            <div class="food">
+              <h4>Dove mangiare</h4>
+              <p><em>Dim sum</em> e cucina cantonese in zona Tsim Sha Tsui.</p>
+              <a target="_blank" rel="noopener" href="https://www.tripadvisor.com/Search?q=dim%20sum%20Tsim%20Sha%20Tsui">Vedi su Tripadvisor</a>
+            </div>
+          </div>
         </div>
-        <div>
-          <div class="meta">Macao · 2 notti (es. 16–18 Apr)</div>
-          <p>Zone comode: Centro storico (UNESCO) per atmosfera, Cotai Strip per resort e spettacoli.</p>
-          <a class="cta" target="_blank" rel="noopener"
-             href="https://www.booking.com/searchresults.html?ss=Macau&checkin=2026-04-16&checkout=2026-04-18&aid=AFFID_BOOKING">
-             Cerca hotel su Booking
-          </a>
+
+        <!-- G2 -->
+        <div id="g2" class="day" aria-labelledby="g2-title">
+          <span class="dot" aria-hidden="true"></span>
+          <h3 id="g2-title">Giorno 2 — Victoria Peak, Central, SoHo & Sheung Wan</h3>
+          <div class="card">
+            <div class="meta">Hong Kong · ritmo: <strong>moderato</strong></div>
+            <div class="badges">
+              <span class="badge">Area: HK Island</span>
+              <span class="badge">Trasporti: Peak Tram + tram d’epoca</span>
+              <span class="badge">Ideale: 09:00–21:00</span>
+            </div>
+            <p style="margin-top:10px">
+              Peak Tram al mattino, camminata al <em>Peak Circle Walk</em>. Nel pomeriggio <strong>Man Mo Temple</strong>, PMQ Design,
+              murales a SoHo, corsa sul tram “Ding Ding”. Sera tra SoHo e Sheung Wan.
+            </p>
+
+            <div class="act">
+              <div><strong>City highlights + Peak Tram</strong><br>Tour guidato nei must dell’isola.</div>
+              <a class="btn" target="_blank" rel="noopener"
+                 href="https://www.getyourguide.com/s/?q=Hong%20Kong%20city%20tour%20with%20Peak%20Tram&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+
+            <div class="act">
+              <div><strong>Big Bus Hop-On Hop-Off</strong><br>Linea città + spiagge (Stanley, Repulse Bay).</div>
+              <a class="btn" target="_blank" rel="noopener"
+                 href="https://www.getyourguide.com/s/?q=Hong%20Kong%20Hop-On%20Hop-Off&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+
+            <div class="food">
+              <h4>Dove mangiare</h4>
+              <p>Brunch/cafè a SoHo (Staunton St, Elgin St) o ristoranti creativi a Central.</p>
+              <a target="_blank" rel="noopener" href="https://www.tripadvisor.com/Search?q=soho%20hong%20kong%20restaurants">Vedi su Tripadvisor</a>
+            </div>
+          </div>
         </div>
-      </div>
-      <p class="meta" style="margin-top:8px">ℹ️ Sostituisci <code>aid=AFFID_BOOKING</code> con il tuo ID affiliato Booking quando lo avrai.</p>
-    </section>
 
-    <!-- PROGRAMMA GIORNO PER GIORNO -->
-    <section>
-      <h2>Giorno 1 — Arrivo, Tsim Sha Tsui & skyline</h2>
-      <ul class="clean">
-        <li><div class="meta">Mattina</div>Arrivo a HKG e trasferimento in hotel; check-in o deposito bagagli.</li>
-        <li><div class="meta">Pomeriggio</div>Passeggiata sul lungomare di Tsim Sha Tsui: <strong>Avenue of Stars</strong>, <em>Clock Tower</em>, <em>Symphony of Lights</em> viewpoint.</li>
-        <li><div class="meta">Sera</div>Crociera o viewpoint per lo spettacolo luci alle <strong>20:00</strong>. Salita al Peak (tempo meteo permettendo).</li>
-      </ul>
-      <div class="gyg">
-        <h3>Attività prenotabili (singole)</h3>
-        <ul>
-          <li>Crociera notturna sul Victoria Harbour
-            — <a href="https://www.getyourguide.com/s/?q=Victoria%20Harbour%20night%20cruise&partner_id=HWU00MZ&cmp=GlobalGlide360" target="_blank" rel="noopener">Prenota</a></li>
-          <li>Peak Tram + Sky Terrace 428 (fast track)
-            — <a href="https://www.getyourguide.com/s/?q=Peak%20Tram%20Hong%20Kong&partner_id=HWU00MZ&cmp=GlobalGlide360" target="_blank" rel="noopener">Prenota</a></li>
+        <!-- G3 -->
+        <div id="g3" class="day" aria-labelledby="g3-title">
+          <span class="dot" aria-hidden="true"></span>
+          <h3 id="g3-title">Giorno 3 — Templi & mercati di Kowloon</h3>
+          <div class="card">
+            <div class="meta">Hong Kong · ritmo: <strong>moderato</strong></div>
+            <div class="badges">
+              <span class="badge">Area: Kowloon</span>
+              <span class="badge">Trasporti: MTR + a piedi</span>
+              <span class="badge">Ideale: 09:00–22:00</span>
+            </div>
+            <p style="margin-top:10px">
+              <strong>Wong Tai Sin</strong>, <strong>Chi Lin Nunnery</strong> e <em>Nan Lian Garden</em> al mattino.
+              Pomeriggio <strong>Mong Kok</strong> (Ladies/Flower/Sneaker). Sera a <strong>Temple Street</strong>.
+            </p>
+
+            <div class="act">
+              <div><strong>Street food tour a Kowloon</strong><br>Mercati e sapori con guida locale.</div>
+              <a class="btn" target="_blank" rel="noopener"
+                 href="https://www.getyourguide.com/s/?q=Kowloon%20street%20food%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+
+            <div class="act">
+              <div><strong>Templi & cultura</strong><br>Wong Tai Sin, Chi Lin e quartieri storici.</div>
+              <a class="btn" target="_blank" rel="noopener"
+                 href="https://www.getyourguide.com/s/?q=Hong%20Kong%20temple%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+
+            <div class="food">
+              <h4>Dove mangiare</h4>
+              <p><em>Dai pai dong</em> e snack iconici (egg waffle, fish balls) tra Jordan e Yau Ma Tei.</p>
+              <a target="_blank" rel="noopener" href="https://www.tripadvisor.com/Search?q=street%20food%20Kowloon">Vedi su Tripadvisor</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G4 -->
+        <div id="g4" class="day" aria-labelledby="g4-title">
+          <span class="dot" aria-hidden="true"></span>
+          <h3 id="g4-title">Giorno 4 — Isola di Lantau: Big Buddha & Tai O</h3>
+          <div class="card">
+            <div class="meta">Lantau · ritmo: <strong>moderato</strong></div>
+            <div class="badges">
+              <span class="badge">Trasporti: Funivia + bus</span>
+              <span class="badge">Ideale: 08:30–19:30</span>
+            </div>
+            <p style="margin-top:10px">
+              <strong>Ngong Ping 360</strong> (cabina Crystal opzionale), <strong>Grande Buddha</strong> e <strong>Monastero Po Lin</strong>.
+              Pomeriggio a <strong>Tai O</strong> tra palafitte e barche (delfini rosa se fortunati).
+            </p>
+
+            <div class="act">
+              <div><strong>Biglietto Ngong Ping 360</strong><br>Andata/ritorno + upgrade Crystal.</div>
+              <a class="btn" target="_blank" rel="noopener"
+                 href="https://www.getyourguide.com/s/?q=Ngong%20Ping%20360&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+
+            <div class="act">
+              <div><strong>Giro in barca a Tai O</strong><br>Villaggio e natura costiera.</div>
+              <a class="btn" target="_blank" rel="noopener"
+                 href="https://www.getyourguide.com/s/?q=Tai%20O%20boat%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+
+            <div class="food">
+              <h4>Dove mangiare</h4>
+              <p>Pesce fresco e snack tipici a Tai O (essiccati, dolci locali).</p>
+              <a target="_blank" rel="noopener" href="https://www.tripadvisor.com/Search?q=Tai%20O%20restaurants">Vedi su Tripadvisor</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G5 -->
+        <div id="g5" class="day" aria-labelledby="g5-title">
+          <span class="dot" aria-hidden="true"></span>
+          <h3 id="g5-title">Giorno 5 — Traghetto per Macao & centro storico</h3>
+          <div class="card">
+            <div class="meta">Macao · ritmo: <strong>leggero</strong></div>
+            <div class="badges">
+              <span class="badge">Trasporti: Traghetto</span>
+              <span class="badge">Ideale: 10:00–22:00</span>
+            </div>
+            <p style="margin-top:10px">
+              Traghetto veloce <strong>Hong Kong → Macao</strong> e check-in. Pomeriggio: <strong>Rovine di San Paolo</strong>,
+              <strong>Largo do Senado</strong> e vicoli coloniali. Sera tra luci e casinò.
+            </p>
+
+            <div class="act">
+              <div><strong>Walking tour UNESCO</strong><br>Centro storico, chiese e piazze.</div>
+              <a class="btn" target="_blank" rel="noopener"
+                 href="https://www.getyourguide.com/s/?q=Macau%20walking%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+
+            <div class="act">
+              <div><strong>Biglietti traghetto HK ⇄ Macao</strong><br>Quando disponibili online.</div>
+              <a class="btn" target="_blank" rel="noopener"
+                 href="https://www.getyourguide.com/s/?q=Hong%20Kong%20to%20Macau%20ferry%20ticket&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+
+            <div class="food">
+              <h4>Dove mangiare</h4>
+              <p>Cucina macaense e <em>pastéis de nata</em> nel centro storico.</p>
+              <a target="_blank" rel="noopener" href="https://www.tripadvisor.com/Search?q=Macau%20Macanese%20restaurants">Vedi su Tripadvisor</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G6 -->
+        <div id="g6" class="day" aria-labelledby="g6-title">
+          <span class="dot" aria-hidden="true"></span>
+          <h3 id="g6-title">Giorno 6 — Macau Tower & Cotai</h3>
+          <div class="card">
+            <div class="meta">Macao · ritmo: <strong>libero</strong></div>
+            <div class="badges">
+              <span class="badge">Trasporti: Taxi/Bus</span>
+              <span class="badge">Ideale: 10:00–23:00</span>
+            </div>
+            <p style="margin-top:10px">
+              <strong>Macau Tower</strong> (osservatorio + <em>Skywalk/Edge Walk</em> per i coraggiosi). Pomeriggio nei resort di
+              <strong>Cotai Strip</strong> (The Venetian, Galaxy). Sera con spettacolo e cena.
+            </p>
+
+            <div class="act">
+              <div><strong>Macau Tower Skywalk</strong><br>Adrenalina in sicurezza, vista sulla baia.</div>
+              <a class="btn" target="_blank" rel="noopener"
+                 href="https://www.getyourguide.com/s/?q=Macau%20Tower%20Skywalk&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+
+            <div class="act">
+              <div><strong>Show serale</strong><br>Se disponibile: grandi produzioni a Cotai.</div>
+              <a class="btn" target="_blank" rel="noopener"
+                 href="https://www.getyourguide.com/s/?q=Macau%20show%20tickets&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+
+            <div class="food">
+              <h4>Dove mangiare</h4>
+              <p>Cotai: ristoranti d’hotel, buffet e food court internazionali.</p>
+              <a target="_blank" rel="noopener" href="https://www.tripadvisor.com/Search?q=restaurants%20Cotai%20Macau">Vedi su Tripadvisor</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G7 -->
+        <div id="g7" class="day" aria-labelledby="g7-title">
+          <span class="dot" aria-hidden="true"></span>
+          <h3 id="g7-title">Giorno 7 — Ultime ore & rientro</h3>
+          <div class="card">
+            <div class="meta">Rientro</div>
+            <p>Shopping finale o museo, quindi trasferimento in aeroporto/porto e volo di rientro.</p>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ATTIVITÀ (riepilogo prenotazioni) -->
+      <section id="attivita" aria-labelledby="sec-att">
+        <h2 id="sec-att" class="sec">Riepilogo attività prenotabili</h2>
+        <div class="panel">
+          <ul class="list-clean">
+            <li><span>Crociera Victoria Harbour (G1)</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Victoria%20Harbour%20night%20cruise&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Peak Tram Fast Track (G1–G2)</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Peak%20Tram%20Hong%20Kong&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Street food tour Kowloon (G3)</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Kowloon%20street%20food%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Ngong Ping 360 (G4)</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Ngong%20Ping%20360&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Tai O boat tour (G4)</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Tai%20O%20boat%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Walking tour Macao (G5)</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Macau%20walking%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Macau Tower Skywalk (G6)</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Macau%20Tower%20Skywalk&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- INFO PRATICHE / FAQ -->
+      <section id="faq" aria-labelledby="sec-faq">
+        <h2 id="sec-faq" class="sec">Info pratiche & FAQ</h2>
+        <div class="panel">
+          <ul class="list-clean">
+            <li><span>Pagamenti</span><span>Octopus Card / carte contactless ovunque.</span></li>
+            <li><span>Connettività</span><span>eSIM o SIM locale (aeroporto/7-Eleven).</span></li>
+            <li><span>Presa elettrica</span><span>Tipo G (UK) — serve adattatore.</span></li>
+            <li><span>Trasporti</span><span>MTR efficiente, taxi economici; traghetto HK–Macao ~1h.</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <button class="backtop" id="backtop" aria-label="Torna su">↑</button>
+    </article>
+
+    <!-- SIDEBAR -->
+    <aside class="side" aria-label="Riepilogo e prenotazioni rapide">
+      <div class="card">
+        <h3>Riepilogo viaggio</h3>
+        <ul class="list-clean">
+          <li><span>Durata</span><strong>7g / 6n</strong></li>
+          <li><span>Tappe</span><strong>HK 4N · MO 2N</strong></li>
+          <li><span>Ideale</span><strong>Ott–Apr</strong></li>
+        </ul>
+        <a class="btn" href="#voli">Cerca voli</a>
+        <a class="btn btn--ghost" href="#hotel">Trova hotel</a>
+        <a class="btn" href="#attivita">Prenota attività</a>
+      </div>
+
+      <div class="card">
+        <h3>Date suggerite</h3>
+        <ul class="list-clean">
+          <li><span>Andata</span><strong>12 Apr 2026</strong></li>
+          <li><span>Ritorno</span><strong>18 Apr 2026</strong></li>
         </ul>
       </div>
-      <div class="food">
-        <h4>Dove mangiare</h4>
-        <p><em>Dim sum</em> e cucina cantonese in zona Tsim Sha Tsui.</p>
-        <a href="https://www.tripadvisor.com/Search?q=dim%20sum%20Tsim%20Sha%20Tsui" target="_blank" rel="noopener">Vedi su Tripadvisor</a>
-      </div>
-    </section>
 
-    <section>
-      <h2>Giorno 2 — Victoria Peak, Central, SoHo & Sheung Wan</h2>
-      <ul class="clean">
-        <li><div class="meta">Mattina</div>Salita al <strong>Victoria Peak</strong> (Peak Tram). Passeggiata al <em>Peak Circle Walk</em> per punti panoramici.</li>
-        <li><div class="meta">Pomeriggio</div>Esplora <strong>Central</strong>: <em>Man Mo Temple</em>, PMQ Design, art murals a SoHo; prova il tram storico “Ding Ding”.</li>
-        <li><div class="meta">Sera</div>Aperitivo e cena tra <strong>SoHo</strong> e <strong>Sheung Wan</strong>.</li>
-      </ul>
-      <div class="gyg">
-        <h3>Attività prenotabili (singole)</h3>
-        <ul>
-          <li>Tour “Hong Kong Highlights” con Peak Tram
-            — <a href="https://www.getyourguide.com/s/?q=Hong%20Kong%20city%20tour%20with%20Peak%20Tram&partner_id=HWU00MZ&cmp=GlobalGlide360" target="_blank" rel="noopener">Prenota</a></li>
-          <li>Big Bus Hop-On Hop-Off (linee isola + spiagge)
-            — <a href="https://www.getyourguide.com/s/?q=Hong%20Kong%20Hop-On%20Hop-Off&partner_id=HWU00MZ&cmp=GlobalGlide360" target="_blank" rel="noopener">Prenota</a></li>
+      <div class="card">
+        <h3>Consigli rapidi</h3>
+        <ul class="list-clean">
+          <li><span>Meteo</span><span>Primavera mite; piogge possibili.</span></li>
+          <li><span>Safety</span><span>Città sicure, attenzione ai pickpocket nelle aree affollate.</span></li>
+          <li><span>Budget</span><span>Octopus + street food = spesa smart.</span></li>
         </ul>
       </div>
-      <div class="food">
-        <h4>Dove mangiare</h4>
-        <p>Brunch/coffee a SoHo, cucina creativa in <em>Staunton St</em> / <em>Elgin St</em>.</p>
-        <a href="https://www.tripadvisor.com/Search?q=soho%20hong%20kong%20restaurants" target="_blank" rel="noopener">Vedi su Tripadvisor</a>
-      </div>
-    </section>
-
-    <section>
-      <h2>Giorno 3 — Templi & mercati di Kowloon</h2>
-      <ul class="clean">
-        <li><div class="meta">Mattina</div><strong>Wong Tai Sin Temple</strong> e <strong>Chi Lin Nunnery</strong> con <em>Nan Lian Garden</em> (oasi zen).</li>
-        <li><div class="meta">Pomeriggio</div><strong>Mong Kok</strong>: Ladies Market, Flower Market, Goldfish Market.</li>
-        <li><div class="meta">Sera</div><strong>Temple Street Night Market</strong> con street food e bancarelle.</li>
-      </ul>
-      <div class="gyg">
-        <h3>Attività prenotabili (singole)</h3>
-        <ul>
-          <li>Tour street food a Kowloon (mercati & sapori locali)
-            — <a href="https://www.getyourguide.com/s/?q=Kowloon%20street%20food%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360" target="_blank" rel="noopener">Prenota</a></li>
-          <li>Tour templi & cultura (Wong Tai Sin, Chi Lin, mercati)
-            — <a href="https://www.getyourguide.com/s/?q=Hong%20Kong%20temple%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360" target="_blank" rel="noopener">Prenota</a></li>
-        </ul>
-      </div>
-      <div class="food">
-        <h4>Dove mangiare</h4>
-        <p><em>Dai pai dong</em> (chioschi) e snack iconici: egg waffle, fish balls.</p>
-        <a href="https://www.tripadvisor.com/Search?q=street%20food%20Kowloon" target="_blank" rel="noopener">Vedi su Tripadvisor</a>
-      </div>
-    </section>
-
-    <section>
-      <h2>Giorno 4 — Isola di Lantau: Big Buddha & Tai O</h2>
-      <ul class="clean">
-        <li><div class="meta">Mattina</div>Funivia <strong>Ngong Ping 360</strong> (cabina Crystal opzionale), visita al <strong>Grande Buddha</strong> e al <strong>Monastero Po Lin</strong>.</li>
-        <li><div class="meta">Pomeriggio</div>Trasferimento a <strong>Tai O</strong>: villaggio su palafitte, mercatini; opzionale barca per delfini rosa.</li>
-        <li><div class="meta">Sera</div>Tramonto a Tai O o rientro verso la città per cena.</li>
-      </ul>
-      <div class="gyg">
-        <h3>Attività prenotabili (singole)</h3>
-        <ul>
-          <li>Biglietto Ngong Ping 360 (andata/ritorno)
-            — <a href="https://www.getyourguide.com/s/?q=Ngong%20Ping%20360&partner_id=HWU00MZ&cmp=GlobalGlide360" target="_blank" rel="noopener">Prenota</a></li>
-          <li>Escursione in barca a Tai O
-            — <a href="https://www.getyourguide.com/s/?q=Tai%20O%20boat%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360" target="_blank" rel="noopener">Prenota</a></li>
-        </ul>
-      </div>
-      <div class="food">
-        <h4>Dove mangiare</h4>
-        <p>Specialità di pesce e snack tipici a Tai O (essiccati, dolci locali).</p>
-        <a href="https://www.tripadvisor.com/Search?q=Tai%20O%20restaurants" target="_blank" rel="noopener">Vedi su Tripadvisor</a>
-      </div>
-    </section>
-
-    <section>
-      <h2>Giorno 5 — Traghetto per Macao & centro storico</h2>
-      <ul class="clean">
-        <li><div class="meta">Mattina</div>Traghetto veloce <strong>Hong Kong → Macao</strong>; check-in in hotel (centro UNESCO o Cotai).</li>
-        <li><div class="meta">Pomeriggio</div><strong>Rovine di San Paolo</strong>, <strong>Largo do Senado</strong>, chiese e vicoli coloniali.</li>
-        <li><div class="meta">Sera</div>Passeggiata tra le luci dei casinò o spettacolo serale.</li>
-      </ul>
-      <div class="gyg">
-        <h3>Attività prenotabili (singole)</h3>
-        <ul>
-          <li>Walking tour del centro storico di Macao
-            — <a href="https://www.getyourguide.com/s/?q=Macau%20walking%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360" target="_blank" rel="noopener">Prenota</a></li>
-          <li>Biglietti traghetto HK ⇄ Macao (quando disponibili online)
-            — <a href="https://www.getyourguide.com/s/?q=Hong%20Kong%20to%20Macau%20ferry%20ticket&partner_id=HWU00MZ&cmp=GlobalGlide360" target="_blank" rel="noopener">Prenota</a></li>
-        </ul>
-      </div>
-      <div class="food">
-        <h4>Dove mangiare</h4>
-        <p>Cucina macaense in centro, prova i <em>pastéis de nata</em> locali.</p>
-        <a href="https://www.tripadvisor.com/Search?q=Macau%20Macanese%20restaurants" target="_blank" rel="noopener">Vedi su Tripadvisor</a>
-      </div>
-    </section>
-
-    <section>
-      <h2>Giorno 6 — Macao moderno: Macau Tower & Cotai</h2>
-      <ul class="clean">
-        <li><div class="meta">Mattina</div><strong>Macau Tower</strong>: osservatorio e, per i più coraggiosi, <em>Skywalk / Edge Walk</em>.</li>
-        <li><div class="meta">Pomeriggio</div>Resort di <strong>Cotai Strip</strong> (Venetian, Galaxy): shopping, intrattenimento, gondole interne.</li>
-        <li><div class="meta">Sera</div>Spettacolo serale (verifica stagionalità) e cena fine-dining o buffet.</li>
-      </ul>
-      <div class="gyg">
-        <h3>Attività prenotabili (singole)</h3>
-        <ul>
-          <li>Macau Tower Skywalk / Edge Walk
-            — <a href="https://www.getyourguide.com/s/?q=Macau%20Tower%20Skywalk&partner_id=HWU00MZ&cmp=GlobalGlide360" target="_blank" rel="noopener">Prenota</a></li>
-          <li>Show serale (es. House of Dancing Water, quando in programmazione)
-            — <a href="https://www.getyourguide.com/s/?q=Macau%20show%20tickets&partner_id=HWU00MZ&cmp=GlobalGlide360" target="_blank" rel="noopener">Prenota</a></li>
-        </ul>
-      </div>
-      <div class="food">
-        <h4>Dove mangiare</h4>
-        <p>Cotai: ristoranti d’hotel, food court internazionali, cucina portoghese moderna.</p>
-        <a href="https://www.tripadvisor.com/Search?q=restaurants%20Cotai%20Macau" target="_blank" rel="noopener">Vedi su Tripadvisor</a>
-      </div>
-    </section>
-
-    <section>
-      <h2>Giorno 7 — Ultime ore & rientro</h2>
-      <ul class="clean">
-        <li>Shopping dell’ultimo minuto o visita a un museo a scelta.</li>
-        <li>Trasferimento al porto/aeroporto e volo di rientro.</li>
-      </ul>
-    </section>
-
-    <footer>
-      <a href="./">← Torna all’elenco itinerari</a>
-    </footer>
+    </aside>
   </main>
+
+  <footer class="wrap" style="border-top:1px solid var(--ring);margin-top:10px;color:var(--muted)">
+    <a href="./" style="text-decoration:none;color:#2563eb">← Torna all’elenco itinerari</a>
+  </footer>
+
+  <script>
+    // Smooth scroll + Back to top
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href').slice(1);
+        const t = document.getElementById(id);
+        if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+    });
+    const bt = document.getElementById('backtop');
+    window.addEventListener('scroll', ()=>{ bt.classList.toggle('show', window.scrollY > 600); });
+    bt.addEventListener('click', ()=>window.scrollTo({top:0, behavior:'smooth'}));
+  </script>
 </body>
 </html>
+
