@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>India — 15 giorni | GlobalGlide360</title>
+  <meta name="description" content="India in 15 giorni: Delhi, Jaipur, Agra (Taj Mahal), Varanasi e Kerala (Kochi, Munnar, Alleppey, Marari). Voli multi-aeroporto, hotel, attività (GetYourGuide), ristoranti e mappa. Ideale per coppie e famiglie.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--accent:#4fb3ff;--accent-2:#8b5cf6;--text:#0e141b;--muted:#596171;--bg:#f7f9fb;--card:#fff;--ring:#dbe3ea}
+    *{box-sizing:border-box} img{max-width:100%;display:block}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text)}
+
+    /* HERO */
+    .hero{position:relative;border-bottom:1px solid var(--ring);background:linear-gradient(180deg,#ffffff,#eef4f8)}
+    .hero__wrap{max-width:1100px;margin:0 auto;padding:18px 18px 24px}
+    .crumbs{font-size:.875rem;color:var(--muted);margin-bottom:8px}
+    .crumbs a{color:var(--muted);text-decoration:none}
+    .crumbs a:hover{text-decoration:underline}
+    .hero__grid{display:grid;grid-template-columns:1fr;gap:16px;align-items:center}
+    @media(min-width:900px){.hero__grid{grid-template-columns:1.3fr .7fr}}
+    .cover{border-radius:16px;overflow:hidden;border:1px solid var(--ring);box-shadow:0 10px 30px rgba(0,0,0,.05)}
+    .hero h1{margin:4px 0 6px;font-weight:800;font-size:clamp(24px,4vw,40px)}
+    .hero p.sub{margin:0;color:var(--muted)}
+    .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-top:14px}
+    .kpi{background:var(--card);border:1px solid var(--ring);border-radius:12px;padding:10px 12px}
+    .kpi .lbl{font-size:.78rem;color:var(--muted)} .kpi .val{font-weight:800}
+
+    /* QUICKBAR */
+    .quickbar{position:sticky;top:0;z-index:30;background:#ffffffc7;backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid var(--ring)}
+    .quickbar__inner{max-width:1100px;margin:0 auto;display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:10px 18px}
+    .chip{display:inline-flex;gap:8px;align-items:center;background:#fff;border:1px solid var(--ring);border-radius:999px;padding:8px 12px;font-weight:600}
+    .chip a{text-decoration:none;color:var(--text)}
+    .chip--cta{background:var(--accent);border-color:var(--accent)}
+    .chip--alt{background:var(--accent-2);border-color:var(--accent-2);color:#fff}
+    .chip--cta a{color:#fff}
+
+    /* LAYOUT */
+    .wrap{max-width:1100px;margin:0 auto;padding:22px 18px}
+    .grid{display:grid;grid-template-columns:1fr;gap:18px}
+    @media(min-width:980px){.grid{grid-template-columns:minmax(0,1fr) 320px}}
+
+    /* SIDEBAR */
+    .side{position:sticky;top:70px;align-self:start}
+    .side .card{background:#fff;border:1px solid var(--ring);border-radius:14px;padding:14px 16px;margin-bottom:12px}
+    .side h3{margin:0 0 8px;font-size:1rem}
+    .side .btn{display:block;text-align:center;background:var(--accent);color:#fff;text-decoration:none;font-weight:800;border-radius:10px;padding:10px 14px;margin-top:8px}
+    .side .btn--ghost{background:#fff;color:#0e141b;border:1px solid var(--ring)}
+    .list-clean{list-style:none;margin:0;padding:0}
+    .list-clean li{display:flex;justify-content:space-between;color:var(--muted);padding:6px 0;border-bottom:1px dashed var(--ring)}
+    .list-clean li:last-child{border-bottom:0}
+
+    /* CONTENT */
+    h2.sec{margin:18px 0 12px;font-size:1.2rem}
+    .panel{background:#fff;border:1px solid var(--ring);border-radius:14px;padding:14px 16px}
+    .grid-2{display:grid;grid-template-columns:1fr;gap:12px}
+    @media(min-width:780px){.grid-2{grid-template-columns:1fr 1fr}}
+
+    /* TIMELINE */
+    .day{position:relative;padding-left:30px}
+    .day:before{content:'';position:absolute;left:10px;top:8px;bottom:-8px;width:2px;background:linear-gradient(#cfe6ff,#dbe3ea)}
+    .dot{position:absolute;left:3px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--accent)}
+    .card{background:#fff;border:1px solid var(--ring);border-radius:14px;padding:14px 16px;margin:10px 0}
+    .meta{color:var(--muted);font-size:.9rem;margin-bottom:6px}
+    .badge{display:inline-block;background:#eef7ff;color:#0e141b;border:1px solid var(--ring);border-radius:999px;padding:3px 8px;font-size:.8rem;margin-right:6px}
+    .badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+    .act{display:grid;grid-template-columns:1fr;gap:8px;margin-top:10px}
+    @media(min-width:620px){.act{grid-template-columns:1fr auto}}
+    .act .btn{align-self:center;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;border-radius:10px;padding:10px 14px;white-space:nowrap}
+    .act .btn:hover{background:#3da1ec}
+    .food{background:#fff;border:1px dashed var(--ring);border-radius:12px;padding:12px 14px;margin-top:10px}
+    .food h4{margin:0 0 6px;font-size:1rem}
+    .food a{color:#2563eb;text-decoration:none}
+    .food a:hover{text-decoration:underline}
+    .toc{background:#fff;border:1px solid var(--ring);border-radius:12px;padding:10px 12px}
+    .toc a{display:inline-block;margin:4px 8px 0 0;color:#2563eb;text-decoration:none}
+    .toc a:hover{text-decoration:underline}
+
+    /* MAP */
+    .map-wrap{background:#fff;border:1px solid var(--ring);border-radius:14px;padding:0;overflow:hidden}
+    .map-iframe{width:100%;height:420px;border:0}
+
+    .backtop{position:fixed;right:16px;bottom:16px;background:#111827;color:#fff;border:none;border-radius:999px;padding:10px 12px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.2);display:none}
+    .backtop.show{display:block}
+  </style>
+</head>
+<body>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero__wrap">
+      <nav class="crumbs"><a href="/">Home</a> › <a href="/itinerari/">Itinerari</a> › India — 15 giorni</nav>
+      <div class="hero__grid">
+        <div>
+          <h1>India — 15 giorni</h1>
+          <p class="sub">Golden Triangle (Delhi, Jaipur, Agra) + spiritualità di Varanasi e natura del Kerala (Kochi, Munnar, Alleppey houseboat, Marari Beach). Adatto a coppie e famiglie.</p>
+          <div class="kpis">
+            <div class="kpi"><div class="lbl">Durata</div><div class="val">15 giorni / 13 notti</div></div>
+            <div class="kpi"><div class="lbl">Tappe</div><div class="val">Delhi · Jaipur · Agra · Varanasi · Kochi · Munnar · Alleppey · Marari</div></div>
+            <div class="kpi"><div class="lbl">Periodo ideale</div><div class="val">Novembre–Marzo</div></div>
+          </div>
+        </div>
+        <figure class="cover"><img src="../assets/itinerari/india.jpg" alt="Taj Mahal e colori dell'India"></figure>
+      </div>
+    </div>
+  </header>
+
+  <!-- QUICKBAR -->
+  <div class="quickbar">
+    <div class="quickbar__inner" role="navigation" aria-label="Azioni rapide">
+      <span class="chip"><a href="#voli">✈️ Voli</a></span>
+      <span class="chip"><a href="#hotel">🏨 Hotel</a></span>
+      <span class="chip"><a href="#in-breve">🧭 In breve</a></span>
+      <span class="chip"><a href="#programma">🗺️ Programma</a></span>
+      <span class="chip"><a href="#mappa">🗺️ Mappa</a></span>
+      <span class="chip"><a href="#faq">❓ FAQ</a></span>
+      <span class="chip chip--cta"><a href="#attivita">🎟️ Prenota attività</a></span>
+    </div>
+  </div>
+
+  <main class="wrap grid">
+    <!-- CONTENT -->
+    <article id="content">
+      <!-- Indice -->
+      <section class="toc" aria-labelledby="toc-title">
+        <h2 id="toc-title" class="sec" style="margin-top:0">Indice</h2>
+        <p class="meta">Salta al giorno:</p>
+        <p>
+          <a href="#g1">1</a> <a href="#g2">2</a> <a href="#g3">3</a> <a href="#g4">4</a> <a href="#g5">5</a>
+          <a href="#g6">6</a> <a href="#g7">7</a> <a href="#g8">8</a> <a href="#g9">9</a> <a href="#g10">10</a>
+          <a href="#g11">11</a> <a href="#g12">12</a> <a href="#g13">13</a> <a href="#g14">14</a> <a href="#g15">15</a>
+        </p>
+      </section>
+
+      <!-- VOLI -->
+      <section id="voli" aria-labelledby="sec-voli">
+        <h2 id="sec-voli" class="sec">Voli — multi–aeroporto (4–18 marzo 2027)</h2>
+        <div class="panel">
+          <div class="grid-2">
+            <div>
+              <div class="meta">Andata — 4 Mar 2027 → Delhi (DEL)</div>
+              <div class="badges">
+                <span class="badge">MXP</span><span class="badge">FCO</span><span class="badge">VCE</span><span class="badge">ZRH</span><span class="badge">BCN</span>
+              </div>
+              <p>Scegli il tuo aeroporto di partenza:</p>
+              <div class="badges" style="gap:8px">
+                <a class="chip chip--cta" target="_blank" rel="noopener" href="https://www.skyscanner.net/transport/flights-from/?adults=2#/?searchparamstype=flights&flightsearch=1&itinerary=itineraries!oneway!legs!origin:MXP,destination:DEL,date:2027-03-04T00:00:00&cabin=economy">Andata da MXP</a>
+                <a class="chip" target="_blank" rel="noopener" href="https://www.skyscanner.net/transport/flights-from/fco/?adults=2#/?searchparamstype=flights&flightsearch=1&itinerary=itineraries!oneway!legs!origin:FCO,destination:DEL,date:2027-03-04T00:00:00&cabin=economy">da FCO</a>
+                <a class="chip" target="_blank" rel="noopener" href="https://www.skyscanner.net/transport/flights-from/vce/?adults=2#/?searchparamstype=flights&flightsearch=1&itinerary=itineraries!oneway!legs!origin:VCE,destination:DEL,date:2027-03-04T00:00:00&cabin=economy">da VCE</a>
+                <a class="chip" target="_blank" rel="noopener" href="https://www.skyscanner.net/transport/flights-from/zrh/?adults=2#/?searchparamstype=flights&flightsearch=1&itinerary=itineraries!oneway!legs!origin:ZRH,destination:DEL,date:2027-03-04T00:00:00&cabin=economy">da ZRH</a>
+                <a class="chip" target="_blank" rel="noopener" href="https://www.skyscanner.net/transport/flights-from/bcn/?adults=2#/?searchparamstype=flights&flightsearch=1&itinerary=itineraries!oneway!legs!origin:BCN,destination:DEL,date:2027-03-04T00:00:00&cabin=economy">da BCN</a>
+              </div>
+            </div>
+            <div>
+              <div class="meta">Ritorno — 18 Mar 2027 da Kochi (COK) **o** Trivandrum (TRV)</div>
+              <p>Scegli aeroporto di rientro e destinazione:</p>
+              <div class="badges" style="gap:8px">
+                <a class="chip chip--cta" target="_blank" rel="noopener" href="https://www.skyscanner.net/transport/flights-from/cok/?adults=2#/?searchparamstype=flights&flightsearch=1&itinerary=itineraries!oneway!legs!origin:COK,destination:MXP,date:2027-03-18T00:00:00&cabin=economy">COK → MXP</a>
+                <a class="chip" target="_blank" rel="noopener" href="https://www.skyscanner.net/transport/flights-from/cok/?adults=2#/?searchparamstype=flights&flightsearch=1&itinerary=itineraries!oneway!legs!origin:COK,destination:FCO,date:2027-03-18T00:00:00&cabin=economy">COK → FCO</a>
+                <a class="chip" target="_blank" rel="noopener" href="https://www.skyscanner.net/transport/flights-from/cok/?adults=2#/?searchparamstype=flights&flightsearch=1&itinerary=itineraries!oneway!legs!origin:COK,destination:VCE,date:2027-03-18T00:00:00&cabin=economy">COK → VCE</a>
+                <a class="chip" target="_blank" rel="noopener" href="https://www.skyscanner.net/transport/flights-from/cok/?adults=2#/?searchparamstype=flights&flightsearch=1&itinerary=itineraries!oneway!legs!origin:COK,destination:ZRH,date:2027-03-18T00:00:00&cabin=economy">COK → ZRH</a>
+                <a class="chip" target="_blank" rel="noopener" href="https://www.skyscanner.net/transport/flights-from/cok/?adults=2#/?searchparamstype=flights&flightsearch=1&itinerary=itineraries!oneway!legs!origin:COK,destination:BCN,date:2027-03-18T00:00:00&cabin=economy">COK → BCN</a>
+              </div>
+              <p class="meta" style="margin-top:6px">Opzione alternativa: rientro da <strong>TRV</strong> (Trivandrum) invece di COK.</p>
+            </div>
+          </div>
+          <p class="meta" style="margin-top:10px">Parametri affiliati Skyscanner verranno aggiunti quando disponibili.</p>
+        </div>
+      </section>
+
+      <!-- HOTEL -->
+      <section id="hotel" aria-labelledby="sec-hotel">
+        <h2 id="sec-hotel" class="sec">Hotel suggeriti (prenotabili)</h2>
+        <div class="panel grid-2">
+          <div>
+            <div class="meta">Delhi · 2 notti (4–6 Mar)</div>
+            <p>Zone: Connaught Place, Aerocity o South Delhi.</p>
+            <a class="chip chip--cta" target="_blank" rel="noopener" href="https://www.booking.com/searchresults.html?ss=New%20Delhi&checkin=2027-03-04&checkout=2027-03-06&aid=AFFID_BOOKING">Delhi — Booking</a>
+          </div>
+          <div>
+            <div class="meta">Jaipur · 2 notti (6–8 Mar)</div>
+            <p>Havelis/heritage hotels per fascino e posizione.</p>
+            <a class="chip chip--alt" target="_blank" rel="noopener" href="https://www.booking.com/searchresults.html?ss=Jaipur&checkin=2027-03-06&checkout=2027-03-08&aid=AFFID_BOOKING">Jaipur — Booking</a>
+          </div>
+          <div>
+            <div class="meta">Agra · 1 notte (8–9 Mar)</div>
+            <p>Vicino al Taj East Gate per alba al Taj Mahal.</p>
+            <a class="chip chip--cta" target="_blank" rel="noopener" href="https://www.booking.com/searchresults.html?ss=Agra&checkin=2027-03-08&checkout=2027-03-09&aid=AFFID_BOOKING">Agra — Booking</a>
+          </div>
+          <div>
+            <div class="meta">Varanasi · 2 notti (9–11 Mar)</div>
+            <p>Ghat centrali o Assi Ghat (comodo per famiglie).</p>
+            <a class="chip chip--alt" target="_blank" rel="noopener" href="https://www.booking.com/searchresults.html?ss=Varanasi&checkin=2027-03-09&checkout=2027-03-11&aid=AFFID_BOOKING">Varanasi — Booking</a>
+          </div>
+          <div>
+            <div class="meta">Kochi (Fort Kochi) · 1 notte (11–12 Mar)</div>
+            <p>Quartiere storico, case coloniali e caffè.</p>
+            <a class="chip chip--cta" target="_blank" rel="noopener" href="https://www.booking.com/searchresults.html?ss=Fort%20Kochi&checkin=2027-03-11&checkout=2027-03-12&aid=AFFID_BOOKING">Kochi — Booking</a>
+          </div>
+          <div>
+            <div class="meta">Munnar · 2 notti (12–14 Mar)</div>
+            <p>Piantagioni di tè, lodge panoramici e trekking soft.</p>
+            <a class="chip chip--alt" target="_blank" rel="noopener" href="https://www.booking.com/searchresults.html?ss=Munnar&checkin=2027-03-12&checkout=2027-03-14&aid=AFFID_BOOKING">Munnar — Booking</a>
+          </div>
+          <div>
+            <div class="meta">Alleppey (houseboat) · 1 notte (14–15 Mar)</div>
+            <p>Houseboat privata sui backwaters (pasti inclusi).</p>
+            <a class="chip" target="_blank" rel="noopener" href="https://www.booking.com/searchresults.html?ss=Alleppey%20houseboat&checkin=2027-03-14&checkout=2027-03-15&aid=AFFID_BOOKING">Alleppey — Booking</a>
+          </div>
+          <div>
+            <div class="meta">Marari Beach (Kerala) · 3 notti (15–18 Mar)</div>
+            <p>Resort mare relax finale per coppie e famiglie.</p>
+            <a class="chip" target="_blank" rel="noopener" href="https://www.booking.com/searchresults.html?ss=Mararikulam&checkin=2027-03-15&checkout=2027-03-18&aid=AFFID_BOOKING">Marari — Booking</a>
+          </div>
+        </div>
+        <p class="meta" style="margin-top:10px">Sostituisci <code>aid=AFFID_BOOKING</code> con il tuo ID affiliato Booking quando lo avrai.</p>
+      </section>
+
+      <!-- IN BREVE -->
+      <section id="in-breve" aria-labelledby="sec-brief">
+        <h2 id="sec-brief" class="sec">Itinerario in breve</h2>
+        <div class="panel">
+          <div class="grid-2">
+            <div>
+              <h3 style="margin:0 0 6px;font-size:1rem">Distribuzione notti</h3>
+              <ul class="list-clean" style="margin-top:4px">
+                <li><span>Delhi</span><strong>2 notti (4–6 Mar)</strong></li>
+                <li><span>Jaipur</span><strong>2 notti (6–8 Mar)</strong></li>
+                <li><span>Agra</span><strong>1 notte (8–9 Mar)</strong></li>
+                <li><span>Varanasi</span><strong>2 notti (9–11 Mar)</strong></li>
+                <li><span>Kochi (Fort Kochi)</span><strong>1 notte (11–12 Mar)</strong></li>
+                <li><span>Munnar</span><strong>2 notti (12–14 Mar)</strong></li>
+                <li><span>Alleppey (houseboat)</span><strong>1 notte (14–15 Mar)</strong></li>
+                <li><span>Marari Beach</span><strong>3 notti (15–18 Mar)</strong></li>
+              </ul>
+              <div class="badges" style="margin-top:8px">
+                <span class="badge">Totale: 13 notti</span>
+                <span class="badge">Ritmo: medio</span>
+              </div>
+            </div>
+            <div>
+              <h3 style="margin:0 0 6px;font-size:1rem">Trasferimenti chiave</h3>
+              <ul class="list-clean" style="margin-top:4px">
+                <li><span>Delhi → Jaipur</span><strong>Auto/driver (5–6 h)</strong></li>
+                <li><span>Jaipur → Agra</span><strong>Auto/driver (4–5 h)</strong></li>
+                <li><span>Agra → Delhi → Varanasi</span><strong>Volo (consigliato) o treno notte</strong></li>
+                <li><span>Varanasi → Kochi</span><strong>Volo via Delhi/Mumbai</strong></li>
+                <li><span>Kochi → Munnar</span><strong>Auto/driver (4 h)</strong></li>
+                <li><span>Munnar → Alleppey → Marari</span><strong>Auto/driver</strong></li>
+              </ul>
+              <div class="badges" style="margin-top:8px">
+                <span class="badge">Adatto: coppie & famiglie</span>
+                <span class="badge">Focus: cultura & natura</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROGRAMMA — LINEARE -->
+      <section id="programma" aria-labelledby="sec-prog">
+        <h2 id="sec-prog" class="sec">Programma giorno per giorno</h2>
+
+        <!-- G1 -->
+        <div id="g1" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 1 — Arrivo a Delhi</h3>
+          <div class="card">
+            <div class="meta">Base: Delhi · Ritmo: leggero</div>
+            <p>Transfer dall’aeroporto e ambientamento a <strong>Connaught Place</strong> o <strong>Aerocity</strong>. Cena indiana moderna.</p>
+            <div class="act">
+              <div><strong>Transfer aeroporto → hotel (DEL)</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Delhi%20airport%20transfer&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G2 -->
+        <div id="g2" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 2 — Old & New Delhi</h3>
+          <div class="card">
+            <div class="meta">Ritmo: moderato</div>
+            <div class="badges"><span class="badge">Qutub Minar</span><span class="badge">Humayun</span><span class="badge">Chandni Chowk</span></div>
+            <p>Tour delle icone: <strong>Qutub Minar</strong>, <strong>Tomba di Humayun</strong>, moschea <strong>Jama Masjid</strong> e bazar di <strong>Chandni Chowk</strong> in risciò.</p>
+            <div class="act">
+              <div><strong>Delhi highlights con guida e auto privata</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Delhi%20city%20tour%20private&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G3 -->
+        <div id="g3" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 3 — Delhi → Jaipur (Pink City)</h3>
+          <div class="card">
+            <div class="meta">Trasferimento: 5–6 h · 2 notti</div>
+            <p>Partenza al mattino con driver. Sosta a <strong>Neemrana</strong> o a <strong>Abhaneri Stepwell</strong>. Arrivo a <strong>Jaipur</strong> e Hawa Mahal al tramonto.</p>
+            <div class="act">
+              <div><strong>Delhi → Jaipur — auto/driver privato</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/-l114/jaipur-to-delhi-private-transfer-t113362/?partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G4 -->
+        <div id="g4" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 4 — Jaipur: Amber Fort & città rosa</h3>
+          <div class="card">
+            <div class="meta">Ritmo: attivo</div>
+            <div class="badges"><span class="badge">Amber Fort</span><span class="badge">City Palace</span><span class="badge">Jantar Mantar</span></div>
+            <p>Mattina al <strong>Forte Amber</strong> (salita in jeep). Pomeriggio tra <strong>City Palace</strong> e <strong>Jantar Mantar</strong>. Shopping artigianale.</p>
+            <div class="act">
+              <div><strong>Jaipur — tour completo con guida</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Jaipur%20city%20tour%20Amber%20Fort&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G5 -->
+        <div id="g5" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 5 — Jaipur → Agra (via Abhaneri/Fatehpur Sikri)</h3>
+          <div class="card">
+            <div class="meta">Trasferimento: 4–5 h · 1 notte</div>
+            <p>Trasferimento verso <strong>Agra</strong> con soste a <strong>Abhaneri Stepwell</strong> e/o <strong>Fatehpur Sikri</strong>. Tramonto al <strong>Mehtab Bagh</strong> (vista sul Taj).</p>
+            <div class="act">
+              <div><strong>Jaipur → Agra — auto/driver + soste</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/-l114/jaipur-to-agra-private-transfer-t61388/?partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G6 -->
+        <div id="g6" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 6 — Alba al Taj Mahal & Agra Fort → volo per Varanasi</h3>
+          <div class="card">
+            <div class="meta">Ritmo: intenso · Voli interni</div>
+            <div class="badges"><span class="badge">Taj Mahal (alba)</span><span class="badge">Agra Fort</span></div>
+            <p>Visita all’alba al <strong>Taj Mahal</strong>, quindi <strong>Agra Fort</strong>. Spostamento a <strong>Delhi</strong> (auto) e volo per <strong>Varanasi</strong>.</p>
+            <div class="act">
+              <div><strong>Taj Mahal sunrise + guida locale</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Agra%20Taj%20Mahal%20sunrise%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+            <div class="act">
+              <div><strong>Volo DEL → VNS — cerca opzioni</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.skyscanner.net/transport/flights/del/vns/270309/270309/?adults=2&cabinclass=economy">Cerca volo</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G7 -->
+        <div id="g7" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 7 — Varanasi: ghat & Ganga Aarti</h3>
+          <div class="card">
+            <div class="meta">Ritmo: moderato · Spiritualità</div>
+            <div class="badges"><span class="badge">Boat ride alba</span><span class="badge">Ganga Aarti</span></div>
+            <p>Crociera all’alba sul <strong>Gange</strong> tra i ghat. Pomeriggio nei vicoli antichi. Al tramonto, cerimonia <strong>Ganga Aarti</strong>.</p>
+            <div class="act">
+              <div><strong>Varanasi — boat ride & Aarti con guida</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Varanasi%20boat%20ride%20Ganga%20Aarti&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G8 -->
+        <div id="g8" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 8 — Sarnath & sari/banarasi experience → volo per Kochi</h3>
+          <div class="card">
+            <div class="meta">Ritmo: moderato · Volo per il Sud</div>
+            <p>Visita a <strong>Sarnath</strong> (luogo del primo sermone del Buddha). Esperienza tessile <em>banarasi</em>. Volo serale per <strong>Kochi</strong>.</p>
+            <div class="act">
+              <div><strong>VNS → COK — cerca voli</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.skyscanner.net/transport/flights/vns/cok/270311/270311/?adults=2&cabinclass=economy">Cerca volo</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G9 -->
+        <div id="g9" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 9 — Kochi: Fort Kochi & spettacolo Kathakali</h3>
+          <div class="card">
+            <div class="meta">Base: Fort Kochi · Ritmo: leggero</div>
+            <div class="badges"><span class="badge">Chinese nets</span><span class="badge">Jew Town</span></div>
+            <p>Walking tour a <strong>Fort Kochi</strong> tra reti cinesi, sinagoga e case coloniali. Sera: <strong>Kathakali</strong> o <strong>Kalaripayattu</strong> (arti marziali).</p>
+            <div class="act">
+              <div><strong>Kochi heritage walk + show serale</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Kochi%20walking%20tour%20Kathakali&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G10 -->
+        <div id="g10" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 10 — Kochi → Munnar (piantagioni di tè)</h3>
+          <div class="card">
+            <div class="meta">Trasferimento: 4 h · 2 notti</div>
+            <p>Salita a <strong>Munnar</strong>. Degustazione tè e viewpoint al tramonto.</p>
+            <div class="act">
+              <div><strong>Transfer COK → Munnar con driver privato</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Kochi%20to%20Munnar%20private%20transfer&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G11 -->
+        <div id="g11" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 11 — Munnar: trekking soft & tea museum</h3>
+          <div class="card">
+            <div class="meta">Ritmo: attivo ma family-friendly</div>
+            <div class="badges"><span class="badge">Tea gardens</span><span class="badge">Eravikulam</span></div>
+            <p>Trekking leggero tra le piantagioni (alba consigliata), <strong>Tea Museum</strong> e se aperto <strong>Eravikulam National Park</strong>.</p>
+            <div class="act">
+              <div><strong>Munnar sunrise trek + tea experience</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Munnar%20sunrise%20trek%20tea%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G12 -->
+        <div id="g12" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 12 — Munnar → Alleppey (houseboat)</h3>
+          <div class="card">
+            <div class="meta">Trasferimento: 4–5 h · 1 notte houseboat</div>
+            <p>Discesa verso i <strong>backwaters</strong>. Check-in in <strong>houseboat privata</strong>, navigazione e cena a bordo.</p>
+            <div class="act">
+              <div><strong>Houseboat privata con pasti inclusi</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Alleppey%20houseboat%20private&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G13 -->
+        <div id="g13" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 13 — Check-out houseboat → Marari Beach</h3>
+          <div class="card">
+            <div class="meta">Trasferimento breve · 3 notti mare</div>
+            <p>Check-out mattutino e breve transfer a <strong>Mararikulam</strong>. Relax in spiaggia/resort.</p>
+            <div class="act">
+              <div><strong>Transfer Alleppey → Marari + tempo libero</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.tripadvisor.com/Search?q=Marari%20Beach%20restaurants">Ristoranti (Tripadvisor)</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G14 -->
+        <div id="g14" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 14 — Marari: day spa / cooking class / village tour</h3>
+          <div class="card">
+            <div class="meta">Ritmo: relax</div>
+            <p>Giornata mare, <strong>ayurveda spa</strong> o <strong>cooking class</strong> keralese; visita a villaggi dei pescatori al tramonto.</p>
+            <div class="act">
+              <div><strong>Cooking class o ayurveda retreat (Kerala)</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Kochi%20cooking%20class%20ayurveda&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G15 -->
+        <div id="g15" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 15 — Rientro da Kochi (COK) / Trivandrum (TRV)</h3>
+          <div class="card">
+            <div class="meta">Fine tour</div>
+            <p>Transfer privato in aeroporto (COK o TRV) e volo di rientro.</p>
+            <div class="act">
+              <div><strong>Transfer resort → aeroporto (COK/TRV)</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Kochi%20airport%20transfer&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MAPPA -->
+      <section id="mappa" aria-labelledby="sec-map">
+        <h2 id="sec-map" class="sec">Mappa interattiva — tappe principali</h2>
+        <div class="map-wrap">
+          <iframe class="map-iframe"
+            src="https://www.google.com/maps?q=Delhi%2C%20Jaipur%2C%20Agra%2C%20Varanasi%2C%20Kochi%2C%20Munnar%2C%20Alleppey%2C%20Marari&z=5&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade" aria-label="Mappa India: Delhi, Jaipur, Agra, Varanasi, Kochi, Munnar, Alleppey, Marari"></iframe>
+        </div>
+      </section>
+
+      <!-- ATTIVITÀ (riepilogo) -->
+      <section id="attivita" aria-labelledby="sec-att">
+        <h2 id="sec-att" class="sec">Riepilogo attività prenotabili</h2>
+        <div class="panel">
+          <ul class="list-clean">
+            <li><span>Delhi — city tour privato</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Delhi%20city%20tour%20private&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Jaipur — Amber Fort + city tour</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Jaipur%20city%20tour%20Amber%20Fort&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Agra — Taj Mahal sunrise + guida</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Agra%20Taj%20Mahal%20sunrise%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Varanasi — boat ride & Ganga Aarti</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Varanasi%20boat%20ride%20Ganga%20Aarti&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Kochi — heritage walk + show</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Kochi%20walking%20tour%20Kathakali&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Munnar — sunrise trek + tea experience</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Munnar%20sunrise%20trek%20tea%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Alleppey — houseboat privata</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Alleppey%20houseboat%20private&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Kerala — cooking class / ayurveda</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Kochi%20cooking%20class%20ayurveda&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+          </ul>
+          <p class="meta" style="margin-top:8px">Tutti i link GetYourGuide includono il tuo codice affiliato <strong>HWU00MZ</strong>.</p>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" aria-labelledby="sec-faq">
+        <h2 id="sec-faq" class="sec">Info pratiche & FAQ</h2>
+        <div class="panel">
+          <dl style="margin:0;line-height:1.6em;">
+            <dt style="font-weight:600;margin-top:12px;">🛂 Visto & ingresso</dt>
+            <dd><strong>e-Visa</strong> online per turismo (controlla requisiti per la tua cittadinanza); passaporto valido 6+ mesi.</dd>
+
+            <dt style="font-weight:600;margin-top:12px;">💉 Salute</dt>
+            <dd>Acqua in bottiglia, igiene alimentare, assicurazione viaggio consigliata. Valuta profilassi vaccinale presso centro viaggi.</dd>
+
+            <dt style="font-weight:600;margin-top:12px;">🚗 Spostamenti</dt>
+            <dd>Driver privato nel Golden Triangle; voli interni per Varanasi e Kerala; in Kerala auto/driver tra località.</dd>
+
+            <dt style="font-weight:600;margin-top:12px;">💳 Pagamenti</dt>
+            <dd>Carte accettate in hotel e ristoranti, contanti utili per mercati e mance.</dd>
+
+            <dt style="font-weight:600;margin-top:12px;">👨‍👩‍👧‍👦 Family tips</dt>
+            <dd>Evita ore più calde per visite; porta salviette/gel e cappellini; seleziona camere con A/C e piscina quando possibile.</dd>
+
+            <dt style="font-weight:600;margin-top:12px;">🙏 Dress code templi</dt>
+            <dd>Spalle e ginocchia coperte; spesso è richiesto entrare scalzi in aree sacre.</dd>
+          </dl>
+        </div>
+      </section>
+
+      <button class="backtop" id="backtop" aria-label="Torna su">↑</button>
+    </article>
+
+    <!-- SIDEBAR -->
+    <aside class="side" aria-label="Riepilogo e prenotazioni rapide">
+      <div class="card">
+        <h3>Riepilogo viaggio</h3>
+        <ul class="list-clean">
+          <li><span>Durata</span><strong>15g / 13n</strong></li>
+          <li><span>Tappe</span><strong>Delhi · Jaipur · Agra · Varanasi · Kerala</strong></li>
+          <li><span>Ideale</span><strong>Nov–Mar</strong></li>
+        </ul>
+        <a class="btn" href="#voli">Cerca voli</a>
+        <a class="btn btn--ghost" href="#hotel">Trova hotel</a>
+        <a class="btn" href="#attivita">Prenota attività</a>
+      </div>
+
+      <div class="card">
+        <h3>Timeline date</h3>
+        <ul class="list-clean">
+          <li><span>Arrivo Delhi</span><strong>4 Mar 2027</strong></li>
+          <li><span>Jaipur</span><strong>6–8 Mar</strong></li>
+          <li><span>Agra</span><strong>8–9 Mar</strong></li>
+          <li><span>Varanasi</span><strong>9–11 Mar</strong></li>
+          <li><span>Kochi</span><strong>11–12 Mar</strong></li>
+          <li><span>Munnar</span><strong>12–14 Mar</strong></li>
+          <li><span>Alleppey</span><strong>14–15 Mar</strong></li>
+          <li><span>Marari</span><strong>15–18 Mar</strong></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Consigli rapidi</h3>
+        <ul class="list-clean">
+          <li><span>Orari</span><span>Visite chiave all’alba/tramonto per luce e clima.</span></li>
+          <li><span>Bagagli</span><span>Zaino daypack + filtro per acqua/borraccia.</span></li>
+          <li><span>Transfer</span><span>Conferma con anticipo i voli interni (bagagli).</span></li>
+        </ul>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="wrap" style="border-top:1px solid var(--ring);margin-top:10px;color:#596171">
+    <a href="./" style="text-decoration:none;color:#2563eb">← Torna all’elenco itinerari</a>
+  </footer>
+
+  <script>
+    // Smooth scroll + Back to top
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href').slice(1);
+        const t = document.getElementById(id);
+        if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+    });
+    const bt = document.getElementById('backtop');
+    window.addEventListener('scroll', ()=>{ bt.classList.toggle('show', window.scrollY > 600); });
+    bt.addEventListener('click', ()=>window.scrollTo({top:0, behavior:'smooth'}));
+  </script>
+</body>
+</html>
