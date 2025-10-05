@@ -1,184 +1,417 @@
 <!doctype html>
 <html lang="it">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Parigi – Itinerario vero 5 giorni (ottobre/novembre) | GlobalGlide360</title>
-<meta name="description" content="Itinerario reale di 5 giorni a Parigi per 2 adulti con link prenotabili a voli, hotel e attività. Partenza da Milano (MXP), date ottobre/novembre.">
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-<!-- Travelpayouts LinkSwitcher -->
-<script data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
-  (function(){var s=document.createElement("script");s.async=1;s.src='https://tpembars.com/NDU0MTUz.js?t=454153';document.head.appendChild(s);})();
-</script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Parigi — 5 giorni | GlobalGlide360</title>
+  <meta name="description" content="Parigi in 5 giorni: musei, crociere sulla Senna, quartieri iconici e attività prenotabili.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --accent:#4fb3ff; --accent-2:#8b5cf6;
+      --text:#0e141b; --muted:#596171;
+      --bg:#f7f9fb; --card:#fff; --ring:#dbe3ea;
+    }
+    *{box-sizing:border-box}
+    img{max-width:100%;display:block}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text)}
+
+    /* HERO */
+    .hero{position:relative;border-bottom:1px solid var(--ring);background:linear-gradient(180deg,#ffffff,#eef4f8)}
+    .hero__wrap{max-width:1100px;margin:0 auto;padding:18px}
+    .crumbs{font-size:.875rem;color:var(--muted);margin-bottom:8px}
+    .crumbs a{color:var(--muted);text-decoration:none}
+    .crumbs a:hover{text-decoration:underline}
+    .hero__grid{display:grid;grid-template-columns:1fr;gap:16px;align-items:center}
+    @media(min-width:900px){.hero__grid{grid-template-columns:1.3fr .7fr}}
+    .cover{border-radius:16px;overflow:hidden;border:1px solid var(--ring);box-shadow:0 10px 30px rgba(0,0,0,.05)}
+    .hero h1{margin:4px 0 6px;font-weight:800;font-size:clamp(24px,4vw,40px)}
+    .hero p.sub{margin:0;color:var(--muted)}
+    .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-top:14px}
+    .kpi{background:var(--card);border:1px solid var(--ring);border-radius:12px;padding:10px 12px}
+    .kpi .lbl{font-size:.78rem;color:var(--muted)}
+    .kpi .val{font-weight:800}
+
+    /* QUICKBAR */
+    .quickbar{position:sticky;top:0;z-index:30;background:#ffffffc7;backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid var(--ring)}
+    .quickbar__inner{max-width:1100px;margin:0 auto;display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:10px 18px}
+    .chip{display:inline-flex;gap:8px;align-items:center;background:#fff;border:1px solid var(--ring);border-radius:999px;padding:8px 12px;font-weight:600}
+    .chip a{text-decoration:none;color:var(--text)}
+    .chip--cta{background:var(--accent);border-color:var(--accent)}
+    .chip--alt{background:var(--accent-2);border-color:var(--accent-2);color:#fff}
+    .chip--cta a{color:#fff}
+
+    /* LAYOUT */
+    .wrap{max-width:1100px;margin:0 auto;padding:22px 18px}
+    .grid{display:grid;grid-template-columns:1fr;gap:18px}
+    @media(min-width:980px){.grid{grid-template-columns:minmax(0,1fr) 320px}}
+
+    /* SIDEBAR */
+    .side{position:sticky;top:70px;align-self:start}
+    .side .card{background:#fff;border:1px solid var(--ring);border-radius:14px;padding:14px 16px;margin-bottom:12px}
+    .side h3{margin:0 0 8px;font-size:1rem}
+    .side .btn{display:block;text-align:center;background:var(--accent);color:#fff;text-decoration:none;font-weight:800;border-radius:10px;padding:10px 14px;margin-top:8px}
+    .side .btn--ghost{background:#fff;color:#0e141b;border:1px solid var(--ring)}
+    .list-clean{list-style:none;margin:0;padding:0}
+    .list-clean li{display:flex;justify-content:space-between;color:var(--muted);padding:6px 0;border-bottom:1px dashed var(--ring)}
+    .list-clean li:last-child{border-bottom:0}
+
+    /* CONTENT */
+    h2.sec{margin:18px 0 12px;font-size:1.2rem}
+    .panel{background:#fff;border:1px solid var(--ring);border-radius:14px;padding:14px 16px}
+    .grid-2{display:grid;grid-template-columns:1fr;gap:12px}
+    @media(min-width:780px){.grid-2{grid-template-columns:1fr 1fr}}
+
+    /* TIMELINE */
+    .day{position:relative;padding-left:30px}
+    .day:before{content:'';position:absolute;left:10px;top:8px;bottom:-8px;width:2px;background:linear-gradient(#cfe6ff,#dbe3ea)}
+    .dot{position:absolute;left:3px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--accent)}
+    .card{background:#fff;border:1px solid var(--ring);border-radius:14px;padding:14px 16px;margin:10px 0}
+    .meta{color:var(--muted);font-size:.9rem;margin-bottom:6px}
+    .badge{display:inline-block;background:#eef7ff;color:#0e141b;border:1px solid var(--ring);border-radius:999px;padding:3px 8px;font-size:.8rem;margin-right:6px}
+    .badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+    .act{display:grid;grid-template-columns:1fr;gap:8px;margin-top:10px}
+    @media(min-width:620px){.act{grid-template-columns:1fr auto}}
+    .act .btn{align-self:center;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;border-radius:10px;padding:10px 14px;white-space:nowrap}
+    .act .btn:hover{background:#3da1ec}
+    .food{background:#fff;border:1px dashed var(--ring);border-radius:12px;padding:12px 14px;margin-top:10px}
+    .food h4{margin:0 0 6px;font-size:1rem}
+    .food a{color:#2563eb;text-decoration:none}
+    .food a:hover{text-decoration:underline}
+    .toc{background:#fff;border:1px solid var(--ring);border-radius:12px;padding:10px 12px}
+    .toc a{display:inline-block;margin:4px 8px 0 0;color:#2563eb;text-decoration:none}
+    .toc a:hover{text-decoration:underline}
+
+    /* MAP */
+    .map-wrap{background:#fff;border:1px solid var(--ring);border-radius:14px;padding:0;overflow:hidden}
+    .map-iframe{width:100%;height:420px;border:0}
+
+    .backtop{position:fixed;right:16px;bottom:16px;background:#111827;color:#fff;border:none;border-radius:999px;padding:10px 12px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.2);display:none}
+    .backtop.show{display:block}
+  </style>
 </head>
-<body class="bg-blue-50 text-gray-800">
-
-<!-- Snippet GYG -->
-<script>
-  window.GG_CFG = window.GG_CFG || {};
-  window.GG_CFG.gyg_partner = "HWU00MZ";
-  window.GG_SUBID = "itinerario-parigi-ott-nov";
-</script>
-
-<header class="bg-white shadow py-6 px-6">
-  <div class="max-w-6xl mx-auto flex items-center justify-between">
-    <a href="/" class="flex items-center">
-      <img src="/img/logo.png" class="h-12" alt="GlobalGlide360">
-      <span class="ml-3 text-2xl font-bold text-blue-800">GlobalGlide360</span>
-    </a>
-    <nav class="text-blue-800 space-x-6">
-      <a href="/mini-guide/parigi.html" class="hover:underline">Mini-guida Parigi</a>
-    </nav>
-  </div>
-</header>
-
-<main class="max-w-5xl mx-auto p-6">
-  <h1 class="text-3xl font-bold text-blue-900 mb-2">Parigi — Itinerario vero 5 giorni</h1>
-  <p class="text-gray-700 mb-4">Per <strong>2 adulti</strong>, partenza da <strong>Milano (MXP)</strong>. Date e link reali per prenotare.</p>
-
-  <!-- Switch periodo -->
-  <div class="bg-white rounded shadow p-4 mb-6 flex flex-wrap items-center gap-3">
-    <div class="text-sm text-gray-700">Scegli periodo:</div>
-    <button id="btn-ott" class="bg-blue-700 text-white px-3 py-1 rounded-full text-sm">Ottobre (24 → 29)</button>
-    <button id="btn-nov" class="bg-gray-200 text-blue-900 hover:bg-gray-300 px-3 py-1 rounded-full text-sm">Novembre (07 → 12)</button>
-  </div>
-
-  <!-- Costi stimati -->
-  <section class="bg-white rounded shadow p-4 mb-6">
-    <h2 class="text-xl font-semibold text-blue-800 mb-2">Riepilogo costi stimati (2 adulti)</h2>
-    <ul class="grid grid-cols-1 md:grid-cols-3 gap-4 text-gray-800">
-      <li class="bg-blue-50 rounded p-3">
-        <div class="text-sm text-gray-500">Voli A/R</div>
-        <div class="text-2xl font-bold">€300</div>
-        <div class="text-xs text-gray-500">≈ €150 p.p.</div>
-      </li>
-      <li class="bg-green-50 rounded p-3">
-        <div class="text-sm text-gray-500">Hotel (5 notti)</div>
-        <div class="text-2xl font-bold">€800</div>
-        <div class="text-xs text-gray-500">≈ €160/notte</div>
-      </li>
-      <li class="bg-yellow-50 rounded p-3">
-        <div class="text-sm text-gray-500">Attività</div>
-        <div class="text-2xl font-bold">€320</div>
-        <div class="text-xs text-gray-500">≈ €160 p.p.</div>
-      </li>
-    </ul>
-    <div class="mt-3 text-lg font-bold text-blue-900">Totale stimato: €1.420</div>
-    <p class="text-xs text-gray-500 mt-1">Apri i link per tariffe e disponibilità in tempo reale.</p>
-  </section>
-
-  <!-- CTA -->
-  <section class="bg-white rounded shadow p-4 mb-8">
-    <h2 class="text-xl font-semibold text-blue-800 mb-3">Prenotazioni rapide</h2>
-    <div class="flex flex-wrap gap-3">
-      <a id="cta-volo"  target="_blank" class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800">Vedi voli su Skyscanner</a>
-      <a id="cta-hotel" target="_blank" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Vedi hotel su Booking</a>
-      <a id="cta-exp"   target="_blank" class="bg-yellow-500 text-gray-900 px-4 py-2 rounded hover:bg-yellow-600">Vedi attività su GetYourGuide</a>
+<body>
+  <header class="hero">
+    <div class="hero__wrap">
+      <nav class="crumbs"><a href="/">Home</a> › <a href="/itinerari/">Itinerari</a> › Parigi — 5 giorni</nav>
+      <div class="hero__grid">
+        <div>
+          <h1>Parigi — 5 giorni</h1>
+          <p class="sub">Musei, quartieri iconici, crociera sulla Senna. Itinerario bilanciato per coppie e famiglie.</p>
+          <div class="kpis">
+            <div class="kpi"><div class="lbl">Durata</div><div class="val">5 giorni / 4 notti</div></div>
+            <div class="kpi"><div class="lbl">Tappe</div><div class="val">Parigi (4N)</div></div>
+            <div class="kpi"><div class="lbl">Periodo ideale</div><div class="val">Maggio · Settembre</div></div>
+          </div>
+        </div>
+        <figure class="cover"><img src="../assets/itinerari/parigi.jpg" alt="Parigi e Torre Eiffel"></figure>
+      </div>
     </div>
-  </section>
+  </header>
 
-  <!-- Giorno per giorno -->
-  <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    <article class="bg-white rounded shadow p-4"><h3 class="font-semibold text-blue-800 mb-1">Giorno 1 – Île de la Cité</h3><p class="text-sm text-gray-700">Sainte-Chapelle, Marais.</p></article>
-    <article class="bg-white rounded shadow p-4"><h3 class="font-semibold text-blue-800 mb-1">Giorno 2 – Louvre</h3><p class="text-sm text-gray-700">Museo del Louvre, Tuileries.</p></article>
-    <article class="bg-white rounded shadow p-4"><h3 class="font-semibold text-blue-800 mb-1">Giorno 3 – Torre Eiffel & Senna</h3><p class="text-sm text-gray-700">Champ de Mars, crociera.</p></article>
-    <article class="bg-white rounded shadow p-4"><h3 class="font-semibold text-blue-800 mb-1">Giorno 4 – Montmartre</h3><p class="text-sm text-gray-700">Sacré-Cœur, Place du Tertre.</p></article>
-    <article class="bg-white rounded shadow p-4"><h3 class="font-semibold text-blue-800 mb-1">Giorno 5 – Musei & shopping</h3><p class="text-sm text-gray-700">Orsay/Orangerie, Galeries Lafayette.</p></article>
-  </section>
-</main>
-<section id="trasparenza" class="container mx-auto max-w-3xl px-4 py-10">
-  <h2 class="text-2xl font-bold mb-4">Trasparenza &amp; FAQ</h2>
-  <p class="mb-4">
-    GlobalGlide360 è un magazine editoriale. Alcuni link ai partner (es. voli, hotel, attività) sono
-    <strong>link di affiliazione</strong>: se acquisti, potremmo ricevere una commissione senza costi extra per te.
-  </p>
-
-  <div class="bg-gray-50 rounded-xl p-5 space-y-4">
-    <details class="group">
-      <summary class="cursor-pointer font-semibold">Come guadagniamo?</summary>
-      <p class="mt-2">Attraverso programmi di affiliazione (es. GetYourGuide, Booking, Skyscanner). I contenuti restano indipendenti e non vendiamo pacchetti viaggio.</p>
-    </details>
-
-    <details class="group">
-      <summary class="cursor-pointer font-semibold">Cosa sono partner_id e sub_id?</summary>
-      <p class="mt-2">Il <code>partner_id</code> identifica GlobalGlide360 presso il partner (es. <code>HWU00MZ</code> su GetYourGuide). Il <code>sub_id</code> è un’etichetta tecnica per attribuire le performance a singole pagine (es. <code>tokyo-5-giorni</code>).</p>
-    </details>
-
-    <details class="group">
-      <summary class="cursor-pointer font-semibold">I prezzi sono in tempo reale?</summary>
-      <p class="mt-2">Mostriamo link verso SERP ufficiali (volo/hotel/attività) con date pre-impostate. I prezzi finali li vedi direttamente sul sito del partner, sempre aggiornati.</p>
-    </details>
-
-    <details class="group">
-      <summary class="cursor-pointer font-semibold">Usate cookie o tracciamenti?</summary>
-      <p class="mt-2">Usiamo solo gli script necessari alla funzionalità dei link affiliati e all’analisi anonima del traffico. Consulta l’Informativa Privacy per i dettagli.</p>
-    </details>
-
-    <details class="group">
-      <summary class="cursor-pointer font-semibold">Posso suggerire correzioni?</summary>
-      <p class="mt-2">Certo! Scrivici a <a href="mailto:info@globalglide360.com">info@globalglide360.com</a>. Aggiorniamo gli itinerari con cadenza regolare.</p>
-    </details>
+  <div class="quickbar">
+    <div class="quickbar__inner">
+      <span class="chip"><a href="#voli">✈️ Voli</a></span>
+      <span class="chip"><a href="#hotel">🏨 Hotel</a></span>
+      <span class="chip"><a href="#programma">🗺️ Programma</a></span>
+      <span class="chip"><a href="#mappa">🗺️ Mappa</a></span>
+      <span class="chip"><a href="#faq">❓ FAQ</a></span>
+      <span class="chip chip--cta"><a href="#attivita">🎟️ Prenota attività</a></span>
+    </div>
   </div>
-</section>
 
-<!-- JSON-LD FAQPage -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    { "@type": "Question", "name": "Come guadagniamo?", "acceptedAnswer": { "@type": "Answer", "text": "Attraverso programmi di affiliazione (es. GetYourGuide, Booking, Skyscanner). I contenuti restano indipendenti e non vendiamo pacchetti viaggio." } },
-    { "@type": "Question", "name": "Cosa sono partner_id e sub_id?", "acceptedAnswer": { "@type": "Answer", "text": "Il partner_id identifica GlobalGlide360 presso il partner (es. HWU00MZ su GetYourGuide). Il sub_id è un’etichetta tecnica per attribuire le performance a singole pagine (es. tokyo-5-giorni)." } },
-    { "@type": "Question", "name": "I prezzi sono in tempo reale?", "acceptedAnswer": { "@type": "Answer", "text": "Mostriamo link verso SERP ufficiali (volo/hotel/attività) con date pre-impostate. I prezzi finali li vedi direttamente sul sito del partner, sempre aggiornati." } },
-    { "@type": "Question", "name": "Usate cookie o tracciamenti?", "acceptedAnswer": { "@type": "Answer", "text": "Usiamo solo gli script necessari alla funzionalità dei link affiliati e all’analisi anonima del traffico. Consulta l’Informativa Privacy per i dettagli." } },
-    { "@type": "Question", "name": "Posso suggerire correzioni?", "acceptedAnswer": { "@type": "Answer", "text": "Sì: scrivi a info@globalglide360.com. Aggiorniamo gli itinerari con cadenza regolare." } }
-  ]
-}
-</script>
+  <main class="wrap grid">
+    <article id="content">
+      <section class="toc" aria-labelledby="toc-title">
+        <h2 id="toc-title" class="sec" style="margin-top:0">Indice</h2>
+        <p class="meta">Vai direttamente al giorno:</p>
+        <p><a href="#g1">G1</a> <a href="#g2">G2</a> <a href="#g3">G3</a> <a href="#g4">G4</a> <a href="#g5">G5</a></p>
+      </section>
 
-<footer class="bg-white text-center py-6 mt-8 border-t">
-  <p class="text-sm text-gray-500">&copy; 2025 GlobalGlide360 — Alcuni link sono affiliati.</p>
-</footer>
+      <section id="voli" aria-labelledby="sec-voli">
+        <h2 id="sec-voli" class="sec">Voli (MXP ⇄ CDG) — 15–20 maggio 2026</h2>
+        <div class="panel grid-2">
+          <div>
+            <div class="meta">Andata — 15 Mag 2026</div>
+            <p>Milano Malpensa (MXP) → Parigi Charles de Gaulle (CDG)</p>
+            <a class="chip chip--cta" target="_blank" rel="noopener"
+               href="https://www.skyscanner.net/transport/flights-from/?adults=2&ref=home#/?searchparamstype=flights&flightsearch=1&itinerary=itineraries!oneway!legs!origin:MXP,destination:CDG,date:2026-05-15T00:00:00&cabin=economy">Cerca andata su Skyscanner</a>
+          </div>
+          <div>
+            <div class="meta">Ritorno — 20 Mag 2026</div>
+            <p>Parigi CDG → Milano Malpensa</p>
+            <a class="chip chip--cta" target="_blank" rel="noopener"
+               href="https://www.skyscanner.net/transport/flights-from/cdg/?adults=2&ref=home#/?searchparamstype=flights&flightsearch=1&itinerary=itineraries!oneway!legs!origin:CDG,destination:MXP,date:2026-05-20T00:00:00&cabin=economy">Cerca ritorno su Skyscanner</a>
+          </div>
+        </div>
+        <p class="note" style="margin-top:10px">Parametri affiliati Skyscanner verranno aggiunti in seguito.</p>
+      </section>
 
-<script>
-const cleanIATA=v=>(v||"").trim().toUpperCase().slice(0,3);
-function buildFlight({from,to='PAR',dep,ret,adults=2,cabin='economy'}) {
-  const base=`https://www.skyscanner.net/transport/flights/${cleanIATA(from)}/${to}/${dep}/${ret}/`;
-  const qs=new URLSearchParams({adults,cabinclass:cabin,locale:'it-IT',currency:'EUR'});
-  return `${base}?${qs.toString()}`;
-}
-function buildHotel({dest='Paris',checkin,checkout,adults=2,children=0,rooms=1}) {
-  const u=new URL('https://www.booking.com/searchresults.html');
-  u.searchParams.set('ss',dest);
-  u.searchParams.set('checkin',checkin);
-  u.searchParams.set('checkout',checkout);
-  u.searchParams.set('group_adults',adults);
-  u.searchParams.set('group_children',children);
-  u.searchParams.set('no_rooms',rooms);
-  return u.toString();
-}
-function buildExp({city='Paris',fromDate,toDate,pax=2}) {
-  const u=new URL('https://www.getyourguide.com/s/');
-  u.searchParams.set('q',city);
-  u.searchParams.set('date_from',fromDate);
-  u.searchParams.set('date_to',toDate);
-  u.searchParams.set('number_of_participants',pax);
-  if(window.GG_CFG&&window.GG_CFG.gyg_partner) u.searchParams.set('partner_id',window.GG_CFG.gyg_partner);
-  if(window.GG_SUBID) u.searchParams.set('sub_id',window.GG_SUBID);
-  return u.toString();
-}
-const DATES={ott:{dep:'2025-10-24',ret:'2025-10-29'},nov:{dep:'2025-11-07',ret:'2025-11-12'}};
-function applyDates(key){
-  const from="MXP"; const {dep,ret}=DATES[key];
-  document.getElementById('btn-ott').className=(key==='ott'?'bg-blue-700 text-white px-3 py-1 rounded-full text-sm':'bg-gray-200 text-blue-900 hover:bg-gray-300 px-3 py-1 rounded-full text-sm');
-  document.getElementById('btn-nov').className=(key==='nov'?'bg-blue-700 text-white px-3 py-1 rounded-full text-sm':'bg-gray-200 text-blue-900 hover:bg-gray-300 px-3 py-1 rounded-full text-sm');
-  document.getElementById('cta-volo').href = buildFlight({from,dep,ret,adults:2});
-  document.getElementById('cta-hotel').href= buildHotel({checkin:dep,checkout:ret,adults:2});
-  document.getElementById('cta-exp').href  = buildExp({fromDate:dep,toDate:ret,pax:2});
-}
-document.getElementById('btn-ott').addEventListener('click',()=>applyDates('ott'));
-document.getElementById('btn-nov').addEventListener('click',()=>applyDates('nov'));
-applyDates('ott');
-</script>
-  <script src="/assets/js/gyg-resolver.js"></script>
+      <section id="hotel" aria-labelledby="sec-hotel">
+        <h2 id="sec-hotel" class="sec">Hotel suggeriti (prenotabili)</h2>
+        <div class="panel grid-2">
+          <div>
+            <div class="meta">Centro Parigi · 4 notti (15–19 Mag)</div>
+            <p>Zone consigliate: Le Marais, Saint-Germain, Opéra.</p>
+            <a class="chip chip--cta" target="_blank" rel="noopener"
+               href="https://www.booking.com/searchresults.html?ss=Paris&checkin=2026-05-15&checkout=2026-05-19&aid=AFFID_BOOKING">Cerca hotel a Parigi</a>
+          </div>
+          <div>
+            <div class="meta">Alternative</div>
+            <p>Hotel boutique nel Marais o vicino Île de la Cité.</p>
+            <a class="chip chip--alt" target="_blank" rel="noopener"
+               href="https://www.booking.com/searchresults.html?ss=Le%20Marais%2C%20Paris&checkin=2026-05-15&checkout=2026-05-19&aid=AFFID_BOOKING">Hotel nel Marais</a>
+          </div>
+        </div>
+        <p class="note" style="margin-top:10px">Sostituisci <code>aid=AFFID_BOOKING</code> con il tuo ID affiliato Booking quando lo avrai.</p>
+      </section>
+
+      <section id="programma" aria-labelledby="sec-prog">
+        <h2 id="sec-prog" class="sec">Programma giorno per giorno</h2>
+
+        <!-- G1 -->
+        <div id="g1" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 1 — Île de la Cité & Senna</h3>
+          <div class="card">
+            <div class="meta">Ritmo: leggero · Trasporti: metro + a piedi</div>
+            <div class="badges"><span class="badge">Sainte-Chapelle</span><span class="badge">Cattedrale</span><span class="badge">Crociera Senna</span></div>
+            <p>Arrivo e sistemazione. Passeggiata su Île de la Cité: esterni di Notre-Dame, visita alla Sainte-Chapelle.
+               Al tramonto, rilassante crociera sulla Senna per vedere i monumenti illuminati.</p>
+
+            <div class="act">
+              <div><strong>Crociera sulla Senna (1h)</strong><br>Commento multilingue incluso.</div>
+              <a class="btn" target="_blank" rel="noopener"
+                 href="https://www.getyourguide.com/s/?q=Seine%20River%20Cruise%20Paris&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+            <div class="act">
+              <div><strong>Ingresso Sainte-Chapelle</strong><br>Vetrate gotiche spettacolari.</div>
+              <a class="btn" target="_blank" rel="noopener"
+                 href="https://www.getyourguide.com/s/?q=Sainte%20Chapelle%20tickets&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+
+            <div class="food">
+              <h4>Dove mangiare</h4>
+              <p>Brasserie tradizionale nel Quartiere Latino, con opzioni anche per bambini.</p>
+              <a target="_blank" rel="noopener" href="https://www.tripadvisor.com/Search?q=Latin%20Quarter%20restaurants%20Paris">Vedi su Tripadvisor</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G2 -->
+        <div id="g2" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 2 — Louvre & Tuileries</h3>
+          <div class="card">
+            <div class="meta">Ritmo: moderato · Trasporti: metro</div>
+            <div class="badges"><span class="badge">Louvre</span><span class="badge">Tuileries</span><span class="badge">Galeries</span></div>
+            <p>Mattina al Louvre (biglietto skip-the-line consigliato). Pomeriggio tra i giardini Tuileries e zona Opéra / Palais Royal.</p>
+
+            <div class="act">
+              <div><strong>Louvre: ingresso salta fila</strong></div>
+              <a class="btn" target="_blank" rel="noopener"
+                 href="https://www.getyourguide.com/s/?q=Louvre%20skip%20the%20line&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+            <div class="act">
+              <div><strong>Tour guidato highlights Louvre</strong></div>
+              <a class="btn" target="_blank" rel="noopener"
+                 href="https://www.getyourguide.com/s/?q=Louvre%20guided%20highlights&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+
+            <div class="food">
+              <h4>Dove mangiare</h4>
+              <p>Bistrot storici nei pressi del Palais Royal; opzioni per famiglie disponibili.</p>
+              <a target="_blank" rel="noopener" href="https://www.tripadvisor.com/Search?q=Palais%20Royal%20restaurants%20Paris">Vedi su Tripadvisor</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G3 -->
+        <div id="g3" class="day">
+          <span the="dot"></span>
+          <h3>Giorno 3 — Torre Eiffel & Champs-Élysées</h3>
+          <div class="card">
+            <div class="meta">Ritmo: moderato · Trasporti: metro</div>
+            <div class="badges"><span class="badge">Torre Eiffel</span><span class="badge">Trocadéro</span><span class="badge">Arc de Triomphe</span></div>
+            <p>Mattina in Torre Eiffel (prenota con orario). Scopri Trocadéro per le foto e passeggiata lungo gli Champs-Élysées sino all’Arc de Triomphe con vista terrazza.</p>
+
+            <div class="act">
+              <div><strong>Ingresso Torre Eiffel con orario</strong></div>
+              <a class="btn" target="_blank" rel="noopener"
+                 href="https://www.getyourguide.com/s/?q=Eiffel%20Tower%20timed%20entry&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+            <div class="act">
+              <div><strong>Biglietto Arc de Triomphe terrazza</strong></div>
+              <a class="btn" target="_blank" rel="noopener"
+                 href="https://www.getyourguide.com/s/?q=Arc%20de%20Triomphe%20ticket&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+
+            <div class="food">
+              <h4>Dove mangiare</h4>
+              <p>Crêperia tra il 7° e 8° arrondissement o bistrot classico Parisien.</p>
+              <a target="_blank" rel="noopener" href="https://www.tripadvisor.com/Search?q=crêperie%20Paris">Vedi su Tripadvisor</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G4 -->
+        <div id="g4" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 4 — Montmartre & Sacré-Cœur</h3>
+          <div class="card">
+            <div class="meta">Ritmo: moderato · Trasporti: metro + scale</div>
+            <div class="badges"><span class="badge">Sacré-Cœur</span><span class="badge">Place du Tertre</span><span class="badge">Moulin Rouge</span></div>
+            <p>Passeggiata a Montmartre: Sacré-Cœur, vicoli con artisti e la celebre Place du Tertre. Serata nella zona Pigalle / Moulin Rouge.</p>
+
+            <div class="act">
+              <div><strong>Tour Montmartre a piedi</strong></div>
+              <a class="btn" target="_blank" rel="noopener"
+                 href="https://www.getyourguide.com/s/?q=Montmartre%20walking%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+            <div class="act">
+              <div><strong>Show Moulin Rouge</strong></div>
+              <a class="btn" target="_blank" rel="noopener"
+                 href="https://www.getyourguide.com/s/?q=Moulin%20Rouge%20tickets&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+
+            <div class="food">
+              <h4>Dove mangiare</h4>
+              <p>Bistrot con vista, piccole taverne intime nei vicoli di Montmartre.</p>
+              <a target="_blank" rel="noopener" href="https://www.tripadvisor.com/Search?q=Montmartre%20bistro">Vedi su Tripadvisor</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G5 -->
+        <div id="g5" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 5 — Versailles & Le Marais</h3>
+          <div class="card">
+            <div class="meta">Ritmo: moderato · Trasporti: RER + metro</div>
+            <div class="badges"><span class="badge">Versailles</span><span class="badge">Giardini</span><span class="badge">Marais</span></div>
+            <p>Mattina a Versailles: palazzo, giardini e fontane. Pomeriggio di rientro a Parigi con esplorazione del quartiere Marais: boutique, caffè, cultura.</p>
+
+            <div class="act">
+              <div><strong>Versailles: biglietto + giardini</strong></div>
+              <a class="btn" target="_blank" rel="noopener"
+                 href="https://www.getyourguide.com(s/?q=Versailles%20skip%20the%20line%20gardens&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+            <div class="act">
+              <div><strong>Tour guidato Versailles</strong></div>
+              <a class="btn" target="_blank" rel="noopener"
+                 href="https://www.getyourguide.com/s/?q=Versailles%20guided%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+
+            <div class="food">
+              <h4>Dove mangiare</h4>
+              <p>Il Marais offre falafel, bistrot moderni e pasticcerie storiche.</p>
+              <a target="_blank" rel="noopener" href="https://www.tripadvisor.com(Search?q=Le%20Marais%20restaurants">Vedi su Tripadvisor</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MAPPA -->
+      <section id="mappa" aria-labelledby="sec-map">
+        <h2 id="sec-map" class="sec">Mappa interattiva — Parigi e tappe principali</h2>
+        <div class="map-wrap">
+          <iframe class="map-iframe"
+            src="https://www.google.com/maps?q=Paris&z=12&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade" aria-label="Mappa di Parigi"></iframe>
+        </div>
+        <p class="meta" style="margin-top:8px">Zooma su quartieri come Montmartre, Marais, Champs-Élysées per trovare le attrazioni.</p>
+      </section>
+
+      <!-- ATTIVITÀ -->
+      <section id="attivita" aria-labelledby="sec-att">
+        <h2 id="sec-att" class="sec">Riepilogo attività prenotabili</h2>
+        <div class="panel">
+          <ul class="list-clean">
+            <li><span>Crociera sulla Senna</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Seine%20River%20Cruise%20Paris&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Sainte-Chapelle</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Sainte%20Chapelle%20tickets&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Louvre skip-the-line</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Louvre%20skip%20the%20line&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Torre Eiffel orario</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Eiffel%20Tower%20timed%20entry&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Tour Montmartre</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Montmartre%20walking%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Versailles</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Versailles%20guided%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- CONSIGLI PRATICI / FAQ riformattati -->
+      <section id="faq" aria-labelledby="sec-faq">
+        <h2 id="sec-faq" class="sec">Info pratiche & FAQ</h2>
+        <div class="panel">
+          <dl style="margin:0;line-height:1.6em;">
+            <dt style="font-weight:600; margin-top:12px;">🚌 Trasporti</dt>
+            <dd>La metro e la RER coprono quasi tutta Parigi. Valuta il pass Navigo Découverte per ≥5 giorni.</dd>
+
+            <dt style="font-weight:600; margin-top:12px;">🔌 Elettricità</dt>
+            <dd>Prese tipo C/E (230 V). Nessun adattatore speciale se vieni dall’Europa.</dd>
+
+            <dt style="font-weight:600; margin-top:12px;">💳 Pagamenti e carte</dt>
+            <dd>Carte contactless e carte di credito sono accettate ovunque. Alcuni piccoli locali potrebbero preferire contanti.</dd>
+
+            <dt style="font-weight:600; margin-top:12px;">👨‍👩‍👧‍👦 Viaggiare con bambini</dt>
+            <dd>Musei e attrazioni principali sono spesso attrezzati con ascensori e fasciatoi. Prenota attività in anticipo per evitare lunghe code.</dd>
+
+            <dt style="font-weight:600; margin-top:12px;">📅 Miglior periodo</dt>
+            <dd>Maggio e settembre sono ideali: clima mite, giornate lunghe e minore affollamento.</dd>
+          </dl>
+        </div>
+      </section>
+
+      <button class="backtop" id="backtop" aria-label="Torna su">↑</button>
+    </article>
+
+    <aside class="side" aria-label="Riepilogo e prenotazioni rapide">
+      <div class="card">
+        <h3>Riepilogo viaggio</h3>
+        <ul class="list-clean">
+          <li><span>Durata</span><strong>5g / 4n</strong></li>
+          <li><span>Tappe</span><strong>Parigi 4N</strong></li>
+          <li><span>Ideale</span><strong>Maggio · Settembre</strong></li>
+        </ul>
+        <a class="btn" href="#voli">Cerca voli</a>
+        <a class="btn btn--ghost" href="#hotel">Trova hotel</a>
+        <a class="btn" href="#attivita">Prenota attività</a>
+      </div>
+
+      <div class="card">
+        <h3>Date suggerite</h3>
+        <ul class="list-clean">
+          <li><span>Andata</span><strong>15 Mag 2026</strong></li>
+          <li><span>Ritorno</span><strong>20 Mag 2026</strong></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Consigli rapidi</h3>
+        <ul class="list-clean">
+          <li><span>Meteo</span><span>Passeggero e clima stabile: primavera mite.</span></li>
+          <li><span>Budget</span><span>Pranzo nei bistrò, Paris Pass per risparmiare sulle attrazioni.</span></li>
+        </ul>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="wrap" style="border-top:1px solid var(--ring);margin-top:10px;color:var(--muted)">
+    <a href="./" style="text-decoration:none;color:#2563eb">← Torna all’elenco itinerari</a>
+  </footer>
+
+  <script>
+    // Smooth scroll + Back to top
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href').slice(1);
+        const t = document.getElementById(id);
+        if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+    });
+    const bt = document.getElementById('backtop');
+    window.addEventListener('scroll', ()=>{ bt.classList.toggle('show', window.scrollY > 600); });
+    bt.addEventListener('click', ()=>window.scrollTo({top:0, behavior:'smooth'}));
+  </script>
 </body>
 </html>
