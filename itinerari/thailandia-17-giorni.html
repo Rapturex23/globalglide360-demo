@@ -1,0 +1,619 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thailandia — 17 giorni | GlobalGlide360</title>
+  <meta name="description" content="Thailandia in 17 giorni: Bangkok, Chiang Mai e isole (Krabi, Phi Phi). Voli multi-aeroporto, hotel, attività (GetYourGuide), ristoranti e mappa. Ideale per coppie e famiglie.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--accent:#4fb3ff;--accent-2:#8b5cf6;--text:#0e141b;--muted:#596171;--bg:#f7f9fb;--card:#fff;--ring:#dbe3ea}
+    *{box-sizing:border-box} img{max-width:100%;display:block}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text)}
+
+    /* HERO */
+    .hero{position:relative;border-bottom:1px solid var(--ring);background:linear-gradient(180deg,#ffffff,#eef4f8)}
+    .hero__wrap{max-width:1100px;margin:0 auto;padding:18px 18px 24px}
+    .crumbs{font-size:.875rem;color:var(--muted);margin-bottom:8px}
+    .crumbs a{color:var(--muted);text-decoration:none}
+    .crumbs a:hover{text-decoration:underline}
+    .hero__grid{display:grid;grid-template-columns:1fr;gap:16px;align-items:center}
+    @media(min-width:900px){.hero__grid{grid-template-columns:1.3fr .7fr}}
+    .cover{border-radius:16px;overflow:hidden;border:1px solid var(--ring);box-shadow:0 10px 30px rgba(0,0,0,.05)}
+    .hero h1{margin:4px 0 6px;font-weight:800;font-size:clamp(24px,4vw,40px)}
+    .hero p.sub{margin:0;color:var(--muted)}
+    .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-top:14px}
+    .kpi{background:var(--card);border:1px solid var(--ring);border-radius:12px;padding:10px 12px}
+    .kpi .lbl{font-size:.78rem;color:var(--muted)} .kpi .val{font-weight:800}
+
+    /* QUICKBAR */
+    .quickbar{position:sticky;top:0;z-index:30;background:#ffffffc7;backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid var(--ring)}
+    .quickbar__inner{max-width:1100px;margin:0 auto;display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:10px 18px}
+    .chip{display:inline-flex;gap:8px;align-items:center;background:#fff;border:1px solid var(--ring);border-radius:999px;padding:8px 12px;font-weight:600}
+    .chip a{text-decoration:none;color:var(--text)}
+    .chip--cta{background:var(--accent);border-color:var(--accent)}
+    .chip--alt{background:var(--accent-2);border-color:var(--accent-2);color:#fff}
+    .chip--cta a{color:#fff}
+
+    /* LAYOUT */
+    .wrap{max-width:1100px;margin:0 auto;padding:22px 18px}
+    .grid{display:grid;grid-template-columns:1fr;gap:18px}
+    @media(min-width:980px){.grid{grid-template-columns:minmax(0,1fr) 320px}}
+
+    /* SIDEBAR */
+    .side{position:sticky;top:70px;align-self:start}
+    .side .card{background:#fff;border:1px solid var(--ring);border-radius:14px;padding:14px 16px;margin-bottom:12px}
+    .side h3{margin:0 0 8px;font-size:1rem}
+    .side .btn{display:block;text-align:center;background:var(--accent);color:#fff;text-decoration:none;font-weight:800;border-radius:10px;padding:10px 14px;margin-top:8px}
+    .side .btn--ghost{background:#fff;color:#0e141b;border:1px solid var(--ring)}
+    .list-clean{list-style:none;margin:0;padding:0}
+    .list-clean li{display:flex;justify-content:space-between;color:var(--muted);padding:6px 0;border-bottom:1px dashed var(--ring)}
+    .list-clean li:last-child{border-bottom:0}
+
+    /* CONTENT */
+    h2.sec{margin:18px 0 12px;font-size:1.2rem}
+    .panel{background:#fff;border:1px solid var(--ring);border-radius:14px;padding:14px 16px}
+    .grid-2{display:grid;grid-template-columns:1fr;gap:12px}
+    @media(min-width:780px){.grid-2{grid-template-columns:1fr 1fr}}
+
+    /* TIMELINE */
+    .day{position:relative;padding-left:30px}
+    .day:before{content:'';position:absolute;left:10px;top:8px;bottom:-8px;width:2px;background:linear-gradient(#cfe6ff,#dbe3ea)}
+    .dot{position:absolute;left:3px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--accent)}
+    .card{background:#fff;border:1px solid var(--ring);border-radius:14px;padding:14px 16px;margin:10px 0}
+    .meta{color:var(--muted);font-size:.9rem;margin-bottom:6px}
+    .badge{display:inline-block;background:#eef7ff;color:#0e141b;border:1px solid var(--ring);border-radius:999px;padding:3px 8px;font-size:.8rem;margin-right:6px}
+    .badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+    .act{display:grid;grid-template-columns:1fr;gap:8px;margin-top:10px}
+    @media(min-width:620px){.act{grid-template-columns:1fr auto}}
+    .act .btn{align-self:center;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;border-radius:10px;padding:10px 14px;white-space:nowrap}
+    .act .btn:hover{background:#3da1ec}
+    .food{background:#fff;border:1px dashed var(--ring);border-radius:12px;padding:12px 14px;margin-top:10px}
+    .food h4{margin:0 0 6px;font-size:1rem}
+    .food a{color:#2563eb;text-decoration:none}
+    .food a:hover{text-decoration:underline}
+    .toc{background:#fff;border:1px solid var(--ring);border-radius:12px;padding:10px 12px}
+    .toc a{display:inline-block;margin:4px 8px 0 0;color:#2563eb;text-decoration:none}
+    .toc a:hover{text-decoration:underline}
+
+    /* MAP */
+    .map-wrap{background:#fff;border:1px solid var(--ring);border-radius:14px;padding:0;overflow:hidden}
+    .map-iframe{width:100%;height:420px;border:0}
+
+    .backtop{position:fixed;right:16px;bottom:16px;background:#111827;color:#fff;border:none;border-radius:999px;padding:10px 12px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.2);display:none}
+    .backtop.show{display:block}
+  </style>
+</head>
+<body>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero__wrap">
+      <nav class="crumbs"><a href="/">Home</a> › <a href="/itinerari/">Itinerari</a> › Thailandia — 17 giorni</nav>
+      <div class="hero__grid">
+        <div>
+          <h1>Thailandia — 17 giorni</h1>
+          <p class="sub">Avventura soft tra templi, mercati e natura (Bangkok & Chiang Mai) con finale mare tra Krabi e Phi Phi. Itinerario adatto a coppie e famiglie, con attività prenotabili singolarmente.</p>
+          <div class="kpis">
+            <div class="kpi"><div class="lbl">Durata</div><div class="val">17 giorni / 15 notti</div></div>
+            <div class="kpi"><div class="lbl">Tappe</div><div class="val">Bangkok · Ayutthaya* · Chiang Mai · Krabi · Phi Phi</div></div>
+            <div class="kpi"><div class="lbl">Periodo ideale</div><div class="val">Novembre–Febbraio (stagione secca)</div></div>
+          </div>
+        </div>
+        <figure class="cover"><img src="../assets/itinerari/thailandia.jpg" alt="Templi di Bangkok e mare turchese in Thailandia"></figure>
+      </div>
+    </div>
+  </header>
+
+  <!-- QUICKBAR -->
+  <div class="quickbar">
+    <div class="quickbar__inner" role="navigation" aria-label="Azioni rapide">
+      <span class="chip"><a href="#voli">✈️ Voli</a></span>
+      <span class="chip"><a href="#hotel">🏨 Hotel</a></span>
+      <span class="chip"><a href="#in-breve">🧭 In breve</a></span>
+      <span class="chip"><a href="#programma">🗺️ Programma</a></span>
+      <span class="chip"><a href="#mappa">🗺️ Mappa</a></span>
+      <span class="chip"><a href="#faq">❓ FAQ</a></span>
+      <span class="chip chip--cta"><a href="#attivita">🎟️ Prenota attività</a></span>
+    </div>
+  </div>
+
+  <main class="wrap grid">
+    <!-- CONTENT -->
+    <article id="content">
+      <!-- Indice -->
+      <section class="toc" aria-labelledby="toc-title">
+        <h2 id="toc-title" class="sec" style="margin-top:0">Indice</h2>
+        <p class="meta">Salta al giorno:</p>
+        <p>
+          <a href="#g1">1</a> <a href="#g2">2</a> <a href="#g3">3</a> <a href="#g4">4</a> <a href="#g5">5</a>
+          <a href="#g6">6</a> <a href="#g7">7</a> <a href="#g8">8</a> <a href="#g9">9</a> <a href="#g10">10</a>
+          <a href="#g11">11</a> <a href="#g12">12</a> <a href="#g13">13</a> <a href="#g14">14</a> <a href="#g15">15</a> <a href="#g16">16</a> <a href="#g17">17</a>
+        </p>
+      </section>
+
+      <!-- VOLI -->
+      <section id="voli" aria-labelledby="sec-voli">
+        <h2 id="sec-voli" class="sec">Voli — più aeroporti di partenza (8–24 gennaio 2027)</h2>
+        <div class="panel">
+          <div class="grid-2">
+            <div>
+              <div class="meta">Andata — 8 Gen 2027 → Bangkok (BKK)</div>
+              <div class="badges">
+                <span class="badge">MXP</span>
+                <span class="badge">FCO</span>
+                <span class="badge">VCE</span>
+                <span class="badge">ZRH</span>
+                <span class="badge">BCN</span>
+              </div>
+              <p>Scegli il tuo aeroporto di partenza:</p>
+              <div class="badges" style="gap:8px">
+                <a class="chip chip--cta" target="_blank" rel="noopener" href="https://www.skyscanner.net/transport/flights-from/?adults=2#/?searchparamstype=flights&flightsearch=1&itinerary=itineraries!oneway!legs!origin:MXP,destination:BKK,date:2027-01-08T00:00:00&cabin=economy">Andata da MXP</a>
+                <a class="chip" target="_blank" rel="noopener" href="https://www.skyscanner.net/transport/flights-from/fco/?adults=2#/?searchparamstype=flights&flightsearch=1&itinerary=itineraries!oneway!legs!origin:FCO,destination:BKK,date:2027-01-08T00:00:00&cabin=economy">da FCO</a>
+                <a class="chip" target="_blank" rel="noopener" href="https://www.skyscanner.net/transport/flights-from/vce/?adults=2#/?searchparamstype=flights&flightsearch=1&itinerary=itineraries!oneway!legs!origin:VCE,destination:BKK,date:2027-01-08T00:00:00&cabin=economy">da VCE</a>
+                <a class="chip" target="_blank" rel="noopener" href="https://www.skyscanner.net/transport/flights-from/zrh/?adults=2#/?searchparamstype=flights&flightsearch=1&itinerary=itineraries!oneway!legs!origin:ZRH,destination:BKK,date:2027-01-08T00:00:00&cabin=economy">da ZRH</a>
+                <a class="chip" target="_blank" rel="noopener" href="https://www.skyscanner.net/transport/flights-from/bcn/?adults=2#/?searchparamstype=flights&flightsearch=1&itinerary=itineraries!oneway!legs!origin:BCN,destination:BKK,date:2027-01-08T00:00:00&cabin=economy">da BCN</a>
+              </div>
+            </div>
+            <div>
+              <div class="meta">Ritorno — 24 Gen 2027 da Phuket (HKT) **o** Bangkok (BKK)</div>
+              <p>Scegli aeroporto di rientro e destinazione:</p>
+              <div class="badges" style="gap:8px">
+                <a class="chip chip--cta" target="_blank" rel="noopener" href="https://www.skyscanner.net/transport/flights-from/hkt/?adults=2#/?searchparamstype=flights&flightsearch=1&itinerary=itineraries!oneway!legs!origin:HKT,destination:MXP,date:2027-01-24T00:00:00&cabin=economy">HKT → MXP</a>
+                <a class="chip" target="_blank" rel="noopener" href="https://www.skyscanner.net/transport/flights-from/hkt/?adults=2#/?searchparamstype=flights&flightsearch=1&itinerary=itineraries!oneway!legs!origin:HKT,destination:FCO,date:2027-01-24T00:00:00&cabin=economy">HKT → FCO</a>
+                <a class="chip" target="_blank" rel="noopener" href="https://www.skyscanner.net/transport/flights-from/hkt/?adults=2#/?searchparamstype=flights&flightsearch=1&itinerary=itineraries!oneway!legs!origin:HKT,destination:VCE,date:2027-01-24T00:00:00&cabin=economy">HKT → VCE</a>
+                <a class="chip" target="_blank" rel="noopener" href="https://www.skyscanner.net/transport/flights-from/hkt/?adults=2#/?searchparamstype=flights&flightsearch=1&itinerary=itineraries!oneway!legs!origin:HKT,destination:ZRH,date:2027-01-24T00:00:00&cabin=economy">HKT → ZRH</a>
+                <a class="chip" target="_blank" rel="noopener" href="https://www.skyscanner.net/transport/flights-from/hkt/?adults=2#/?searchparamstype=flights&flightsearch=1&itinerary=itineraries!oneway!legs!origin:HKT,destination:BCN,date:2027-01-24T00:00:00&cabin=economy">HKT → BCN</a>
+              </div>
+              <p class="meta" style="margin-top:6px">In alternativa, puoi tornare da <strong>Bangkok (BKK)</strong> se preferisci non prendere il volo interno/ferry nel giorno 16.</p>
+            </div>
+          </div>
+          <p class="meta" style="margin-top:10px">Aggiungeremo i parametri affiliati Skyscanner quando disponibili.</p>
+        </div>
+      </section>
+
+      <!-- HOTEL -->
+      <section id="hotel" aria-labelledby="sec-hotel">
+        <h2 id="sec-hotel" class="sec">Hotel suggeriti (prenotabili)</h2>
+        <div class="panel grid-2">
+          <div>
+            <div class="meta">Bangkok · 3 notti (8–11 Gen)</div>
+            <p>Zone: Riverside (family), Sukhumvit/Sathorn (comodità), Old City (templi).</p>
+            <a class="chip chip--cta" target="_blank" rel="noopener" href="https://www.booking.com/searchresults.html?ss=Bangkok&checkin=2027-01-08&checkout=2027-01-11&aid=AFFID_BOOKING">Bangkok — Booking</a>
+          </div>
+          <div>
+            <div class="meta">Chiang Mai · 4 notti (11–15 Gen)</div>
+            <p>Old City o Nimman. Preferisci hotel con piscina per famiglie.</p>
+            <a class="chip chip--alt" target="_blank" rel="noopener" href="https://www.booking.com/searchresults.html?ss=Chiang%20Mai&checkin=2027-01-11&checkout=2027-01-15&aid=AFFID_BOOKING">Chiang Mai — Booking</a>
+          </div>
+          <div>
+            <div class="meta">Krabi (Ao Nang) · 4 notti (15–19 Gen)</div>
+            <p>Ottima base per 4 Isole e Hong Islands; resort family-friendly.</p>
+            <a class="chip chip--cta" target="_blank" rel="noopener" href="https://www.booking.com/searchresults.html?ss=Ao%20Nang&checkin=2027-01-15&checkout=2027-01-19&aid=AFFID_BOOKING">Ao Nang — Booking</a>
+          </div>
+          <div>
+            <div class="meta">Phi Phi · 4 notti (19–23 Gen)</div>
+            <p>Zona tranquilla con accesso a Maya Bay al mattino.</p>
+            <a class="chip chip--alt" target="_blank" rel="noopener" href="https://www.booking.com/searchresults.html?ss=Ko%20Phi%20Phi&checkin=2027-01-19&checkout=2027-01-23&aid=AFFID_BOOKING">Phi Phi — Booking</a>
+          </div>
+          <div>
+            <div class="meta">Notte finale (Phuket Town/aeroporto) · 23–24 Gen</div>
+            <p>Comodo per il volo del mattino.</p>
+            <a class="chip" target="_blank" rel="noopener" href="https://www.booking.com/searchresults.html?ss=Phuket%20Airport&checkin=2027-01-23&checkout=2027-01-24&aid=AFFID_BOOKING">Phuket — Booking</a>
+          </div>
+        </div>
+        <p class="meta" style="margin-top:10px">Sostituisci <code>aid=AFFID_BOOKING</code> con il tuo ID affiliato Booking quando lo avrai.</p>
+      </section>
+
+      <!-- IN BREVE -->
+      <section id="in-breve" aria-labelledby="sec-brief">
+        <h2 id="sec-brief" class="sec">Itinerario in breve</h2>
+        <div class="panel">
+          <div class="grid-2">
+            <div>
+              <h3 style="margin:0 0 6px;font-size:1rem">Distribuzione notti</h3>
+              <ul class="list-clean" style="margin-top:4px">
+                <li><span>Bangkok</span><strong>3 notti (8–11 Gen)</strong></li>
+                <li><span>Chiang Mai</span><strong>4 notti (11–15 Gen)</strong></li>
+                <li><span>Krabi (Ao Nang)</span><strong>4 notti (15–19 Gen)</strong></li>
+                <li><span>Phi Phi</span><strong>4 notti (19–23 Gen)</strong></li>
+                <li><span>Notte finale</span><strong>1 notte (23–24 Gen)</strong></li>
+              </ul>
+              <div class="badges" style="margin-top:8px">
+                <span class="badge">Totale: 15 notti</span>
+                <span class="badge">Stagione secca</span>
+              </div>
+            </div>
+            <div>
+              <h3 style="margin:0 0 6px;font-size:1rem">Trasferimenti chiave</h3>
+              <ul class="list-clean" style="margin-top:4px">
+                <li><span>Bangkok → Chiang Mai</span><strong>Volo interno</strong></li>
+                <li><span>Chiang Mai → Krabi/Phuket</span><strong>Volo interno</strong></li>
+                <li><span>Krabi → Phi Phi</span><strong>Ferry</strong></li>
+                <li><span>Phi Phi → Phuket</span><strong>Ferry</strong></li>
+              </ul>
+              <div class="badges" style="margin-top:8px">
+                <span class="badge">Ritmo: medio</span>
+                <span class="badge">Adatto: coppie & famiglie</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROGRAMMA — LINEARE -->
+      <section id="programma" aria-labelledby="sec-prog">
+        <h2 id="sec-prog" class="sec">Programma giorno per giorno</h2>
+
+        <!-- G1 -->
+        <div id="g1" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 1 — Volo e arrivo a Bangkok</h3>
+          <div class="card">
+            <div class="meta">Base: Bangkok · Ritmo: leggero</div>
+            <p>Arrivo, transfer in hotel e passeggiata serale lungo la <strong>Chao Phraya</strong> o street food a <strong>Chinatown</strong>.</p>
+            <div class="act">
+              <div><strong>Transfer aeroporto → hotel (BKK)</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Bangkok%20airport%20transfer&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G2 -->
+        <div id="g2" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 2 — Templi maggiori & crociera serale</h3>
+          <div class="card">
+            <div class="meta">Ritmo: moderato</div>
+            <div class="badges"><span class="badge">Grand Palace</span><span class="badge">Wat Pho</span><span class="badge">Wat Arun</span></div>
+            <p>Visita al <strong>Grand Palace</strong>, al <strong>Wat Pho</strong> (Buddha sdraiato) e al <strong>Wat Arun</strong>. Sera: crociera con cena sulla <strong>Chao Phraya</strong>.</p>
+            <div class="act">
+              <div><strong>Tour guidato Grand Palace + Wat Pho + Wat Arun</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Bangkok%20Grand%20Palace%20Wat%20Pho%20Wat%20Arun%20guided%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+            <div class="act">
+              <div><strong>Crociera serale con cena</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Bangkok%20dinner%20cruise%20Chao%20Phraya&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G3 -->
+        <div id="g3" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 3 — Mercati e street food</h3>
+          <div class="card">
+            <div class="meta">Ritmo: moderato · Family-friendly</div>
+            <div class="badges"><span class="badge">Mercato galleggiante</span><span class="badge">Maeklong</span></div>
+            <p>Escursione al <strong>mercato galleggiante</strong> (Damnoen Saduak/Amphawa) e al <strong>Maeklong Railway Market</strong>. Sera: tour street food in <strong>Chinatown</strong>.</p>
+            <div class="act">
+              <div><strong>Floating Market + Railway Market (da Bangkok)</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Bangkok%20floating%20market%20railway%20market%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+            <div class="act">
+              <div><strong>Street food night tour a Chinatown</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Bangkok%20Chinatown%20street%20food%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G4 -->
+        <div id="g4" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 4 — Bangkok → Chiang Mai</h3>
+          <div class="card">
+            <div class="meta">Trasferimento: volo interno · 4 notti</div>
+            <p>Volo per <strong>Chiang Mai</strong>, check-in e tramonto al <strong>Wat Phra That Doi Suthep</strong>.</p>
+            <div class="act">
+              <div><strong>Biglietti volo BKK ⇄ CNX (indicativo)</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.skyscanner.net/transport/flights/bang/chi/270108/270111/?adults=2&cabinclass=economy">Cerca volo</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G5 -->
+        <div id="g5" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 5 — Elefanti etici & cascate</h3>
+          <div class="card">
+            <div class="meta">Ritmo: attivo · Etico</div>
+            <div class="badges"><span class="badge">Elephant sanctuary (etico)</span><span class="badge">Cascate</span></div>
+            <p>Mezza giornata in un <strong>santuario etico</strong> (no cavalcata). Pomeriggio a cascate (es. <strong>Mae Sa</strong> o <strong>Sticky Falls</strong>).</p>
+            <div class="act">
+              <div><strong>Elephant Sanctuary (senza cavalcare)</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Chiang%20Mai%20ethical%20elephant%20sanctuary&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G6 -->
+        <div id="g6" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 6 — Doi Inthanon o trekking tribù locali</h3>
+          <div class="card">
+            <div class="meta">Ritmo: moderato</div>
+            <div class="badges"><span class="badge">Doi Inthanon</span><span class="badge">Pagode Reali</span></div>
+            <p>Escursione al <strong>Doi Inthanon National Park</strong> (pagode gemelle, villaggi, cascate) oppure trekking leggero tra risaie e coffee village.</p>
+            <div class="act">
+              <div><strong>Doi Inthanon — tour guidato</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Doi%20Inthanon%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G7 -->
+        <div id="g7" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 7 — Templi & Cooking Class</h3>
+          <div class="card">
+            <div class="meta">Ritmo: leggero</div>
+            <div class="badges"><span class="badge">Wat Chedi Luang</span><span class="badge">Cooking class</span></div>
+            <p>Templi della <strong>Old City</strong> (Wat Chedi Luang, Wat Phra Singh) e <strong>lezione di cucina</strong> con mercato locale.</p>
+            <div class="act">
+              <div><strong>Chiang Mai — Thai cooking class (mercato incluso)</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Chiang%20Mai%20cooking%20class%20market&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+            <div class="food">
+              <h4>Dove mangiare</h4>
+              <p>Khao soi e street food ai <strong>Night Bazaar</strong>.</p>
+              <a target="_blank" rel="noopener" href="https://www.tripadvisor.com/Search?q=best%20khao%20soi%20Chiang%20Mai">Tripadvisor</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G8 -->
+        <div id="g8" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 8 — Chiang Mai → Krabi (Ao Nang)</h3>
+          <div class="card">
+            <div class="meta">Trasferimento: volo interno · 4 notti</div>
+            <p>Volo per <strong>Krabi</strong> o <strong>Phuket</strong> e transfer ad <strong>Ao Nang</strong>. Relax in spiaggia o al resort.</p>
+            <div class="act">
+              <div><strong>CNX → KBV/HKT — ricerca voli</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.skyscanner.net/transport/flights/chi/krab/270115/270115/?adults=2&cabinclass=economy">Cerca volo</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G9 -->
+        <div id="g9" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 9 — 4 Isole in speedboat</h3>
+          <div class="card">
+            <div class="meta">Ritmo: mare</div>
+            <div class="badges"><span class="badge">Poda</span><span class="badge">Chicken</span><span class="badge">Phra Nang</span></div>
+            <p>Giornata in barca tra <strong>Koh Poda</strong>, <strong>Chicken Island</strong>, <strong>Tup</strong> e <strong>Phra Nang Cave</strong>.</p>
+            <div class="act">
+              <div><strong>Krabi — 4 Islands speedboat/snorkeling</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Krabi%204%20islands%20speedboat&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G10 -->
+        <div id="g10" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 10 — Railay & laguna</h3>
+          <div class="card">
+            <div class="meta">Ritmo: attivo</div>
+            <div class="badges"><span class="badge">Railay</span><span class="badge">Laguna</span></div>
+            <p>Longtail per <strong>Railay</strong>: pareti di calcare, <strong>laguna</strong> (percorso ripido, valutare con bambini), spiagge East/West.</p>
+            <div class="act">
+              <div><strong>Longtail transfer + tour Railay (opz.)</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Railay%20longtail%20boat%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G11 -->
+        <div id="g11" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 11 — Hong Islands o giornata relax</h3>
+          <div class="card">
+            <div class="meta">Ritmo: libero</div>
+            <div class="badges"><span class="badge">Hong Islands</span></div>
+            <p>Escursione alle <strong>Hong Islands</strong> (laguna smeraldo) oppure relax in spiaggia/piscina.</p>
+            <div class="act">
+              <div><strong>Hong Islands — tour in speedboat/kayak</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Hong%20Islands%20tour%20Krabi&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G12 -->
+        <div id="g12" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 12 — Krabi → Phi Phi (ferry)</h3>
+          <div class="card">
+            <div class="meta">Trasferimento: ferry · 4 notti</div>
+            <p>Ferry per <strong>Phi Phi</strong>, check-in. Tramonto ai viewpoints.</p>
+            <div class="act">
+              <div><strong>Transfer/ferry Ao Nang/Krabi → Phi Phi</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Krabi%20to%20Phi%20Phi%20ferry%20transfer&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G13 -->
+        <div id="g13" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 13 — Phi Phi: snorkeling & Maya Bay</h3>
+          <div class="card">
+            <div class="meta">Ritmo: mare</div>
+            <div class="badges"><span class="badge">Maya Bay</span><span class="badge">Pileh</span><span class="badge">Shark Point</span></div>
+            <p>Tour in barca: <strong>Maya Bay</strong> (ingressi e orari contingentati), <strong>Pileh Lagoon</strong>, snorkeling a Shark Point.</p>
+            <div class="act">
+              <div><strong>Phiphi — sunrise tour Maya Bay (consigliato)</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Phi%20Phi%20sunrise%20Maya%20Bay%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G14 -->
+        <div id="g14" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 14 — Kayak e spiagge nascoste</h3>
+          <div class="card">
+            <div class="meta">Ritmo: moderato</div>
+            <p>Kayak verso baie riparate, snorkeling leggero e relax. Pomeriggio libero in spiaggia.</p>
+            <div class="act">
+              <div><strong>Kayak/Paddle board — noleggio o tour guidato</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Phi%20Phi%20kayak%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G15 -->
+        <div id="g15" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 15 — Relax completo a Phi Phi</h3>
+          <div class="card">
+            <div class="meta">Ritmo: relax</div>
+            <p>Giornata a disposizione. Massaggi thai, snorkeling dalla riva o beach club.</p>
+          </div>
+        </div>
+
+        <!-- G16 -->
+        <div id="g16" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 16 — Phi Phi → Phuket (o rientro su Bangkok)</h3>
+          <div class="card">
+            <div class="meta">Trasferimento: ferry</div>
+            <p>Ferry per <strong>Phuket</strong> (HKT) e pernottamento vicino all’aeroporto. In alternativa, rientro su <strong>Bangkok</strong> se preferisci volare da BKK.</p>
+            <div class="act">
+              <div><strong>Phi Phi → Phuket — ferry/transfer</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Phi%20Phi%20to%20Phuket%20ferry%20transfer&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G17 -->
+        <div id="g17" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 17 — Rientro</h3>
+          <div class="card">
+            <div class="meta">Fine tour</div>
+            <p>Transfer in aeroporto e volo di rientro.</p>
+            <div class="act">
+              <div><strong>Transfer hotel → HKT (o BKK)</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Phuket%20airport%20transfer&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MAPPA -->
+      <section id="mappa" aria-labelledby="sec-map">
+        <h2 id="sec-map" class="sec">Mappa interattiva — tappe principali</h2>
+        <div class="map-wrap">
+          <iframe class="map-iframe"
+            src="https://www.google.com/maps?q=Bangkok%2C%20Ayutthaya%2C%20Chiang%20Mai%2C%20Krabi%2C%20Railay%2C%20Koh%20Phi%20Phi%2C%20Phuket&z=5&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade" aria-label="Mappa Thailandia: Bangkok, Chiang Mai, Krabi, Phi Phi, Phuket"></iframe>
+        </div>
+      </section>
+
+      <!-- ATTIVITÀ (riepilogo) -->
+      <section id="attivita" aria-labelledby="sec-att">
+        <h2 id="sec-att" class="sec">Riepilogo attività prenotabili</h2>
+        <div class="panel">
+          <ul class="list-clean">
+            <li><span>Grand Palace + Wat Pho + Wat Arun</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Bangkok%20Grand%20Palace%20Wat%20Pho%20Wat%20Arun%20guided%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Floating & Railway Market</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Bangkok%20floating%20market%20railway%20market%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Chinatown street food night tour</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Bangkok%20Chinatown%20street%20food%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Elephant Sanctuary (etico) — Chiang Mai</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Chiang%20Mai%20ethical%20elephant%20sanctuary&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Doi Inthanon National Park</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Doi%20Inthanon%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Thai Cooking Class (mercato)</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Chiang%20Mai%20cooking%20class%20market&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Krabi — 4 Islands speedboat</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Krabi%204%20islands%20speedboat&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Hong Islands (Krabi)</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Hong%20Islands%20tour%20Krabi&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Phiphi — Sunrise Maya Bay</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Phi%20Phi%20sunrise%20Maya%20Bay%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Transfer aeroporti (BKK/HKT)</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Bangkok%20airport%20transfer&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+          </ul>
+          <p class="meta" style="margin-top:8px">Tutti i link GetYourGuide includono il tuo codice affiliato <strong>HWU00MZ</strong>.</p>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" aria-labelledby="sec-faq">
+        <h2 id="sec-faq" class="sec">Info pratiche & FAQ</h2>
+        <div class="panel">
+          <dl style="margin:0;line-height:1.6em;">
+            <dt style="font-weight:600;margin-top:12px;">🛂 Ingresso</dt>
+            <dd>Controlla eventuale esenzione o Visa on Arrival in base alla cittadinanza; passaporto con validità residua adeguata.</dd>
+
+            <dt style="font-weight:600;margin-top:12px;">💉 Salute</dt>
+            <dd>Acqua in bottiglia, protezione solare/repellente. Valuta assicurazione medica con copertura sport acquatici.</dd>
+
+            <dt style="font-weight:600;margin-top:12px;">🚗 Spostamenti</dt>
+            <dd>Voli interni rapidi (BKK–CNX–KBV/HKT). Per isole: ferry/longtail. Grab utile nelle città.</dd>
+
+            <dt style="font-weight:600;margin-top:12px;">💳 Pagamenti</dt>
+            <dd>Carta diffusa in città e resort; contanti per mercati/longtail/tasse parchi.</dd>
+
+            <dt style="font-weight:600;margin-top:12px;">👨‍👩‍👧‍👦 Family tips</dt>
+            <dd>Gite in barca con giubbotti per bambini; scegli speedboat con posti all’interno; pause nelle ore più calde.</dd>
+
+            <dt style="font-weight:600;margin-top:12px;">🙏 Dress code templi</dt>
+            <dd>Spalle e ginocchia coperte. Togliere scarpe all’ingresso dei templi.</dd>
+          </dl>
+        </div>
+      </section>
+
+      <button class="backtop" id="backtop" aria-label="Torna su">↑</button>
+    </article>
+
+    <!-- SIDEBAR -->
+    <aside class="side" aria-label="Riepilogo e prenotazioni rapide">
+      <div class="card">
+        <h3>Riepilogo viaggio</h3>
+        <ul class="list-clean">
+          <li><span>Durata</span><strong>17g / 15n</strong></li>
+          <li><span>Tappe</span><strong>Bangkok · Chiang Mai · Krabi · Phi Phi</strong></li>
+          <li><span>Ideale</span><strong>Nov–Feb</strong></li>
+        </ul>
+        <a class="btn" href="#voli">Cerca voli</a>
+        <a class="btn btn--ghost" href="#hotel">Trova hotel</a>
+        <a class="btn" href="#attivita">Prenota attività</a>
+      </div>
+
+      <div class="card">
+        <h3>Timeline date</h3>
+        <ul class="list-clean">
+          <li><span>Arrivo Bangkok</span><strong>8 Gen 2027</strong></li>
+          <li><span>Chiang Mai</span><strong>11–15 Gen</strong></li>
+          <li><span>Krabi</span><strong>15–19 Gen</strong></li>
+          <li><span>Phi Phi</span><strong>19–23 Gen</strong></li>
+          <li><span>Rientro</span><strong>24 Gen 2027</strong></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Consigli rapidi</h3>
+        <ul class="list-clean">
+          <li><span>Meteo</span><span>Mattine perfette per mare/templi; portare cappellino e acqua.</span></li>
+          <li><span>Snorkeling</span><span>Porta maschera personale; rispetta i coralli (no tocco).</span></li>
+          <li><span>Bagagli</span><span>Valigia leggera + dry bag per tour in barca.</span></li>
+        </ul>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="wrap" style="border-top:1px solid var(--ring);margin-top:10px;color:#596171">
+    <a href="./" style="text-decoration:none;color:#2563eb">← Torna all’elenco itinerari</a>
+  </footer>
+
+  <script>
+    // Smooth scroll + Back to top
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href').slice(1);
+        const t = document.getElementById(id);
+        if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+    });
+    const bt = document.getElementById('backtop');
+    window.addEventListener('scroll', ()=>{ bt.classList.toggle('show', window.scrollY > 600); });
+    bt.addEventListener('click', ()=>window.scrollTo({top:0, behavior:'smooth'}));
+  </script>
+</body>
+</html>
