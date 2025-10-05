@@ -1,282 +1,598 @@
 <!doctype html>
 <html lang="it">
 <head>
-  <meta charset="utf-8">
-  <title>Messico in 15 giorni (MXP → MEX / CUN → MXP) | GlobalGlide360</title>
-  <meta name="description" content="Itinerario reale di 15 giorni in Messico: Città del Messico, Oaxaca, Chiapas, Yucatán. Voli open-jaw da MXP, hotel per tappa, attività GetYourGuide, dove mangiare (TripAdvisor).">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Messico — 15 giorni | GlobalGlide360</title>
+  <meta name="description" content="Messico in 15 giorni: Città del Messico, Teotihuacan, Oaxaca, Yucatán, cenotes e spiagge caraibiche. Voli, hotel, attività (GYG), ristoranti e mappa interattiva.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--accent:#4fb3ff;--accent-2:#8b5cf6;--text:#0e141b;--muted:#596171;--bg:#f7f9fb;--card:#fff;--ring:#dbe3ea}
+    *{box-sizing:border-box} img{max-width:100%;display:block}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text)}
 
-  <!-- Open Graph -->
-<meta property="og:type" content="article">
-<meta property="og:title" content="Messico in 15 giorni (MXP → MEX / CUN → MXP)">
-<meta property="og:description" content="Città del Messico • Oaxaca • Chiapas • Yucatán — voli, hotel city-by-city, attività e ristoranti.">
-<meta property="og:image" content="https://TUO-DOMINIO.com/globalglide360-demo/assets/itinerari/messico/cover_1200x630.jpg">
-<meta property="og:url" content="https://TUO-DOMINIO.com/globalglide360-demo/itinerari/messico-15-giorni.html">
+    /* HERO */
+    .hero{position:relative;border-bottom:1px solid var(--ring);background:linear-gradient(180deg,#ffffff,#eef4f8)}
+    .hero__wrap{max-width:1100px;margin:0 auto;padding:18px 18px 24px}
+    .crumbs{font-size:.875rem;color:var(--muted);margin-bottom:8px}
+    .crumbs a{color:var(--muted);text-decoration:none}
+    .crumbs a:hover{text-decoration:underline}
+    .hero__grid{display:grid;grid-template-columns:1fr;gap:16px;align-items:center}
+    @media(min-width:900px){.hero__grid{grid-template-columns:1.3fr .7fr}}
+    .cover{border-radius:16px;overflow:hidden;border:1px solid var(--ring);box-shadow:0 10px 30px rgba(0,0,0,.05)}
+    .hero h1{margin:4px 0 6px;font-weight:800;font-size:clamp(24px,4vw,40px)}
+    .hero p.sub{margin:0;color:var(--muted)}
+    .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-top:14px}
+    .kpi{background:var(--card);border:1px solid var(--ring);border-radius:12px;padding:10px 12px}
+    .kpi .lbl{font-size:.78rem;color:var(--muted)} .kpi .val{font-weight:800}
 
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Messico in 15 giorni (MXP → MEX / CUN → MXP)">
-<meta name="twitter:description" content="Città del Messico • Oaxaca • Chiapas • Yucatán — voli, hotel city-by-city, attività e ristoranti.">
-<meta name="twitter:image" content="https://TUO-DOMINIO.com/globalglide360-demo/assets/itinerari/messico/cover_1200x630.jpg">
+    /* QUICKBAR */
+    .quickbar{position:sticky;top:0;z-index:30;background:#ffffffc7;backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid var(--ring)}
+    .quickbar__inner{max-width:1100px;margin:0 auto;display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:10px 18px}
+    .chip{display:inline-flex;gap:8px;align-items:center;background:#fff;border:1px solid var(--ring);border-radius:999px;padding:8px 12px;font-weight:600}
+    .chip a{text-decoration:none;color:var(--text)}
+    .chip--cta{background:var(--accent);border-color:var(--accent)}
+    .chip--alt{background:var(--accent-2);border-color:var(--accent-2);color:#fff}
+    .chip--cta a{color:#fff}
 
+    /* LAYOUT */
+    .wrap{max-width:1100px;margin:0 auto;padding:22px 18px}
+    .grid{display:grid;grid-template-columns:1fr;gap:18px}
+    @media(min-width:980px){.grid{grid-template-columns:minmax(0,1fr) 320px}}
 
-  <script src="https://cdn.tailwindcss.com"></script>
+    /* SIDEBAR */
+    .side{position:sticky;top:70px;align-self:start}
+    .side .card{background:#fff;border:1px solid var(--ring);border-radius:14px;padding:14px 16px;margin-bottom:12px}
+    .side h3{margin:0 0 8px;font-size:1rem}
+    .side .btn{display:block;text-align:center;background:var(--accent);color:#fff;text-decoration:none;font-weight:800;border-radius:10px;padding:10px 14px;margin-top:8px}
+    .side .btn--ghost{background:#fff;color:#0e141b;border:1px solid var(--ring)}
+    .list-clean{list-style:none;margin:0;padding:0}
+    .list-clean li{display:flex;justify-content:space-between;color:var(--muted);padding:6px 0;border-bottom:1px dashed var(--ring)}
+    .list-clean li:last-child{border-bottom:0}
+
+    /* CONTENT */
+    h2.sec{margin:18px 0 12px;font-size:1.2rem}
+    .panel{background:#fff;border:1px solid var(--ring);border-radius:14px;padding:14px 16px}
+    .grid-2{display:grid;grid-template-columns:1fr;gap:12px}
+    @media(min-width:780px){.grid-2{grid-template-columns:1fr 1fr}}
+
+    /* TIMELINE */
+    .day{position:relative;padding-left:30px}
+    .day:before{content:'';position:absolute;left:10px;top:8px;bottom:-8px;width:2px;background:linear-gradient(#cfe6ff,#dbe3ea)}
+    .dot{position:absolute;left:3px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--accent)}
+    .card{background:#fff;border:1px solid var(--ring);border-radius:14px;padding:14px 16px;margin:10px 0}
+    .meta{color:var(--muted);font-size:.9rem;margin-bottom:6px}
+    .badge{display:inline-block;background:#eef7ff;color:#0e141b;border:1px solid var(--ring);border-radius:999px;padding:3px 8px;font-size:.8rem;margin-right:6px}
+    .badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+    .act{display:grid;grid-template-columns:1fr;gap:8px;margin-top:10px}
+    @media(min-width:620px){.act{grid-template-columns:1fr auto}}
+    .act .btn{align-self:center;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;border-radius:10px;padding:10px 14px;white-space:nowrap}
+    .act .btn:hover{background:#3da1ec}
+    .food{background:#fff;border:1px dashed var(--ring);border-radius:12px;padding:12px 14px;margin-top:10px}
+    .food h4{margin:0 0 6px;font-size:1rem}
+    .food a{color:#2563eb;text-decoration:none}
+    .food a:hover{text-decoration:underline}
+    .toc{background:#fff;border:1px solid var(--ring);border-radius:12px;padding:10px 12px}
+    .toc a{display:inline-block;margin:4px 8px 0 0;color:#2563eb;text-decoration:none}
+    .toc a:hover{text-decoration:underline}
+
+    /* MAP */
+    .map-wrap{background:#fff;border:1px solid var(--ring);border-radius:14px;padding:0;overflow:hidden}
+    .map-iframe{width:100%;height:420px;border:0}
+
+    .backtop{position:fixed;right:16px;bottom:16px;background:#111827;color:#fff;border:none;border-radius:999px;padding:10px 12px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.2);display:none}
+    .backtop.show{display:block}
+  </style>
 </head>
-<body class="antialiased bg-white text-gray-800">
-  <div id="include-header"></div>
-
-  <main class="container mx-auto px-4 py-8 max-w-5xl">
-    <header class="mb-6">
-      <img src="/assets/itinerari/messico_cover_1200x630.jpg" alt="Messico 15 giorni" class="w-full rounded-2xl mb-4">
-      <h1 class="text-3xl font-bold mb-2">Messico in 15 giorni</h1>
-      <p class="text-gray-600">Città del Messico • Oaxaca • Chiapas • Yucatán — voli da MXP, hotel per tappa, attività e ristoranti</p>
-    </header>
-
-    <!-- Switch date -->
-    <div class="bg-gray-50 rounded-2xl p-4 mb-6 flex flex-wrap gap-2 items-center">
-      <span class="text-sm">Partenza da <strong>MXP</strong>:</span>
-      <div id="dateButtons" class="flex flex-wrap gap-2"></div>
+<body>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero__wrap">
+      <nav class="crumbs"><a href="/">Home</a> › <a href="/itinerari/">Itinerari</a> › Messico — 15 giorni</nav>
+      <div class="hero__grid">
+        <div>
+          <h1>Messico — 15 giorni</h1>
+          <p class="sub">Città del Messico, Teotihuacan, Oaxaca, Yucatán (Merida/Valladolid), cenotes e spiagge caraibiche. Itinerario adatto a coppie e famiglie.</p>
+          <div class="kpis">
+            <div class="kpi"><div class="lbl">Durata</div><div class="val">15 giorni / 14 notti</div></div>
+            <div class="kpi"><div class="lbl">Tappe</div><div class="val">CDMX · Teotihuacan · Oaxaca · Merida/Valladolid · Tulum/Playa</div></div>
+            <div class="kpi"><div class="lbl">Periodo ideale</div><div class="val">Novembre–Aprile (stagione secca)</div></div>
+          </div>
+        </div>
+        <figure class="cover"><img src="../assets/itinerari/messico.jpg" alt="Chichén Itzá al tramonto, Yucatán"></figure>
+      </div>
     </div>
+  </header>
 
-    <!-- Voli -->
-    <section class="mb-8">
-      <h2 class="text-xl font-semibold mb-3">Voli</h2>
-      <p class="text-sm text-gray-600 mb-3">Open-jaw consigliato: MXP → MEX / CUN → MXP. Con 2–3 voli interni (o bus notturni) tra le tappe.</p>
-      <div id="flights" class="grid md:grid-cols-2 gap-4"></div>
-    </section>
+  <!-- QUICKBAR -->
+  <div class="quickbar">
+    <div class="quickbar__inner" role="navigation" aria-label="Azioni rapide">
+      <span class="chip"><a href="#voli">✈️ Voli</a></span>
+      <span class="chip"><a href="#hotel">🏨 Hotel</a></span>
+      <span class="chip"><a href="#in-breve">🧭 In breve</a></span>
+      <span class="chip"><a href="#programma">🗺️ Programma</a></span>
+      <span class="chip"><a href="#mappa">🗺️ Mappa</a></span>
+      <span class="chip"><a href="#faq">❓ FAQ</a></span>
+      <span class="chip chip--cta"><a href="#attivita">🎟️ Prenota attività</a></span>
+    </div>
+  </div>
 
-    <!-- Soggiorni -->
-    <section class="mb-8">
-      <h2 class="text-xl font-semibold mb-3">Dove dormire (notte per notte)</h2>
-      <div id="stays" class="space-y-4"></div>
-    </section>
+  <main class="wrap grid">
+    <!-- CONTENT -->
+    <article id="content">
+      <!-- Indice -->
+      <section class="toc" aria-labelledby="toc-title">
+        <h2 id="toc-title" class="sec" style="margin-top:0">Indice</h2>
+        <p class="meta">Salta al giorno:</p>
+        <p>
+          <a href="#g1">1</a> <a href="#g2">2</a> <a href="#g3">3</a> <a href="#g4">4</a> <a href="#g5">5</a>
+          <a href="#g6">6</a> <a href="#g7">7</a> <a href="#g8">8</a> <a href="#g9">9</a> <a href="#g10">10</a>
+          <a href="#g11">11</a> <a href="#g12">12</a> <a href="#g13">13</a> <a href="#g14">14</a> <a href="#g15">15</a>
+        </p>
+      </section>
 
-    <!-- Attività -->
-    <section class="mb-8">
-      <h2 class="text-xl font-semibold mb-3">Attività suggerite</h2>
-      <div id="activities" class="grid md:grid-cols-2 gap-4"></div>
-    </section>
+      <!-- VOLI -->
+      <section id="voli" aria-labelledby="sec-voli">
+        <h2 id="sec-voli" class="sec">Voli (MXP → MEX · CUN → MXP) — 3–17 novembre 2026</h2>
+        <div class="panel grid-2">
+          <div>
+            <div class="meta">Andata — 3 Nov 2026</div>
+            <p>Milano Malpensa (MXP) → Città del Messico (MEX)</p>
+            <a class="chip chip--cta" target="_blank" rel="noopener"
+               href="https://www.skyscanner.net/transport/flights-from/?adults=2#/?searchparamstype=flights&flightsearch=1&itinerary=itineraries!oneway!legs!origin:MXP,destination:MEX,date:2026-11-03T00:00:00&cabin=economy">Cerca andata su Skyscanner</a>
+          </div>
+          <div>
+            <div class="meta">Ritorno — 17 Nov 2026</div>
+            <p>Cancún (CUN) → Milano Malpensa (MXP)</p>
+            <a class="chip chip--cta" target="_blank" rel="noopener"
+               href="https://www.skyscanner.net/transport/flights-from/cun/?adults=2#/?searchparamstype=flights&flightsearch=1&itinerary=itineraries!oneway!legs!origin:CUN,destination:MXP,date:2026-11-17T00:00:00&cabin=economy">Cerca ritorno su Skyscanner</a>
+          </div>
+        </div>
+        <p class="meta" style="margin-top:10px">Open-jaw (arrivo MEX, partenza CUN) per ottimizzare i tempi. Aggiungeremo i parametri affiliati Skyscanner quando disponibili.</p>
+      </section>
 
-    <!-- Food -->
-    <section class="mb-12">
-      <h2 class="text-xl font-semibold mb-3">Dove mangiare</h2>
-      <div id="food" class="grid md:grid-cols-2 gap-4"></div>
-    </section>
+      <!-- HOTEL -->
+      <section id="hotel" aria-labelledby="sec-hotel">
+        <h2 id="sec-hotel" class="sec">Hotel suggeriti (prenotabili)</h2>
+        <div class="panel grid-2">
+          <div>
+            <div class="meta">Città del Messico · 4 notti (3–7 Nov)</div>
+            <p>Zone: Centro Histórico (comodo), Roma/Condesa (trendy, family-friendly).</p>
+            <a class="chip chip--cta" target="_blank" rel="noopener" href="https://www.booking.com/searchresults.html?ss=Mexico%20City&checkin=2026-11-03&checkout=2026-11-07&aid=AFFID_BOOKING">CDMX — Booking</a>
+          </div>
+          <div>
+            <div class="meta">Oaxaca · 3 notti (7–10 Nov)</div>
+            <p>Centro storico UNESCO, boutique coloniali.</p>
+            <a class="chip chip--alt" target="_blank" rel="noopener" href="https://www.booking.com/searchresults.html?ss=Oaxaca&checkin=2026-11-07&checkout=2026-11-10&aid=AFFID_BOOKING">Oaxaca — Booking</a>
+          </div>
+          <div>
+            <div class="meta">Valladolid / Mérida · 3 notti (10–13 Nov)</div>
+            <p>Valladolid per cenotes e Chichén Itzá; Mérida per cultura e Uxmal.</p>
+            <a class="chip chip--cta" target="_blank" rel="noopener" href="https://www.booking.com/searchresults.html?ss=Valladolid%20Yucatan&checkin=2026-11-10&checkout=2026-11-13&aid=AFFID_BOOKING">Valladolid — Booking</a>
+          </div>
+          <div>
+            <div class="meta">Riviera Maya (Tulum/Playa) · 4 notti (13–17 Nov)</div>
+            <p>Spiagge, rovine e cenotes; scegli Tulum (boho) o Playa del Carmen (servizi).</p>
+            <a class="chip chip--alt" target="_blank" rel="noopener" href="https://www.booking.com/searchresults.html?ss=Tulum&checkin=2026-11-13&checkout=2026-11-17&aid=AFFID_BOOKING">Tulum — Booking</a>
+          </div>
+        </div>
+        <p class="meta" style="margin-top:10px">Sostituisci <code>aid=AFFID_BOOKING</code> con il tuo ID affiliato Booking quando lo avrai.</p>
+      </section>
 
-    <section id="trasparenza" class="max-w-3xl">
-      <!-- incolla qui il blocco “Trasparenza & FAQ” -->
-    </section>
+      <!-- IN BREVE -->
+      <section id="in-breve" aria-labelledby="sec-brief">
+        <h2 id="sec-brief" class="sec">Itinerario in breve</h2>
+        <div class="panel">
+          <div class="grid-2">
+            <div>
+              <h3 style="margin:0 0 6px;font-size:1rem">Distribuzione notti</h3>
+              <ul class="list-clean" style="margin-top:4px">
+                <li><span>CDMX</span><strong>4 notti (3–7 Nov)</strong></li>
+                <li><span>Oaxaca</span><strong>3 notti (7–10 Nov)</strong></li>
+                <li><span>Valladolid/Mérida</span><strong>3 notti (10–13 Nov)</strong></li>
+                <li><span>Riviera Maya</span><strong>4 notti (13–17 Nov)</strong></li>
+              </ul>
+              <div class="badges" style="margin-top:8px">
+                <span class="badge">Totale: 14 notti</span>
+                <span class="badge">Periodo ideale: Nov–Apr</span>
+              </div>
+            </div>
+            <div>
+              <h3 style="margin:0 0 6px;font-size:1rem">Trasferimenti chiave</h3>
+              <ul class="list-clean" style="margin-top:4px">
+                <li><span>CDMX → Oaxaca</span><strong>Volo interno</strong></li>
+                <li><span>Oaxaca → Mérida/Cancún</span><strong>Volo interno</strong></li>
+                <li><span>Base Yucatán</span><strong>Auto a noleggio / tour</strong></li>
+              </ul>
+              <div class="badges" style="margin-top:8px">
+                <span class="badge">Ritmo: medio</span>
+                <span class="badge">Adatto: coppie & famiglie</span>
+              </div>
+            </div>
+          </div>
+
+          <hr style="border:none;border-top:1px dashed var(--ring);margin:14px 0">
+
+          <div class="grid-2">
+            <div>
+              <h3 style="margin:0 0 6px;font-size:1rem">Highlight per famiglie</h3>
+              <ul style="margin:0 0 0 18px;line-height:1.6">
+                <li>Canali di Xochimilco e Lucha Libre a CDMX.</li>
+                <li>Cenotes poco profondi (giubbetti salvagente).</li>
+                <li>Giornate mare e snorkeling (tartarughe ad Akumal).</li>
+              </ul>
+            </div>
+            <div>
+              <h3 style="margin:0 0 6px;font-size:1rem">Per coppie</h3>
+              <ul style="margin:0 0 0 18px;line-height:1.6">
+                <li>Tramonto a Hierve el Agua.</li>
+                <li>Cena coloniale nei patio di Oaxaca.</li>
+                <li>Beach clubs a Tulum / rooftop a Playa.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROGRAMMA — LINEARE -->
+      <section id="programma" aria-labelledby="sec-prog">
+        <h2 id="sec-prog" class="sec">Programma giorno per giorno</h2>
+
+        <!-- G1 -->
+        <div id="g1" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 1 — Arrivo a Città del Messico</h3>
+          <div class="card">
+            <div class="meta">Base: CDMX · Ritmo: leggero</div>
+            <div class="badges"><span class="badge">Centro Histórico</span><span class="badge">Zócalo</span></div>
+            <p>Arrivo a <strong>CDMX</strong>, check-in. Passeggiata allo <strong>Zócalo</strong>, Cattedrale Metropolitana e Palacio de Bellas Artes.</p>
+            <div class="act">
+              <div><strong>Tour a piedi del Centro Histórico</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Mexico%20City%20walking%20tour%20historic%20center&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+            <div class="food">
+              <h4>Dove mangiare</h4><p>Taquerías tradizionali (al pastor) in zona Centro/Roma.</p>
+              <a target="_blank" rel="noopener" href="https://www.tripadvisor.com/Search?q=best%20tacos%20mexico%20city">Tripadvisor</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G2 -->
+        <div id="g2" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 2 — Teotihuacan & Basilica di Guadalupe</h3>
+          <div class="card">
+            <div class="meta">Ritmo: moderato · Trasporto: bus/tour</div>
+            <div class="badges"><span class="badge">Teotihuacan</span><span class="badge">Guadalupe</span></div>
+            <p>Visita alle piramidi del <strong>sole</strong> e della <strong>luna</strong> a <strong>Teotihuacan</strong>. Sosta alla Basilica di Guadalupe.</p>
+            <div class="act">
+              <div><strong>Teotihuacan — tour guidato (ingressi inclusi)</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Teotihuacan%20tour%20from%20Mexico%20City&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G3 -->
+        <div id="g3" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 3 — Frida Kahlo, Coyoacán & Xochimilco</h3>
+          <div class="card">
+            <div class="meta">Ritmo: moderato</div>
+            <div class="badges"><span class="badge">Casa Azul</span><span class="badge">Xochimilco</span></div>
+            <p>Mattina alla <strong>Casa Azul</strong> (Frida Kahlo) nel quartiere <strong>Coyoacán</strong>. Pomeriggio sui canali di <strong>Xochimilco</strong> in <em>trajinera</em>.</p>
+            <div class="act">
+              <div><strong>Casa Azul + Coyoacán + Xochimilco — tour combinato</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Frida%20Kahlo%20Museum%20Xochimilco%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G4 -->
+        <div id="g4" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 4 — Chapultepec & Lucha Libre</h3>
+          <div class="card">
+            <div class="meta">Ritmo: moderato</div>
+            <div class="badges"><span class="badge">Castello</span><span class="badge">Museo Antropologia</span><span class="badge">Lucha Libre</span></div>
+            <p>Parco di <strong>Chapultepec</strong>, <strong>Castello</strong>, <strong>Museo di Antropologia</strong>. Sera con spettacolo di <strong>Lucha Libre</strong>.</p>
+            <div class="act">
+              <div><strong>Lucha Libre — biglietti & trasferimenti</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Lucha%20Libre%20Mexico%20City%20tickets&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G5 -->
+        <div id="g5" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 5 — Volo per Oaxaca & centro coloniale</h3>
+          <div class="card">
+            <div class="meta">Trasferimento: volo · 3 notti</div>
+            <div class="badges"><span class="badge">Oaxaca</span><span class="badge">Zócalo</span></div>
+            <p>Volo per <strong>Oaxaca</strong>, check-in. Passeggiata tra <strong>Templo de Santo Domingo</strong> e <strong>Zócalo</strong>.</p>
+            <div class="act">
+              <div><strong>Walking tour Oaxaca (introduzione storica)</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Oaxaca%20walking%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G6 -->
+        <div id="g6" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 6 — Monte Albán & mercati</h3>
+          <div class="card">
+            <div class="meta">Ritmo: moderato</div>
+            <div class="badges"><span class="badge">Monte Albán</span><span class="badge">Mercati</span></div>
+            <p>Visita dell’area archeologica di <strong>Monte Albán</strong> e mercati locali (Benito Juárez/20 de Noviembre).</p>
+            <div class="act">
+              <div><strong>Monte Albán — tour guidato da Oaxaca</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Monte%20Alban%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+            <div class="food">
+              <h4>Dove mangiare</h4><p>Mole, tlayudas e cioccolato di Oaxaca.</p>
+              <a target="_blank" rel="noopener" href="https://www.tripadvisor.com/Search?q=best%20restaurants%20oaxaca%20city">Tripadvisor</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G7 -->
+        <div id="g7" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 7 — Hierve el Agua & artigianato</h3>
+          <div class="card">
+            <div class="meta">Ritmo: attivo</div>
+            <div class="badges"><span class="badge">Hierve el Agua</span><span class="badge">Mezcal</span></div>
+            <p>Escursione a <strong>Hierve el Agua</strong> (vasche naturali e vista sulle “cascate di pietra”). Visita a distillerie di <strong>mezcal</strong> e villaggi d’artigianato (Teotitlán).</p>
+            <div class="act">
+              <div><strong>Hierve el Agua + Mezcal — tour di un giorno</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Hierve%20el%20Agua%20tour%20mezcal&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G8 -->
+        <div id="g8" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 8 — Volo per Yucatán (Mérida o Cancún) → Valladolid</h3>
+          <div class="card">
+            <div class="meta">Trasferimento: volo + auto/tour · 3 notti</div>
+            <div class="badges"><span class="badge">Valladolid</span><span class="badge">Cenote</span></div>
+            <p>Volo da Oaxaca verso <strong>Mérida</strong> o <strong>Cancún</strong>. Trasferimento a <strong>Valladolid</strong>. Bagno in cenote (es. Suytun o Saamal).</p>
+            <div class="act">
+              <div><strong>Tour cenote Suytun / circuito cenotes Valladolid</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Valladolid%20cenote%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G9 -->
+        <div id="g9" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 9 — Chichén Itzá & Ik Kil</h3>
+          <div class="card">
+            <div class="meta">Ritmo: moderato · Partenza presto</div>
+            <div class="badges"><span class="badge">Chichén Itzá</span><span class="badge">Ik Kil</span></div>
+            <p>Visita a <strong>Chichén Itzá</strong> (patrimonio UNESCO). Pomeriggio al cenote <strong>Ik Kil</strong>; serata nella piazza coloniale di Valladolid.</p>
+            <div class="act">
+              <div><strong>Chichén Itzá — biglietto/escursione da Valladolid</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Chichen%20Itza%20from%20Valladolid&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G10 -->
+        <div id="g10" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 10 — Uxmal & Ruta Puuc (opzionale Celestún)</h3>
+          <div class="card">
+            <div class="meta">Ritmo: attivo</div>
+            <div class="badges"><span class="badge">Uxmal</span><span class="badge">Ruta Puuc</span><span class="badge">Celestún*</span></div>
+            <p>Escursione a <strong>Uxmal</strong> e ai siti della <strong>Ruta Puuc</strong>. In alternativa, <em>day trip</em> a <strong>Celestún</strong> (fenicotteri) se base su Mérida.</p>
+            <div class="act">
+              <div><strong>Uxmal — tour da Mérida / Valladolid</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Uxmal%20tour%20from%20Merida&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G11 -->
+        <div id="g11" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 11 — Valladolid → Riviera Maya (Tulum o Playa)</h3>
+          <div class="card">
+            <div class="meta">Trasferimento: auto/tour · 4 notti</div>
+            <div class="badges"><span class="badge">Riviera Maya</span><span class="badge">Tulum/Playa</span></div>
+            <p>Arrivo sulla costa caraibica. Relax in spiaggia; tramonto in beach club.</p>
+            <div class="act">
+              <div><strong>Trasferimento privato Valladolid → Tulum/Playa</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Valladolid%20to%20Tulum%20transfer&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G12 -->
+        <div id="g12" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 12 — Rovine di Tulum & Gran Cenote</h3>
+          <div class="card">
+            <div class="meta">Ritmo: moderato</div>
+            <div class="badges"><span class="badge">Tulum Ruins</span><span class="badge">Gran Cenote</span></div>
+            <p>Mattina alle <strong>Rovine di Tulum</strong>. Pomeriggio al <strong>Gran Cenote</strong> o cenote Dos Ojos.</p>
+            <div class="act">
+              <div><strong>Tulum Rovine — tour con guida</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Tulum%20ruins%20guided%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+            <div class="act">
+              <div><strong>Gran Cenote / Dos Ojos — ingresso/escursione</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Gran%20Cenote%20Dos%20Ojos&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G13 -->
+        <div id="g13" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 13 — Coba & cenote Choo-Ha</h3>
+          <div class="card">
+            <div class="meta">Ritmo: attivo</div>
+            <div class="badges"><span class="badge">Cobá</span><span class="badge">Choo-Ha</span></div>
+            <p>Escursione a <strong>Cobá</strong> (noleggio bici nel sito archeologico) e bagno al cenote <strong>Choo-Ha</strong>.</p>
+            <div class="act">
+              <div><strong>Cobá — tour da Tulum/Playa con cenote</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Coba%20tour%20from%20Tulum%20cenote&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G14 -->
+        <div id="g14" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 14 — Sian Ka’an o snorkeling tartarughe ad Akumal</h3>
+          <div class="card">
+            <div class="meta">Ritmo: moderato</div>
+            <div class="badges"><span class="badge">Sian Ka’an</span><span class="badge">Akumal</span></div>
+            <p>Scelta tra biosfera di <strong>Sian Ka’an</strong> (barriere, delfini e uccelli) o snorkeling con <strong>tartarughe ad Akumal</strong>.</p>
+            <div class="act">
+              <div><strong>Riserva di Sian Ka’an — tour in barca</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Sian%20Ka%27an%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+            <div class="act">
+              <div><strong>Akumal — snorkeling con tartarughe</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Akumal%20turtle%20snorkeling&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- G15 -->
+        <div id="g15" class="day">
+          <span class="dot"></span>
+          <h3>Giorno 15 — Rientro da Cancún</h3>
+          <div class="card">
+            <div class="meta">Fine tour</div>
+            <div class="badges"><span class="badge">Aeroporto CUN</span></div>
+            <p>Trasferimento verso l’aeroporto di <strong>Cancún (CUN)</strong> e volo di rientro per Milano.</p>
+            <div class="act">
+              <div><strong>Transfer privato hotel → aeroporto CUN</strong></div>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Cancun%20airport%20transfer%20hotel&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MAPPA -->
+      <section id="mappa" aria-labelledby="sec-map">
+        <h2 id="sec-map" class="sec">Mappa interattiva — principali tappe</h2>
+        <div class="map-wrap">
+          <iframe class="map-iframe"
+            src="https://www.google.com/maps?q=Mexico%20City%2C%20Teotihuacan%2C%20Oaxaca%2C%20Valladolid%2C%20Merida%2C%20Tulum%2C%20Playa%20del%20Carmen&z=5&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade" aria-label="Mappa Messico: CDMX, Oaxaca, Yucatán e Riviera Maya"></iframe>
+        </div>
+        <p class="meta" style="margin-top:8px">Suggerimento: zooma su Valladolid/Mérida per Uxmal e cenotes; su Tulum/Playa per spiagge e rovine.</p>
+      </section>
+
+      <!-- ATTIVITÀ (riepilogo) -->
+      <section id="attivita" aria-labelledby="sec-att">
+        <h2 id="sec-att" class="sec">Riepilogo attività prenotabili</h2>
+        <div class="panel">
+          <ul class="list-clean">
+            <li><span>Teotihuacan (da CDMX)</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Teotihuacan%20tour%20from%20Mexico%20City&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Frida Kahlo + Xochimilco</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Frida%20Kahlo%20Museum%20Xochimilco%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Lucha Libre</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Lucha%20Libre%20Mexico%20City%20tickets&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Monte Albán</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Monte%20Alban%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Hierve el Agua + Mezcal</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Hierve%20el%20Agua%20tour%20mezcal&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Chichén Itzá + Ik Kil</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Chichen%20Itza%20from%20Valladolid&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Uxmal / Ruta Puuc</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Uxmal%20tour%20from%20Merida&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Sian Ka’an</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Sian%20Ka%27an%20tour&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Akumal — snorkeling tartarughe</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Akumal%20turtle%20snorkeling&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+            <li><span>Transfer privati (Yucatán / CUN)</span><a target="_blank" rel="noopener" href="https://www.getyourguide.com/s/?q=Cancun%20airport%20transfer%20hotel&partner_id=HWU00MZ&cmp=GlobalGlide360">Prenota</a></li>
+          </ul>
+          <p class="meta" style="margin-top:8px">Consiglio: per i cenotes porta scarpette da scoglio e contanti per i piccoli ingressi.</p>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" aria-labelledby="sec-faq">
+        <h2 id="sec-faq" class="sec">Info pratiche & FAQ</h2>
+        <div class="panel">
+          <dl style="margin:0;line-height:1.6em;">
+            <dt style="font-weight:600;margin-top:12px;">🛂 Documenti</dt>
+            <dd>Passaporto in corso di validità; verifica eventuali requisiti d’ingresso e moduli turistici.</dd>
+
+            <dt style="font-weight:600;margin-top:12px;">💉 Salute</dt>
+            <dd>Acqua in bottiglia, protezione solare, repellenti. Valuta assicurazione medica.</dd>
+
+            <dt style="font-weight:600;margin-top:12px;">🚗 Spostamenti</dt>
+            <dd>Voli interni tra regioni; nello Yucatán auto a noleggio o tour con transfer inclusi.</dd>
+
+            <dt style="font-weight:600;margin-top:12px;">💳 Pagamenti</dt>
+            <dd>Carta accettata in città/turistico; contanti utili in cenotes e mercati.</dd>
+
+            <dt style="font-weight:600;margin-top:12px;">🌤 Clima</dt>
+            <dd>Nov–Apr stagione secca (ideale). Piogge e sargasso più probabili in estate.</dd>
+
+            <dt style="font-weight:600;margin-top:12px;">👨‍👩‍👧‍👦 Family tips</dt>
+            <dd>Cenotes con giubbotti, tour di durata moderata, pause frequenti e idratazione.</dd>
+          </dl>
+        </div>
+      </section>
+
+      <button class="backtop" id="backtop" aria-label="Torna su">↑</button>
+    </article>
+
+    <!-- SIDEBAR -->
+    <aside class="side" aria-label="Riepilogo e prenotazioni rapide">
+      <div class="card">
+        <h3>Riepilogo viaggio</h3>
+        <ul class="list-clean">
+          <li><span>Durata</span><strong>15g / 14n</strong></li>
+          <li><span>Tappe</span><strong>CDMX · Oaxaca · Valladolid/Mérida · Riviera Maya</strong></li>
+          <li><span>Ideale</span><strong>Nov–Apr</strong></li>
+        </ul>
+        <a class="btn" href="#voli">Cerca voli</a>
+        <a class="btn btn--ghost" href="#hotel">Trova hotel</a>
+        <a class="btn" href="#attivita">Prenota attività</a>
+      </div>
+
+      <div class="card">
+        <h3>Timeline date</h3>
+        <ul class="list-clean">
+          <li><span>Arrivo CDMX</span><strong>3 Nov 2026</strong></li>
+          <li><span>Oaxaca</span><strong>7–10 Nov</strong></li>
+          <li><span>Yucatán</span><strong>10–13 Nov</strong></li>
+          <li><span>Riviera Maya</span><strong>13–17 Nov</strong></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Consigli rapidi</h3>
+        <ul class="list-clean">
+          <li><span>Sicurezza</span><span>Usa taxi/app ufficiali; evita guida notturna extraurbana.</span></li>
+          <li><span>Acqua</span><span>Solo imbottigliata; porta borraccia riutilizzabile.</span></li>
+          <li><span>Cash</span><span>Piccoli contanti per cenotes e mance.</span></li>
+        </ul>
+      </div>
+    </aside>
   </main>
 
-  <div id="include-footer"></div>
+  <footer class="wrap" style="border-top:1px solid var(--ring);margin-top:10px;color:#596171">
+    <a href="./" style="text-decoration:none;color:#2563eb">← Torna all’elenco itinerari</a>
+  </footer>
 
-  <!-- Config GYG -->
   <script>
-    window.GYG_PARTNER_ID = "HWU00MZ";
-    window.GYG_SUBID = "messico-15-giorni";
-  </script>
-
-  <!-- Link builders + Render -->
-  <script>
-    const ORIGIN_IATA = "MXP";
-    const DATA = {
-      slug: "messico-15-giorni",
-      title: "Messico in 15 giorni",
-      mainArrival: "MEX",
-      mainDeparture: "CUN",
-      cities: [
-        { name:"Città del Messico", nights:4, iataNear:"MEX", bookingQuery:"Mexico City", gygQuery:"Mexico City", taFoodUrl:"https://www.tripadvisor.it/Restaurants-g150800-Mexico_City_Central_Mexico_and_Gulf_Coast.html" },
-        { name:"Oaxaca",             nights:3, iataNear:"OAX", bookingQuery:"Oaxaca",      gygQuery:"Oaxaca",      taFoodUrl:"https://www.tripadvisor.it/Restaurants-g150801-Oaxaca_Southern_Mexico.html" },
-        { name:"San Cristóbal (Chiapas)", nights:3, iataNear:"TGZ", bookingQuery:"San Cristobal de las Casas", gygQuery:"Chiapas", taFoodUrl:"https://www.tripadvisor.it/Restaurants-g150802-San_Cristobal_de_las_Casas_Southern_Mexico.html" },
-        { name:"Riviera Maya (Tulum/Playa/Cancún)", nights:5, iataNear:"CUN", bookingQuery:"Tulum", gygQuery:"Tulum", taFoodUrl:"https://www.tripadvisor.it/Restaurants-g150813-Tulum_Yucatan_Peninsula.html" }
-      ],
-      internalMoves: [
-        { from:"MEX", to:"OAX", dayOffset:4 },
-        { from:"OAX", to:"TGZ", dayOffset:7 },
-        { from:"TGZ", to:"CUN", dayOffset:10 }
-      ],
-      departures: [
-        { start:"2025-10-24", length:15 },
-        { start:"2025-11-07", length:15 },
-        { start:"2025-11-21", length:15 }
-      ]
-    };
-
-    const fmt = d => d.toISOString().slice(0,10);
-    const addDays = (iso, n) => { const d=new Date(iso+"T12:00:00"); d.setDate(d.getDate()+n); return fmt(d); };
-
-    const skyRound = (from,to,dep,ret) => `https://www.skyscanner.it/trasporti/voli/${from}/${to}/${dep}/${ret}/`;
-    const skyOne  = (from,to,date)      => `https://www.skyscanner.it/trasporti/voli/${from}/${to}/${date}/`;
-    const bookCity= (q,cin,cout) => {
-      const u=new URL("https://www.booking.com/searchresults.it.html");
-      u.searchParams.set("ss", q);
-      u.searchParams.set("checkin", cin);
-      u.searchParams.set("checkout", cout);
-      u.searchParams.set("group_adults","2"); u.searchParams.set("no_rooms","1"); u.searchParams.set("group_children","0");
-      return u.toString();
-    };
-    const gyg = (q,date) => {
-      const u=new URL("https://www.getyourguide.com/-/en/");
-      u.searchParams.set("q", q);
-      u.searchParams.set("partner_id", window.GYG_PARTNER_ID);
-      u.searchParams.set("sub_id", window.GYG_SUBID);
-      return u.toString();
-    };
-
-    function render(startISO){
-      // calcolo soggiorni
-      let day=0;
-      const spans = DATA.cities.map(c => {
-        const cin = addDays(startISO, day);
-        const cout= addDays(startISO, day + c.nights);
-        day += c.nights;
-        return { ...c, checkin:cin, checkout:cout };
+    // Smooth scroll + Back to top
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href').slice(1);
+        const t = document.getElementById(id);
+        if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'}); }
       });
-      const endISO = addDays(startISO, day);
-
-      // voli
-      const flights = document.getElementById('flights'); flights.innerHTML="";
-      const outA = document.createElement('a');
-      outA.className="block p-4 rounded-2xl border hover:border-black";
-      outA.target="_blank"; outA.textContent = `MXP → ${DATA.mainArrival} (${startISO})`;
-      outA.href = skyOne(ORIGIN_IATA, DATA.mainArrival, startISO);
-      flights.appendChild(outA);
-
-      const retA = document.createElement('a');
-      retA.className="block p-4 rounded-2xl border hover:border-black";
-      retA.target="_blank"; retA.textContent = `${DATA.mainDeparture} → MXP (${endISO})`;
-      retA.href = skyOne(DATA.mainDeparture, ORIGIN_IATA, endISO);
-      flights.appendChild(retA);
-
-      // voli interni (CTA one-way semplificate)
-      (DATA.internalMoves||[]).forEach(m=>{
-        const a=document.createElement('a');
-        a.className="block p-4 rounded-2xl border hover:border-black";
-        a.target="_blank";
-        const date = addDays(startISO, m.dayOffset);
-        a.textContent = `Volo interno ${m.from} → ${m.to} (${date})`;
-        a.href = skyOne(m.from, m.to, date);
-        flights.appendChild(a);
-      });
-
-      // stays
-      const stays = document.getElementById('stays'); stays.innerHTML="";
-      spans.forEach(c=>{
-        const w=document.createElement('div');
-        w.className="p-4 rounded-2xl border space-y-3";
-        w.innerHTML = `
-          <div class="flex items-center justify-between gap-2">
-            <h3 class="font-semibold text-lg">${c.name}</h3>
-            <span class="text-sm bg-gray-100 rounded-full px-2 py-1">${c.checkin} → ${c.checkout} (${c.nights} notti)</span>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <a class="px-3 py-2 rounded-xl bg-black text-white" target="_blank" href="${bookCity(c.bookingQuery,c.checkin,c.checkout)}">Hotel su Booking</a>
-            <a class="px-3 py-2 rounded-xl bg-gray-900 text-white" target="_blank" href="${gyg(c.gygQuery,c.checkin)}">Attività GYG</a>
-            <a class="px-3 py-2 rounded-xl bg-gray-200" target="_blank" href="${c.taFoodUrl}">Dove mangiare (TripAdvisor)</a>
-          </div>
-        `;
-        stays.appendChild(w);
-      });
-
-      // activities
-      const acts = document.getElementById('activities'); acts.innerHTML="";
-      [spans[0], spans[3]].forEach(c=>{
-        const a=document.createElement('a');
-        a.className="block p-4 rounded-2xl border hover:border-black";
-        a.target="_blank"; a.textContent = `Top attività a ${c.name}`;
-        a.href = gyg(c.gygQuery, c.checkin);
-        acts.appendChild(a);
-      });
-
-      // food
-      const food = document.getElementById('food'); food.innerHTML="";
-      [spans[0], spans[3]].forEach(c=>{
-        const a=document.createElement('a');
-        a.className="block p-4 rounded-2xl border hover:border-black";
-        a.target="_blank"; a.textContent = `Ristoranti consigliati a ${c.name} (TripAdvisor)`;
-        a.href = c.taFoodUrl;
-        food.appendChild(a);
-      });
-    }
-
-    // date buttons
-    const wrap = document.getElementById('dateButtons');
-    DATA.departures.forEach((opt,i)=>{
-      const b=document.createElement('button');
-      b.className="px-3 py-2 rounded-xl bg-white border hover:border-black";
-      b.textContent = `${opt.start} • ${opt.length}g`;
-      b.onclick = ()=>{ render(opt.start); b.classList.add('bg-black','text-white'); };
-      wrap.appendChild(b);
-      if(i===0) setTimeout(()=>b.click(),0);
     });
+    const bt = document.getElementById('backtop');
+    window.addEventListener('scroll', ()=>{ bt.classList.toggle('show', window.scrollY > 600); });
+    bt.addEventListener('click', ()=>window.scrollTo({top:0, behavior:'smooth'}));
   </script>
-
-  <!-- JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@graph":[
-      {
-        "@type":"WebPage",
-        "@id":"https://www.globalglide360.com/itinerari/messico-15-giorni.html",
-        "url":"https://www.globalglide360.com/itinerari/messico-15-giorni.html",
-        "name":"Messico in 15 giorni | GlobalGlide360",
-        "description":"Itinerario reale: Città del Messico, Oaxaca, Chiapas, Yucatán. Voli da MXP, hotel per tappa, attività e ristoranti.",
-        "breadcrumb":{"@id":"https://www.globalglide360.com/#breadcrumb-messico15"},
-        "publisher":{"@id":"https://www.globalglide360.com/#org"},
-        "isPartOf":{"@id":"https://www.globalglide360.com/#website"}
-      },
-      {
-        "@type":"BreadcrumbList",
-        "@id":"https://www.globalglide360.com/#breadcrumb-messico15",
-        "itemListElement":[
-          {"@type":"ListItem","position":1,"name":"Home","item":"https://www.globalglide360.com/"},
-          {"@type":"ListItem","position":2,"name":"Itinerari pronti","item":"https://www.globalglide360.com/#itinerari-pronti"},
-          {"@type":"ListItem","position":3,"name":"Messico – 15 giorni","item":"https://www.globalglide360.com/itinerari/messico-15-giorni.html"}
-        ]
-      },
-      {
-        "@type":"TouristTrip",
-        "@id":"https://www.globalglide360.com/itinerari/messico-15-giorni.html#trip",
-        "name":"Messico – 15 giorni",
-        "description":"Itinerario di 15 giorni con tappe multiple e attività prenotabili.",
-        "touristType":"Famiglie | Coppie | Amici",
-        "itinerary":{
-          "@type":"ItemList",
-          "itemListElement":[
-            {"@type":"ListItem","position":1,"name":"Città del Messico – 4 notti"},
-            {"@type":"ListItem","position":2,"name":"Oaxaca – 3 notti"},
-            {"@type":"ListItem","position":3,"name":"San Cristóbal (Chiapas) – 3 notti"},
-            {"@type":"ListItem","position":4,"name":"Riviera Maya – 5 notti"}
-          ]
-        },
-        "departureStation":{"@type":"Airport","name":"Milano Malpensa","iataCode":"MXP"},
-        "arrivalStation":{"@type":"Airport","name":"Mexico City","iataCode":"MEX"},
-        "provider":{"@id":"https://www.globalglide360.com/#org"},
-        "image":["https://www.globalglide360.com/assets/itinerari/messico/cover_1200x630.jpg"]
-      },
-      {
-        "@type":"Organization",
-        "@id":"https://www.globalglide360.com/#org",
-        "name":"GlobalGlide360",
-        "url":"https://www.globalglide360.com/",
-        "logo":{"@type":"ImageObject","url":"https://www.globalglide360.com/assets/logo-gg360.png"}
-      },
-      {
-        "@type":"WebSite",
-        "@id":"https://www.globalglide360.com/#website",
-        "url":"https://www.globalglide360.com/","name":"GlobalGlide360"
-      }
-    ]
-  }
-  </script>
-
-  <!-- (facoltativo) loader partials -->
-  <script>
-    // const HEADER_PATH="/globalglide360-demo/partials/header.html", FOOTER_PATH="/globalglide360-demo/partials/footer.html";
-    // fetch(HEADER_PATH).then(r=>r.ok?r.text():"").then(h=>document.getElementById('include-header').innerHTML=h);
-    // fetch(FOOTER_PATH).then(r=>r.ok?r.text():"").then(f=>document.getElementById('include-footer').innerHTML=f);
-  </script>
-  <script src="/assets/js/gyg-resolver.js"></script>
 </body>
 </html>
