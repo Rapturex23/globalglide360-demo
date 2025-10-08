@@ -323,14 +323,66 @@
           <p class="text-xs text-gray-500 mt-2">Apriremo ricerche reali su portali partner; prenoti sempre sui siti ufficiali.</p>
         </section>
 
-        <!-- MAPPA -->
-        <section id="mappa">
-          <h2 class="text-2xl font-bold text-blue-900 mb-3">Mappa (luoghi principali)</h2>
-          <div class="rounded-2xl overflow-hidden shadow">
-            <!-- Sostituisci con la tua MyMap reale -->
-            <iframe class="w-full h-96" src="https://www.google.com/maps/d/u/0/embed?mid=1q_demo_bali_map_example" loading="lazy"></iframe>
-          </div>
-        </section>
+       <!-- MAPPA (Leaflet, no API key) -->
+<section id="mappa">
+  <h2 class="text-2xl font-bold text-blue-900 mb-3">Mappa (luoghi principali)</h2>
+
+  <!-- Leaflet CSS (includi UNA sola volta per pagina) -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+  <!-- Leaflet JS (includi UNA sola volta per pagina) -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+
+  <div id="map-bali" class="w-full h-96 rounded-2xl overflow-hidden shadow"></div>
+
+  <script>
+    // POI top 10 (coordinate accurate o molto vicine all’ingresso/point principale)
+    const mapMarkersBALI = [
+      { name:"Risaie di Tegalalang", lat:-8.4367, lng:115.2790 },
+      { name:"Ubud Monkey Forest", lat:-8.5190, lng:115.2630 },
+      { name:"Tanah Lot", lat:-8.6216, lng:115.0866 },
+      { name:"Uluwatu Temple", lat:-8.8296, lng:115.0843 },
+      // Nusa Penida: mettiamo il viewpoint più iconico (Kelingking Beach)
+      { name:"Nusa Penida (Kelingking)", lat:-8.7485, lng:115.4635 },
+      { name:"Monte Batur (trailhead)", lat:-8.2428, lng:115.3763 },
+      { name:"Tirta Empul (Tampaksiring)", lat:-8.4155, lng:115.3153 },
+      { name:"Bali Swing (Ubud)", lat:-8.4555, lng:115.2501 },
+      { name:"Rafting fiume Ayung (Kedewatan)", lat:-8.4793, lng:115.2470 },
+      // Cooking class: location popolare a Ubud (es. Paon Bali)
+      { name:"Cooking class balinese (Ubud)", lat:-8.5044, lng:115.2796 }
+    ];
+
+    function initLeafletMap(containerId, center, markers) {
+      const map = L.map(containerId, { scrollWheelZoom:false }).setView(center, 10);
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: "&copy; OpenStreetMap contributors"
+      }).addTo(map);
+
+      const group = L.featureGroup();
+      markers.forEach(p => {
+        const m = L.marker([p.lat, p.lng]).bindPopup(`<strong>${p.name}</strong>`);
+        m.addTo(map);
+        group.addLayer(m);
+      });
+      if (markers.length) map.fitBounds(group.getBounds().pad(0.25));
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Centro iniziale: Ubud circa
+      initLeafletMap("map-bali", [-8.5069, 115.2625], mapMarkersBALI);
+    });
+  </script>
+</section>
+
 
         <!-- FAQ -->
         <section id="faq">
