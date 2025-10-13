@@ -336,13 +336,64 @@
           <p class="text-xs text-gray-500 mt-2">Apriremo ricerche su portali partner; prenoti sui siti ufficiali.</p>
         </section>
 
-        <!-- MAPPA -->
-        <section id="mappa">
-          <h2 class="text-2xl font-bold text-blue-900 mb-3">Mappa (luoghi principali)</h2>
-          <div class="rounded-2xl overflow-hidden shadow">
-            <iframe class="w-full h-96" src="https://www.google.com/maps/d/u/0/embed?mid=1q_demo_barcelona_map_example" loading="lazy"></iframe>
-          </div>
-        </section>
+      <!-- MAPPA (Leaflet, no API key) -->
+<section id="mappa">
+  <h2 class="text-2xl font-bold text-blue-900 mb-3">Mappa (luoghi principali)</h2>
+
+  <!-- Leaflet CSS (includi UNA sola volta per pagina) -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+  <!-- Leaflet JS (includi UNA sola volta per pagina) -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+
+  <div id="map-barcelona" class="w-full h-96 rounded-2xl overflow-hidden shadow"></div>
+
+  <script>
+    // Top 10 Barcellona
+    const mapMarkersBCN = [
+      { name:"Sagrada Família", lat:41.4036, lng:2.1744 },
+      { name:"Park Güell", lat:41.4145, lng:2.1527 },
+      { name:"Casa Batlló", lat:41.3916, lng:2.1649 },
+      { name:"La Pedrera (Casa Milà)", lat:41.3954, lng:2.1620 },
+      { name:"Quartiere Gotico (Cattedrale di Barcellona)", lat:41.3849, lng:2.1763 },
+      { name:"Montjuïc & Castello", lat:41.3637, lng:2.1650 },
+      { name:"Barceloneta & lungomare", lat:41.3775, lng:2.1910 },
+      { name:"Palau de la Música Catalana", lat:41.3870, lng:2.1754 },
+      { name:"Escursione a Montserrat", lat:41.5957, lng:1.8375 },
+      { name:"Spettacolo Flamenco (La Rambla)", lat:41.3797, lng:2.1734 }
+    ];
+
+    function initLeafletMap(containerId, center, markers) {
+      const map = L.map(containerId, { scrollWheelZoom:false }).setView(center, 12);
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: "&copy; OpenStreetMap contributors"
+      }).addTo(map);
+
+      const group = L.featureGroup();
+      markers.forEach(p => {
+        const m = L.marker([p.lat, p.lng]).bindPopup(`<strong>${p.name}</strong>`);
+        m.addTo(map);
+        group.addLayer(m);
+      });
+      if (markers.length) map.fitBounds(group.getBounds().pad(0.25));
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Centro su Barcellona; i bounds includeranno anche Montserrat
+      initLeafletMap("map-barcelona", [41.3874, 2.1686], mapMarkersBCN);
+    });
+  </script>
+</section>
+
 
         <!-- FAQ -->
         <section id="faq">
