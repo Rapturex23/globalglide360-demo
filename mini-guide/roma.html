@@ -316,13 +316,64 @@
           <p class="text-xs text-gray-500 mt-2">Apriremo ricerche su portali partner; prenoti sui siti ufficiali.</p>
         </section>
 
-        <!-- MAPPA -->
-        <section id="mappa">
-          <h2 class="text-2xl font-bold text-blue-900 mb-3">Mappa (luoghi principali)</h2>
-          <div class="rounded-2xl overflow-hidden shadow">
-            <iframe class="w-full h-96" src="https://www.google.com/maps/d/u/0/embed?mid=1q_demo_rome_map_example" loading="lazy"></iframe>
-          </div>
-        </section>
+        <!-- MAPPA (Leaflet, no API key) -->
+<section id="mappa">
+  <h2 class="text-2xl font-bold text-blue-900 mb-3">Mappa (luoghi principali)</h2>
+
+  <!-- Leaflet CSS (includi UNA sola volta per pagina) -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+  <!-- Leaflet JS (includi UNA sola volta per pagina) -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+
+  <div id="map-rome" class="w-full h-96 rounded-2xl overflow-hidden shadow"></div>
+
+  <script>
+    // Top 10 Roma (coordinate vicine a ingressi/POI principali)
+    const mapMarkersROMA = [
+      { name:"Colosseo", lat:41.8902, lng:12.4922 },
+      { name:"Musei Vaticani & Cappella Sistina (ingresso)", lat:41.9065, lng:12.4536 },
+      { name:"Basilica di San Pietro (Piazza)", lat:41.9022, lng:12.4539 },
+      { name:"Foro Romano & Palatino (ingresso Via dei Fori)", lat:41.8925, lng:12.4853 },
+      { name:"Fontana di Trevi", lat:41.9009, lng:12.4833 },
+      { name:"Pantheon & Piazza Navona (Pantheon)", lat:41.8986, lng:12.4768 },
+      { name:"Trastevere (S. Maria in Trastevere)", lat:41.8896, lng:12.4709 },
+      { name:"Galleria Borghese", lat:41.9139, lng:12.4931 },
+      { name:"Piazza di Spagna (Scalinata)", lat:41.9059, lng:12.4823 },
+      { name:"Via Appia Antica & acquedotti (Cecilia Metella)", lat:41.8439, lng:12.5213 }
+    ];
+
+    function initLeafletMap(containerId, center, markers) {
+      const map = L.map(containerId, { scrollWheelZoom:false }).setView(center, 12);
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: "&copy; OpenStreetMap contributors"
+      }).addTo(map);
+
+      const group = L.featureGroup();
+      markers.forEach(p => {
+        const m = L.marker([p.lat, p.lng]).bindPopup(`<strong>${p.name}</strong>`);
+        m.addTo(map);
+        group.addLayer(m);
+      });
+      if (markers.length) map.fitBounds(group.getBounds().pad(0.2));
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Centro città; i bounds includeranno Vaticano e Appia
+      initLeafletMap("map-rome", [41.9028, 12.4964], mapMarkersROMA);
+    });
+  </script>
+</section>
+
 
         <!-- FAQ -->
         <section id="faq">
