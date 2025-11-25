@@ -1,256 +1,292 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="robots" content="noindex,follow">
-  <title>Risultati ricerca | GlobalGlide360</title>
-  <meta name="description" content="Risultati personalizzati: voli, hotel e attività con disponibilità aggiornata, più articoli e mini-guide pertinenti."/>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="robots" content="noindex,follow">
+    <title>Risultati ricerca | GlobalGlide360</title>
+    <meta name="description" content="Risultati personalizzati: voli, hotel e attività con disponibilità aggiornata, più articoli e mini-guide pertinenti."/>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
 
-  <!-- Travelpayouts LinkSwitcher -->
-  <script data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
-    (function(){var s=document.createElement("script");s.async=1;s.src="https://tpembars.com/NDU0MTUz.js?t=454153";document.head.appendChild(s);})();
-  </script>
+    <script data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
+        (function(){var s=document.createElement("script");s.async=1;s.src="https://tpembars.com/NDU0MTUz.js?t=454153";document.head.appendChild(s);})();
+    </script>
 
-  <style>
-    a:focus,button:focus,input:focus{outline:2px solid #1D4ED8;outline-offset:2px}
-    .card{ background:#fff; border-radius:1rem; box-shadow:0 10px 16px -12px rgba(0,0,0,.25); }
-  </style>
+    <style>
+        a:focus,button:focus,input:focus{outline:2px solid #1D4ED8;outline-offset:2px}
+        .card{ background:#fff; border-radius:1rem; box-shadow:0 10px 16px -12px rgba(0,0,0,.25); }
+        .hero-img { background-size: cover; background-position: center; height: 180px; border-radius: 1rem 1rem 0 0; }
+        .btn-partner { display: block; width: 100%; text-align: center; font-weight: 600; padding: 0.5rem 1rem; border-radius: 0.5rem; transition: background-color 0.2s; }
+        .btn-primary { background-color: #1D4ED8; color: white; }
+        .btn-primary:hover { background-color: #1E40AF; }
+        .btn-secondary { background-color: white; border: 1px solid #D1D5DB; color: #4B5563; }
+        .btn-secondary:hover { background-color: #F9FAFB; }
+    </style>
 </head>
 <body class="bg-blue-50 text-gray-800">
-  <div id="include-header"></div>
+    <div id="include-header"></div>
 
-  <main class="container mx-auto px-4 py-8">
-    <h1 class="text-3xl font-extrabold text-blue-900 mb-2">Risultati personalizzati</h1>
-    <p class="text-gray-700 mb-6">Vedi disponibilità reale su portali ufficiali. Prenoti sempre sul sito del partner.</p>
+    <main class="container mx-auto px-4 py-8">
+        <section id="dynamicHero" class="relative h-48 md:h-64 card mb-8 overflow-hidden">
+            <div id="heroImage" class="absolute inset-0 hero-img opacity-20" style="background-image: url('');"></div>
+            <div class="relative p-5 h-full flex flex-col justify-end">
+                <h1 id="mainTitle" class="text-3xl md:text-4xl font-extrabold text-blue-900 mb-2 drop-shadow-md">Risultati personalizzati</h1>
+                <p class="text-gray-700 mb-0">Vedi disponibilità reale su portali ufficiali. Prenoti sempre sul sito del partner.</p>
+            </div>
+        </section>
 
-    <!-- Riepilogo ricerca -->
-    <section id="summary" class="card p-5 mb-8">
-      <h2 class="text-xl font-semibold text-blue-900">La tua ricerca</h2>
-      <div id="summaryContent" class="text-gray-700 mt-2"></div>
-    </section>
+        <section id="summary" class="card p-5 mb-8">
+            <h2 class="text-xl font-semibold text-blue-900">La tua ricerca</h2>
+            <div id="summaryContent" class="text-gray-700 mt-2 text-sm"></div>
+        </section>
 
-    <!-- Link partner -->
-    <section class="grid md:grid-cols-3 gap-6 mb-10">
-      <!-- Voli -->
-      <article class="card p-5">
-        <h3 class="text-lg font-semibold text-blue-900">Voli</h3>
-        <p class="text-gray-700 text-sm mb-3">Date e aeroporti preimpostati quando possibile.</p>
-        <div class="space-y-2" id="flightsLinks"></div>
-      </article>
+        <section id="destinationInfo" class="card p-5 mb-8 hidden">
+             <h2 class="text-xl font-semibold text-blue-900" id="destinationTitle"></h2>
+            <p id="destinationDescription" class="text-gray-700 mt-2"></p>
+        </section>
 
-      <!-- Hotel -->
-      <article class="card p-5">
-        <h3 class="text-lg font-semibold text-blue-900">Hotel</h3>
-        <p class="text-gray-700 text-sm mb-3">Ricerca con check-in/check-out e occupanti già impostati.</p>
-        <div class="space-y-2" id="hotelsLinks"></div>
-      </article>
+        <section class="grid md:grid-cols-3 gap-6 mb-10">
+            <article class="card p-5">
+                <h3 class="text-lg font-semibold text-blue-900">✈️ Voli</h3>
+                <p class="text-gray-700 text-sm mb-4">Date e aeroporti preimpostati quando possibile.</p>
+                <div class="space-y-3" id="flightsLinks"></div>
+            </article>
 
-      <!-- Attività -->
-      <article class="card p-5">
-        <h3 class="text-lg font-semibold text-blue-900">Attività</h3>
-        <p class="text-gray-700 text-sm mb-3">Tour, biglietti e pass.</p>
-        <div class="space-y-2" id="activitiesLinks"></div>
-      </article>
-    </section>
+            <article class="card p-5">
+                <h3 class="text-lg font-semibold text-blue-900">🏨 Hotel</h3>
+                <p class="text-gray-700 text-sm mb-4">Ricerca con check-in/check-out e occupanti già impostati.</p>
+                <div class="space-y-3" id="hotelsLinks"></div>
+            </article>
 
-    <!-- Contenuti correlati -->
-    <section class="mb-12">
-      <h2 class="text-2xl font-bold text-blue-900 mb-4">Contenuti correlati</h2>
-      <div id="relatedContent" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-    </section>
+            <article class="card p-5">
+                <h3 class="text-lg font-semibold text-blue-900">🎟️ Attività</h3>
+                <p class="text-gray-700 text-sm mb-4">Tour, biglietti e pass turistici. Ideale per risparmiare tempo.</p>
+                <div class="space-y-3" id="activitiesLinks"></div>
+            </article>
+        </section>
 
-    <section class="text-xs text-gray-500">
-      I prezzi finali e la disponibilità sono mostrati direttamente sui siti dei partner e possono variare.
-    </section>
-  </main>
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-blue-900 mb-4">Contenuti correlati</h2>
+            <div id="relatedContent" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </section>
 
-  <div id="include-footer"></div>
+        <section class="text-xs text-gray-500">
+            I prezzi finali e la disponibilità sono mostrati direttamente sui siti dei partner e possono variare.
+        </section>
+    </main>
 
-  <!-- ====== JS UNICO: tutto dentro a <script> ====== -->
-  <script>
-    // Partials (root)
-    const HEADER_PATH="/partials/header.html";
-    const FOOTER_PATH="/partials/footer.html";
-    async function loadPartials(){
-      try{
-        const [h,f]=await Promise.all([fetch(HEADER_PATH),fetch(FOOTER_PATH)]);
-        if(h.ok) document.getElementById("include-header").innerHTML=await h.text();
-        if(f.ok) document.getElementById("include-footer").innerHTML=await f.text();
-      }catch(e){console.error("Errore caricando i partials:",e);}
-    }
-    if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",loadPartials);} else {loadPartials();}
+    <div id="include-footer"></div>
 
-    // ====== Utility ======
-    const PARTNER_ID = "HWU00MZ"; // GYG
-    const TP_MARKER  = "454153";   // Travelpayouts / Aviasales marker
+    <script>
+        // Partials (root)
+        const HEADER_PATH="/partials/header.html";
+        const FOOTER_PATH="/partials/footer.html";
+        async function loadPartials(){
+            try{
+                const [h,f]=await Promise.all([fetch(HEADER_PATH),fetch(FOOTER_PATH)]);
+                if(h.ok) document.getElementById("include-header").innerHTML=await h.text();
+                if(f.ok) document.getElementById("include-footer").innerHTML=await f.text();
+            }catch(e){console.error("Errore caricando i partials:",e);}
+        }
+        if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",loadPartials);} else {loadPartials();}
 
-    function fmtDateISO(d){
-      if(!d) return "";
-      const dt = new Date(d);
-      const y = dt.getFullYear();
-      const m = String(dt.getMonth()+1).padStart(2,"0");
-      const day = String(dt.getDate()).padStart(2,"0");
-      return y+"-"+m+"-"+day;
-    }
-    function ddmm(d){
-      if(!d) return "";
-      const dt = new Date(d);
-      const dd = String(dt.getDate()).padStart(2,"0");
-      const mm = String(dt.getMonth()+1).padStart(2,"0");
-      return dd+mm;
-    }
-    function sanitize(str){ return (str||"").trim().toLowerCase(); }
+        // ====== Utility ======
+        const PARTNER_ID = "HWU00MZ"; // GYG
+        const TP_MARKER  = "454153";   // Travelpayouts / Aviasales marker
 
-    // Codici città
-    const CITY_MAP = {
-      "mxp":"MXP","malpensa":"MXP","milano":"MXP","linate":"LIN","lin":"LIN",
-      "fco":"FCO","roma":"FCO","cia":"CIA",
-      "tokyo":"TYO","tyo":"TYO","nrt":"NRT","hnd":"HND",
-      "parigi":"PAR","paris":"PAR","par":"PAR","cdg":"CDG","ory":"ORY","bva":"BVA",
-      "new york":"NYC","nyc":"NYC","jfk":"JFK","ewr":"EWR","lga":"LGA",
-      "bali":"DPS","denpasar":"DPS","dps":"DPS",
-      "londra":"LON","lon":"LON","lhr":"LHR","lgw":"LGW","ltn":"LTN","stn":"STN","lcy":"LCY",
-      "barcellona":"BCN","bcn":"BCN",
-      "roma":"ROM","rom":"ROM"
-    };
+        function fmtDateISO(d){
+            if(!d) return "";
+            const dt = new Date(d);
+            const y = dt.getFullYear();
+            const m = String(dt.getMonth()+1).padStart(2,"0");
+            const day = String(dt.getDate()).padStart(2,"0");
+            return y+"-"+m+"-"+day;
+        }
+        function ddmm(d){
+            if(!d) return "";
+            const dt = new Date(d);
+            const dd = String(dt.getDate()).padStart(2,"0");
+            const mm = String(dt.getMonth()+1).padStart(2,"0");
+            return dd+mm;
+        }
+        function sanitize(str){ return (str||"").trim().toLowerCase(); }
 
-    const HOTEL_ZONES = {
-      "TYO": ["Shinjuku","Shibuya","Ueno/Asakusa"],
-      "PAR": ["Le Marais","Montmartre","10ᵃ–12ᵃ arr."],
-      "NYC": ["Midtown","Long Island City","Downtown Brooklyn"],
-      "DPS": ["Sanur","Nusa Dua","Ubud"]
-    };
+        // Mappa delle destinazioni con info extra (IMAGE PATHS INCLUSI)
+        const DESTINATION_INFO = {
+            "TYO": { name: "Tokyo", code: "TYO", zones: ["Shinjuku","Shibuya","Ueno/Asakusa"], img: "/mini-guide/assets/tokyo-hero.webp", desc: "La megalopoli che unisce tradizione, tecnologia e quartieri unici. Una destinazione da vivere 24h su 24." },
+            "PAR": { name: "Parigi", code: "PAR", zones: ["Le Marais","Montmartre","10ᵃ–12ᵃ arr."], img: "/mini-guide/assets/parigi-hero.webp", desc: "La Ville Lumière offre arte, storia e un'atmosfera romantica in ogni boulevard e museo." },
+            "NYC": { name: "New York", code: "NYC", zones: ["Midtown","Long Island City","Downtown Brooklyn"], img: "/mini-guide/assets/newyork-hero.webp", desc: "La città che non dorme mai: grattacieli, musei di fama mondiale e un melting pot culturale infinito." },
+            "DPS": { name: "Bali", code: "DPS", zones: ["Sanur","Nusa Dua","Ubud"], img: "/mini-guide/assets/bali-hero.webp", desc: "L'isola degli Dei, dove spiritualità, spiagge vulcaniche e foreste tropicali si incontrano in un equilibrio magico." },
+            // Aggiungere qui altre destinazioni come quelle generate (es. EDI, GLA, VIE, PRG, BUD, CPH, etc.)
+            "EDI": { name: "Edimburgo", code: "EDI", zones: ["Old Town","New Town","Leith"], img: "/mini-guide/assets/edinburgo-hero.webp", desc: "La capitale gotica della Scozia: tra Castello, Royal Mile e atmosfere letterarie che pervadono ogni vicolo." },
+            "GLA": { name: "Glasgow", code: "GLA", zones: ["West End","City Centre","Finnieston"], img: "/mini-guide/assets/glasgow-hero.webp", desc: "La vibrante capitale culturale scozzese, ricca di arte urbana, musei gratuiti e architettura vittoriana." },
+            "VIE": { name: "Vienna", code: "VIE", zones: ["Inner City","Neubau","Landstraße"], img: "/mini-guide/assets/vienna-hero.webp", desc: "L'elegante capitale imperiale: palazzi asburgici, musica classica e la celebre cultura dei caffè storici." },
+            "PRG": { name: "Praga", code: "PRG", zones: ["Staré Město","Malá Strana","Nové Město"], img: "/mini-guide/assets/praga-hero.webp", desc: "La città magica d'Europa: un gioiello gotico e barocco attraversato dal Ponte Carlo e dominato dal suo imponente Castello." },
+            "BUD": { name: "Budapest", code: "BUD", zones: ["Pest (Centro)","Buda (Collina)","Quartiere Ebraico"], img: "/mini-guide/assets/budapest-hero.webp", desc: "La perla del Danubio, divisa tra la storia di Buda e la vivacità di Pest, famosa per le sue terme storiche." },
+            "CPH": { name: "Copenaghen", code: "CPH", zones: ["Nyhavn","Vesterbro","Nørrebro"], img: "/mini-guide/assets/copenaghen-hero.webp", desc: "La capitale della hygge e del design: un luogo rilassato, ideale per essere esplorato in bicicletta tra canali e palazzi reali." },
+            "BER": { name: "Berlino", code: "BER", zones: ["Mitte","Kreuzberg","Prenzlauer Berg"], img: "/mini-guide/assets/berlino-hero.webp", desc: "Il libro di storia del XX secolo: una metropoli dinamica e alternativa, segnata dal Muro e dalla rinascita culturale." },
+            // Mappa estesa per la ricerca di codici IATA/città
+            "IATA_MAP": {
+                "mxp":"MXP","malpensa":"MXP","milano":"MXP","linate":"LIN","lin":"LIN",
+                "fco":"FCO","roma":"FCO","cia":"CIA",
+                "tokyo":"TYO","tyo":"TYO","nrt":"NRT","hnd":"HND",
+                "parigi":"PAR","paris":"PAR","par":"PAR","cdg":"CDG","ory":"ORY","bva":"BVA",
+                "new york":"NYC","nyc":"NYC","jfk":"JFK","ewr":"EWR","lga":"LGA",
+                "bali":"DPS","denpasar":"DPS","dps":"DPS",
+                "londra":"LON","lon":"LON","lhr":"LHR","lgw":"LGW","ltn":"LTN","stn":"STN","lcy":"LCY",
+                "edinburgo":"EDI", "edimburgo":"EDI",
+                "glasgow":"GLA",
+                "vienna":"VIE",
+                "praga":"PRG",
+                "budapest":"BUD",
+                "copenaghen":"CPH",
+                "berlino":"BER",
+            }
+        };
 
-    const RELATED = {
-      "TYO": {
-        articoli: [
-          {href:"/articoli/tokyo-7-giorni-migliorato.html", title:"Tokyo in 7 giorni — guida migliorata", img:"/img/tokyo.png"},
-          {href:"/articoli/tokyo-7-giorni-costi-2026.html", title:"Tokyo 7 giorni: costi 2026", img:"/img/tokyo.png"}
-        ],
-        guide: [{href:"/mini-guide/tokyo.html", title:"Mini-guida: Tokyo", img:"/img/tokyo.png"}]
-      },
-      "PAR": {
-        articoli: [
-          {href:"/articoli/parigi-5-giorni-migliorato.html", title:"Parigi 5 giorni — guida migliorata", img:"/img/parigi.png"},
-          {href:"/articoli/parigi-5-giorni-weekend-2026.html", title:"Parigi 5 giorni (weekend)", img:"/img/parigi.png"}
-        ],
-        guide: [{href:"/mini-guide/parigi.html", title:"Mini-guida: Parigi", img:"/img/parigi.png"}]
-      },
-      "NYC": {
-        articoli: [
-          {href:"/articoli/newyork-5-giorni-migliorato.html", title:"New York 5 giorni — guida migliorata", img:"/img/newyork.png"},
-          {href:"/articoli/newyork-5-giorni-costi-2026.html", title:"New York 5 giorni: costi 2026", img:"/img/newyork.png"}
-        ],
-        guide: [{href:"/mini-guide/newyork.html", title:"Mini-guida: New York", img:"/img/newyork.png"}]
-      },
-      "DPS": {
-        articoli: [
-          {href:"/articoli/bali-con-bambini-migliorato.html", title:"Bali con bambini — guida migliorata", img:"/img/bali.png"},
-          {href:"/articoli/bali-con-bambini-consigli.html", title:"Bali con bambini: 7 consigli", img:"/img/bali.png"}
-        ],
-        guide: [{href:"/mini-guide/bali.html", title:"Mini-guida: Bali", img:"/img/bali.png"}]
-      }
-    };
+        // Aggiorna l'oggetto RELATED per usare i codici IATA/Città standard
+        const RELATED = {
+            "TYO": { articles: [
+                {href:"/articoli/tokyo-7-giorni-migliorato.html", title:"Tokyo in 7 giorni — guida migliorata", img:"/img/tokyo.png"},
+                {href:"/articoli/tokyo-7-giorni-costi-2026.html", title:"Tokyo 7 giorni: costi 2026", img:"/img/tokyo.png"}
+            ], guides: [{href:"/mini-guide/tokyo.html", title:"Mini-guida: Tokyo", img:"/img/tokyo.png"}] },
+            "PAR": { articles: [
+                {href:"/articoli/parigi-5-giorni-migliorato.html", title:"Parigi 5 giorni — guida migliorata", img:"/img/parigi.png"},
+                {href:"/articoli/parigi-5-giorni-weekend-2026.html", title:"Parigi 5 giorni (weekend)", img:"/img/parigi.png"}
+            ], guides: [{href:"/mini-guide/parigi.html", title:"Mini-guida: Parigi", img:"/img/parigi.png"}] },
+            "NYC": { articles: [
+                {href:"/articoli/newyork-5-giorni-migliorato.html", title:"New York 5 giorni — guida migliorata", img:"/img/newyork.png"},
+                {href:"/articoli/newyork-5-giorni-costi-2026.html", title:"New York 5 giorni: costi 2026", img:"/img/newyork.png"}
+            ], guides: [{href:"/mini-guide/newyork.html", title:"Mini-guida: New York", img:"/img/newyork.png"}] },
+            "DPS": { articles: [
+                {href:"/articoli/bali-con-bambini-migliorato.html", title:"Bali con bambini — guida migliorata", img:"/img/bali.png"},
+                {href:"/articoli/bali-con-bambini-consigli.html", title:"Bali con bambini: 7 consigli", img:"/img/bali.png"}
+            ], guides: [{href:"/mini-guide/bali.html", title:"Mini-guida: Bali", img:"/img/bali.png"}] },
+            // Aggiungi articoli correlati per le destinazioni generate
+            "EDI": { articles: [{href:"/articoli/edinburgo-4-giorni.html", title:"Edimburgo in 4 giorni - Itinerario", img:"/mini-guide/assets/edinburgo-hero.webp"}], guides: [{href:"/mini-guide/edinburgo.html", title:"Mini-guida: Edimburgo", img:"/mini-guide/assets/edinburgo-hero.webp"}] },
+            "GLA": { articles: [{href:"/articoli/glasgow-2-giorni.html", title:"Glasgow in 2 giorni - Itinerario", img:"/mini-guide/assets/glasgow-hero.webp"}] },
+            "VIE": { articles: [{href:"/articoli/vienna-4-giorni.html", title:"Vienna in 4 giorni - Itinerario", img:"/mini-guide/assets/vienna-hero.webp"}] },
+            "PRG": { articles: [{href:"/articoli/praga-4-giorni.html", title:"Praga in 4 giorni - Itinerario", img:"/mini-guide/assets/praga-hero.webp"}] },
+            "BUD": { articles: [{href:"/articoli/budapest-4-giorni.html", title:"Budapest in 4 giorni - Itinerario", img:"/mini-guide/assets/budapest-hero.webp"}] },
+            "CPH": { articles: [{href:"/articoli/copenaghen-4-giorni.html", title:"Copenaghen in 4 giorni - Itinerario", img:"/mini-guide/assets/copenaghen-hero.webp"}] },
+            "BER": { articles: [{href:"/articoli/berlino-4-giorni.html", title:"Berlino in 4 giorni - Itinerario", img:"/mini-guide/assets/berlino-hero.webp"}] },
+        };
 
-    // ====== BUILD PAGINA ======
-    (function build(){
-      const p = new URLSearchParams(location.search);
-      const rawOrigin = sanitize(p.get("origin"));
-      const rawDest   = sanitize(p.get("destination"));
-      const start     = p.get("start");
-      const end       = p.get("end");
-      const adults    = Math.max(1, parseInt(p.get("adults")||"2",10));
-      const children  = Math.max(0, parseInt(p.get("children")||"0",10));
-      const budget    = (p.get("budget")||"").trim();
-      const prefs     = p.getAll("prefs");
 
-      const ORI = CITY_MAP[rawOrigin] || (rawOrigin?rawOrigin.toUpperCase():"");
-      const DES = CITY_MAP[rawDest]   || (rawDest?rawDest.toUpperCase():"");
+        // ====== BUILD PAGINA ======
+        (function build(){
+            const p = new URLSearchParams(location.search);
+            const rawOrigin = sanitize(p.get("origin"));
+            const rawDest   = sanitize(p.get("destination"));
+            const start     = p.get("start");
+            const end       = p.get("end");
+            const adults    = Math.max(1, parseInt(p.get("adults")||"2",10));
+            const children  = Math.max(0, parseInt(p.get("children")||"0",10));
+            const budget    = (p.get("budget")||"").trim();
+            const prefs     = p.getAll("prefs");
 
-      window.GG_SUBID = "risultati";
+            // Risoluzione codici IATA/Città
+            const IATA_MAP = DESTINATION_INFO.IATA_MAP;
+            const ORI = IATA_MAP[rawOrigin] || (rawOrigin ? rawOrigin.toUpperCase() : "");
+            const DES_CODE = IATA_MAP[rawDest] || (rawDest ? rawDest.toUpperCase() : "");
+            const destinationData = DESTINATION_INFO[DES_CODE];
+            const DES_NAME = destinationData ? destinationData.name : (rawDest ? rawDest.toUpperCase() : "");
+            
+            // Imposta sub_id e titolo dinamico
+            window.GG_SUBID = "risultati-" + (rawDest || "GEN");
+            document.getElementById("mainTitle").textContent = "Risultati per " + DES_NAME;
+            
+            // ====== HERO DINAMICO ======
+            if (destinationData && destinationData.img) {
+                const heroDiv = document.getElementById("heroImage");
+                heroDiv.style.backgroundImage = `url('${destinationData.img}')`;
+                heroDiv.classList.remove('opacity-20');
+                heroDiv.classList.add('opacity-70'); // Rendi l'immagine più visibile
 
-      // Riepilogo
-      const fmtStart = fmtDateISO(start);
-      const fmtEnd   = fmtDateISO(end);
-      var sum = [];
-      if(ORI) sum.push("<strong>P.:</strong> "+ORI);
-      if(DES) sum.push("<strong>Dest.:</strong> "+DES);
-      if(fmtStart) sum.push("<strong>Partenza:</strong> "+fmtStart);
-      if(fmtEnd)   sum.push("<strong>Ritorno:</strong> "+fmtEnd);
-      sum.push("<strong>Occupanti:</strong> "+adults+" adulti"+(children>0?(" + "+children+" bambini"):""));
-      if(budget) sum.push("<strong>Budget:</strong> "+budget);
-      if(prefs.length) sum.push("<strong>Preferenze:</strong> "+prefs.join(", "));
-      document.getElementById("summaryContent").innerHTML = sum.join(" &nbsp;•&nbsp; ");
+                document.getElementById("destinationInfo").classList.remove('hidden');
+                document.getElementById("destinationTitle").textContent = "Informazioni veloci su " + DES_NAME;
+                document.getElementById("destinationDescription").textContent = destinationData.desc;
+            }
 
-      // ====== VOLI (Aviasales / Travelpayouts) ======
-      var flights = document.getElementById("flightsLinks");
-      var deepLink = "https://www.aviasales.com/";
-      if (ORI && DES && start && end){
-        // Esempio: /search/MXP1209TYO1809?adults=2&children=1&marker=454153
-        var seg = ORI + ddmm(start) + DES + ddmm(end);
-        var qs  = "adults=" + adults + (children>0?("&children="+children):"") + "&marker=" + encodeURIComponent(TP_MARKER);
-        deepLink = "https://www.aviasales.com/search/" + seg + "?" + qs;
-      }
-      var routeOnly = "https://www.aviasales.com/";
-      if (ORI && DES){
-        var seg2 = ORI + "0" + DES + "0";
-        var qs2  = "adults=" + adults + (children>0?("&children="+children):"") + "&marker=" + encodeURIComponent(TP_MARKER);
-        routeOnly = "https://www.aviasales.com/search/" + seg2 + "?" + qs2;
-      }
-      flights.innerHTML =
-        '<a href="'+deepLink+'" target="_blank" rel="nofollow noopener" class="inline-block bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800 mb-2">Voli (date preimpostate)</a>'
-        + '<div class="text-xs text-gray-500 -mt-1 mb-3">Se il link non mostra subito i risultati, usa anche il fallback qui sotto.</div>'
-        + '<a href="'+routeOnly+'" target="_blank" rel="nofollow noopener" class="inline-block bg-white border px-4 py-2 rounded hover:bg-gray-50">Voli (rotta senza date)</a>';
+            // Riepilogo
+            const fmtStart = fmtDateISO(start);
+            const fmtEnd   = fmtDateISO(end);
+            var sum = [];
+            if(ORI) sum.push("<strong>Partenza:</strong> "+ORI);
+            if(DES_NAME) sum.push("<strong>Destinazione:</strong> "+DES_NAME);
+            if(fmtStart) sum.push("<strong>Check-in:</strong> "+fmtStart);
+            if(fmtEnd)   sum.push("<strong>Check-out:</strong> "+fmtEnd);
+            sum.push("<strong>Viaggiatori:</strong> "+adults+" adulti"+(children>0?(" + "+children+" bambini"):""));
+            if(budget) sum.push("<strong>Budget:</strong> "+budget);
+            if(prefs.length) sum.push("<strong>Preferenze:</strong> "+prefs.join(", "));
+            document.getElementById("summaryContent").innerHTML = sum.join(" &nbsp;•&nbsp; ");
 
-      // ====== HOTEL (Booking) ======
-      var hotels = document.getElementById("hotelsLinks");
-      var destText = rawDest ? encodeURIComponent(rawDest) : "";
-      var bookingUrl = "https://www.booking.com/searchresults.html?ss="+destText;
-      if(fmtStart && fmtEnd){
-        bookingUrl += "&checkin="+fmtStart+"&checkout="+fmtEnd;
-      }
-      bookingUrl += "&group_adults="+adults+"&group_children="+children+"&no_rooms=1";
-      var zones = (HOTEL_ZONES[DES]||[]).map(function(z){
-        return '<span class="text-xs bg-gray-100 px-2 py-1 rounded">'+z+'</span>';
-      }).join(" ");
-      hotels.innerHTML =
-        '<a href="'+bookingUrl+'" target="_blank" rel="nofollow noopener" class="inline-block bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800">Apri risultati hotel</a>'
-        + '<p class="text-xs text-gray-500 mt-2">'+(fmtStart&&fmtEnd ? ("date: "+fmtStart+" → "+fmtEnd) : "imposta le date in pagina")+'</p>'
-        + (zones? ('<div class="mt-2 flex flex-wrap gap-2">'+zones+'</div>') : '');
+            // ====== VOLI (Aviasales / Travelpayouts) ======
+            var flights = document.getElementById("flightsLinks");
+            var deepLink = "https://www.aviasales.com/";
+            if (ORI && DES_CODE && start && end){
+                var seg = ORI + ddmm(start) + DES_CODE + ddmm(end);
+                var qs  = "adults=" + adults + (children>0?("&children="+children):"") + "&marker=" + encodeURIComponent(TP_MARKER);
+                deepLink = "https://www.aviasales.com/search/" + seg + "?" + qs;
+            }
+            var routeOnly = "https://www.aviasales.com/";
+            if (ORI && DES_CODE){
+                var seg2 = ORI + "0" + DES_CODE + "0";
+                var qs2  = "adults=" + adults + (children>0?("&children="+children):"") + "&marker=" + encodeURIComponent(TP_MARKER);
+                routeOnly = "https://www.aviasales.com/search/" + seg2 + "?" + qs2;
+            }
+            flights.innerHTML =
+                '<a href="'+deepLink+'" target="_blank" rel="nofollow noopener" class="btn-partner btn-primary">Voli (con date)</a>'
+                + '<div class="text-xs text-gray-500 mt-2">Se non trovi risultati, prova la rotta flessibile:</div>'
+                + '<a href="'+routeOnly+'" target="_blank" rel="nofollow noopener" class="btn-partner btn-secondary mt-2">Voli (rotta senza date)</a>';
 
-      // ====== ATTIVITÀ (GetYourGuide) ======
-      var gygMap = {
-        "TYO":"https://www.getyourguide.com/-l193/",
-        "PAR":"https://www.getyourguide.com/-l16/",
-        "NYC":"https://www.getyourguide.com/-l59/",
-        "DPS":"https://www.getyourguide.com/-l347/"
-      };
-      var gygBase = gygMap[DES] || "https://www.getyourguide.com/";
-      var cmp = "cmp=sub_risultati-"+(DES||"GEN").toLowerCase();
-      var gygUrl = gygBase + "?partner_id=" + encodeURIComponent(PARTNER_ID) + "&" + cmp;
-      var activities = document.getElementById("activitiesLinks");
-      activities.innerHTML =
-        '<a href="'+gygUrl+'" target="_blank" rel="nofollow noopener" class="inline-block bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800">Apri attività e tour</a>'
-        + '<p class="text-xs text-gray-500 mt-2">Link tracciato (partner_id <code>'+PARTNER_ID+'</code>).</p>';
+            // ====== HOTEL (Booking) ======
+            var hotels = document.getElementById("hotelsLinks");
+            var destText = rawDest ? encodeURIComponent(rawDest) : "";
+            var bookingUrl = "https://www.booking.com/searchresults.html?ss="+destText;
+            if(fmtStart && fmtEnd){
+                bookingUrl += "&checkin="+fmtStart+"&checkout="+fmtEnd;
+            }
+            bookingUrl += "&group_adults="+adults+"&group_children="+children+"&no_rooms=1";
+            var zones = (destinationData && destinationData.zones) || [];
+            var zonesHtml = zones.map(function(z){
+                return '<span class="text-xs bg-gray-100 px-2 py-1 rounded">'+z+'</span>';
+            }).join(" ");
+            hotels.innerHTML =
+                '<a href="'+bookingUrl+'" target="_blank" rel="nofollow noopener" class="btn-partner btn-primary">Apri risultati hotel</a>'
+                + '<p class="text-xs text-gray-500 mt-3">'+(fmtStart&&fmtEnd ? ("date: "+fmtStart+" → "+fmtEnd) : "imposta le date in pagina")+'</p>'
+                + (zonesHtml? ('<p class="text-sm text-gray-700 mt-3 font-semibold">Zone consigliate:</p><div class="mt-2 flex flex-wrap gap-2">'+zonesHtml+'</div>') : '');
 
-      // ====== CONTENUTI CORRELATI ======
-      var relatedWrap = document.getElementById("relatedContent");
-      var rel = RELATED[DES];
-      if(rel){
-        var all = [].concat(rel.articoli||[]).concat(rel.guide||[]);
-        relatedWrap.innerHTML = all.map(function(card){
-          return '<a href="'+card.href+'" class="block bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden transition">'
-                   + '<img src="'+card.img+'" alt="'+card.title+'" class="w-full h-40 object-cover">'
-                   + '<div class="p-4"><h3 class="font-semibold text-blue-900">'+card.title+'</h3>'
-                   + '<p class="text-sm text-gray-600 mt-1">Approfondisci prima di prenotare.</p></div>'
-                 + '</a>';
-        }).join("");
-      } else {
-        relatedWrap.innerHTML = '<div class="text-gray-600">Nessun contenuto correlato per questa destinazione. Prova con Tokyo, Parigi, New York o Bali.</div>';
-      }
-    })();
-  </script>
+            // ====== ATTIVITÀ (GetYourGuide) ======
+            var gygMap = {
+                "TYO":"-l193/", "PAR":"-l16/", "NYC":"-l59/", "DPS":"-l347/",
+                "EDI":"-l150/", "GLA":"-l149/", "VIE":"-l152/", "PRG":"-l151/",
+                "BUD":"-l156/", "CPH":"-l154/", "BER":"-l143/"
+            };
+            var gygBase = gygMap[DES_CODE] ? `https://www.getyourguide.com/${gygMap[DES_CODE]}` : "https://www.getyourguide.com/";
+            var cmp = "cmp=sub_risultati-"+(DES_CODE||"GEN").toLowerCase();
+            var gygUrl = gygBase + "?partner_id=" + encodeURIComponent(PARTNER_ID) + "&" + cmp;
+            var activities = document.getElementById("activitiesLinks");
+            activities.innerHTML =
+                '<a href="'+gygUrl+'" target="_blank" rel="nofollow noopener" class="btn-partner btn-primary">Apri attività e tour</a>'
+                + '<p class="text-xs text-gray-500 mt-3">Link tracciato (partner_id <code>'+PARTNER_ID+'</code>).</p>';
+
+            // ====== CONTENUTI CORRELATI ======
+            var relatedWrap = document.getElementById("relatedContent");
+            var rel = RELATED[DES_CODE];
+            if(rel){
+                var all = [].concat(rel.articles||[]).concat(rel.guides||[]);
+                relatedWrap.innerHTML = all.map(function(card){
+                    return '<a href="'+card.href+'" class="block bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden transition">'
+                                       + '<img src="'+card.img+'" alt="'+card.title+'" class="w-full h-40 object-cover" loading="lazy" decoding="async">'
+                                       + '<div class="p-4"><h3 class="font-semibold text-blue-900">'+card.title+'</h3>'
+                                       + '<p class="text-sm text-gray-600 mt-1">Approfondisci prima di prenotare.</p></div>'
+                                   + '</a>';
+                }).join("");
+            } else {
+                relatedWrap.innerHTML = '<div class="text-gray-600">Nessun contenuto correlato per questa destinazione. Prova con una delle città principali (es. Tokyo, Parigi, Edimburgo).</div>';
+            }
+        })();
+    </script>
 </body>
 </html>
